@@ -1,0 +1,11 @@
+.become-a-member-div {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.skills-I-have-form h3 {
+ margin: 0px;
+}
