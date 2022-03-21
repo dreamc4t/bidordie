@@ -8,7 +8,7 @@ import {
 import BecomeAMember from "./components/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ActionList from "./components/ActionList";
+import ActionList from "./components/SortBar";
 import LoginPage from "./components/LoginPage";
 import AboutUs from "./components/AboutUs";
 
