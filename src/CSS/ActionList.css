@@ -1,0 +1,53 @@
+.actionlist-form{
+    min-height:8vh;
+    background: linear-gradient(rgb(245,196,19), rgb(2,42,121));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input, .search-button, .filter-competence, .sort{
+    font-size: 1rem;
+    padding: 0.2rem;
+    border: none;
+    background:white;
+}
+
+.search-button{
+    background-color: rgb(2,42,121);
+    color:rgb(245,196,19);
+}
+
+.filter-competence, .sort{
+    margin-left:5px;
+    outline: none;
+    border: none;
+}
+
+.search-input:focus{
+    outline: none;
+}
+
+
+.search-button:hover{
+    background-color: rgb(245,196,19);
+    color:rgb(2,42,121);
+    cursor: pointer;
+}
+
+@media (max-width:500px) {
+
+    .search-input, .search-button, .filter-competence, .sort{
+        font-size: 0.5rem;
+    }
+}
+
+@media (orientation:landscape) and (max-width:500px){
+    .search-input, .search-button, .filter-competence, .sort{
+        font-size: 0.7rem;
+    }
+}
+
+
+
+
