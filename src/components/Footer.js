@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FaAppStoreIos } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaGooglePlay } from "react-icons/fa";
@@ -20,10 +21,9 @@ const Footer = () => {
         <FaInstagram size={25} />
         <FaTwitter size={25} />
         </p>
-        <button type="button" onClick={(e) => {
-        e.preventDefault();
-        window.location.href='http://localhost:3000';
-        }}>About Us</button>
+        <Link to="/about-us">
+          <button>About Us</button>
+        </Link>
       </div>
     </footer>
   )

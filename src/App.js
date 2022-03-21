@@ -7,8 +7,9 @@ import {
 import BecomeAMember from "./components/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ActionList from "./components/ActionList"
-import LoginPage from "./components/LoginPage"
+import ActionList from "./components/ActionList";
+import LoginPage from "./components/LoginPage";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
             path="/become-a-member"
             element={<BecomeAMember />}
           />
+          <Route
+            path="/about-us"
+            element={<AboutUs />}
+          />  
         </Routes>
         <Footer />
       </div>
