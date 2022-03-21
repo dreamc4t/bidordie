@@ -14,30 +14,29 @@ import AboutUs from "./components/AboutUs";
 function App() {
   return (
     <Router>
-      <div className="App">
         <Header />
-        <ActionList/>
-        <Routes>
-          {/*Pages go here as <Route>*/}
-          <Route 
-            exact
-            path="/"
-          />
-          <Route 
-            path="/login"
-            element={<LoginPage />}
-          />
-          <Route
-            path="/become-a-member"
-            element={<BecomeAMember />}
-          />
-          <Route
-            path="/about-us"
-            element={<AboutUs />}
-          />  
-        </Routes>
+        <main>
+          <Routes>
+            {/*Pages go here as <Route>*/}
+            <Route 
+              exact
+              path="/"
+            />
+            <Route 
+              path="/login"
+              element={<LoginPage />}
+            />
+            <Route
+              path="/become-a-member"
+              element={<BecomeAMember />}
+            />
+            <Route
+              path="/about-us"
+              element={<AboutUs />}
+            />  
+          </Routes>
+        </main>
         <Footer />
-      </div>
     </Router>
   );
 }
