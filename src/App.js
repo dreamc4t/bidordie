@@ -6,14 +6,15 @@ import {
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ActionList from "./components/ActionList"
 import LoginPage from "./components/LoginPage"
 
 function App() {
   return (
     <Router>
-      <div id="app">
+      <div className="App">
         <Header />
-        <main>
+        <ActionList/>
         <Routes>
           {/*Pages go here as <Route>*/}
           <Route 
@@ -22,7 +23,6 @@ function App() {
             element={<LoginPage />}
           />
         </Routes>
-        </main>
         <Footer />
       </div>
     </Router>
