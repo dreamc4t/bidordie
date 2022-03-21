@@ -1,12 +1,12 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import LoginPage from "./components/LoginPage";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      asdasdasd
+      <LoginPage />
       <Footer />
     </div>
   );
