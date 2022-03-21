@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import SortBar from "./components/SortBar";
 import LoginPage from "./components/LoginPage";
 import AboutUs from "./components/AboutUs";
+import AuctionList from "./components/AuctionList";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route 
               exact
               path="/"
+              element={<AuctionList />}
             />
             <Route 
               path="/login"

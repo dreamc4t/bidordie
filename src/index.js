@@ -8,6 +8,7 @@ import './CSS/footer.css';
 import './CSS/becomeAMember.css'
 import './CSS/SortBar.css';
 import './CSS/aboutUs.css';
+import './CSS/AuctionList.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
