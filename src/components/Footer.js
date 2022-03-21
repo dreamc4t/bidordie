@@ -11,21 +11,31 @@ const Footer = () => {
     <footer>
       <div className="footer">
         <p>
-        <FaGooglePlay size={25} />
-        <FaAppStoreIos size={25} />
+          <Link to="/google-play-store">
+            <FaGooglePlay size={25} />
+          </Link>
+          <Link to="/apple-store">
+            <FaAppStoreIos size={25} />
+          </Link>
         </p>
         <FaQuestionCircle size={25} />
         <h2>BIDORDIE</h2>
         <p>
-        <FaFacebook size={25} />
-        <FaInstagram size={25} />
-        <FaTwitter size={25} />
+          <Link to="/facebook">
+            <FaFacebook size={25} />
+          </Link>
+          <Link to="/instagram">
+            <FaInstagram size={25} />
+          </Link> 
+          <Link to="/twitter">
+            <FaTwitter size={25} />
+          </Link>   
         </p>
-        <div className="about-us-link">
+        <p>
           <Link to="/about-us">
             <button>About Us</button>
           </Link>
-        </div>
+        </p>
       </div>
     </footer>
   )
