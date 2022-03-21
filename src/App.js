@@ -11,8 +11,9 @@ import LoginPage from "./components/LoginPage"
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div id="app">
         <Header />
+        <main>
         <Routes>
           {/*Pages go here as <Route>*/}
           <Route 
@@ -21,6 +22,7 @@ function App() {
             element={<LoginPage />}
           />
         </Routes>
+        </main>
         <Footer />
       </div>
     </Router>
