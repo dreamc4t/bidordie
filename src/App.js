@@ -12,6 +12,7 @@ import SortBar from "./components/SortBar";
 import LoginPage from "./components/LoginPage";
 import AboutUs from "./components/AboutUs";
 import AuctionList from "./components/AuctionList";
+import Faq from "./components/Faq";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
             <Route
               path="/about-us"
               element={<AboutUs />}
+            />
+            <Route
+            path="/FAQ"
+            element={<Faq />}
             />
             <Route
               path="/google-play-store"

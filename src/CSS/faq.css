@@ -1,22 +1,22 @@
-.about-us{
+.FAQ{
     width: 100%;
     height: 100%;
     color: #022A79;
 }
 
-.about-us h2{ 
+.FAQ h2{ 
     display: flex;
     justify-content: center;
     font-size: large;
 }
 
-.about-us h3{ 
+.FAQ h3{ 
     display: flex;
     justify-content: center;
     font-size: medium;
 }
 
-.about-us p{ 
+.FAQ p{ 
     display: flex;
     justify-content: center;
     font-size: medium;
