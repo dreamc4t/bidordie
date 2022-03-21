@@ -7,6 +7,7 @@ import {
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ActionList from "./components/ActionList"
+import LoginPage from "./components/LoginPage"
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
         <ActionList/>
         <Routes>
           {/*Pages go here as <Route>*/}
+          <Route 
+            exact
+            path="/"
+            element={<LoginPage />}
+          />
         </Routes>
         <Footer />
       </div>
