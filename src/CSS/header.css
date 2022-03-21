@@ -1,0 +1,54 @@
+
+header {
+    background-color:  rgb(245,196,19);
+    height: 90px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+header h1 {
+    color: rgb(2,42,121);
+    margin: 0px;
+    font-size: 50px;
+}
+
+.header-nav {
+  display: flex;
+  margin-right: 2%;
+  align-items: center;
+}
+.header-nav button {
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 5px ;
+  height: 55px;
+  width: 100px;
+  cursor: pointer;
+
+}
+
+.burger-menu {
+  font-size: 45px;
+  margin-left: 5px;
+  cursor: pointer;
+
+}
+
+.yeast {
+  height: 100px;
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+header div {
+  display: flex;
+  align-items: center;
+}
