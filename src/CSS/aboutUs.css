@@ -1,7 +1,22 @@
-/* .AboutUs{
+.about-us{
+    width: 100%;
     height: 100%;
-} */
+}
 
-/* .AboutUs h2{
+.about-us h2{ 
+    display: flex;
+    justify-content: center;
     font-size: large;
-} */
+}
+
+.about-us h3{ 
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+}
+
+.about-us p{ 
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+}

@@ -21,9 +21,11 @@ const Footer = () => {
         <FaInstagram size={25} />
         <FaTwitter size={25} />
         </p>
-        <Link to="/about-us">
-          <button>About Us</button>
-        </Link>
+        <div className="about-us-link">
+          <Link to="/about-us">
+            <button>About Us</button>
+          </Link>
+        </div>
       </div>
     </footer>
   )
