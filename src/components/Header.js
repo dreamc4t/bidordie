@@ -1,20 +1,27 @@
 import Logo from "./Logo";
 import HeaderButton from "./HeaderButton";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNav = [
-    { key: 1, text: "Signup" },
-    { key: 2, text: "New auction" },
-    { key: 3, text: "About" },
+    { key: 1, text: "Signup", hashLink: "become-a-member" },
+    { key: 2, text: "New auction", hashLink: "new-auction" },
+    { key: 3, text: "About", hashLink: "about" },
+    { key: 4, text: "Login", hashLink: "login" },
   ];
   return (
     <header>
-        <Logo />
+      <Link to="/" style={{textDecoration: "none"}}>
+      <Logo />
+
+      </Link>
 
       <nav className="header-nav">
         {headerNav.map((buttonName) => (
-          <HeaderButton text={buttonName.text} />
+          <Link to={buttonName.hashLink} key={buttonName.key} style={{textDecoration: "none"}}>
+            <HeaderButton text={buttonName.text}  />
+          </Link>
         ))}
         <GiHamburgerMenu className="burger-menu" />
       </nav>

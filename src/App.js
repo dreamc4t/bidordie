@@ -21,7 +21,14 @@ function App() {
           <Route 
             exact
             path="/"
+          />
+          <Route 
+            path="/login"
             element={<LoginPage />}
+          />
+          <Route
+            path="/become-a-member"
+            element={<BecomeAMember />}
           />
         </Routes>
         <Footer />
