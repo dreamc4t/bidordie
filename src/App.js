@@ -6,17 +6,17 @@ import {
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ActionList from "./components/ActionList"
 
 function App() {
   return (
     <Router>
-      <div id="app">
+      <div className="App">
         <Header />
-        <main>
+        <ActionList/>
         <Routes>
           {/*Pages go here as <Route>*/}
         </Routes>
-        </main>
         <Footer />
       </div>
     </Router>
