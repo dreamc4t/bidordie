@@ -1,12 +1,12 @@
 
 
-const ActionList = () => {
+const SortBar = () => {
 
 
 
 
   return (
-    <form className="actionlist-form">
+    <form className="sortbar-form">
         <div className="action-container">
             <input placeholder="..." type="text" className="search-input"></input>
             <button className="search-button" type="submit">Search</button>
@@ -29,4 +29,4 @@ const ActionList = () => {
   );
 };
 
-export default ActionList;
+export default SortBar;

@@ -2,16 +2,22 @@
   box-sizing: border-box;
 }
 
-#root {
-  height: 100vh;
+h2 {
+  margin: 0;
 }
 
-#app {
+#root {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  height: calc(100vh - 170px);
+  flex: 1 0 auto;
+}
+
+main>* {
+  height: 100%;
 }
 
 body {
@@ -21,10 +27,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-root {
-  height: 100vh;
 }
 
 code {

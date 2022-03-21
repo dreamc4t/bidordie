@@ -6,7 +6,7 @@ import './CSS/login-page.css'
 import './CSS/header.css';
 import './CSS/footer.css';
 import './CSS/becomeAMember.css'
-import './CSS/ActionList.css';
+import './CSS/SortBar.css';
 import './CSS/aboutUs.css';
 import './CSS/faq.css';
 import App from './App';
