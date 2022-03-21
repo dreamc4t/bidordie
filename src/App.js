@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import ActionList from "./components/ActionList";
 import LoginPage from "./components/LoginPage";
 import AboutUs from "./components/AboutUs";
+import Faq from "./components/Faq";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
           <Route
             path="/about-us"
             element={<AboutUs />}
+          />
+          <Route
+            path="/FAQ"
+            element={<Faq />}
           />
           <Route
             path="/google-play-store"

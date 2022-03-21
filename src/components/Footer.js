@@ -18,7 +18,9 @@ const Footer = () => {
             <FaAppStoreIos size={25} />
           </Link>
         </p>
-        <FaQuestionCircle size={25} />
+          <Link to="/FAQ">
+          <FaQuestionCircle size={25} />
+        </Link>
         <h2>BIDORDIE</h2>
         <p>
           <Link to="/facebook">
