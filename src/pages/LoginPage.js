@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import OtherLoginOption from "../components/OtherLoginOption"
+
 
 const LoginPage = () => {
     return(
@@ -14,6 +16,10 @@ const LoginPage = () => {
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>
+                    <div>
+                       ---- log in with ---- 
+                    </div>
+                    <OtherLoginOption />
                 </form>
             </div>
         </div>

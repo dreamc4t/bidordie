@@ -1,8 +1,17 @@
+import OtherLoginOption from "../components/OtherLoginOption";
+
 const BecomeAMember = () => {
   return (
     <form action="">
       <div className="become-a-member-div">
+
         <h1>Create account</h1>
+
+        <div className="create-acc-with-other"> 
+        <p>-----  signup with -----</p>
+        <OtherLoginOption />
+        </div>
+        
         <label htmlFor="firstName">First name: </label>
         <input type="text" placeholder="enter first name" />
         <label htmlFor="">Last name</label>
@@ -28,7 +37,7 @@ const BecomeAMember = () => {
         <input type="file" />
         <p> ------ </p>
         <form className="skills-I-have-form">
-          <h3>Skills I master:</h3>
+          <h3>Competences: </h3>
           <input type="checkbox" />
           <label>Python</label>
           <input type="checkbox" />
