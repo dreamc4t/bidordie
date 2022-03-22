@@ -8,7 +8,6 @@ const AuctionList = ({}) => {
         <div className="auction-list">
             <SortBar />
             <div className="auction-container">
-                
             </div>
         </div>
     );

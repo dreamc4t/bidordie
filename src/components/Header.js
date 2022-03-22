@@ -16,7 +16,6 @@ const Header = () => {
       <Link to="/" style={{textDecoration: "none"}}>
         <Logo />
       </Link>
-
       <nav className="header-nav">
         {headerNav.map((buttonName) => (
           <Link to={buttonName.hashLink} key={buttonName.key} style={{textDecoration: "none"}}>

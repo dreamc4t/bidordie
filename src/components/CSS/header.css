@@ -1,7 +1,6 @@
 
 header {
-    background-color:  rgb(184,198,195);
-    height: 90px;
+    height: 50px;
     margin: 0px;
     padding: 0 20px;
     display: flex;
@@ -10,18 +9,18 @@ header {
   }
 
 header h1 {
-    color: black;
+    color: white;
     margin: 0px;
-    font-size: 50px;
+    line-height: 100%;
+    font-size: 200%;
 }
 
 .header-nav {
   display: flex;
-  margin-right: 2%;
   align-items: center;
+  gap: 10px;
 }
 .header-nav button {
-  margin: 10px;
   cursor: pointer;
 }
 
@@ -29,7 +28,7 @@ header h1 {
   font-size: 45px;
   margin-left: 5px;
   cursor: pointer;
-
+  fill: white;
 }
 
 .logo-wrapper {
