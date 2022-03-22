@@ -13,8 +13,7 @@ const Header = () => {
   return (
     <header>
       <Link to="/" style={{textDecoration: "none"}}>
-      <Logo />
-
+        <Logo />
       </Link>
 
       <nav className="header-nav">

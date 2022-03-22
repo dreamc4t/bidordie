@@ -1,6 +1,11 @@
 .button-element {
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
-    padding: 5px 10px;
+    padding: 12px 20px;
     border-radius: 20px;
+    font-size: 90%;
+}
+
+.button-element:hover {
+    background-color: rgba(255,255,255,1);
 }
