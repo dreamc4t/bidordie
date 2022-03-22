@@ -1,8 +1,12 @@
+import LoginWithOther from "../components/LogInWithOther";
+
 const BecomeAMember = () => {
   return (
     <form action="">
       <div className="become-a-member-div">
         <h1>Create account</h1>
+        <p>----- or login with ------</p>
+        <LoginWithOther />
         <label htmlFor="firstName">First name: </label>
         <input type="text" placeholder="enter first name" />
         <label htmlFor="">Last name</label>
