@@ -13,6 +13,7 @@ import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
             <Route
             path="/FAQ"
             element={<Faq />}
+            />
+            <Route
+            path="/user-page"
+            element={<UserPage />}
             />
             <Route
               path="/google-play-store"

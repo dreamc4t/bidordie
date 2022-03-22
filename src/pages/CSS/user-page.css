@@ -1,0 +1,24 @@
+.user-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-top {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-picture {
+    margin: 1px;
+    border-radius: 10px;
+    height: 250px;
+
+}
+
+.user-bio {
+    max-width: 500px;
+}
