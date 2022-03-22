@@ -9,7 +9,7 @@ const SortBar = () => {
     <form className="sortbar-form">
         <div className="action-container">
             <input placeholder="..." type="text" className="search-input"></input>
-            <button className="search-button" type="submit">Search</button>
+            <button className="button-element" type="submit">Search</button>
             <select name="competences" className="filter-competence">
                 <option value="all">Competence</option>
                 <option value="java">Java</option>
