@@ -1,0 +1,24 @@
+.login-with-other button{
+    padding: 12px 4px;
+    margin: 3px;
+    border-radius: 4px;
+}
+
+.create-acc-with-other {
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px black solid;
+
+    border-top: 2px black solid;
+}
+
+.create-acc-with-other p {
+    margin: 05px;
+}
+
+.create-acc-with-other button {
+padding: 10px;
+}

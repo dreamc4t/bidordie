@@ -4,6 +4,12 @@
     flex-direction: column;
     width: 300px;
     margin: 0 auto;
+
+}
+
+.become-a-member-div h1 {
+    text-align: center;
+    margin: 10px;
 }
 
 .skills-I-have-form h3 {
