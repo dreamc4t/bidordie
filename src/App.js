@@ -2,16 +2,14 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom"
 
-import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BecomeAMember from "./pages/BecomeAMember";
 import LoginPage from "./pages/LoginPage";
 import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
-import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
 
 function App() {
