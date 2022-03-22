@@ -14,25 +14,25 @@
     gap: 10px;
 }
 
-select, input{
+#sort, #filter-competence{
     outline: none;
     border: none;
     height: 25px;
 }
 
-.search-input:focus{
+#search-input:focus{
     outline: 1px solid grey;
 }
 
 @media (max-width:500px) {
 
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence {
         font-size: 0.5rem;
     }
 }
 
 @media (orientation:landscape) and (max-width:500px){
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence{
         font-size: 0.7rem;
     }
 }
