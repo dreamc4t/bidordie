@@ -5,15 +5,14 @@ import {
   Link
 } from "react-router-dom"
 
-import BecomeAMember from "./components/BecomeAMember";
+import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SortBar from "./components/SortBar";
-import LoginPage from "./components/LoginPage";
-import AboutUs from "./components/AboutUs";
-import AuctionList from "./components/AuctionList";
-import AddAuctionPage from "./components/AddAuctionPage"; 
-import Faq from "./components/Faq";
+import LoginPage from "./pages/LoginPage";
+import AboutUs from "./pages/AboutUs";
+import AuctionList from "./pages/AuctionList";
+import AddAuctionPage from "./pages/AddAuctionPage"; 
+import Faq from "./pages/Faq";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 //import ImASneakyLittleStar from ImASneakyLittleStar;
-import SortBar from "./SortBar";
+import SortBar from "../components/SortBar";
 
 const AuctionList = ({}) => {
 
