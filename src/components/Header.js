@@ -9,6 +9,7 @@ const Header = () => {
     { key: 2, text: "New auction", hashLink: "new-auction" },
     { key: 3, text: "About", hashLink: "/about-us" },
     { key: 4, text: "Login", hashLink: "login" },
+    { key: 5, text: "My page", hashLink: "my-page" },
   ];
   return (
     <header>
