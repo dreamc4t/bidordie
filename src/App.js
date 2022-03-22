@@ -12,6 +12,7 @@ import SortBar from "./components/SortBar";
 import LoginPage from "./components/LoginPage";
 import AboutUs from "./components/AboutUs";
 import AuctionList from "./components/AuctionList";
+import AddAuctionPage from "./components/AddAuctionPage"; 
 import Faq from "./components/Faq";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
             <Route 
               exact
               path="/"
-              element={<AuctionList />}
+              element={<AddAuctionPage />}
             />
             <Route 
               path="/login"
