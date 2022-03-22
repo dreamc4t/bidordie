@@ -25,7 +25,7 @@ function App() {
             <Route 
               exact
               path="/"
-              element={<AddAuctionPage />}
+              element={<AuctionList />}
             />
             <Route 
               path="/login"
