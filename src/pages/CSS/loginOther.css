@@ -3,6 +3,9 @@
     margin: 3px;
     border-radius: 4px;
 }
+.login-with-other button>svg {
+    fill: black;
+}
 
 .create-acc-with-other {
     display:  flex;

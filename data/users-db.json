@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Erik",
+      "lastName": "Sund",
+      "imageUrl": "/img/erik.png",
+      "CV": "cv-url går här",
+      "phone": "0707472921",
+      "address": "Åhusgatan 6",
+      "zipCode": 21438,
+      "town": "Malmö",
+      "links": [
+        { "github": "https://github.com/" },
+        { "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
+      ],
+      "otherInfo": "bla bla bla saker om grejer etc bla bla"
+    },
+    {
+      "id": 2,
+      "firstName": "Henke",
+      "lastName": "Kihlberg",
+      "imageUrl": "/img/henke.png",
+      "CV": "cv-url går här",
+      "phone": "112",
+      "address": "Åhusgatan 4",
+      "zipCode": 21438,
+      "town": "Malmö",
+      "links": [
+        { "github": "https://github.com/" },
+        { "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221" }
+      ],
+      "otherInfo": "Blev utkastad ur scouterna som ung"
+    }
+  ]
+}

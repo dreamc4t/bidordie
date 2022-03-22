@@ -1,8 +1,7 @@
 .sortbar-form{
     min-height:8vh;
     width: 100%;
-    border-top: 1px solid grey;
-    background-color: rgb(184,198,195);
+    border-bottom: 1px solid rgb(117, 117, 117);
     display: flex;
     justify-content: center;
     align-items: center;

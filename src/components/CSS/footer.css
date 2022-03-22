@@ -1,11 +1,11 @@
 .footer{
+    flex: 0 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 80px;
-    background: rgb(184,198,195);
-    color: black;
+    height: 50px;
+    color: white;
 }
 
 .footer h2{
@@ -13,5 +13,5 @@
 }
 
 svg {
-    fill: black;
+    fill: white;
 }
