@@ -9,10 +9,10 @@ const LoginPage = () => {
                     <input placeholder="email"/>
                     <input placeholder="password" />
                     <Link to="auction-list">
-                        <button>Log in</button>
+                        <button className="button-element">Log in</button>
                     </Link>
                     <Link to="/become-a-member">
-                        <button>Create Account</button>
+                        <button className="button-element">Create Account</button>
                     </Link>
                 </form>
             </div>

@@ -42,26 +42,6 @@ function App() {
             path="/FAQ"
             element={<Faq />}
             />
-            <Route
-              path="/google-play-store"
-              element={('https://play.google.com/store')}
-            />
-            <Route
-              path="/apple-store"
-              element={('https://www.apple.com/app-store/')}
-            />
-            <Route
-              path="/facebook"
-              element={('https://www.facebook.com')}
-            />
-            <Route
-              path="/instagram"
-              element={('https://www.instagram.com')}
-            />
-            <Route
-              path="/twitter"
-              element={('https://www.twitter.com')}
-            /> 
           </Routes>
         </main>
         <Footer />

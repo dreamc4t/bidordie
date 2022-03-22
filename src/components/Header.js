@@ -7,7 +7,7 @@ const Header = () => {
   const headerNav = [
     { key: 1, text: "Signup", hashLink: "become-a-member" },
     { key: 2, text: "New auction", hashLink: "new-auction" },
-    { key: 3, text: "About", hashLink: "about" },
+    { key: 3, text: "About", hashLink: "/about-us" },
     { key: 4, text: "Login", hashLink: "login" },
   ];
   return (

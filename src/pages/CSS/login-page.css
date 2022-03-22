@@ -6,7 +6,7 @@
 }
 
 #login-container {
-    background-color:  rgba(245,196,19, 0.5);
+    background-color:  rgb(184,198,195);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,7 +18,7 @@
 }
 
 #login-container>h2 {
-    color: rgb(2,42,121);
+    color: rgb(20,20,125);
     font-size: 200%;
     margin-bottom: 40px;
     text-align: center;
@@ -27,10 +27,8 @@
 #login-container>form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
     width: 100%;
     max-width: 300px;
-}
-#login-container>form>a>button {
-    width: 100%;
 }
