@@ -4,10 +4,14 @@
     align-items: center;
     width: 100%;
     height: 80px;
-    background: #F5C413;
-    color: #022A79
+    background: rgb(184,198,195);
+    color: black;
 }
 
 .footer h2{
     font-size: x-large;
+}
+
+svg {
+    fill: black;
 }

@@ -1,15 +1,16 @@
 
 header {
-    background-color:  rgb(245,196,19);
+    background-color:  rgb(184,198,195);
     height: 90px;
     margin: 0px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
 header h1 {
-    color: rgb(2,42,121);
+    color: black;
     margin: 0px;
     font-size: 50px;
 }
@@ -29,10 +30,6 @@ header h1 {
   margin-left: 5px;
   cursor: pointer;
 
-}
-
-.yeast {
-  height: 100px;
 }
 
 .logo-wrapper {
