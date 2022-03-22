@@ -10,6 +10,7 @@ import './pages/CSS/AddAuctionPage.css';
 import './components/CSS/header.css';
 import './components/CSS/footer.css';
 import './components/CSS/SortBar.css';
+import './components/CSS/button-element.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

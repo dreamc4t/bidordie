@@ -20,13 +20,8 @@ header h1 {
   align-items: center;
 }
 .header-nav button {
-  margin: 5px;
-  padding: 10px 15px;
-  border-radius: 5px ;
-  height: 55px;
-  width: 100px;
+  margin: 10px;
   cursor: pointer;
-
 }
 
 .burger-menu {
