@@ -11,27 +11,27 @@ const Footer = () => {
     <footer>
       <div className="footer">
         <p>
-          <Link to="/google-play-store">
+          <a href="https://play.google.com/store" target="_blank">
             <FaGooglePlay size={25} />
-          </Link>
-          <Link to="/apple-store">
+          </a>
+          <a href="https://www.apple.com/app-store/" target="_blank">
             <FaAppStoreIos size={25} />
-          </Link>
+          </a>
         </p>
           <Link to="/FAQ">
           <FaQuestionCircle size={25} />
         </Link>
         <h2>BIDORDIE</h2>
         <p>
-          <Link to="/facebook">
+          <a href="https://www.facebook.com" target="_blank">
             <FaFacebook size={25} />
-          </Link>
-          <Link to="/instagram">
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
             <FaInstagram size={25} />
-          </Link> 
-          <Link to="/twitter">
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
             <FaTwitter size={25} />
-          </Link>   
+          </a>   
         </p>
         <p>
           <Link to="/about-us">
