@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './CSS/header.css'
-import './CSS/login-page.css'
-import './CSS/header.css';
-import './CSS/footer.css';
-import './CSS/becomeAMember.css'
-import './CSS/SortBar.css';
-import './CSS/aboutUs.css';
-import './CSS/faq.css';
+import './pages/CSS/login-page.css';
+import './pages/CSS/becomeAMember.css';
+import './pages/CSS/aboutUs.css';
+import './pages/CSS/AuctionList.css';
+import './pages/CSS/faq.css';
+import './pages/CSS/AddAuctionPage.css';
+import './components/CSS/header.css';
+import './components/CSS/footer.css';
+import './components/CSS/SortBar.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
