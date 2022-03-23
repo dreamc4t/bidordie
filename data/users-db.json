@@ -31,6 +31,22 @@
         { "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221" }
       ],
       "otherInfo": "Blev utkastad ur scouterna som ung"
+    },
+    {
+      "id": 3,
+      "firstName": "Jack",
+      "lastName": "Bravo",
+      "imageUrl": "/img/jack.jpg",
+      "CV": "cv-url går här",
+      "phone": "032213781",
+      "address": "Västra Rönneholmsvägen 52B",
+      "zipCode": 21428,
+      "town": "Malmö",
+      "links": [
+        { "github": "https://github.com/bravojack" },
+        { "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/" }
+      ],
+      "otherInfo": "Har 2500 timmar i Rocket League"
     }
   ]
 }
