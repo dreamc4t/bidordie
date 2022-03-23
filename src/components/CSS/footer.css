@@ -12,6 +12,17 @@
     font-size: x-large;
 }
 
-svg {
-    fill: white;
+@media (max-width:420px) {
+    .footer>p>a>svg {
+        width: 6vw;
+    }
+    .footer>a>svg {
+        width: 6vw;
+    }
+    .footer>h2 {
+        font-size: calc(5vw + 4px);
+    }
+    .footer>p>a>button {
+        font-size: calc(2vw + 4px);
+    }
 }
