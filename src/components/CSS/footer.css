@@ -1,13 +1,17 @@
 .footer{
+    flex: 0 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 80px;
-    background: #F5C413;
-    color: #022A79
+    height: 50px;
+    color: white;
 }
 
 .footer h2{
     font-size: x-large;
+}
+
+svg {
+    fill: white;
 }

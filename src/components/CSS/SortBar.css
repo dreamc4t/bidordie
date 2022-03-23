@@ -1,50 +1,37 @@
 .sortbar-form{
     min-height:8vh;
     width: 100%;
-    background: linear-gradient(rgb(245,196,19), rgb(2,42,121));
+    border-bottom: 1px solid rgb(117, 117, 117);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.search-input, .search-button, .filter-competence, .sort{
-    font-size: 1rem;
-    padding: 0.2rem;
-    border: none;
-    background:white;
+.action-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.search-button{
-    background-color: rgb(2,42,121);
-    color:rgb(245,196,19);
-}
-
-.filter-competence, .sort{
-    margin-left:5px;
+#sort, #filter-competence{
     outline: none;
     border: none;
+    height: 25px;
 }
 
-.search-input:focus{
-    outline: none;
-}
-
-
-.search-button:hover{
-    background-color: rgb(245,196,19);
-    color:rgb(2,42,121);
-    cursor: pointer;
+#search-input:focus{
+    outline: 1px solid grey;
 }
 
 @media (max-width:500px) {
 
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence {
         font-size: 0.5rem;
     }
 }
 
 @media (orientation:landscape) and (max-width:500px){
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence{
         font-size: 0.7rem;
     }
 }

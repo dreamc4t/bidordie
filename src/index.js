@@ -11,6 +11,8 @@ import './components/CSS/header.css';
 import './components/CSS/footer.css';
 import './components/CSS/SortBar.css';
 import './pages/CSS/user-page.css';
+import './components/CSS/button-element.css'
+import './pages/CSS/loginOther.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

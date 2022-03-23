@@ -1,43 +1,35 @@
 
 header {
-    background-color:  rgb(245,196,19);
-    height: 90px;
+    flex: 0 0;
+    height: 50px;
     margin: 0px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
 header h1 {
-    color: rgb(2,42,121);
+    color: white;
     margin: 0px;
-    font-size: 50px;
+    line-height: 100%;
+    font-size: 200%;
 }
 
 .header-nav {
   display: flex;
-  margin-right: 2%;
   align-items: center;
+  gap: 10px;
 }
 .header-nav button {
-  margin: 5px;
-  padding: 10px 15px;
-  border-radius: 5px ;
-  height: 55px;
-  width: 100px;
   cursor: pointer;
-
 }
 
 .burger-menu {
   font-size: 45px;
   margin-left: 5px;
   cursor: pointer;
-
-}
-
-.yeast {
-  height: 100px;
+  fill: white;
 }
 
 .logo-wrapper {

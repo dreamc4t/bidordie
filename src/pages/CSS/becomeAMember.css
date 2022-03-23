@@ -1,9 +1,24 @@
+#become-a-member-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .become-a-member-div {
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
+    width: 350px;
+    margin: 20px 0;
+    padding: 25px;
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 25px;
+}
+
+.become-a-member-div h1 {
+    text-align: center;
+    margin: 10px;
+    margin: 0 auto 40px;
 }
 
 .skills-I-have-form h3 {
