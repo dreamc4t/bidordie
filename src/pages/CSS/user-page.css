@@ -12,11 +12,37 @@
     flex-direction: column;
 }
 
+.user-page-pictures {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+
+.userBackgroundPicture {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
 .profile-picture {
     margin: 1px;
     border-radius: 10px;
     height: 250px;
+    position: absolute;
+    top: 85px;
 
+}
+
+.user-profile-info {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    line-height: 0px;
 }
 
 .user-bio {

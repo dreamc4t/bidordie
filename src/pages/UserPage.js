@@ -1,15 +1,20 @@
 const UserPage = () => {
-    const userReferences = [
-        {}
-    ]
+    const userName = "Mona Lisa"
+    const userSkills = "Fullstack developer & react genius"
+
     return (
       <div className="user-page">  
           <div className='user-top'>
-              <img src="img/MonaLisa.jpg" className="profile-picture" />
-              <h1>Mona Lisa</h1>
-              <h3>Fullstack developer & React genius </h3>
-              <h4>Venice, Italy</h4>
-              <h5>0707-1337</h5>
+              <div className="user-page-pictures">
+                <img src="img/profileBackground.jpg" className="userBackgroundPicture" />
+                <img src="img/MonaLisa.jpg" className="profile-picture" />
+              </div>
+              <div className="user-profile-info">
+                <h1>Mona Lisa</h1>
+                <h3>Fullstack developer & React genius </h3>
+                <h4>Venice, Italy</h4>
+                <h5>0707-1337</h5>
+              </div>
           </div>
           <div className="user-cv">
               CV visas här.
