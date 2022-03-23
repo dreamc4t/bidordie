@@ -1,5 +1,6 @@
 .sortbar-form{
-    min-height:8vh;
+    margin-top: -40px; /*Necessary to counter the padding css of the main element*/
+    height:50px;
     width: 100%;
     border-bottom: 1px solid rgb(117, 117, 117);
     display: flex;
