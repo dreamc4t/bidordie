@@ -4,15 +4,18 @@ import InputField from "../components/InputField";
 import { useState } from "react";
 
 const BecomeAMember = () => {
-  const [view, setView] = useState();
+  const [view, setView] = useState("person-view");
 
-  const [checked, setChecked] = useState(false)
-  const handleChange = () => {
-
-    setChecked(!checked);
-    console.log("HEJ HEJ ")
-
+  const handleChange = (e) => {
+    setView(e.target.value);
   }
+
+  if (view == "person-view") {
+    console.log("nu är det person")
+  } else if (view == "company-view") {
+    console.log("COMPANYY")
+  }
+
 
   const inputs = [
     { key: 1, label: "First name*" },
@@ -58,10 +61,10 @@ const BecomeAMember = () => {
           </div>
 
           <div className="company-or-person-div">
-            <input type="radio" name="clicker" onClick={handleChange} defaultChecked></input>
-            <label htmlFor="" >I am a person (looking for job)</label>
-            <input type="radio" name="clicker"></input>
-            <label htmlFor="">I am a company (looking to hire)</label>
+            <input type="radio" id="radio1" name="clicker" onChange={handleChange} value={"person-view"}  defaultChecked ></input>
+            <label htmlFor="radio1"  >I am a person (looking for job)</label>
+            <input type="radio" id="radio2" name="clicker" onChange={handleChange} value={"company-view"} ></input>
+            <label htmlFor="radio2">I am a company (looking to hire)</label>
           </div>
 
           <div className="info-wrapper">
