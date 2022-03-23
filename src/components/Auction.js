@@ -6,23 +6,20 @@ const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availabilit
     return (
         <div className="auction">
             <div className="image">
-                <img src={"imageURL"} alt= '' />
+                <img src={"./img/henke.jpeg"} alt= '' />
             </div>
-            <div className="personalInfo">
-                </div><h4>{firstName} {lastName}</h4>
-                <p><GoLocation/>{place}</p>
-                <p><AiFillCalendar/>{availability}</p>
-            <div/>
-            
-            <div className="briefInfo">
-                <h4>Info</h4>
-                <p>{briefInformation}</p>
-                <p>Competence: {competence}</p>
-            </div>
-            <div className="btn">
-            <button>
-                <a> More info</a>
-            </button>
+            <div className="info-container">
+                <div className="personalInfo">
+                    <p className="boldText">{firstName} {lastName}</p>
+                    <p><GoLocation/>{place}</p>
+                    <p><AiFillCalendar/>{availability}</p>
+                </div>
+                
+                <div className="briefInfo">
+                    <p className="boldText">About me</p>
+                    <p>{briefInformation}</p>
+                    <p className="comp">Competence: {competence}</p>
+                </div>
             </div>
                 
         </div>
