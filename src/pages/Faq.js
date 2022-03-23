@@ -20,6 +20,26 @@ function Faq () {
       question: 'What if Im not happy with my hire?',
       answer: 'Fire them and give them a bad review',
       open: false
+    },
+    {
+      question: 'Can I regret a bid?',
+      answer: 'Bids are bindning, so you cant undo them',
+      open: false
+    },
+    {
+      question: 'Are there any proof of competence?',
+      answer: 'The sellers shall provide proper information on their seller page and on their auctions',
+      open: false
+    },
+    {
+      question: 'Is this site free to use?',
+      answer: 'Currently its free to use as we get paid through advertisers',
+      open: false
+    },
+    {
+      question: 'What if Im not happy with my employeer?',
+      answer: 'Thats between you and your employeer and the contract you both sign',
+      open: false
     }
   ]);
 
