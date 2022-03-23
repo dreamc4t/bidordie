@@ -26,6 +26,15 @@
         "endTime": "2022-11-29 16:35:42",
         "openingPrice": 650,
         "buyoutPrice": 1200
+      },
+      {
+        "id": 4,
+        "user": "hämta user från db och ta från den",
+        "info": "Kort info/snippet från user här",
+        "startTime":"2022-03-29 16:35:42",
+        "endTime": "2022-11-29 16:35:42",
+        "openingPrice": 666,
+        "buyoutPrice": 1700
       }
     ]
   }

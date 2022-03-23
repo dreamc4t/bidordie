@@ -47,6 +47,22 @@
         { "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/" }
       ],
       "otherInfo": "Har 2500 timmar i Rocket League"
+    },
+    {
+      "id": 4,
+      "firstName": "Marcus",
+      "lastName": "Malmgren",
+      "imageUrl": "/img/Marcus.jpg",
+      "CV": "cv-url går här",
+      "phone": "0735957444",
+      "address": "Vikingavägen 25C",
+      "zipCode": 22476,
+      "town": "Lund",
+      "links": [
+        { "github": "https://github.com/Marcus921" },
+        { "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221" }
+      ],
+      "otherInfo": "Redig Halo nörd"
     }
   ]
 }

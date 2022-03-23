@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom"
 
 import BecomeAMember from "./pages/BecomeAMember";
@@ -33,6 +32,10 @@ function App() {
             <Route
               path="/become-a-member"
               element={<BecomeAMember />}
+            />
+            <Route
+              path="/new-auction"
+              element={<AddAuctionPage />}
             />
             <Route
               path="/about-us"
