@@ -12,7 +12,7 @@ header {
   border: none;
   border-bottom: 1px solid rgb(28,36,53);
   background-color: rgb(28,36,53);
-  padding: 3px;
+  padding: 7px 3px;
   cursor: pointer;
   color: white;
   font-size: 110%;
@@ -59,12 +59,24 @@ header div {
   align-items: center;
 }
 
-@media (max-width:700px) {
+@media (max-width:630px) {
   .burger-menu {
     display:inline;
   }
   .header-button-element {
     display: none;
+  }
+  .header-nav {
+    gap: 0;
+  }
+}
+
+@media (max-width:300px) {
+  header h1 {
+    font-size: 11vw;
+  }
+  .burger-menu {
+    font-size: 11vw;
   }
 }
 

@@ -10,10 +10,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 60px;
-    width: 22vw;
-    max-width: 600px;
-    min-width: 380px;
+    padding: 20px;
+    min-width: 420px;
     background-color: white;
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
@@ -38,4 +36,18 @@
 
 #log-in-with {
     margin-top: 10px;
+}
+
+@media (max-width:420px) {
+    #login-page {
+        align-items: stretch;
+    }
+    #login-container {
+        min-width: 0;
+    }
+    #login-container>form>input {
+        width: 80vw;
+        max-width: 170px;
+    }
+
 }
