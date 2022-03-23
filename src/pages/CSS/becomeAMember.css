@@ -8,9 +8,7 @@
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    width: 350px;
-    margin: 20px 0;
-    padding: 25px;
+    padding: 40px 100px;
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
 }
@@ -18,9 +16,16 @@
 .become-a-member-div h1 {
     text-align: center;
     margin: 10px;
-    margin: 0 auto 40px;
+    margin: 0 auto 20px;
 }
 
 .skills-I-have-form h3 {
  margin: 0px;
+}
+
+.create-acc-with-other p {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

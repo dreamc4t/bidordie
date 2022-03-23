@@ -1,7 +1,7 @@
 const HeaderButton = ( {text} ) => {
   return (
     <div>
-        <button className="button-element">
+        <button className="header-button-element">
             {text}
         </button>
     </div>

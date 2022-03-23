@@ -1,10 +1,6 @@
 * {
   box-sizing: border-box;
-  --main-background-color: rgb(28,36,53);
 }
-/* bakgrund rgb(28,36,53)
-text rgb(208,209,214)
-*/
 
 body {
   margin: 0;
@@ -13,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--main-background-color);
+  background-color: rgb(28,36,53);
 }
 
 #root {
@@ -24,7 +20,7 @@ body {
 
 main {
   flex: 1 0 auto;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(240, 240, 240);
   display: flex;
   justify-content: center;
 }
@@ -34,6 +30,10 @@ main>* {
   height: 100%;
   width: 100%;
   max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
 }
 
 code {
