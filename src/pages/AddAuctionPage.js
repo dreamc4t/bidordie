@@ -47,7 +47,7 @@ const AddAuctionPage = () => {
                         <input></input>
                     </div>
                     <div className="add-upload-container">
-                        <label for="upload-other">Upload pic:</label>
+                        <label for="upload-other">Upload img:</label>
                         <input type="file" id="upload-other" name="upload-other" accept="image/png, image/jpeg"></input>
                     </div>
                 </div>
