@@ -16,8 +16,8 @@ const LoginPage = () => {
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>
-                    <div>
-                       ---- log in with ---- 
+                    <div id="log-in-with">
+                       ---- or log in with ---- 
                     </div>
                     <OtherLoginOption />
                 </form>
