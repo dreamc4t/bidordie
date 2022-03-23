@@ -1,6 +1,6 @@
 const HeaderButton = ( {text} ) => {
   return (
-    <div>
+    <div className="button-container">
         <button className="button-element">
             {text}
         </button>

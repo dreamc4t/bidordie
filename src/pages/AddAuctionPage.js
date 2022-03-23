@@ -47,11 +47,8 @@ const AddAuctionPage = () => {
                         <input></input>
                     </div>
                     <div className="add-upload-container">
-                        <label for="upload-other">Upload picture:</label>
+                        <label for="upload-other">Upload pic:</label>
                         <input type="file" id="upload-other" name="upload-other" accept="image/png, image/jpeg"></input>
-                    </div>
-                    <div className="add-input-container" id="comment-window">
-                        <input className="add-comments" placeholder="Comments.."></input>
                     </div>
                 </div>
             </form>
