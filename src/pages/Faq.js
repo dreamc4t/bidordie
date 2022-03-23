@@ -1,13 +1,51 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import FAQfunctions from "../components/FAQfunctions";
 
-const Faq = () => {
+function Faq () {
+  const [faqs, setfaqs] = useState([
+    {
+      question: 'Mjau?',
+      answer: 'Voff',
+      open: false
+    },
+    {
+      question: 'Moo?',
+      answer: 'Voff',
+      open: false
+    },
+    {
+      question: 'Eeaah?',
+      answer: 'Voff',
+      open: false
+    }
+  ]);
+
+  const toggleFAQ = index => {
+    setfaqs(faqs.map((faq, i) => {
+      if (i === index) {
+        faq.open = !faq.open
+      } else {
+        faq.open = false;
+      }
+
+      return faq;
+    }))
+  }
+
   return (
     <div className="FAQ">
         <h2>FAQ</h2>
-        <h3>Welcome To FAQS</h3>
-        <p>FAQS is a Professional job searching Platform. Here we will provide you only interesting content, which you will like very much. We're dedicated to providing you the best of job searching, with a focus on dependability and providing jobs. We're working to turn our passion for job searching into a booming online website. We hope you enjoy our job searching as much as we enjoy offering them to you.</p>
-        <p>Any questions not answered here, feel free to contact us</p>   
+        <div className="faqs">
+          {faqs.map((faq, i) => (
+            <FAQfunctions faq={faq} index={i} toggleFAQ={toggleFAQ} />
+          ))}
+        </div>
+        <a href="https://www.google.com" target="_blank">
+          <button className="button-element"><FaEnvelope /> Contact Us</button>
+        </a>
         <Link to="/">
             <FaArrowLeft size={30} />
         </Link>
