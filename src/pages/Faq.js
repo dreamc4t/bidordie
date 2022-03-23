@@ -9,7 +9,7 @@ function Faq () {
     {
       question: 'Is this site reliable?',
       answer: 'Yes, we are famous for bringing people out into businesses and got a lot of great reviews from the people whom have used our site',
-      open: true
+      open: false
     },
     {
       question: 'Is there an option to Buy Now?',
