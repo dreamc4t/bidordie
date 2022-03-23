@@ -49,7 +49,7 @@ function App() {
             element={<Faq />}
             />
             <Route
-            path="/user-page"
+            path="/my-page"
             element={<UserPageInfo />}
             />
             <Route
