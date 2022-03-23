@@ -36,6 +36,10 @@ function App() {
               element={<BecomeAMember />}
             />
             <Route
+              path="/new-auction"
+              element={<AddAuctionPage />}
+            />
+            <Route
               path="/about-us"
               element={<AboutUs />}
             />

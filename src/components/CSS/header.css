@@ -1,35 +1,50 @@
 
 header {
-    flex: 0 0;
-    height: 50px;
-    margin: 0px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  flex: 0 0;
+  margin: 0px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-button-element {
+  border: none;
+  border-bottom: 1px solid rgb(28,36,53);
+  background-color: rgb(28,36,53);
+  padding: 7px 3px;
+  cursor: pointer;
+  color: white;
+  font-size: 110%;
+}
+
+.header-button-element:hover {
+  border-bottom: 1px solid white;
+}
 
 header h1 {
-    color: white;
-    margin: 0px;
-    line-height: 100%;
-    font-size: 200%;
+  color: white;
+  margin: 0px;
+  line-height: 100%;
+  font-size: 200%;
 }
 
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 .header-nav button {
+
   cursor: pointer;
 }
 
 .burger-menu {
-  font-size: 45px;
+  font-size: 35px;
   margin-left: 5px;
   cursor: pointer;
   fill: white;
+  display: none;
 }
 
 .logo-wrapper {
@@ -44,3 +59,25 @@ header div {
   display: flex;
   align-items: center;
 }
+
+@media (max-width:630px) {
+  .burger-menu {
+    display:inline;
+  }
+  .header-button-element {
+    display: none;
+  }
+  .header-nav {
+    gap: 0;
+  }
+}
+
+@media (max-width:300px) {
+  header h1 {
+    font-size: 11vw;
+  }
+  .burger-menu {
+    font-size: 11vw;
+  }
+}
+
