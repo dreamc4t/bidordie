@@ -7,18 +7,18 @@ import FAQfunctions from "../components/FAQfunctions";
 function Faq () {
   const [faqs, setfaqs] = useState([
     {
-      question: 'Mjau?',
-      answer: 'Voff',
+      question: 'Is this site reliable?',
+      answer: 'Yes, we are famous for bringing people out into businesses and got a lot of great reviews from the people whom have used our site',
       open: false
     },
     {
-      question: 'Moo?',
-      answer: 'Voff',
+      question: 'Is there an option to Buy Now?',
+      answer: 'Thats up to the individual seller if they want to give you that option or not',
       open: false
     },
     {
-      question: 'Eeaah?',
-      answer: 'Voff',
+      question: 'What if Im not happy with my hire?',
+      answer: 'Fire them and give them a bad review',
       open: false
     }
   ]);
@@ -43,9 +43,12 @@ function Faq () {
             <FAQfunctions faq={faq} index={i} toggleFAQ={toggleFAQ} />
           ))}
         </div>
+        <p>If you have any more questions, feel free to contact us on the link below!</p>
+        <br></br>
         <a href="https://www.google.com" target="_blank">
           <button className="button-element"><FaEnvelope /> Contact Us</button>
         </a>
+        <br></br>
         <Link to="/">
             <FaArrowLeft size={30} />
         </Link>

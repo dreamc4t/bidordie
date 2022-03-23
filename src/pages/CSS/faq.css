@@ -83,3 +83,7 @@
     background-color: rgb(28,36,53);
     color: white;
 }
+
+.FAQ p {
+    font-size: large;
+}
