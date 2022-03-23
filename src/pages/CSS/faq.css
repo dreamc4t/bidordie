@@ -48,6 +48,7 @@
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
+    cursor: pointer;
 
     background-image: url('/src/images/arrow-down-white.png');
     background-position: center;

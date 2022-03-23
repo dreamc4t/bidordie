@@ -3,15 +3,15 @@ import React from 'react'
 function FAQfunctions ({faq, index, toggleFAQ}) {
   return (
     <div 
-        className={"faq" + (faq.open ? 'open' : '')}
+        className={"faq " + (faq.open ? 'open' : '')}
         key={index}
         onClick={() => toggleFAQ(index)}
     >
         <div className="faq-question">
-            {faq.question}
+              {faq.question}
         </div>
         <div className="faq-answer">
-            {faq.answer}
+              {faq.answer}
         </div>
     </div>
   )
