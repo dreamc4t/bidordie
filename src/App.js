@@ -14,6 +14,7 @@ import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
 import UserPage from "./pages/UserPage";
+import UserPageInfo from "./components/UserPageInfo";
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
             />
             <Route
             path="/user-page"
-            element={<UserPage />}
+            element={<UserPageInfo />}
             />
             <Route
               path="/google-play-store"

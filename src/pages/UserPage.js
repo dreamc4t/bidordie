@@ -1,6 +1,4 @@
-const UserPage = () => {
-    const userName = "Mona Lisa"
-    const userSkills = "Fullstack developer & react genius"
+const UserPage = ({userFirstName, userLastName, userShortDescript, userLocation, userPhoneNumber, userCV, userBio, userReferences, userPreviousAuctions}) => {
 
     return (
       <div className="user-page">  
@@ -10,20 +8,20 @@ const UserPage = () => {
                 <img src="img/MonaLisa.jpg" className="profile-picture" />
               </div>
               <div className="user-profile-info">
-                <h1>Mona Lisa</h1>
-                <h3>Fullstack developer & React genius </h3>
-                <h4>Venice, Italy</h4>
-                <h5>0707-1337</h5>
+                <h1>{userFirstName}{userLastName}</h1>
+                <p>{userShortDescript}</p>
+                <p>{userLocation}</p>
+                <p>{userPhoneNumber}</p>
               </div>
           </div>
           <div className="user-cv">
               CV visas här.
           </div>
           <div className="user-bio">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec lacus diam. Cras a dignissim erat, pulvinar varius metus. Suspendisse rutrum odio nec elementum consectetur. Nam dictum odio quis iaculis interdum. Vivamus vel ligula rutrum, mollis orci in, viverra mauris. Ut risus nulla, luctus eget sodales congue, suscipit quis nibh. Donec lacus diam, eleifend ut tellus id, hendrerit malesuada sapien. Pellentesque cursus purus sit amet dui pharetra finibus.
+            {userBio}
           </div>
           <div className="user-references">
-              Referenser visas här.
+              {userReferences}
           </div>
           <div className="previous-commisions">
               Tidigare uppdrag visas här
