@@ -14,6 +14,7 @@ const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, us
           <img src="/img/erik.jpeg" className="profile-picture" />
           
         </div>
+        <div className="tempNameOMG">
         <div className='user-page-top'>
           <div className="user-profile-info">
             <h1>{userFirstName} {userLastName}</h1>
@@ -30,11 +31,20 @@ const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, us
         <div className="user-references">
           {userReferences}
         </div>
+        </div>
         <div className="user-page-social-media-links">
-          <FaFacebook className="user-page-icons"/>
-          <FaInstagram className="user-page-icons"/>
-          <FaTwitter className="user-page-icons"/>
-          <FaLinkedinIn className="user-page-icons"/>
+          <a href="https://www.facebook.com" target="_blank">
+            <FaFacebook size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <FaInstagram size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <FaTwitter size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank">
+            <FaLinkedinIn size={25} className="user-page-icons"/>
+          </a>
         </div>
       </div>
     )
