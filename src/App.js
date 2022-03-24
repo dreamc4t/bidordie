@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom"
+import { useState,useEffect } from "react";
 
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
@@ -13,10 +14,15 @@ import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
 import UserPage from "./pages/UserPage";
-import UserPageInfo from "./components/UserPageInfo";
 import MyPage from "./pages/MyPage";
 
 function App() {
+
+  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null)
+  useEffect(() => {
+    console.log(idOfLoggedInUser)
+  }, [idOfLoggedInUser]) //printar  i console id:t för user som är inloggad
+
   return (
     <Router>
         <Header />
@@ -30,7 +36,7 @@ function App() {
             />
             <Route 
               path="/login"
-              element={<LoginPage />}
+              element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser}/>}
             />
             <Route
               path="/become-a-member"
@@ -45,8 +51,8 @@ function App() {
               element={<AboutUs />}
             />
             <Route
-            path="/FAQ"
-            element={<Faq />}
+              path="/FAQ"
+              element={<Faq />}
             />
             <Route
             path="/my-page"

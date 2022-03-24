@@ -7,27 +7,7 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
-      "firstName": "Erik",
-      "lastName": "Sund",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-url går här",
-      "phone": "0707472921",
-      "address": "Åhusgatan 6",
-      "zipCode": 21438,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
-        }
-      ],
-      "competence": [
-        "React",
-        "Javascript"
-      ],
-      "otherInfo": "Kan stå på händer"
+      "userId": 1
     },
     {
       "id": 2,
@@ -35,28 +15,7 @@
       "endTime": "2022-05-29",
       "openingPrice": 500,
       "buyoutPrice": 1500,
-      "firstName": "Henke",
-      "lastName": "Kihlberg",
-      "imageUrl": "/img/henke.jpeg",
-      "CV": "cv-url går här",
-      "phone": "112",
-      "address": "Åhusgatan 4",
-      "zipCode": 21438,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS"
-      ],
-      "otherInfo": "Blev utkastad ur scouterna som ung"
+      "userId": 2
     },
     {
       "id": 3,
@@ -64,29 +23,7 @@
       "endTime": "2022-06-22",
       "openingPrice": 450,
       "buyoutPrice": 1000,
-      "firstName": "Jack",
-      "lastName": "Bravo",
-      "imageUrl": "/img/jack.jpg",
-      "CV": "cv-url går här",
-      "phone": "032213781",
-      "address": "Västra Rönneholmsvägen 52B",
-      "zipCode": 21428,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/bravojack"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS",
-        "React"
-      ],
-      "otherInfo": "Har 2500 timmar i Rocket League"
+      "userId": 3
     },
     {
       "id": 4,
@@ -94,28 +31,7 @@
       "endTime": "2022-11-29",
       "openingPrice": 650,
       "buyoutPrice": 1200,
-      "firstName": "Marcus",
-      "lastName": "Malmgren",
-      "imageUrl": "/img/Marcus.jpg",
-      "CV": "cv-url går här",
-      "phone": "0735957444",
-      "address": "Vikingavägen 25C",
-      "zipCode": 22476,
-      "town": "Lund",
-      "links": [
-        {
-          "github": "https://github.com/Marcus921"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS"
-      ],
-      "otherInfo": "Redig Halo nörd"
+      "userId": 4
     }
   ],
   "users": [
@@ -123,6 +39,7 @@
       "id": 1,
       "firstName": "Erik",
       "lastName": "Sund",
+      "email": "erik_sund@gmail.com",
       "password": "123abc",
       "imageUrl": "/img/erik.jpeg",
       "CV": "cv-url går här",
@@ -138,12 +55,17 @@
           "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
         }
       ],
-      "otherInfo": "Kan stå på händer"
+      "otherInfo": "Kan stå på händer",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 2,
       "firstName": "Henke",
       "lastName": "Kihlberg",
+      "email": "henrik_kihlberg@gmail.com",
       "password": "123abc",
       "imageUrl": "/img/henke.jpeg",
       "CV": "cv-url går här",
@@ -159,12 +81,17 @@
           "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221"
         }
       ],
-      "otherInfo": "Blev utkastad ur scouterna som ung"
+      "otherInfo": "Blev utkastad ur scouterna som ung",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 3,
       "firstName": "Jack",
       "lastName": "Bravo",
+      "email": "jack_bravo@gmail.com",
       "password": "123abc",
       "imageUrl": "/img/jack.jpg",
       "CV": "cv-url går här",
@@ -180,12 +107,17 @@
           "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/"
         }
       ],
-      "otherInfo": "Har 2500 timmar i Rocket League"
+      "otherInfo": "Har 2500 timmar i Rocket League",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 4,
       "firstName": "Marcus",
       "lastName": "Malmgren",
+      "email": "marcus_malmgren@gmail.com",
       "password": "123abc",
       "imageUrl": "/img/Marcus.jpg",
       "CV": "cv-url går här",
@@ -201,29 +133,13 @@
           "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221"
         }
       ],
-      "otherInfo": "Redig Halo nörd"
-    },
-    {
-      "id": "a7bcc755-4be2-41f3-81b7-e8065edbc633",
-      "firstName": "Erik",
-      "lastName": "Eriksson",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-uasdfasdfasdf här",
-      "phone": "112",
-      "address": "Hellstreet 666",
-      "zipCode": "1337",
-      "town": "malmö",
-      "password": "abc123",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
-        }
-      ],
-      "otherInfo": ""
+      "otherInfo": "Redig Halo nörd",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     }
+    
   ],
   "companies": [
     {

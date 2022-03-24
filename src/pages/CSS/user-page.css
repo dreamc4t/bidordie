@@ -1,7 +1,6 @@
-.user-page-info {
-    display: flex;
+.user-page-wrapper {
     align-items: center;
-    max-width: fit-content;
+    flex-direction: column;
 }
 
 .user-page {
@@ -14,11 +13,8 @@
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
     padding: 20px 60px;
-    max-width: fit-content;
-}
-
-.user-page-container {
-    align-items: flex-start;
+    max-width: 950px;
+    overflow: hidden;
 }
 
 .user-page-top {
@@ -39,9 +35,8 @@
 }
 
 .userBackgroundPicture {
-    display: flex;
     position: relative;
-    top: -30px;
+    top: -75px;
     left: 0;
     border-radius: 25px 25px 0 0;
 }
@@ -52,7 +47,6 @@
     height: 250px;
     position: absolute;
     top: 50px;
-
 }
 
 .user-profile-info {
@@ -67,16 +61,35 @@
     max-width: 500px;
 }
 
+.user-page-edit-button {
+    background-color: rgb(28,36,53);
+    align-self: flex-start;
+    z-index: 1;
+    margin-left: 3%;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: large;
+}
+
+.user-page-edit-icon {
+    fill: rgb(250, 249, 249);
+}
+
+.user-page-location-icon {
+    fill: black;
+}
+
 .previous-commisions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;   
+    justify-content: center;
+    align-items: center   
 }
 
 .auction-history-container {
     border-radius: 5px;
-    width: 483px;
+    width: 475px;
     height: 244px;
     overflow: hidden;
     position: relative;
@@ -87,7 +100,8 @@
     position: absolute;
     height: 244px;
     width: 175px;
-    background-color: aliceblue;
+    background-color: rgb(28,36,53);
+    opacity: 0.9;
     bottom: 0;
     left: 0px;
 }
@@ -97,5 +111,5 @@
     margin:10px 0 10px 15px;
     font-size: 13;
     font-weight: bold;
-    color: rgb(6, 7, 7);
+    color: rgb(250, 250, 250);
 }
