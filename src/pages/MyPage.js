@@ -19,7 +19,6 @@ const MyPage = () => {
           userCV={user.CV}
           userBio={user.otherInfo}
         />}
-        <button>Edit profile</button>
       <div className="previous-commisions">
           <UserPageMockAuctions />
           <UserPageMockAuctions />
