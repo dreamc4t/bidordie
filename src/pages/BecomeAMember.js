@@ -63,6 +63,7 @@ const BecomeAMember = () => {
 
 
 
+  /* DATABAS EVENT/ADD/HANTERING */
   const request = ({ endpoint, method, data }) => {
     fetch(endpoint, {
       body: JSON.stringify(data),
@@ -73,40 +74,70 @@ const BecomeAMember = () => {
     });
   };
 
-  const add = (data) => {
+  const addUser = (data) => {
     request({
-      endpoint: "http://localhost:6001/test",
+      endpoint: "http://localhost:6001/users",
       method: "POST",
       data,
     });
   };
 
-  const createNewUser =  () => {
+  const addCompany = (data) => {
+    request({
+      endpoint: "http://localhost:6001/companies",
+      method: "POST",
+      data,
+    });
+  };
+
+  const createNewUser =  (e) => {
 
     console.log("Creating new user..")
-
+    console.log(e.target.address.value)
     const newUser = {
       id: uuidv4(),
-      firstName: "APAN",
-      lastName: "aasdsdassad",
+      firstName: e.target.firstname.value,
+      lastName: e.target.lastname.value,
       imageUrl: "/img/erik.jpeg",
       CV: "cv-uasdfasdfasdf här",
-      phone: "0707472123921",
-      address: "Åhusgatan 6",
-      zipCode: 21438,
-      town: "Malmö",
+      phone: e.target.telephonenumber.value,
+      address: e.target.address.value,
+      zipCode: e.target.zipcode.value,
+      town: e.target.town.value,
+      password: e.target.password.value,
+
       links: [
         { github: "https://github.com/" },
         { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
       ],
-      otherInfo: "Kan stå på händer"
+      otherInfo: e.target.otherinfo.value
     }
 
-    add(newUser)
-
-  
-
+    addUser(newUser)
   }
+
+  const createNewCompany = (e) => {
+    console.log("Creating new company..")
+    const newCompany = {
+      id: uuidv4(),
+      companyName: e.target.companyname.value,
+      orgNum: e.target.orgnumber.value,
+      imageUrl: "/img/erik.jpeg",
+      phone: e.target.telephonenumber.value,
+      address: e.target.address.value,
+      zipCode: e.target.zipcode.value,
+      town: e.target.town.value,
+      password: e.target.password.value,
+      links: [
+        { github: "https://github.com/" },
+        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
+      ],
+      otherInfo: e.target.otherinfo.value
+    }
+
+    addCompany(newCompany)
+  }
+
 
   const handleChange = (e) => {
     setView(e.target.value);
@@ -114,9 +145,15 @@ const BecomeAMember = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(e.target.firstname.value)
     console.log("Submittt")
-    createNewUser()
+    view === "person-view" ? createNewUser(e): createNewCompany(e)
+    
+    //createNewUser(e)
   }
+
+    /* DATABAS EVENT/ADD/HANTERING SLUT */
+
 
   return (
     <div id="become-a-member-div">
@@ -196,6 +233,7 @@ const BecomeAMember = () => {
                 className="other-info-field"
                 type="text"
                 placeholder="Type other info here"
+                name = "otherinfo"
               ></input>
             </div>
           </div>
