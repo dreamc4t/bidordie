@@ -10,18 +10,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     min-width: 420px;
     background-color: white;
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
+    padding-bottom: 48px;
 }
 
 #login-container>h2 {
     color: black;
     font-size: 200%;
-    margin-bottom: 30px;
-    margin-top: 0;
+    margin: 48px 0;
     text-align: center;
 }
 
@@ -29,13 +28,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
     max-width: 300px;
 }
 
+#login-container>form>input {
+    font-size: 100%;
+    padding: 2px 4px;
+}
+
+#login-container>form>input:focus {
+    outline: none;
+}
+
 #log-in-with {
-    margin-top: 10px;
+    margin-top: 24px;
 }
 
 @media (max-width:420px) {

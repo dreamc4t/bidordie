@@ -46,17 +46,17 @@ const LoginPage = ({ idOfLoggedInUser, setIdOfLoggedInUser }) => {
             <div id="login-container">
                 <h2>Log In</h2>
                 <form>
-                    <input type="text" key="email" placeholder="email" value={email} onChange={handleEmailChange}/>
-                    <input type="password" key="password" placeholder="password" value={password} onChange={handlePasswordChange}/>
+                    <input type="text" placeholder="email" value={email} onChange={handleEmailChange}/>
+                    <input type="password" placeholder="password" value={password} onChange={handlePasswordChange}/>
                     <Link to="/">
                         <button className="button-element">Log in</button>
                     </Link>
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>
-                    <div id="log-in-with">
+                    <p id="log-in-with">
                        ---- or log in with ---- 
-                    </div>
+                    </p>
                     <OtherLoginOption />
                 </form>
             </div>
