@@ -2,7 +2,8 @@ import OtherLoginOption from "../components/OtherLoginOption";
 import { Rating } from "react-simple-star-rating";
 import InputField from "../components/InputField";
 import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const BecomeAMember = () => {
   const personInputs = [
@@ -14,7 +15,6 @@ const BecomeAMember = () => {
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
     { key: 8, label: "Password*" },
-    { key: 9, label: "Password again*" },
   ];
 
   const companyInputs = [
@@ -61,8 +61,6 @@ const BecomeAMember = () => {
 
   const [view, setView] = useState("person-view");
 
-
-
   /* DATABAS EVENT/ADD/HANTERING */
   const request = ({ endpoint, method, data }) => {
     fetch(endpoint, {
@@ -90,10 +88,9 @@ const BecomeAMember = () => {
     });
   };
 
-  const createNewUser =  (e) => {
-
-    console.log("Creating new user..")
-    console.log(e.target.address.value)
+  const createNewUser = (e) => {
+    console.log("Creating new user..");
+    console.log(e.target.profilepicture.value);
     const newUser = {
       id: uuidv4(),
       firstName: e.target.firstname.value,
@@ -107,17 +104,18 @@ const BecomeAMember = () => {
       password: e.target.password.value,
 
       links: [
-        { github: "https://github.com/" },
-        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
+        { github: e.target.linktogithub.value },
+        { linkedin: e.target.linktolinkedin.value },
+        { otherLinks: e.target.otherlinks.value }
       ],
-      otherInfo: e.target.otherinfo.value
-    }
+      otherInfo: e.target.otherinfo.value,
+    };
 
-    addUser(newUser)
-  }
+    addUser(newUser);
+  };
 
   const createNewCompany = (e) => {
-    console.log("Creating new company..")
+    console.log("Creating new company..");
     const newCompany = {
       id: uuidv4(),
       companyName: e.target.companyname.value,
@@ -130,30 +128,28 @@ const BecomeAMember = () => {
       password: e.target.password.value,
       links: [
         { github: "https://github.com/" },
-        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
+        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" },
       ],
-      otherInfo: e.target.otherinfo.value
-    }
+      otherInfo: e.target.otherinfo.value,
+    };
 
-    addCompany(newCompany)
-  }
-
+    addCompany(newCompany);
+  };
 
   const handleChange = (e) => {
     setView(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(e.target.firstname.value)
-    console.log("Submittt")
-    view === "person-view" ? createNewUser(e): createNewCompany(e)
-    
-    //createNewUser(e)
-  }
+    e.preventDefault();
+    console.log(e.target.firstname.value);
+    console.log("Submittt");
+    view === "person-view" ? createNewUser(e) : createNewCompany(e);
+    alert("New account created!");
+    window.location.replace("/my-page");
+  };
 
-    /* DATABAS EVENT/ADD/HANTERING SLUT */
-
+  /* DATABAS EVENT/ADD/HANTERING SLUT */
 
   return (
     <div id="become-a-member-div">
@@ -174,9 +170,11 @@ const BecomeAMember = () => {
               onChange={handleChange}
               value={"person-view"}
               defaultChecked
-              style={{"cursor": "pointer"}}
+              style={{ cursor: "pointer" }}
             ></input>
-            <label htmlFor="radio1" style={{"cursor": "pointer"}}>I am a person (looking for job) </label>
+            <label htmlFor="radio1" style={{ cursor: "pointer" }}>
+              I am a person (looking for job){" "}
+            </label>
 
             <input
               type="radio"
@@ -184,10 +182,12 @@ const BecomeAMember = () => {
               name="clicker"
               onChange={handleChange}
               value={"company-view"}
-              style={{"cursor": "pointer"}}
+              style={{ cursor: "pointer" }}
             ></input>
 
-            <label htmlFor="radio2" style={{"cursor": "pointer"}}>I am a company (looking to hire)</label>
+            <label htmlFor="radio2" style={{ cursor: "pointer" }}>
+              I am a company (looking to hire)
+            </label>
           </div>
 
           <div className="info-wrapper">
@@ -233,7 +233,7 @@ const BecomeAMember = () => {
                 className="other-info-field"
                 type="text"
                 placeholder="Type other info here"
-                name = "otherinfo"
+                name="otherinfo"
               ></input>
             </div>
           </div>
