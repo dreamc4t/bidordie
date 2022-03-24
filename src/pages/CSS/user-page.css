@@ -1,3 +1,8 @@
+.user-page-wrapper {
+    align-items: center;
+    flex-direction: column;
+}
+
 .user-page {
     display: flex;
     align-items: center;
@@ -31,7 +36,7 @@
 
 .userBackgroundPicture {
     position: relative;
-    top: -30px;
+    top: -75px;
     left: 0;
     border-radius: 25px 25px 0 0;
 }
@@ -56,16 +61,35 @@
     max-width: 500px;
 }
 
+.user-page-edit-button {
+    background-color: rgb(28,36,53);
+    align-self: flex-start;
+    z-index: 1;
+    margin-left: 3%;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: large;
+}
+
+.user-page-edit-icon {
+    fill: rgb(250, 249, 249);
+}
+
+.user-page-location-icon {
+    fill: black;
+}
+
 .previous-commisions {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;   
+    justify-content: center;
+    align-items: center   
 }
 
 .auction-history-container {
     border-radius: 5px;
-    width: 483px;
+    width: 475px;
     height: 244px;
     overflow: hidden;
     position: relative;
