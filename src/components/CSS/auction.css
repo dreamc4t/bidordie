@@ -44,7 +44,6 @@
 }
 .briefInfo{
     text-align: left;
-    
     padding-left: 10px;
 }
 .comp{
@@ -52,11 +51,18 @@
     font-weight: 600;
 
 }
-.wrapper{
-    
+.rating{
+    background-color: pink;
 }
 
 @media (max-width:500px) {
+
+    .auction{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
 
 
