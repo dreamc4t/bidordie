@@ -10,7 +10,7 @@ const OtherLoginOption = () => {
   return (
     <div className="login-with-other">
       {others.map((x) => (
-        <button className="button-element">
+        <button className="button-element" key={x.key}>
           {x.logo} {x.site}
         </button>
       ))}

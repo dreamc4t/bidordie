@@ -4,20 +4,7 @@ import InputField from "../components/InputField";
 import { useState } from "react";
 
 const BecomeAMember = () => {
-  const [view, setView] = useState("person-view");
-
-  const handleChange = (e) => {
-    setView(e.target.value);
-  }
-
-  if (view == "person-view") {
-    console.log("nu är det person")
-  } else if (view == "company-view") {
-    console.log("COMPANYY")
-  }
-
-
-  const inputs = [
+  const personInputs = [
     { key: 1, label: "First name*" },
     { key: 2, label: "Last name*" },
     { key: 3, label: "Address" },
@@ -29,25 +16,53 @@ const BecomeAMember = () => {
     { key: 9, label: "Password again*" },
   ];
 
-  const links = [
+  const companyInputs = [
+    { key: 1, label: "Company name*" },
+    { key: 2, label: "Org number*" },
+    { key: 3, label: "Address" },
+    { key: 4, label: "Email*" },
+    { key: 5, label: "Town" },
+    { key: 6, label: "Zip code" },
+    { key: 7, label: "Telephone number" },
+    { key: 8, label: "Password*" },
+    { key: 9, label: "Password again*" },
+  ];
+
+  const personLinks = [
     { key: 1, label: "Link to github" },
     { key: 2, label: "Link to linkedin" },
     { key: 3, label: "Other links" },
   ];
 
-  const attachedItems = [
+  const companyLinks = [
+    { key: 1, label: "Link to webpage" },
+    { key: 2, label: "Other links" },
+  ];
+
+  const personAttachedItems = [
     { key: 1, label: "CV" },
     { key: 2, label: "Profile Picture" },
     { key: 3, label: "Other files to attach" },
   ];
 
-  const competences = [
+  const companypAttachedItems = [
+    { key: 1, label: "Company logo" },
+    { key: 2, label: "Other files to attach" },
+  ];
+
+  const personCompetences = [
     { key: 1, label: "Java" },
     { key: 2, label: "C#" },
     { key: 3, label: "REACT" },
     { key: 4, label: "Javascript" },
     { key: 5, label: "Python" },
   ];
+
+  const [view, setView] = useState("person-view");
+
+  const handleChange = (e) => {
+    setView(e.target.value);
+  };
 
   return (
     <div id="become-a-member-div">
@@ -61,31 +76,62 @@ const BecomeAMember = () => {
           </div>
 
           <div className="company-or-person-div">
-            <input type="radio" id="radio1" name="clicker" onChange={handleChange} value={"person-view"}  defaultChecked ></input>
-            <label htmlFor="radio1"  >I am a person (looking for job)</label>
-            <input type="radio" id="radio2" name="clicker" onChange={handleChange} value={"company-view"} ></input>
+            <input
+              type="radio"
+              id="radio1"
+              name="clicker"
+              onChange={handleChange}
+              value={"person-view"}
+              defaultChecked
+            ></input>
+            <label htmlFor="radio1">I am a person (looking for job)</label>
+            <input
+              type="radio"
+              id="radio2"
+              name="clicker"
+              onChange={handleChange}
+              value={"company-view"}
+            ></input>
             <label htmlFor="radio2">I am a company (looking to hire)</label>
           </div>
 
           <div className="info-wrapper">
             <div className="basic-info-div column-div">
-              <InputField inpt={inputs} type="text" />
+              {view === "person-view" ? (
+                <InputField inpt={personInputs} type="text" />
+              ) : (
+                <InputField inpt={companyInputs} type="text" />
+              )}
             </div>
 
             <div className="links-attached-div column-div">
-              <InputField inpt={attachedItems} type="file" />
+              {view === "person-view" ? (
+                <InputField inpt={personAttachedItems} type="file" />
+              ) : (
+                <InputField inpt={companypAttachedItems} type="file" />
+              )}
               <br></br>
-              <InputField inpt={links} type="text" />
+              {view === "person-view" ? (
+                <InputField inpt={personLinks} type="text" />
+              ) : (
+                <InputField inpt={companyLinks} type="text" />
+              )}
             </div>
 
             <div className="competences-div column-div">
-              <h3>Competences: </h3>
-              {competences.map((inpt) => (
-                <div>
-                  <Rating size={18} />
-                  <span> {inpt.label}</span>
-                </div>
-              ))}
+              {view === "person-view" ? (
+                <>
+                  <h3>Competences: </h3>
+                  {personCompetences.map((inpt) => (
+                    <div key={inpt.key}>
+                      {" "}
+                      <Rating size={18} /> <span> {inpt.label}</span>{" "}
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <></>
+              )}
               <label>Other info:</label>
               <br></br>
               <input
