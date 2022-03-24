@@ -14,7 +14,7 @@ const MyPage = () => {
           userImage={user.imageURL}
           userFirstName={user.firstName}
           userLastName={user.lastName}
-          /* userShortDescript={user.competence.join(", ")} */
+          userShortDescript={user.competence.join(", ")}
           userLocation={user.town}
           userPhoneNumber={user.phone}
           userCV={user.CV}
