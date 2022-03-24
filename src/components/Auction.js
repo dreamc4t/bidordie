@@ -1,10 +1,27 @@
 import {userState} from "react" 
 import {GoLocation} from "react-icons/go"
 import {AiFillCalendar} from "react-icons/ai"
-import {AiOutlineHeart} from "react-icons/ai"
-import {RiStarSLine} from "react-icons/ri"
+import useFetch from "../customHooks/useFetch";
 
-const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
+const Auction = ({ auction }) => {
+
+    const { data: users } = useFetch("http://localhost:6001/users");
+
+
+    let town, firstName, lastName, imageUrl, otherInfo, competence = ""
+
+    users &&
+      users.map((user) => {
+        if ((auction.userId === user.id)) {
+          town = user.town
+          firstName = user.firstName
+          lastName = user.lastName
+          imageUrl = user.imageUrl
+          otherInfo = user.otherInfo
+          competence = user.competence
+        }
+      });
+
 
     return (
         <div className="auction">
@@ -14,24 +31,16 @@ const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availabilit
             <div className="info-container">
                 <div className="personalInfo">
                     <p className="boldText">{firstName} {lastName}</p>
-                    <p><GoLocation/>{place}</p>
-                    <p><AiFillCalendar/>{availability}</p>
-                    <p><RiStarSLine/></p>
-                    <p><RiStarSLine/></p>
-                    <p><RiStarSLine/></p>
-                    <p><RiStarSLine/></p>
-                    <p><RiStarSLine/></p>
-                    
-
+                    <p><GoLocation/>{town}</p>
+                    <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
                 </div>
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
-                    <p>{briefInformation}</p>
+                    <p>{otherInfo}</p>
                     <p className="comp">Competence: {competence}</p>
                     <p><AiOutlineHeart/></p>
                 </div>
             </div>
-                
         </div>
         
         

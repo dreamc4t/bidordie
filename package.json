@@ -14,12 +14,13 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-simple-star-rating": "^4.0.5",
-    "react-star-rating-element": "^1.0.6",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm start\" ",
     "server": "json-server --watch data/auctions-db.json --port 6001",
+    "dev": "concurrently \"npm run server\" \"npm start\" ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
