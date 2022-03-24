@@ -36,9 +36,8 @@ const AuctionList = ({}) => {
                 firstName={auction.firstName}
                 lastName={auction.lastName}
                 place={auction.town}
-                
                 availability={auction.startTime + " - " + auction.endTime}
-                competence={"Java, HTML/CSS, Python, SQL, JavaScript"}
+                competence={auction.competence.join(", ")}
                 briefInformation={auction.otherInfo}
               />
             ))}

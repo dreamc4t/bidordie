@@ -20,6 +20,9 @@
           { "github": "https://github.com/" },
           { "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
         ],
+        "competence": [
+          "React", "Javascript"
+        ],
         "otherInfo": "Kan stå på händer"
       },
 
@@ -42,6 +45,9 @@
           { "github": "https://github.com/" },
           { "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221" }
         ],
+        "competence": [
+          "Java", "Python", "HTML/CSS"
+        ],
         "otherInfo": "Blev utkastad ur scouterna som ung"
       },
       {
@@ -63,6 +69,9 @@
           { "github": "https://github.com/bravojack" },
           { "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/" }
         ],
+        "competence": [
+          "Java", "Python", "HTML/CSS", "React"
+        ],
         "otherInfo": "Har 2500 timmar i Rocket League"
       },
       {
@@ -83,6 +92,9 @@
         "links": [
           { "github": "https://github.com/Marcus921" },
           { "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221" }
+        ],
+        "competence": [
+          "Java", "Python", "HTML/CSS"
         ],
         "otherInfo": "Redig Halo nörd"
       }
