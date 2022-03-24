@@ -4,7 +4,7 @@ import UserPageMockAuctions from "./UserPageMockAuctions"
 const UserPageInfo = () => {
   return (
     <div className="user-page-info">  
-    <div>
+    <div className="user-page-container">
         <UserPage
             userFirstName={"Mona"}
             userLastName={"Lisa"}
