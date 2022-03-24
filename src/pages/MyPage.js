@@ -5,7 +5,8 @@ import UserPageMockAuctions from "../components/UserPageMockAuctions";
 
 
 const MyPage = () => {
-    const { data: user, userLoading } = useFetch("http://localhost:6001/auctions/1");
+    const {data: user, userLoading} = useFetch("http://localhost:6001/users/1");
+
   return (
     <div className="user-page-wrapper">
         {userLoading && <div> LOADING USER PAGE....</div>}
@@ -13,7 +14,7 @@ const MyPage = () => {
           userImage={user.imageURL}
           userFirstName={user.firstName}
           userLastName={user.lastName}
-          userShortDescript={user.competence.join(", ")}
+          /* userShortDescript={user.competence.join(", ")} */
           userLocation={user.town}
           userPhoneNumber={user.phone}
           userCV={user.CV}
