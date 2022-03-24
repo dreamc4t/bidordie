@@ -8,8 +8,6 @@
       "buyoutPrice": 1500,
       "currentBid": 550,
       "userId": 1
-
-     
     },
     {
       "id": 2,
@@ -18,8 +16,6 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "userId": 2
-
-      
     },
     {
       "id": 3,
@@ -28,7 +24,6 @@
       "openingPrice": 450,
       "buyoutPrice": 1000,
       "userId": 3
-
     },
     {
       "id": 4,
@@ -37,7 +32,6 @@
       "openingPrice": 650,
       "buyoutPrice": 1200,
       "userId": 4
-
     }
   ],
   "users": [
@@ -61,7 +55,8 @@
           "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
         }
       ],
-      "otherInfo": "Kan stå på händer"
+      "otherInfo": "Kan stå på händer",
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 2,
@@ -83,7 +78,8 @@
           "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221"
         }
       ],
-      "otherInfo": "Blev utkastad ur scouterna som ung"
+      "otherInfo": "Blev utkastad ur scouterna som ung",
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 3,
@@ -105,7 +101,8 @@
           "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/"
         }
       ],
-      "otherInfo": "Har 2500 timmar i Rocket League"
+      "otherInfo": "Har 2500 timmar i Rocket League",
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 4,
@@ -127,101 +124,8 @@
           "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221"
         }
       ],
-      "otherInfo": "Redig Halo nörd"
-    },
-    {
-      "id": "a7bcc755-4be2-41f3-81b7-e8065edbc633",
-      "firstName": "Erik",
-      "lastName": "Eriksson",
-      "email": "erik_eriksson@gmail.com",
-      "password": "erik123",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-uasdfasdfasdf här",
-      "phone": "112",
-      "address": "Hellstreet 666",
-      "zipCode": "1337",
-      "town": "malmö",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
-        }
-      ],
-      "otherInfo": ""
-    },
-    {
-      "id": "2c45a599-6d50-49af-b7b0-2e0c5fe5b19f",
-      "firstName": "",
-      "lastName": "",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-uasdfasdfasdf här",
-      "phone": "",
-      "address": "",
-      "zipCode": "",
-      "town": "",
-      "password": "",
-      "links": [
-        {
-          "github": ""
-        },
-        {
-          "linkedin": ""
-        },
-        {
-          "otherLinks": ""
-        }
-      ],
-      "otherInfo": ""
-    },
-    {
-      "id": "9a1c2274-2950-4285-8f1e-7bd14f474045",
-      "firstName": "",
-      "lastName": "",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-uasdfasdfasdf här",
-      "phone": "",
-      "address": "",
-      "zipCode": "",
-      "town": "",
-      "password": "",
-      "links": [
-        {
-          "github": ""
-        },
-        {
-          "linkedin": ""
-        },
-        {
-          "otherLinks": ""
-        }
-      ],
-      "otherInfo": ""
-    },
-    {
-      "id": "0710b7c8-e67b-4613-977d-f6b1dc225df0",
-      "firstName": "",
-      "lastName": "",
-      "imageUrl": "C:\\fakepath\\_A4A5236.JPG",
-      "CV": "cv-uasdfasdfasdf här",
-      "phone": "",
-      "address": "",
-      "zipCode": "",
-      "town": "",
-      "password": "",
-      "links": [
-        {
-          "github": ""
-        },
-        {
-          "linkedin": ""
-        },
-        {
-          "otherLinks": ""
-        }
-      ],
-      "otherInfo": ""
+      "otherInfo": "Redig Halo nörd",
+      "competence": ["React", "Javascript"]
     }
   ],
   "companies": [
