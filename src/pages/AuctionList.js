@@ -31,7 +31,7 @@ const AuctionList = ({}) => {
           {auctions &&
             auctions.map((auction) => (
               <Auction
-                key={auction.auctionId}
+                key={auction.id}
                 imageUrl={auction.imageUrl}
                 firstName={auction.firstName}
                 lastName={auction.lastName}
