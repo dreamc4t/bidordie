@@ -81,6 +81,8 @@
 }
 
 .FAQ button {
+    cursor: pointer;
+    position: center;
     border: 1px solid white;
     border-radius: 4px;
     background-color: rgb(28,36,53);
@@ -88,6 +90,7 @@
 }
 
 .FAQ input {
+    cursor: pointer;
     border-radius: 3px;
     background-color: rgb(28,36,53);
     color: white;
@@ -95,4 +98,10 @@
 
 .FAQ p {
     font-size: large;
+}
+
+.FAQ b {
+    display: flex;
+    justify-content: center;
+    font-size: medium;
 }
