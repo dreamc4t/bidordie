@@ -20,12 +20,7 @@ const Auction = ({ auction }) => {
           competence = user.competence
         }
       });
-    // for(const user of users) {
-    //     if (auction.userId === user.id) {
-    //         console.log("asd")
-    //     }
-    // }
-    // if(auctionUser === null) console.log('Could not find a userID of auction')
+
 
     return (
         <div className="auction">
@@ -42,7 +37,7 @@ const Auction = ({ auction }) => {
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
                     <p>{otherInfo}</p>
-                    <p className="comp">Competence: {competence.join(", ")}</p>
+                    <p className="comp">Competence: {competence}</p>
                 </div>
             </div>
         </div>
