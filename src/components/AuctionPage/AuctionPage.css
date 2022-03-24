@@ -1,0 +1,60 @@
+.main {
+  align-items: center;
+  align-content: center;
+}
+
+form {
+  width: 600px;
+  align-items: center;
+}
+.zero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 10px;
+  background-color: rgb(184, 198, 195);
+  border-radius: 25px 25px 0px 0;
+}
+
+.one {
+  color: white;
+  border-radius: 50%;
+}
+
+.one > img {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  object-position: 50% 00%;
+  border: 2px solid white;
+}
+
+.two {
+  background-color: red;
+}
+
+.three {
+  background-color: green;
+}
+.four {
+  margin-top: 0%;
+  background-color: white;
+  border-radius: 0px 0px 25px 25px;
+  border: 2px solid rgb(184, 198, 195);
+  padding: 0.5rem;
+}
+
+.highest__bid {
+  width: 100px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+  padding: 1px;
+  border-radius: 25px;
+}
