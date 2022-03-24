@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom"
+import { useState } from "react";
 
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
@@ -16,6 +17,9 @@ import UserPage from "./pages/UserPage";
 import UserPageInfo from "./components/UserPageInfo";
 
 function App() {
+
+  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null)
+
   return (
     <Router>
         <Header />
@@ -29,7 +33,7 @@ function App() {
             />
             <Route 
               path="/login"
-              element={<LoginPage />}
+              element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser}/>}
             />
             <Route
               path="/become-a-member"
