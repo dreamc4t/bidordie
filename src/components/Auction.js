@@ -6,30 +6,43 @@ const Auction = ({ auction }) => {
 
     const { data: users } = useFetch("http://localhost:6001/users");
 
-    const auctionUser = null
-    for(const user of users) {
-        if (auction.userId === user.id) {
-            auctionUser = user
+
+    let town, firstName, lastName, imageUrl, otherInfo, competence = ""
+
+    users &&
+      users.map((user) => {
+        if ((auction.userId === user.id)) {
+          town = user.town
+          firstName = user.firstName
+          lastName = user.lastName
+          imageUrl = user.imageUrl
+          otherInfo = user.otherInfo
+          competence = user.competence
         }
-    }
-    if(auctionUser === null) console.log('Could not find a userID of auction')
+      });
+    // for(const user of users) {
+    //     if (auction.userId === user.id) {
+    //         console.log("asd")
+    //     }
+    // }
+    // if(auctionUser === null) console.log('Could not find a userID of auction')
 
     return (
         <div className="auction">
             <div className="image">
-                <img src={auctionUser.imageUrl} alt= '' />
+                <img src={imageUrl} alt= '' />
             </div>
             <div className="info-container">
                 <div className="personalInfo">
-                    <p className="boldText">{auctionUser.firstName} {auctionUser.lastName}</p>
-                    <p><GoLocation/>{auctionUser.town}</p>
+                    <p className="boldText">{firstName} {lastName}</p>
+                    <p><GoLocation/>{town}</p>
                     <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
                 </div>
                 
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
-                    <p>{auctionUser.otherInfo}</p>
-                    <p className="comp">Competence: {auctionUser.competence}</p>
+                    <p>{otherInfo}</p>
+                    <p className="comp">Competence: {competence}</p>
                 </div>
             </div>
         </div>
