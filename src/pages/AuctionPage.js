@@ -1,9 +1,22 @@
+import { useEffect } from "react";
+import {useHistory, useLocation} from "react-router-dom"
+
 const AuctionPage = (props) => {
   const firstName = "Dennis";
   const lastName = "Hasselgren";
   const imageUrl = "/img/dennis.jpg";
   const otherInfo = "Hemligt kär i Erik";
   const competence = ["React", "Javascript", "Python"];
+
+  const SecondPage = props => {
+    const location = useLocation();
+
+    useEffect(() => {
+       console.log(location.pathname); // result: '/secondpage'
+       console.log(location.state.detail); // result: 'some_value'
+    }, [location]);
+
+};
 
   return (
     <div>

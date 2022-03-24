@@ -4,18 +4,13 @@ import {AiFillCalendar} from "react-icons/ai";
 import useFetch from "../customHooks/useFetch";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { click } from "@testing-library/user-event/dist/click";
+import {useHistory, useLocation} from "react-router-dom"
+
 
 const Auction = ({ auction }) => {
 
-   
-    const handleOnClick = () => {
-        console.log ("click")
-        this.props.history.push("/auction-page");
-    }
-
     const navigate = useNavigate ();
-    //const handleOnClick = useCallback (()=>navigate("/auction-page/{auctions.id}",{replace:true}),[navigate]);
+    const handleOnClick = useCallback (()=>navigate("/auction-page",{replace:true}),[navigate]);
 
     const { data: users } = useFetch("http://localhost:6001/users");
     const { data: auctions} = useFetch("http://localhost:6001/auctions");
@@ -99,5 +94,16 @@ briefInformation={auction.briefInformation}*/
           </div>
         );
       };*/
+
+      /*let history = useHistory();
+      const handleOnClick = (event) => {
+          history.push ({
+              pathname:'/auction-page',
+          })
+          console.log ("click")
+          
+      }
+  
+      const navigate = useNavigate ();*/
 
 export default Auction 
