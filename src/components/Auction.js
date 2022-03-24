@@ -1,27 +1,45 @@
 import {GoLocation} from "react-icons/go"
 import {AiFillCalendar} from "react-icons/ai"
+import useFetch from "../customHooks/useFetch";
 
-const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
+const Auction = ({ auction }) => {
+
+    const { data: users } = useFetch("http://localhost:6001/users");
+
+
+    let town, firstName, lastName, imageUrl, otherInfo, competence = ""
+
+    users &&
+      users.map((user) => {
+        if ((auction.userId === user.id)) {
+          town = user.town
+          firstName = user.firstName
+          lastName = user.lastName
+          imageUrl = user.imageUrl
+          otherInfo = user.otherInfo
+          competence = user.competence
+        }
+      });
+
 
     return (
         <div className="auction">
             <div className="image">
-                <img src={"./img/henke.jpeg"} alt= '' />
+                <img src={imageUrl} alt= '' />
             </div>
             <div className="info-container">
                 <div className="personalInfo">
                     <p className="boldText">{firstName} {lastName}</p>
-                    <p><GoLocation/>{place}</p>
-                    <p><AiFillCalendar/>{availability}</p>
+                    <p><GoLocation/>{town}</p>
+                    <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
                 </div>
                 
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
-                    <p>{briefInformation}</p>
+                    <p>{otherInfo}</p>
                     <p className="comp">Competence: {competence}</p>
                 </div>
             </div>
-                
         </div>
         
         
