@@ -165,6 +165,37 @@
         ],
         "otherInfo": "Redig Halo nörd"
       }
+    ],
+    "companies": [
+      {
+        "id": 1,
+        "companyName": "Microsoft",
+        "orgNum": "456123465",
+        "imageUrl": "/img/erik.jpeg",
+        "phone": "123 22 333 654",
+        "address": "Hellstreet 666",
+        "zipCode": 21438,
+        "town": "Malmö",
+        "links": [
+          { "webpage": "https://github.com/" }
+        ],
+        "otherInfo": "Lite mjukt"
+      },
+      {
+        "id": 1,
+        "companyName": "Dell",
+        "orgNum": "332211233",
+        "imageUrl": "/img/erik.jpeg",
+        "phone": "4323 343 654",
+        "address": "Gatan 2",
+        "zipCode": 33123,
+        "town": "Svedala",
+        "links": [
+          { "webpage": "https://github.com/" }
+        ],
+        "otherInfo": "Gör skärmar etc"
+      }
     ]
+
   }
   
