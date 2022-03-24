@@ -14,7 +14,7 @@ const BecomeAMember = () => {
     { key: 5, label: "Town" },
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
-    { key: 8, label: "Password*" },
+    // { key: 8, label: "Password*" },
   ];
 
   const companyInputs = [
@@ -25,7 +25,7 @@ const BecomeAMember = () => {
     { key: 5, label: "Town" },
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
-    { key: 8, label: "Password*" },
+    // { key: 8, label: "Password*" },
   ];
 
   const personLinks = [
@@ -88,6 +88,25 @@ const BecomeAMember = () => {
   };
 
   const createNewUser = (e) => {
+
+    let tempCompetence = []
+    if (e.target.javaComp.checked ===true ) {
+      tempCompetence.push('Java')
+    } 
+    if (e.target.javascriptComp.checked ===true ) {
+      tempCompetence.push('Javascript')
+    } 
+    if (e.target.cComp.checked ===true ) {
+      tempCompetence.push('C#')
+    } 
+    if (e.target.reactComp.checked ===true ) {
+      tempCompetence.push('React')
+    } 
+    if (e.target.pythonComp.checked ===true ) {
+      tempCompetence.push('Python')
+    } 
+
+
     console.log("Creating new user..");
     console.log(e.target.profilepicture.value);
     const newUser = {
@@ -105,12 +124,13 @@ const BecomeAMember = () => {
       links: [
         { github: e.target.linktogithub.value },
         { linkedin: e.target.linktolinkedin.value },
-        { otherLinks: e.target.otherlinks.value }
+        { otherLinks: e.target.otherlinks.value },
       ],
       otherInfo: e.target.otherinfo.value,
+      competence: tempCompetence
     };
 
-    addUser(newUser);
+     addUser(newUser);
   };
 
   const createNewCompany = (e) => {
@@ -141,11 +161,12 @@ const BecomeAMember = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.firstname.value);
     console.log("Submittt");
+
+
     view === "person-view" ? createNewUser(e) : createNewCompany(e);
     alert("New account created!");
-    window.location.replace("/my-page");
+    //window.location.replace("/my-page");
   };
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
@@ -162,39 +183,56 @@ const BecomeAMember = () => {
           </div>
 
           <div className="company-or-person-div">
-            <input
-              type="radio"
-              id="radio1"
-              name="clicker"
-              onChange={handleChange}
-              value={"person-view"}
-              defaultChecked
-              style={{ cursor: "pointer" }}
-            ></input>
-            <label htmlFor="radio1" style={{ cursor: "pointer" }}>
-              I am a person (looking for job){" "}
-            </label>
+            <div>
+              <input
+                type="radio"
+                id="radio1"
+                name="clicker"
+                onChange={handleChange}
+                value={"person-view"}
+                defaultChecked
+                style={{ cursor: "pointer" }}
+              ></input>
+              <label htmlFor="radio1" style={{ cursor: "pointer" }}>
+                I am a person (looking for job)
+              </label>
+            </div>
 
-            <input
-              type="radio"
-              id="radio2"
-              name="clicker"
-              onChange={handleChange}
-              value={"company-view"}
-              style={{ cursor: "pointer" }}
-            ></input>
+            <div>
+              <input
+                type="radio"
+                id="radio2"
+                name="clicker"
+                onChange={handleChange}
+                value={"company-view"}
+                style={{ cursor: "pointer" }}
+              ></input>
 
-            <label htmlFor="radio2" style={{ cursor: "pointer" }}>
-              I am a company (looking to hire)
-            </label>
+              <label htmlFor="radio2" style={{ cursor: "pointer" }}>
+                I am a company (looking to hire)
+              </label>
+            </div>
           </div>
 
           <div className="info-wrapper">
             <div className="basic-info-div column-div">
               {view === "person-view" ? (
-                <InputField inpt={personInputs} type="text" />
+                <>
+                                <InputField inpt={personInputs} type="text" />
+                <label htmlFor="password">Password*</label>
+                <br></br>
+                <input type="password" required name="password" />
+                </>
+
+
               ) : (
+                <>
                 <InputField inpt={companyInputs} type="text" />
+                <label htmlFor="password">Password*</label>
+                <br></br>
+                <input type="password" required name="password" />
+                </>
+                
               )}
             </div>
 
@@ -214,39 +252,65 @@ const BecomeAMember = () => {
 
             <div className="competences-div column-div">
               {view === "person-view" ? (
-                <>
+                <div>
                   <h3>Competences: </h3>
                   {personCompetences.map((inpt) => (
                     <div key={inpt.key}>
                       {" "}
-                      <Rating size={18} /> <span> {inpt.label}</span>{" "}
+                      <input
+                        type="checkbox"
+                        id={inpt.key + "CompBox"}
+                        style={{ cursor: "pointer" }}
+                        name={inpt.label
+                          .replace(/\s/g, "")
+                          .toLocaleLowerCase()
+                          .replace(/[^a-z0-9]/gi, "") + "Comp"}
+                      ></input>
+                      <label
+                        htmlFor={inpt.key + "CompBox"}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {" "}
+                        <span> {inpt.label}</span>
+                      </label>
+                      {/* om vi vill ha 5 sjärnigt rating system
+                      <Rating size={18} /> <span> {inpt.label}</span>{" "} 
+                      */}
                     </div>
                   ))}
-                </>
+                </div>
               ) : (
                 <></>
               )}
-              <label>Other info:</label>
-              <br></br>
-              <input
-                className="other-info-field"
-                type="text"
-                placeholder="Type other info here"
-                name="otherinfo"
-              ></input>
+              <div>
+                <label>Other info:</label>
+                <br></br>
+                <input
+                  className="other-info-field"
+                  type="text"
+                  placeholder="Type other info here"
+                  name="otherinfo"
+                ></input>
+              </div>
             </div>
           </div>
           <div className="submit-button-div">
-            <label className="terms-label">
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                target="_blank"
-              >
-                I have read and agrees to the Term of Service agreement
-              </a>
-            </label>
-            <input type="checkbox"></input>
-            <br></br>
+            <div>
+              <input
+                type="checkbox"
+                required
+                style={{ cursor: "pointer" }}
+              ></input>
+              <label className="terms-label">
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  target="_blank"
+                >
+                  I have read and agrees to the Term of Service agreement
+                </a>
+              </label>
+            </div>
+
             <button type="submit" className="submit-button">
               submit
             </button>

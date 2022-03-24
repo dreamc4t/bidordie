@@ -90,12 +90,20 @@
     color: white;
 }
 
+.FAQ button:hover {
+    background-color: rgba(47, 57, 80);
+}
+
 .FAQ input {
     cursor: pointer;
     border-radius: 5px;
     padding: 7px 13px;
     background-color: rgb(28,36,53);
     color: white;
+}
+
+.FAQ input:hover {
+    background-color: rgb(47, 57, 80);
 }
 
 .FAQ p input {

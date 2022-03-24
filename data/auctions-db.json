@@ -64,7 +64,11 @@
         }
       ],
       "otherInfo": "Kan stå på händer",
-      "competence": ["React", "Javascript"]
+      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 2,
@@ -87,7 +91,11 @@
         }
       ],
       "otherInfo": "Blev utkastad ur scouterna som ung",
-      "competence": ["React", "Javascript"]
+      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 3,
@@ -110,7 +118,11 @@
         }
       ],
       "otherInfo": "Har 2500 timmar i Rocket League",
-      "competence": ["React", "Javascript"]
+      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 4,
@@ -158,6 +170,7 @@
       "otherInfo": "Älskar promenader i naturen och stresshetsen i Stockholm",
       "competence": ["Python", "Javascript"]
     }
+    
   ],
   "companies": [
     {
@@ -213,6 +226,25 @@
         }
       ],
       "otherInfo": ""
+    }
+  ],
+  "auctionHistory": [
+    {
+      "id": 1,
+      "companyName": "Microsoft",
+      "password": "123abc",
+      "orgNum": "456123465",
+      "imageUrl": "/img/erik.jpeg",
+      "phone": "123 22 333 654",
+      "address": "Hellstreet 666",
+      "zipCode": 21438,
+      "town": "Malmö",
+      "links": [
+        {
+          "webpage": "https://github.com/"
+        }
+      ],
+      "otherInfo": "Lite mjukt"
     }
   ]
 }
