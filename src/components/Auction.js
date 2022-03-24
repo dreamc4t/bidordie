@@ -1,8 +1,10 @@
+import {userState} from "react" 
 import {GoLocation} from "react-icons/go"
 import {AiFillCalendar} from "react-icons/ai"
-/*import { Rating } from "react-simple-star-rating";*/
+import {AiOutlineHeart} from "react-icons/ai"
+import {RiStarSLine} from "react-icons/ri"
 
-const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence, setRating}) => {
+const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
 
     return (
         <div className="auction">
@@ -14,11 +16,19 @@ const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availabilit
                     <p className="boldText">{firstName} {lastName}</p>
                     <p><GoLocation/>{place}</p>
                     <p><AiFillCalendar/>{availability}</p>
+                    <p><RiStarSLine/></p>
+                    <p><RiStarSLine/></p>
+                    <p><RiStarSLine/></p>
+                    <p><RiStarSLine/></p>
+                    <p><RiStarSLine/></p>
+                    
+
                 </div>
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
                     <p>{briefInformation}</p>
                     <p className="comp">Competence: {competence}</p>
+                    <p><AiOutlineHeart/></p>
                 </div>
             </div>
                 

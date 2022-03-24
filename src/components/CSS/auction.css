@@ -6,6 +6,9 @@
     padding: 16px;
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
+    transform: scale(1.03);
+    cursor: pointer;
+    transition: all ease 200ms;
     
 }
 .info-container {
@@ -20,15 +23,17 @@
     margin-left: 10px;
     margin-right: 10px;
     border-bottom: 1px solid grey;
-
 }
+
 .personalInfo>p>svg{
     fill: black;
+    gap: 5px;
 }
+
 .personalInfo>p{
     display: flex;
     align-items: center;
-    gap: 8px;
+    
 }
 .boldText{
     font-weight: 600;
@@ -49,10 +54,9 @@
 .comp{
     font-size: small;
     font-weight: 600;
-
 }
-.rating{
-    background-color: pink;
+.briefInfo>p>svg{
+    fill: black;
 }
 
 @media (max-width:500px) {
@@ -60,8 +64,35 @@
     .auction{
         display:flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        justify-content: right;
+        align-items: left;
+        height: 35%;
+    }
+    .personalInfo{
+        display: flex;
+        gap: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-bottom: 1px solid grey;
+        text-align: right;
+        font-size: x-small;
+    }
+    .image{
+        display: flex;
+        align-items: left;
+        border-radius: 10px ;
+        float: left;
+        margin: 0 15px 0 0;
+    }
+    .briefInfo{
+        text-align: center;
+        padding-left: 10px;
+        
+    }
+    .briefInfo>p>svg>path{
+        align-items: left;
+        padding-top: 30%;
+
     }
 
 
