@@ -2,6 +2,7 @@ import OtherLoginOption from "../components/OtherLoginOption";
 import { Rating } from "react-simple-star-rating";
 import InputField from "../components/InputField";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 const BecomeAMember = () => {
   const personInputs = [
@@ -60,13 +61,66 @@ const BecomeAMember = () => {
 
   const [view, setView] = useState("person-view");
 
+
+
+  const request = ({ endpoint, method, data }) => {
+    fetch(endpoint, {
+      body: JSON.stringify(data),
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
+  const add = (data) => {
+    request({
+      endpoint: "http://localhost:6001/test",
+      method: "POST",
+      data,
+    });
+  };
+
+  const createNewUser =  () => {
+
+    console.log("Creating new user..")
+
+    const newUser = {
+      id: uuidv4(),
+      firstName: "APAN",
+      lastName: "aasdsdassad",
+      imageUrl: "/img/erik.jpeg",
+      CV: "cv-uasdfasdfasdf här",
+      phone: "0707472123921",
+      address: "Åhusgatan 6",
+      zipCode: 21438,
+      town: "Malmö",
+      links: [
+        { github: "https://github.com/" },
+        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" }
+      ],
+      otherInfo: "Kan stå på händer"
+    }
+
+    add(newUser)
+
+  
+
+  }
+
   const handleChange = (e) => {
     setView(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("Submittt")
+    createNewUser()
+  }
+
   return (
     <div id="become-a-member-div">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
 
