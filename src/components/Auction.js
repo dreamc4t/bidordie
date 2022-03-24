@@ -3,10 +3,12 @@ import {AiFillCalendar} from "react-icons/ai"
 
 const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
 
+
+
     return (
         <div className="auction">
             <div className="image">
-                <img src={"./img/henke.jpeg"} alt= '' />
+                <img src={imageUrl} alt= '' />
             </div>
             <div className="info-container">
                 <div className="personalInfo">
