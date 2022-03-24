@@ -11,7 +11,6 @@
 .info-container {
     display: flex;
     flex-direction: column;
-    
     flex:1 0 0;
 
 }
@@ -36,7 +35,6 @@
 }
 
 .image{
-    
     display: flex;
     align-items: center;
  
@@ -52,5 +50,20 @@
 .comp{
     font-size: small;
     font-weight: 600;
+
+}
+.wrapper{
+    
+}
+
+@media (max-width:500px) {
+
+
+
+}
+
+@media (orientation:landscape) and (max-width:500px){
+
+
 
 }

@@ -1,5 +1,6 @@
 import {GoLocation} from "react-icons/go"
 import {AiFillCalendar} from "react-icons/ai"
+import {StarRating} from "react-star-rating-element"
 
 const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
 
@@ -14,6 +15,15 @@ const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availabilit
                     <p><GoLocation/>{place}</p>
                     <p><AiFillCalendar/>{availability}</p>
                 </div>
+                <div className="Wrapper">
+                    <StarRating
+                        ratingValue={rating}
+                        changeRating={setRating}
+                        starEmptyColor="#999999"
+                        starSpacing={10}
+                        starDimension={30} />
+                </div>
+
                 
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
