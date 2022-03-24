@@ -2,28 +2,46 @@
     "auctions": [
       {
         "id": 1,
-        "user": "hämta allt från user från db och ta från den",
-        "info": "Kort info/snippet från user här",
-        "startTime":"2022-03-29 16:35:42",
-        "endTime": "2022-11-29 16:35:42",
+        "startTime": "2022-03-29",
+        "endTime": "2022-11-29",
         "openingPrice": 500,
         "buyoutPrice": 1500
       },
       {
         "id": 2,
-        "user": "hämta user från db och ta från den",
-        "info": "Kort info/snippet från user här",
-        "startTime":"2022-03-29 16:35:42",
-        "endTime": "2022-11-29 16:35:42",
+        "startTime":"2022-02-14",
+        "endTime": "2022-05-29",
+        "openingPrice": 500,
+        "buyoutPrice": 1500,
+
+        "firstName": "Henke",
+        "lastName": "Kihlberg",
+        "imageUrl": "/img/henke.jpeg",
+        "CV": "cv-url går här",
+        "phone": "112",
+        "address": "Åhusgatan 4",
+        "zipCode": 21438,
+        "town": "Malmö",
+        "links": [
+          { "github": "https://github.com/" },
+          { "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221" }
+        ],
+        "competence": [
+          "Java", "Python", "HTML/CSS"
+        ],
+        "otherInfo": "Blev utkastad ur scouterna som ung"
+      },
+      {
+        "id": 3,
+        "startTime":"2022-06-19",
+        "endTime": "2022-06-22",
         "openingPrice": 450,
         "buyoutPrice": 1000
       },
       {
-        "id": 3,
-        "user": "hämta user från db och ta från den",
-        "info": "Kort info/snippet från user här",
-        "startTime":"2022-03-29 16:35:42",
-        "endTime": "2022-11-29 16:35:42",
+        "id": 4,
+        "startTime":"2022-03-29",
+        "endTime": "2022-11-29",
         "openingPrice": 650,
         "buyoutPrice": 1200
       }

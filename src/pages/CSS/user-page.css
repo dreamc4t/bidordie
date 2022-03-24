@@ -17,7 +17,11 @@
     max-width: fit-content;
 }
 
-.user-top {
+.user-page-container {
+    align-items: flex-start;
+}
+
+.user-page-top {
     margin-top: 1%;
     margin-bottom: 1%;
     display: flex;
@@ -34,12 +38,12 @@
     left: 0;
 }
 
-
 .userBackgroundPicture {
     display: flex;
     position: relative;
-    top: 0;
+    top: -30px;
     left: 0;
+    border-radius: 25px 25px 0 0;
 }
 
 .profile-picture {
@@ -47,7 +51,7 @@
     border-radius: 10px;
     height: 250px;
     position: absolute;
-    top: 85px;
+    top: 50px;
 
 }
 
@@ -56,7 +60,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    line-height: 0px;
+    flex-wrap: wrap;
 }
 
 .user-bio {
@@ -85,8 +89,7 @@
     width: 175px;
     background-color: aliceblue;
     bottom: 0;
-    left: px;
-    border: 1px solid rgba(0,0,0,0.4);
+    left: 0px;
 }
 
 .hiring-company-text {
