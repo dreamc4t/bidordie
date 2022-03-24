@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { Link, Navigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 import OtherLoginOption from "../components/OtherLoginOption"
 import useFetch from "../customHooks/useFetch";
@@ -14,7 +14,6 @@ const LoginPage = ({ idOfLoggedInUser, setIdOfLoggedInUser }) => {
 
     const validateLogin = (e) => {
         e.preventDefault()
-
         const loginAttempt = {
             email,
             password
@@ -43,14 +42,14 @@ const LoginPage = ({ idOfLoggedInUser, setIdOfLoggedInUser }) => {
 
     return(
         <div id="login-page">
+            {idOfLoggedInUser !== null && <Navigate to="/" replace={true} />}
             <div id="login-container">
                 <h2>Log In</h2>
-                <form>
+                <form onSubmit={validateLogin}>
+                    {failedToLogIn && <p>Failed to login, try again</p>}
                     <input type="text" placeholder="email" value={email} onChange={handleEmailChange}/>
                     <input type="password" placeholder="password" value={password} onChange={handlePasswordChange}/>
-                    <Link to="/">
                         <button className="button-element">Log in</button>
-                    </Link>
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>

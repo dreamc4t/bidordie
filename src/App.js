@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
@@ -20,6 +20,9 @@ import MyPage from "./pages/MyPage";
 function App() {
 
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null)
+  useEffect(() => {
+    console.log(idOfLoggedInUser)
+  }, [idOfLoggedInUser]) //printar  i console id:t för user som är inloggad
 
   return (
     <Router>
