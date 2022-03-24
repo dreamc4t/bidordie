@@ -83,16 +83,20 @@ const BecomeAMember = () => {
               onChange={handleChange}
               value={"person-view"}
               defaultChecked
+              style={{"cursor": "pointer"}}
             ></input>
-            <label htmlFor="radio1">I am a person (looking for job)</label>
+            <label htmlFor="radio1" style={{"cursor": "pointer"}}>I am a person (looking for job) </label>
+
             <input
               type="radio"
               id="radio2"
               name="clicker"
               onChange={handleChange}
               value={"company-view"}
+              style={{"cursor": "pointer"}}
             ></input>
-            <label htmlFor="radio2">I am a company (looking to hire)</label>
+
+            <label htmlFor="radio2" style={{"cursor": "pointer"}}>I am a company (looking to hire)</label>
           </div>
 
           <div className="info-wrapper">
