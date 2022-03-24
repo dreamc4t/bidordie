@@ -42,8 +42,8 @@ function App() {
               element={<AboutUs />}
             />
             <Route
-            path="/FAQ"
-            element={<Faq />}
+              path="/FAQ"
+              element={<Faq />}
             />
           </Routes>
         </main>

@@ -18,7 +18,7 @@
 
 .faqs {
     width: 100%;
-    max-width: 768px;
+    max-width: 420px;
     margin: 0 auto;
     padding: 15px;
 }
@@ -81,6 +81,14 @@
 }
 
 .FAQ button {
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: rgb(28,36,53);
+    color: white;
+}
+
+.FAQ input {
+    border-radius: 3px;
     background-color: rgb(28,36,53);
     color: white;
 }

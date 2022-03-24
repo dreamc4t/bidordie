@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import FAQfunctions from "../components/FAQfunctions";
+import PopUp from "../components/PopUp";
 
 function Faq () {
+
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+
   const [faqs, setfaqs] = useState([
     {
       question: 'Is this site reliable?',
@@ -65,9 +73,28 @@ function Faq () {
         </div>
         <p>If you have any more questions, feel free to contact us on the link below!</p>
         <br></br>
-        <a href="https://www.google.com" target="_blank">
-          <button className="button-element"><FaEnvelope /> Contact Us</button>
-        </a>
+        <input 
+          type="button"
+          value="Contact Us"
+          onClick={togglePopup}
+        />
+        {isOpen && <PopUp
+          content={<>
+            <b>Put in your contact info and your question</b>
+            <p>
+              <input type="text" placeholder="Firstname and Lastname"/>
+              <br></br>
+              <input type="text" placeholder="Telephone number"/>
+              <br></br>
+              <input type="text" placeholder="Email"/>
+              <br></br>
+              <input type="text" placeholder="Write your question here!"/>
+              <br></br>
+              <button><FaEnvelope /> Submit</button>
+            </p>
+          </>}
+          handleClose={togglePopup}
+        />}
         <br></br>
         <Link to="/">
             <FaArrowLeft size={30} />
@@ -77,3 +104,5 @@ function Faq () {
 }
 
 export default Faq;
+
+{/* <button className="button-element"><FaEnvelope /> Contact Us</button> */}
