@@ -48,7 +48,7 @@ const AddAuctionPage = () => {
                         <input type="url"></input>
                     </div>
                     <div className="add-upload-container">
-                        <label for="upload-cv">Upload CV:</label>
+                        <label htmlfor="upload-cv">Upload CV:</label>
                         <input type="file" id="upload-cv" name="upload-cv" accept="image/png, image/jpeg"></input>
                     </div>
                     <div className="comment-container">
@@ -73,7 +73,7 @@ const AddAuctionPage = () => {
                         <input type="url"></input>
                     </div>
                     <div className="add-upload-container">
-                        <label for="upload-other">Upload:</label>
+                        <label htmlfor="upload-other">Upload:</label>
                         <input type="file" id="upload-other" name="upload-other" accept="image/png, image/jpeg"></input>
                     </div>
                     <div className="add-button-container">
