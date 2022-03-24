@@ -23,9 +23,6 @@ const UserPage = ({userFirstName, userLastName, userShortDescript, userLocation,
           <div className="user-references">
               {userReferences}
           </div>
-          <div className="previous-commisions">
-              Tidigare uppdrag visas här
-          </div>
       </div>
     )
   }
