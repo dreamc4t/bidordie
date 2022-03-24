@@ -1,10 +1,54 @@
 //import ImASneakyLittleStar from ImASneakyLittleStar;
 import SortBar from "../components/SortBar";
 import Auction from "../components/Auction";
+import { useState, useEffect } from "react";
+import useFetch from "../customHooks/useFetch";
 
 const AuctionList = ({}) => {
 
+    /*ERIK KOD */
 
+/*
+    useEffect (() => { 
+        fetch('http://localhost:6001/users').then(res => {
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            setAuctions(data)
+        })
+    }, [])
+    const [auctions, setAuctions] = useState ([])
+*/
+
+    const { data: auctions, isLoading } = useFetch("http://localhost:6001/auctions");
+
+    return (
+      <div className="auction-list">
+        <SortBar />
+        <div className="auction-container">
+          {isLoading && <div> LOADING CONTENT....</div>}
+          {auctions &&
+            auctions.map((auction) => (
+              <Auction
+                key={auction.auctionId}
+                imageUrl={auction.imageUrl}
+                firstName={auction.firstName}
+                lastName={auction.lastName}
+                place={auction.town}
+                availability={auction.startTime + " - " + auction.endTime}
+                competence={auction.competence.join(", ")}
+                briefInformation={auction.otherInfo}
+              />
+            ))}
+        </div>
+      </div>
+    );
+
+    /* SLUTAR HÄR */
+
+
+    /*
     return(
         <div className="auction-list">
             <SortBar />
@@ -19,6 +63,7 @@ const AuctionList = ({}) => {
             </div>
         </div>
     );
+    */
 
 };
 
