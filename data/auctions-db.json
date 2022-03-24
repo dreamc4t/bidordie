@@ -56,7 +56,10 @@
         }
       ],
       "otherInfo": "Kan stå på händer",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 2,
@@ -79,7 +82,10 @@
         }
       ],
       "otherInfo": "Blev utkastad ur scouterna som ung",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 3,
@@ -102,7 +108,10 @@
         }
       ],
       "otherInfo": "Har 2500 timmar i Rocket League",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 4,
@@ -125,8 +134,12 @@
         }
       ],
       "otherInfo": "Redig Halo nörd",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     }
+    
   ],
   "companies": [
     {
