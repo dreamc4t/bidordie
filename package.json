@@ -18,6 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm start\" ",
+    "server": "json-server --watch data/auctions-db.json --port 6001",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
