@@ -83,6 +83,7 @@
 .FAQ button {
     cursor: pointer;
     position: center;
+    padding: 4px 10px;
     border: 1px solid white;
     border-radius: 4px;
     background-color: rgb(28,36,53);
@@ -91,9 +92,17 @@
 
 .FAQ input {
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 5px;
+    padding: 7px 13px;
     background-color: rgb(28,36,53);
     color: white;
+}
+
+.FAQ p input {
+    border-radius: 5px;
+    padding: 7px 13px;
+    background-color: white;
+    color: rgb(28,36,53);
 }
 
 .FAQ p {
