@@ -7,27 +7,9 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
-      "firstName": "Erik",
-      "lastName": "Sund",
-      "imageUrl": "/img/erik.jpeg",
-      "CV": "cv-url går här",
-      "phone": "0707472921",
-      "address": "Åhusgatan 6",
-      "zipCode": 21438,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
-        }
-      ],
-      "competence": [
-        "React",
-        "Javascript"
-      ],
-      "otherInfo": "Kan stå på händer"
+      "userId": 1
+
+     
     },
     {
       "id": 2,
@@ -35,28 +17,9 @@
       "endTime": "2022-05-29",
       "openingPrice": 500,
       "buyoutPrice": 1500,
-      "firstName": "Henke",
-      "lastName": "Kihlberg",
-      "imageUrl": "/img/henke.jpeg",
-      "CV": "cv-url går här",
-      "phone": "112",
-      "address": "Åhusgatan 4",
-      "zipCode": 21438,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/henrik-kihlberg-3746b7221"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS"
-      ],
-      "otherInfo": "Blev utkastad ur scouterna som ung"
+      "userId": 2
+
+      
     },
     {
       "id": 3,
@@ -64,29 +27,8 @@
       "endTime": "2022-06-22",
       "openingPrice": 450,
       "buyoutPrice": 1000,
-      "firstName": "Jack",
-      "lastName": "Bravo",
-      "imageUrl": "/img/jack.jpg",
-      "CV": "cv-url går här",
-      "phone": "032213781",
-      "address": "Västra Rönneholmsvägen 52B",
-      "zipCode": 21428,
-      "town": "Malmö",
-      "links": [
-        {
-          "github": "https://github.com/bravojack"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/jack-bravo-811555203/"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS",
-        "React"
-      ],
-      "otherInfo": "Har 2500 timmar i Rocket League"
+      "userId": 3
+
     },
     {
       "id": 4,
@@ -94,28 +36,8 @@
       "endTime": "2022-11-29",
       "openingPrice": 650,
       "buyoutPrice": 1200,
-      "firstName": "Marcus",
-      "lastName": "Malmgren",
-      "imageUrl": "/img/Marcus.jpg",
-      "CV": "cv-url går här",
-      "phone": "0735957444",
-      "address": "Vikingavägen 25C",
-      "zipCode": 22476,
-      "town": "Lund",
-      "links": [
-        {
-          "github": "https://github.com/Marcus921"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/in/marcus-malmgren-a452b8221"
-        }
-      ],
-      "competence": [
-        "Java",
-        "Python",
-        "HTML/CSS"
-      ],
-      "otherInfo": "Redig Halo nörd"
+      "userId": 4
+
     }
   ],
   "users": [
@@ -225,6 +147,78 @@
         },
         {
           "linkedin": "https://www.linkedin.com/in/erik-sund-25ab87b0/"
+        }
+      ],
+      "otherInfo": ""
+    },
+    {
+      "id": "2c45a599-6d50-49af-b7b0-2e0c5fe5b19f",
+      "firstName": "",
+      "lastName": "",
+      "imageUrl": "/img/erik.jpeg",
+      "CV": "cv-uasdfasdfasdf här",
+      "phone": "",
+      "address": "",
+      "zipCode": "",
+      "town": "",
+      "password": "",
+      "links": [
+        {
+          "github": ""
+        },
+        {
+          "linkedin": ""
+        },
+        {
+          "otherLinks": ""
+        }
+      ],
+      "otherInfo": ""
+    },
+    {
+      "id": "9a1c2274-2950-4285-8f1e-7bd14f474045",
+      "firstName": "",
+      "lastName": "",
+      "imageUrl": "/img/erik.jpeg",
+      "CV": "cv-uasdfasdfasdf här",
+      "phone": "",
+      "address": "",
+      "zipCode": "",
+      "town": "",
+      "password": "",
+      "links": [
+        {
+          "github": ""
+        },
+        {
+          "linkedin": ""
+        },
+        {
+          "otherLinks": ""
+        }
+      ],
+      "otherInfo": ""
+    },
+    {
+      "id": "0710b7c8-e67b-4613-977d-f6b1dc225df0",
+      "firstName": "",
+      "lastName": "",
+      "imageUrl": "C:\\fakepath\\_A4A5236.JPG",
+      "CV": "cv-uasdfasdfasdf här",
+      "phone": "",
+      "address": "",
+      "zipCode": "",
+      "town": "",
+      "password": "",
+      "links": [
+        {
+          "github": ""
+        },
+        {
+          "linkedin": ""
+        },
+        {
+          "otherLinks": ""
         }
       ],
       "otherInfo": ""
