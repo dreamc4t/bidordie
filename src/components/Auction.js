@@ -1,11 +1,24 @@
-import {userState} from "react" 
-import {GoLocation} from "react-icons/go"
-import {AiFillCalendar} from "react-icons/ai"
+import {useCallback, userState} from "react";
+import {GoLocation} from "react-icons/go";
+import {AiFillCalendar} from "react-icons/ai";
 import useFetch from "../customHooks/useFetch";
+import { AiOutlineHeart } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { click } from "@testing-library/user-event/dist/click";
 
 const Auction = ({ auction }) => {
 
+   
+    const handleOnClick = () => {
+        console.log ("click")
+        this.props.history.push("/auction-page");
+    }
+
+    const navigate = useNavigate ();
+    //const handleOnClick = useCallback (()=>navigate("/auction-page/{auctions.id}",{replace:true}),[navigate]);
+
     const { data: users } = useFetch("http://localhost:6001/users");
+    const { data: auctions} = useFetch("http://localhost:6001/auctions");
 
 
     let town, firstName, lastName, imageUrl, otherInfo, competence = ""
@@ -24,7 +37,7 @@ const Auction = ({ auction }) => {
 
 
     return (
-        <div className="auction">
+        <div className="auction" onClick={handleOnClick}>
             <div className="image">
                 <img src={imageUrl} alt= '' />
             </div>
@@ -33,15 +46,16 @@ const Auction = ({ auction }) => {
                     <p className="boldText">{firstName} {lastName}</p>
                     <p><GoLocation/>{town}</p>
                     <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
-                </div>
-                <div className="briefInfo">
-                    <p className="boldText">About me</p>
-                    <p>{otherInfo}</p>
-                    <p className="comp">Competence: {competence}</p>
                     <p><AiOutlineHeart/></p>
                 </div>
-            </div>
+                    <div className="briefInfo">
+                        <p className="boldText">About me</p>
+                        <p>{otherInfo}</p>
+                        <p className="comp">Competence: {competence}</p>
+                    </div>
+                </div>
         </div>
+        
         
         
     );

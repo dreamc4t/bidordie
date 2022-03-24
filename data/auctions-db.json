@@ -32,6 +32,14 @@
       "openingPrice": 650,
       "buyoutPrice": 1200,
       "userId": 4
+    },
+    {
+      "id": 5,
+      "startTime": "2022-08-15",
+      "endTime": "2022-11-17",
+      "openingPrice": 700,
+      "buyoutPrice": 2000,
+      "userId": 5
     }
   ],
   "users": [
@@ -126,6 +134,29 @@
       ],
       "otherInfo": "Redig Halo nörd",
       "competence": ["React", "Javascript"]
+    },
+    {
+      "id": 5,
+      "firstName": "Afrora",
+      "lastName": "Goxhuli",
+      "email": "afrora.goxhuli@hotmail.com",
+      "password": "123abc",
+      "imageUrl": "/img/afrora.jpeg",
+      "CV": "cv-url går här",
+      "phone": "0769102906",
+      "address": "Persgatan 60",
+      "zipCode": 25222,
+      "town": "Helsingborg",
+      "links": [
+        {
+          "github": "https://github.com/"
+        },
+        {
+          "linkedin": "https://www.linkedin.com/in/afrora-goxhuli-0b4a37224/"
+        }
+      ],
+      "otherInfo": "Älskar promenader i naturen och stresshetsen i Stockholm",
+      "competence": ["Python", "Javascript"]
     }
   ],
   "companies": [

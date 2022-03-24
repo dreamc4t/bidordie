@@ -8,8 +8,11 @@
     border-radius: 25px;
     transform: scale(1.03);
     cursor: pointer;
-    transition: all ease 200ms;
+    transition: width 2s, height 4s;
     
+}
+.auction:hover{
+    transition: width 2s, height 4s;
 }
 .info-container {
     display: flex;
@@ -63,10 +66,10 @@
 
     .auction{
         display:flex;
-        flex-direction: column;
-        justify-content: right;
         align-items: left;
-        height: 35%;
+        height: 110%;
+        margin:10px 5px 15px 20px;
+
     }
     .personalInfo{
         display: flex;
@@ -74,8 +77,9 @@
         margin-left: 10px;
         margin-right: 10px;
         border-bottom: 1px solid grey;
-        text-align: right;
-        font-size: x-small;
+        text-align: center;
+        font-size: small;
+        display: inline;
     }
     .image{
         display: flex;
@@ -87,6 +91,7 @@
     .briefInfo{
         text-align: center;
         padding-left: 10px;
+        
         
     }
     .briefInfo>p>svg>path{

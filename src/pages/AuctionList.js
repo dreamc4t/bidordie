@@ -18,7 +18,7 @@ const AuctionList = () => {
           {auctions &&
             auctions.map((auction) => (
               <div key={auction.id}>
-                 asd
+                 
                  <Auction auction={auction}/>
 
                 </div>
