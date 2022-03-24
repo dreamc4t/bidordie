@@ -42,7 +42,7 @@ const Auction = ({ auction }) => {
                 <div className="briefInfo">
                     <p className="boldText">About me</p>
                     <p>{otherInfo}</p>
-                    <p className="comp">Competence: {competence}</p>
+                    <p className="comp">Competence: {competence.join(", ")}</p>
                 </div>
             </div>
         </div>
