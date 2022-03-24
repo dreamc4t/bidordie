@@ -5,35 +5,27 @@ import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 
 const AuctionList = () => {
+  const { data: auctions, isLoading } = useFetch(
+    "http://localhost:6001/auctions"
+  );
 
-
-
-    const { data: auctions, isLoading } = useFetch("http://localhost:6001/auctions");
-
-    return (
-      <div className="auction-list" >
-        <SortBar />
-        <div className="auction-container">
-          {isLoading && <div> LOADING CONTENT....</div>}
-          {auctions &&
-            auctions.map((auction) => (
-              <div key={auction.id}>
-                 asd
-                 <Auction auction={auction}/>
-
-                </div>
-
-            ))}
-        </div>
+  return (
+    <div className="auction-list">
+      <SortBar />
+      <div className="auction-container">
+        {isLoading && <div> LOADING CONTENT....</div>}
+        {auctions &&
+          auctions.map((auction) => (
+            <div key={auction.id}>
+              <Auction auction={auction} />
+            </div>
+          ))}
       </div>
-    );
-
-
-
+    </div>
+  );
 };
 
 export default AuctionList;
-
 
 /*
 
