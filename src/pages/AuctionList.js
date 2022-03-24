@@ -4,7 +4,7 @@ import Auction from "../components/Auction";
 import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 
-const AuctionList = ({}) => {
+const AuctionList = () => {
 
     /*ERIK KOD */
 
@@ -32,13 +32,7 @@ const AuctionList = ({}) => {
             auctions.map((auction) => (
               <Auction
                 key={auction.id}
-                imageUrl={auction.imageUrl}
-                firstName={auction.firstName}
-                lastName={auction.lastName}
-                place={auction.town}
-                availability={auction.startTime + " - " + auction.endTime}
-                competence={auction.competence.join(", ")}
-                briefInformation={auction.otherInfo}
+                auction={auction}
               />
             ))}
         </div>
