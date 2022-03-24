@@ -26,7 +26,6 @@ const BecomeAMember = () => {
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
     { key: 8, label: "Password*" },
-    { key: 9, label: "Password again*" },
   ];
 
   const personLinks = [

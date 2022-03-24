@@ -14,7 +14,6 @@ import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
 import UserPage from "./pages/UserPage";
-import UserPageInfo from "./components/UserPageInfo";
 import MyPage from "./pages/MyPage";
 
 function App() {
