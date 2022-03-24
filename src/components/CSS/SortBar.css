@@ -1,8 +1,8 @@
 .sortbar-form{
-    min-height:8vh;
+    margin-top: -40px; /*Necessary to counter the padding css of the main element*/
+    height:50px;
     width: 100%;
-    border-top: 1px solid grey;
-    background-color: rgb(184,198,195);
+    border-bottom: 1px solid rgb(117, 117, 117);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,27 +14,41 @@
     gap: 10px;
 }
 
-select, input{
+#sort, #filter-competence{
     outline: none;
     border: none;
     height: 25px;
 }
 
-.search-input:focus{
+#search-input:focus{
     outline: 1px solid grey;
 }
 
 @media (max-width:500px) {
 
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence {
         font-size: 0.5rem;
+    }
+    #search-input{
+        margin-left: 5px;
+        width: 25%;
+    }
+    .sortbar-form{
+        display:flex;
+        align-items: flex-end;
     }
 }
 
 @media (orientation:landscape) and (max-width:500px){
-    .search-input, .search-button, .filter-competence, .sort{
+    #search-input, #sort, #filter-competence{
         font-size: 0.7rem;
+        
     }
+
+    .button-element{
+        
+    }
+ 
 }
 
 

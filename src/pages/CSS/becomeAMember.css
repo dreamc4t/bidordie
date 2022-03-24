@@ -1,10 +1,74 @@
-.become-a-member-div {
-    background-color: rgb(255, 255, 255);
+#become-a-member-div {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto 40px;
+    justify-content: center;
 }
+
+.become-a-member-background {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 25px;
+    width: 1000px;
+    padding: 40px 100px;
+    
+}
+
+.info-wrapper {
+display: flex;
+}
+
+.become-a-member-background h1 {
+    text-align: center;
+    margin: 0 auto 10px;
+
+}
+.submit-button-div{
+    text-align: center;
+    
+}
+.submit-button {
+    height: 50px;
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 5px;
+}
+
+.terms-label {
+    font-size: 13px;
+}
+
 .skills-I-have-form h3 {
  margin: 0px;
+}
+
+.create-acc-with-other p {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.column-div {
+    width: 50%;
+}
+
+.competences-div h3 {
+    margin: 0px ;
+    margin-bottom: 2px;
+
+}
+.create-acc-with-other .login-with-other {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.other-info-field {
+    height: 50px;
+}
+
+.company-or-person-div {
+    text-align: center;
+    margin-bottom: 5px;
 }

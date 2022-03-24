@@ -1,17 +1,32 @@
+import {GoLocation} from "react-icons/go"
+import {AiFillCalendar} from "react-icons/ai"
 
-const auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
+const Auction = ({firstName,lastName,place,briefInformation,imageUrl,availability, competence}) => {
+
+
 
     return (
         <div className="auction">
-            <img src={imageUrl}></img>
-            <h3>{firstName}</h3>
-            <h3>{lastName}</h3>
-            <h3>{place}</h3>
-            <h3>{availability}</h3>
-            <h3>{competence}</h3>
-            <p>{briefInformation}</p>
-
+            <div className="image">
+                <img src={imageUrl} alt= '' />
+            </div>
+            <div className="info-container">
+                <div className="personalInfo">
+                    <p className="boldText">{firstName} {lastName}</p>
+                    <p><GoLocation/>{place}</p>
+                    <p><AiFillCalendar/>{availability}</p>
+                </div>
+                
+                <div className="briefInfo">
+                    <p className="boldText">About me</p>
+                    <p>{briefInformation}</p>
+                    <p className="comp">Competence: {competence}</p>
+                </div>
+            </div>
+                
         </div>
+        
+        
     );
     
 }
@@ -23,4 +38,4 @@ availability={auction.availability}
 competence={auction.competence}
 briefInformation={auction.briefInformation}*/
 
-export default auction 
+export default Auction 
