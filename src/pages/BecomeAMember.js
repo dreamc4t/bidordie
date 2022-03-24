@@ -2,6 +2,8 @@ import OtherLoginOption from "../components/OtherLoginOption";
 import { Rating } from "react-simple-star-rating";
 import InputField from "../components/InputField";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const BecomeAMember = () => {
   const personInputs = [
@@ -13,7 +15,6 @@ const BecomeAMember = () => {
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
     { key: 8, label: "Password*" },
-    { key: 9, label: "Password again*" },
   ];
 
   const companyInputs = [
@@ -25,7 +26,6 @@ const BecomeAMember = () => {
     { key: 6, label: "Zip code" },
     { key: 7, label: "Telephone number" },
     { key: 8, label: "Password*" },
-    { key: 9, label: "Password again*" },
   ];
 
   const personLinks = [
@@ -60,13 +60,99 @@ const BecomeAMember = () => {
 
   const [view, setView] = useState("person-view");
 
+  /* DATABAS EVENT/ADD/HANTERING */
+  const request = ({ endpoint, method, data }) => {
+    fetch(endpoint, {
+      body: JSON.stringify(data),
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
+  const addUser = (data) => {
+    request({
+      endpoint: "http://localhost:6001/users",
+      method: "POST",
+      data,
+    });
+  };
+
+  const addCompany = (data) => {
+    request({
+      endpoint: "http://localhost:6001/companies",
+      method: "POST",
+      data,
+    });
+  };
+
+  const createNewUser = (e) => {
+    console.log("Creating new user..");
+    console.log(e.target.profilepicture.value);
+    const newUser = {
+      id: uuidv4(),
+      firstName: e.target.firstname.value,
+      lastName: e.target.lastname.value,
+      imageUrl: "/img/erik.jpeg",
+      CV: "cv-uasdfasdfasdf här",
+      phone: e.target.telephonenumber.value,
+      address: e.target.address.value,
+      zipCode: e.target.zipcode.value,
+      town: e.target.town.value,
+      password: e.target.password.value,
+
+      links: [
+        { github: e.target.linktogithub.value },
+        { linkedin: e.target.linktolinkedin.value },
+        { otherLinks: e.target.otherlinks.value }
+      ],
+      otherInfo: e.target.otherinfo.value,
+    };
+
+    addUser(newUser);
+  };
+
+  const createNewCompany = (e) => {
+    console.log("Creating new company..");
+    const newCompany = {
+      id: uuidv4(),
+      companyName: e.target.companyname.value,
+      orgNum: e.target.orgnumber.value,
+      imageUrl: "/img/erik.jpeg",
+      phone: e.target.telephonenumber.value,
+      address: e.target.address.value,
+      zipCode: e.target.zipcode.value,
+      town: e.target.town.value,
+      password: e.target.password.value,
+      links: [
+        { github: "https://github.com/" },
+        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" },
+      ],
+      otherInfo: e.target.otherinfo.value,
+    };
+
+    addCompany(newCompany);
+  };
+
   const handleChange = (e) => {
     setView(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.firstname.value);
+    console.log("Submittt");
+    view === "person-view" ? createNewUser(e) : createNewCompany(e);
+    alert("New account created!");
+    window.location.replace("/my-page");
+  };
+
+  /* DATABAS EVENT/ADD/HANTERING SLUT */
+
   return (
     <div id="become-a-member-div">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
 
@@ -83,16 +169,24 @@ const BecomeAMember = () => {
               onChange={handleChange}
               value={"person-view"}
               defaultChecked
+              style={{ cursor: "pointer" }}
             ></input>
-            <label htmlFor="radio1">I am a person (looking for job)</label>
+            <label htmlFor="radio1" style={{ cursor: "pointer" }}>
+              I am a person (looking for job){" "}
+            </label>
+
             <input
               type="radio"
               id="radio2"
               name="clicker"
               onChange={handleChange}
               value={"company-view"}
+              style={{ cursor: "pointer" }}
             ></input>
-            <label htmlFor="radio2">I am a company (looking to hire)</label>
+
+            <label htmlFor="radio2" style={{ cursor: "pointer" }}>
+              I am a company (looking to hire)
+            </label>
           </div>
 
           <div className="info-wrapper">
@@ -138,6 +232,7 @@ const BecomeAMember = () => {
                 className="other-info-field"
                 type="text"
                 placeholder="Type other info here"
+                name="otherinfo"
               ></input>
             </div>
           </div>
