@@ -12,6 +12,9 @@ import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage"; 
 import Faq from "./pages/Faq";
+import UserPage from "./pages/UserPage";
+import UserPageInfo from "./components/UserPageInfo";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -45,6 +48,30 @@ function App() {
             path="/FAQ"
             element={<Faq />}
             />
+            <Route
+            path="/my-page"
+            element={<MyPage />}
+            />
+            <Route
+              path="/google-play-store"
+              element={('https://play.google.com/store')}
+            />
+            <Route
+              path="/apple-store"
+              element={('https://www.apple.com/app-store/')}
+            />
+            <Route
+              path="/facebook"
+              element={('https://www.facebook.com')}
+            />
+            <Route
+              path="/instagram"
+              element={('https://www.instagram.com')}
+            />
+            <Route
+              path="/twitter"
+              element={('https://www.twitter.com')}
+            /> 
           </Routes>
         </main>
         <Footer />
