@@ -27,7 +27,7 @@ const Auction = ({ auction, setChosenAuction }) => {
           lastName = user.lastName
           imageUrl = user.imageUrl
           otherInfo = user.otherInfo
-          competence = user.competence
+          competence = user.competence.join(', ')
         }
       });
 

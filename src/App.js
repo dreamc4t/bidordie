@@ -32,6 +32,7 @@ function App() {
           <Route path="/new-auction" element={<AddAuctionPage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
+          <Route path="/my-page" element={<MyPage />} />
           <Route path="/auction-page" element={<AuctionPage chosenAuction={chosenAuction}/>} />
           <Route
             path="/google-play-store"
