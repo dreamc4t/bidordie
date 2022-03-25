@@ -112,7 +112,7 @@
       "competence": ["React", "Javascript"]
     },
     {
-      "id": 4,
+      "id": 5,
       "firstName": "Marcus",
       "lastName": "Malmgren",
       "email": "marcus_malmgren@gmail.com",
@@ -135,7 +135,7 @@
       "competence": ["React", "Javascript"]
     },
     {
-      "id": "6b85e21c-c0bd-43c9-9b65-b1ac6fada6a6",
+      "id": 4,
       "firstName": "Dennis",
       "lastName": "Hasselgren",
       "email": "dennisjhasselgren@gmail.com",
