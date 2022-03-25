@@ -138,7 +138,8 @@
       "id": "6b85e21c-c0bd-43c9-9b65-b1ac6fada6a6",
       "firstName": "Dennis",
       "lastName": "Hasselgren",
-      "imageUrl": "/img/erik.jpeg",
+      "email": "dennisjhasselgren@gmail.com",
+      "imageUrl": "/img/dennis.jpg",
       "CV": "cv-uasdfasdfasdf här",
       "phone": "0708991828",
       "address": "Söderängen 7",
@@ -147,16 +148,17 @@
       "password": "910509910509",
       "links": [
         {
-          "github": ""
+          "github": "https://github.com/Lostflopp"
         },
         {
-          "linkedin": ""
+          "linkedin": "https://www.linkedin.com/in/dennis-hasselgren/"
         },
         {
-          "otherLinks": ""
+          "otherLinks": "https://feber.se/"
         }
       ],
-      "otherInfo": ""
+      "otherInfo": "Kan stå längre på händer än Erik",
+      "competence": ["react.js", "js", "python"]
     }
   ],
   "companies": [
