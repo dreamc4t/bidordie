@@ -11,7 +11,7 @@ const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, us
         <div className="user-page-pictures">
           <button className="user-page-edit-button"><GoPencil className="user-page-edit-icon"/></button>
           <img src="img/profileBackground.jpg" className="userBackgroundPicture" />
-          <img src="/img/erik.jpeg" className="profile-picture" />
+          <img src={userImage} className="profile-picture" />
           
         </div>
         <div className="tempNameOMG">
