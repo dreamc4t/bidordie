@@ -46,7 +46,7 @@
     border-radius: 10px;
     height: 250px;
     position: absolute;
-    top: 50px;
+    top: 100px;
 }
 
 .user-profile-info {
@@ -75,8 +75,15 @@
     fill: rgb(250, 249, 249);
 }
 
-.user-page-location-icon {
+.user-page-icons {
     fill: black;
+}
+
+.user-page-social-media-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2%;
 }
 
 .previous-commisions {
