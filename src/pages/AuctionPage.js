@@ -1,12 +1,91 @@
-import { useEffect } from "react";
-import {useHistory, useLocation} from "react-router-dom"
+import useFetch from "../customHooks/useFetch";
 
 const AuctionPage = (props) => {
-  const firstName = "Dennis";
-  const lastName = "Hasselgren";
-  const imageUrl = "/img/dennis.jpg";
-  const otherInfo = "Hemligt kär i Erik";
-  const competence = ["React", "Javascript", "Python"];
+  // const request = ({ endpoint, method, data }) => {
+  //   fetch(endpoint, {
+  //     body: JSON.stringify(data),
+  //     method,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  // };
+
+  // const getAuction = (data) => {
+  //   request({
+  //     endpoint: "http://localhost:6001/auctions",
+  //     method: "GET",
+  //     data,
+  //   });
+  // };
+
+  const { data: auctions } = useFetch("http://localhost:6001/auctions");
+
+  let auctionId,
+    startTime,
+    endTime,
+    openingPrice,
+    buyoutPrice,
+    currentBid,
+    userId = "";
+
+  auctions &&
+    auctions.map((auction) => {
+      if (auction.id === 1) {
+        startTime = auction.startTime;
+        endTime = auction.endTime;
+        openingPrice = auction.openingPrice;
+        buyoutPrice = auction.buyoutPrice;
+        currentBid = auction.currentBid;
+        userId = auction.userId;
+      }
+    });
+
+  // const getUser = (data) => {
+  //   request({
+  //     endpoint: "http://localhost:6001/users",
+  //     method: "GET",
+  //     data,
+  //   });
+  // };
+
+  const { data: users } = useFetch("http://localhost:6001/users");
+
+  let firstName,
+    lastName,
+    email,
+    imageUrl,
+    phone,
+    address,
+    zipCode,
+    town,
+    github,
+    linkedin,
+    otherInfo,
+    competence = "";
+
+  // users.map((user) => {
+  //   if (user.id === userId) {
+  //     firstName = user.firstName;
+  //     lastName = user.lastName;
+  //     email = user.email;
+  //     imageUrl = user.imageUrl;
+  //     phone = user.phone;
+  //     address = user.address;
+  //     zipCode = user.zipCode;
+  //     town = user.town;
+  //     github = user.github;
+  //     linkedin = user.linkedin;
+  //     otherInfo = user.otherInfo;
+  //     competence = user.competence;
+  //   }
+  // });
+
+  // const firstName = "Dennis";
+  // const lastName = "Hasselnöt";
+  // const imageUrl = "/img/dennis.jpg";
+  // const otherInfo = "Hemligt kär i Erik";
+  // const competence = ["React", "Javascript", "Python"];
 
   const SecondPage = props => {
     const location = useLocation();
@@ -29,10 +108,10 @@ const AuctionPage = (props) => {
           <div className="bidding__info">
             <div className="leading__offer">
               <label>Ledande bud</label>
-              <p>2656</p>
+              <p>{currentBid}</p>
             </div>
             <div className="end__time">
-              <label>Slutar 9 maj 19:53</label>
+              <label>{endTime}</label>
               <p> 4mån kvar</p>
             </div>
             <div className="number_of_bids">
@@ -41,7 +120,7 @@ const AuctionPage = (props) => {
             </div>
             <div className="butOut">
               <label>Köp ut</label>
-              <p></p>
+              <p>{buyoutPrice}</p>
             </div>
           </div>
           <label className="lowest__offer__tomake">
