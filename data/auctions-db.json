@@ -160,30 +160,6 @@
       "otherInfo": "Kan stå längre på händer än Erik",
       "competence": ["react.js", "js", "python"]
     }
-    {
-      "id": 6,
-      "firstName": "Daniel",
-      "lastName": "Frank",
-      "email": "whosthapimp@hotmail.com",
-      "password": "HyperNervoKostiskaDiafragmaKontraVibrationer",
-      "imageUrl": "/img/0x0.jpg",
-      "CV": "Hundgården",
-      "phone": "112",
-      "address": "Kastrullgatan",
-      "zipCode": 1337,
-      "town": "Pungpinan",
-      "links": [
-        {
-          "github": "https://github.com/"
-        },
-        {
-          "linkedin": "https://www.linkedin.com/"
-        }
-      ],
-      "otherInfo": "Gillar Hasselnötter och stjärnelever",
-      "competence": ["Javascript"]
-    }
-    
   ],
   "companies": [
     {

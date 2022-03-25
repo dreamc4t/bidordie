@@ -1,23 +1,24 @@
 import useFetch from "../customHooks/useFetch";
 
 const AuctionPage = (props) => {
-  // const request = ({ endpoint, method, data }) => {
-  //   fetch(endpoint, {
-  //     body: JSON.stringify(data),
-  //     method,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  // };
+  const request = ({ endpoint, method, data }) => {
+    fetch(endpoint, {
+      body: JSON.stringify(data),
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
 
-  // const getAuction = (data) => {
-  //   request({
-  //     endpoint: "http://localhost:6001/auctions",
-  //     method: "GET",
-  //     data,
-  //   });
-  // };
+  const UpdateAuction = (data) => {
+    request({
+      endpoint: "http://localhost:6001/auctions",
+      method: "GET",
+      data,
+    });
+  };
+
   const chosenId = props.chosenAuction;
 
   const { data: auctions } = useFetch("http://localhost:6001/auctions");
