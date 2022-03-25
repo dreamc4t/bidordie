@@ -7,6 +7,7 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 1
     },
     {
@@ -16,6 +17,7 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 2
     },
     {
@@ -25,6 +27,7 @@
       "openingPrice": 450,
       "buyoutPrice": 1000,
       "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 3
     },
     {
@@ -34,6 +37,7 @@
       "openingPrice": 650,
       "buyoutPrice": 1200,
       "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 4
     }
   ],

@@ -18,6 +18,7 @@ const AuctionPage = (props) => {
   //     data,
   //   });
   // };
+  const chosenId = props.chosenAuction;
 
   const { data: auctions } = useFetch("http://localhost:6001/auctions");
 
@@ -27,16 +28,18 @@ const AuctionPage = (props) => {
     openingPrice,
     buyoutPrice,
     currentBid,
+    timer,
     userId = 0;
 
   auctions &&
     auctions.map((auction) => {
-      if (auction.id === 4) {
+      if (auction.id === chosenId) {
         startTime = auction.startTime;
         endTime = auction.endTime;
         openingPrice = auction.openingPrice;
         buyoutPrice = auction.buyoutPrice;
         currentBid = auction.currentBid;
+        timer = auction.timer;
         userId = auction.userId;
       }
     });
@@ -93,11 +96,11 @@ const AuctionPage = (props) => {
           <div className="bidding__info">
             <div className="leading__offer">
               <label>Ledande bud</label>
-              <p>{currentBid}</p>
+              <p>{currentBid}kr/h</p>
             </div>
             <div className="end__time">
-              <label>{endTime}</label>
-              <p> 4mån kvar</p>
+              <label>Sluttid</label>
+              <p>{timer}</p>
             </div>
             <div className="number_of_bids">
               <label>Antal bud</label>
@@ -109,10 +112,10 @@ const AuctionPage = (props) => {
             </div>
           </div>
           <label className="lowest__offer__tomake">
-            Lägg 685kr/h eller mer
+            Lägg {currentBid + 10}kr/h eller mer
           </label>
           <div className="bid_container">
-            <input type="text"></input>
+            <input type="number" min={currentBid + 10}></input>
             <button type="submit">Lägg bud</button>
             <button>Like</button>
           </div>
