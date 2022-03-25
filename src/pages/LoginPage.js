@@ -42,7 +42,7 @@ const LoginPage = ({ idOfLoggedInUser, setIdOfLoggedInUser }) => {
 
     return(
         <div id="login-page">
-            {idOfLoggedInUser !== null && <Navigate to="/" replace={true} />}
+            {idOfLoggedInUser != null && <Navigate to="/" replace={true} />}
             <div id="login-container">
                 <h2>Log In</h2>
                 <form onSubmit={validateLogin}>

@@ -221,7 +221,7 @@ const BecomeAMember = () => {
                                 <InputField inpt={personInputs} type="text" />
                 <label htmlFor="password">Password*</label>
                 <br></br>
-                <input type="password" required name="password" />
+                <input type="password" required name="password" placeholder="Enter password*" />
                 </>
 
 
@@ -230,7 +230,7 @@ const BecomeAMember = () => {
                 <InputField inpt={companyInputs} type="text" />
                 <label htmlFor="password">Password*</label>
                 <br></br>
-                <input type="password" required name="password" />
+                <input type="password" required name="password" placeholder="Enter password*"/>
                 </>
                 
               )}
