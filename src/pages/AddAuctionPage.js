@@ -88,7 +88,7 @@ const AddAuctionPage = () => {
                         <input onChange={inputTextHandler} name="startTime" value={inputText.startTime} type="text"></input>
                     </div>
                     <div className="comment-container">
-                        <textarea className="comment" placeholder="Avrora eller Aurora eller Aphora eller Affe? Affe har aldrig varit mobbad för att hon var duktig på fotboll!"></textarea>
+                        <textarea className="comment" placeholder="..."></textarea>
                     </div>
                 </div>
                 <div className="form-right-side">

@@ -184,6 +184,30 @@
       "otherInfo": "Gillar Hasselnötter och stjärnelever",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
       "competence": ["Javascript"]
+    },
+    {
+      "id": 7,
+      "firstName": "Afrora",
+      "lastName": "Goxhuli",
+      "email": "afrora.goxhuli@hotmail.com",
+      "password": "123abc",
+      "imageUrl": "/img/afrora.jpeg",
+      "CV": "cv-url går här",
+      "phone": "05489320",
+      "address": "Persgatan 60",
+      "zipCode": 25222,
+      "town": "Helsingborg",
+      "links": [
+        {
+          "github": "https://github.com"
+        },
+        {
+          "linkedin": "https://www.linkedin.com/in/afrora-goxhuli/"
+        }
+      ],
+      "otherInfo": "Älskar promenader i skogen och stresshetsen i Stockholm",
+      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
+      "competence": ["React", "Javascript"]
     }
   ],
   "companies": [
