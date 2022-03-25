@@ -3,7 +3,9 @@ import SortBar from "../components/SortBar";
 import Auction from "../components/Auction";
 import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
+import { Navigate } from "react-router-dom";
 
+<<<<<<< Updated upstream
 const AuctionList = () => {
 
     /*ERIK KOD */
@@ -20,20 +22,41 @@ const AuctionList = () => {
     }, [])
     const [auctions, setAuctions] = useState ([])
 */
+=======
+const AuctionList = ({ setChosenAuction, chosenAuction }) => {
+
+    useEffect(() => {
+      setChosenAuction(-1)
+    }, [])
+>>>>>>> Stashed changes
 
     const { data: auctions, isLoading } = useFetch("http://localhost:6001/auctions");
 
     return (
+<<<<<<< Updated upstream
       <div className="auction-list">
+=======
+      <div className="auction-list" >
+        {chosenAuction != -1 && <Navigate to="auction-page" />} 
+>>>>>>> Stashed changes
         <SortBar />
         <div className="auction-container">
           {isLoading && <div> LOADING CONTENT....</div>}
           {auctions &&
             auctions.map((auction) => (
+<<<<<<< Updated upstream
               <Auction
                 key={auction.id}
                 auction={auction}
               />
+=======
+              <div className="auction-kort" key={auction.id}>
+                 
+                 <Auction auction={auction} setChosenAuction={setChosenAuction}/>
+
+                </div>
+
+>>>>>>> Stashed changes
             ))}
         </div>
       </div>

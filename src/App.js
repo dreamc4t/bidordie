@@ -23,8 +23,11 @@ function App() {
     console.log(idOfLoggedInUser)
   }, [idOfLoggedInUser]) //printar  i console id:t för user som är inloggad
 
+  const [chosenAuction, setChosenAuction] = useState(-1)
+
   return (
     <Router>
+<<<<<<< Updated upstream
         <Header />
         <main>
           <Routes>
@@ -81,6 +84,33 @@ function App() {
           </Routes>
         </main>
         <Footer />
+=======
+      <Header idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser}/>
+      <main>
+        <Routes>
+          {/*Pages go here as <Route>*/}
+          <Route exact path="/" element={<AuctionList setChosenAuction={setChosenAuction} chosenAuction={chosenAuction}/>} />
+          <Route path="/login" element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser}/>} />
+          <Route path="/become-a-member" element={<BecomeAMember />} />
+          <Route path="/new-auction" element={<AddAuctionPage />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/FAQ" element={<Faq />} />
+          <Route path="/auction-page" element={<AuctionPage chosenAuction={chosenAuction}/>} />
+          <Route
+            path="/google-play-store"
+            element={"https://play.google.com/store"}
+          />
+          <Route
+            path="/apple-store"
+            element={"https://www.apple.com/app-store/"}
+          />
+          <Route path="/facebook" element={"https://www.facebook.com"} />
+          <Route path="/instagram" element={"https://www.instagram.com"} />
+          <Route path="/twitter" element={"https://www.twitter.com"} />
+        </Routes>
+      </main>
+      <Footer />
+>>>>>>> Stashed changes
     </Router>
   );
 }
