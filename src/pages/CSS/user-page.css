@@ -71,6 +71,10 @@
     font-size: large;
 }
 
+.user-page-edit-button:hover {
+    background-color: rgb(75, 78, 83);
+}
+
 .user-page-edit-icon {
     fill: rgb(250, 249, 249);
 }
