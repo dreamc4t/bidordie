@@ -85,10 +85,10 @@ const AddAuctionPage = () => {
                     </div>
                     <div className="add-input-container">
                         <label>Start date:</label>
-                        <input onChange={inputTextHandler} name="startTime" value={inputText.startTime} type="text"></input>
+                        <input onChange={inputTextHandler} name="startTime" value={inputText.startTime} type="date"></input>
                     </div>
                     <div className="comment-container">
-                        <textarea className="comment" placeholder="Avrora eller Aurora eller Aphora eller Affe? Affe har aldrig varit mobbad för att hon var duktig på fotboll!"></textarea>
+                        <textarea className="comment" placeholder="Comment.."></textarea>
                     </div>
                 </div>
                 <div className="form-right-side">
@@ -98,7 +98,7 @@ const AddAuctionPage = () => {
                     </div>
                     <div className="add-input-container">
                         <label>End date:</label>
-                        <input onChange={inputTextHandler} name="endTime" value={inputText.endTime} type="text"></input>
+                        <input onChange={inputTextHandler} name="endTime" value={inputText.endTime} type="date"></input>
                     </div>
                     <div className="add-button-container">
                         <button type="submit" id="add-auction-button">Add Auction</button>
