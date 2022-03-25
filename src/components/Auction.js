@@ -4,13 +4,10 @@ import useFetch from "../customHooks/useFetch";
 
 const Auction = ({ auction, setChosenAuction }) => {
 
-<<<<<<< Updated upstream
-=======
     const handleOnClick = () => {
       setChosenAuction(auction.id)
     }
 
->>>>>>> Stashed changes
     const { data: users } = useFetch("http://localhost:6001/users");
 
     const auctionUser = null
@@ -22,11 +19,7 @@ const Auction = ({ auction, setChosenAuction }) => {
     if(auctionUser === null) console.log('Could not find a userID of auction')
 
     return (
-<<<<<<< Updated upstream
-        <div className="auction">
-=======
           <div className="auction" onClick={handleOnClick}>
->>>>>>> Stashed changes
             <div className="image">
                 <img src={auctionUser.imageUrl} alt= '' />
             </div>
@@ -36,18 +29,6 @@ const Auction = ({ auction, setChosenAuction }) => {
                     <p><GoLocation/>{auctionUser.town}</p>
                     <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
                 </div>
-<<<<<<< Updated upstream
-                
-                <div className="briefInfo">
-                    <p className="boldText">About me</p>
-                    <p>{auctionUser.otherInfo}</p>
-                    <p className="comp">Competence: {auctionUser.competence}</p>
-                </div>
-            </div>
-        </div>
-        
-        
-=======
                   <div className="briefInfo">
                       <p className="boldText">About me</p>
                       <p>{otherInfo}</p>
@@ -55,7 +36,6 @@ const Auction = ({ auction, setChosenAuction }) => {
                   </div>
               </div>
           </div>
->>>>>>> Stashed changes
     );
     
 }
