@@ -7,15 +7,11 @@ import { useNavigate } from "react-router-dom";
 import {useHistory, useLocation} from "react-router-dom"
 
 
-const Auction = ({ auction }) => {
-  const { data: users } = useFetch("http://localhost:6001/users");
+const Auction = ({ auction, setChosenAuction }) => {
 
-  let town,
-    firstName,
-    lastName,
-    imageUrl,
-    otherInfo,
-    competence = "";
+    const handleOnClick = () => {
+      setChosenAuction(auction.id)
+    }
 
   users &&
     users.map((user) => {
@@ -49,15 +45,16 @@ const Auction = ({ auction }) => {
           </p>
         </div>
 
-        <div className="briefInfo">
-          <p className="boldText">About me</p>
-          <p>{otherInfo}</p>
-          <p className="comp">Competence: {competence}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+                </div>
+                  <div className="briefInfo">
+                      <p className="boldText">About me</p>
+                      <p>{otherInfo}</p>
+                      <p className="comp">Competence: {competence}</p>
+                  </div>
+              </div>
+          </div>
+    );
+}
 
 /*firstName={auction.firstName}
 lastName={auction.lastName}
