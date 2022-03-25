@@ -7,6 +7,7 @@
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 1
     },
     {
@@ -15,6 +16,8 @@
       "endTime": "2022-05-29",
       "openingPrice": 500,
       "buyoutPrice": 1500,
+      "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 2
     },
     {
@@ -23,6 +26,8 @@
       "endTime": "2022-06-22",
       "openingPrice": 450,
       "buyoutPrice": 1000,
+      "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 3
     },
     {
@@ -31,15 +36,9 @@
       "endTime": "2022-11-29",
       "openingPrice": 650,
       "buyoutPrice": 1200,
+      "currentBid": 550,
+      "timer": "09-05-2022",
       "userId": 4
-    },
-    {
-      "id": 5,
-      "startTime": "2022-08-15",
-      "endTime": "2022-11-17",
-      "openingPrice": 700,
-      "buyoutPrice": 2000,
-      "userId": 5
     }
   ],
   "users": [
@@ -64,11 +63,7 @@
         }
       ],
       "otherInfo": "Kan stå på händer",
-      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": [
-        "React",
-        "Javascript"
-      ]
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 2,
@@ -91,11 +86,7 @@
         }
       ],
       "otherInfo": "Blev utkastad ur scouterna som ung",
-      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": [
-        "React",
-        "Javascript"
-      ]
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 3,
@@ -118,11 +109,7 @@
         }
       ],
       "otherInfo": "Har 2500 timmar i Rocket League",
-      "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": [
-        "React",
-        "Javascript"
-      ]
+      "competence": ["React", "Javascript"]
     },
     {
       "id": 4,
@@ -148,27 +135,30 @@
       "competence": ["React", "Javascript"]
     },
     {
-      "id": 5,
-      "firstName": "Afrora",
-      "lastName": "Goxhuli",
-      "email": "afrora.goxhuli@hotmail.com",
-      "password": "123abc",
-      "imageUrl": "/img/afrora.jpeg",
-      "CV": "cv-url går här",
-      "phone": "0769102906",
-      "address": "Persgatan 60",
-      "zipCode": 25222,
-      "town": "Helsingborg",
+      "id": "6b85e21c-c0bd-43c9-9b65-b1ac6fada6a6",
+      "firstName": "Dennis",
+      "lastName": "Hasselgren",
+      "email": "dennisjhasselgren@gmail.com",
+      "imageUrl": "/img/dennis.jpg",
+      "CV": "cv-uasdfasdfasdf här",
+      "phone": "0708991828",
+      "address": "Söderängen 7",
+      "zipCode": "23169",
+      "town": "Skegre",
+      "password": "910509910509",
       "links": [
         {
-          "github": "https://github.com/"
+          "github": "https://github.com/Lostflopp"
         },
         {
-          "linkedin": "https://www.linkedin.com/in/afrora-goxhuli-0b4a37224/"
+          "linkedin": "https://www.linkedin.com/in/dennis-hasselgren/"
+        },
+        {
+          "otherLinks": "https://feber.se/"
         }
       ],
-      "otherInfo": "Älskar promenader i naturen och stresshetsen i Stockholm",
-      "competence": ["Python", "Javascript"]
+      "otherInfo": "Kan stå längre på händer än Erik",
+      "competence": ["react.js", "js", "python"]
     }
     {
       "id": 6,
@@ -249,25 +239,6 @@
         }
       ],
       "otherInfo": ""
-    }
-  ],
-  "auctionHistory": [
-    {
-      "id": 1,
-      "companyName": "Microsoft",
-      "password": "123abc",
-      "orgNum": "456123465",
-      "imageUrl": "/img/erik.jpeg",
-      "phone": "123 22 333 654",
-      "address": "Hellstreet 666",
-      "zipCode": 21438,
-      "town": "Malmö",
-      "links": [
-        {
-          "webpage": "https://github.com/"
-        }
-      ],
-      "otherInfo": "Lite mjukt"
     }
   ]
 }
