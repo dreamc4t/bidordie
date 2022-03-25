@@ -90,7 +90,7 @@ function Faq () {
               <br></br>
               <input type="text" placeholder="Write your question here!"/>
               <br></br>
-              <button onClick={''}><FaEnvelope /> Submit</button>
+              <button onClick><FaEnvelope /> Submit</button>
             </p>
           </>}
           handleClose={togglePopup}
