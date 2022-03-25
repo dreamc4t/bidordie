@@ -153,11 +153,12 @@ display: flex;
     }
 
     .competences-div div {
-       display: flex;
-       
         margin: 0px;
     }
-    
+    .competences-div div div {
+        display: flex;
+
+    }
 
 
 

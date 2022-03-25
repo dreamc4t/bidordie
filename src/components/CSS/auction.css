@@ -6,12 +6,17 @@
     padding: 16px;
     border: 1px solid rgba(0,0,0,0.4);
     border-radius: 25px;
+    transform: scale(1.03);
+    cursor: pointer;
+    transition: width 2s, height 4s;
     
+}
+.auction:hover{
+    transition: width 2s, height 4s;
 }
 .info-container {
     display: flex;
     flex-direction: column;
-    
     flex:1 0 0;
 
 }
@@ -21,22 +26,23 @@
     margin-left: 10px;
     margin-right: 10px;
     border-bottom: 1px solid grey;
-
 }
+
 .personalInfo>p>svg{
     fill: black;
+    gap: 5px;
 }
+
 .personalInfo>p{
     display: flex;
     align-items: center;
-    gap: 8px;
+    
 }
 .boldText{
     font-weight: 600;
 }
 
 .image{
-    
     display: flex;
     align-items: center;
  
@@ -46,11 +52,60 @@
 }
 .briefInfo{
     text-align: left;
-    
     padding-left: 10px;
 }
 .comp{
     font-size: small;
     font-weight: 600;
+}
+.briefInfo>p>svg{
+    fill: black;
+}
+
+@media (max-width:500px) {
+
+    .auction{
+        display:flex;
+        align-items: left;
+        height: 100%;
+        margin:10px 5px 15px 20px;
+
+    }
+    .personalInfo{
+        display: flex;
+        gap: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-bottom: 1px solid grey;
+        text-align: center;
+        font-size: small;
+        display: inline;
+    }
+    .image{
+        display: flex;
+        align-items: left;
+        border-radius: 10px ;
+        float: left;
+        margin: 0 15px 0 0;
+    }
+    .briefInfo{
+        text-align: center;
+        padding-left: 10px;
+        
+        
+    }
+    .briefInfo>p>svg>path{
+        align-items: left;
+        padding-top: 30%;
+
+    }
+
+
+
+}
+
+@media (orientation:landscape) and (max-width:500px){
+
+
 
 }

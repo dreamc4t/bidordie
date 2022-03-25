@@ -18,7 +18,7 @@ const MyPage = () => {
           userLocation={user.town}
           userPhoneNumber={user.phone}
           userCV={user.CV}
-          userBio={user.otherInfo}
+          userBio={user.biography}
         />}
       <div className="previous-commisions">
           <UserPageMockAuctions />
