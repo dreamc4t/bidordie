@@ -30,6 +30,11 @@
   justify-content: space-between;
   padding: 0 5px 0 5px;
 }
+.butOut {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px 0 5px;
+}
 .lowest__offer__tomake {
   margin: 30px 0 30px 0;
 }
