@@ -10,7 +10,7 @@ const MyPage = ({loggedInUserID}) => {
   return (
     <div className="user-page-wrapper">
       {console.log("Hej hej hej", {loggedInUserID} )}
-      {loggedInUserID == null && < Navigate to="/" />}
+      {loggedInUserID == null && < Navigate to="/not-logged-in" />}
         {userLoading && <div> LOADING USER PAGE....</div>}
         {user && <UserPage
           userImage={user.imageUrl}

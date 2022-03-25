@@ -11,6 +11,7 @@ import Faq from "./pages/Faq";
 import UserPage from "./pages/UserPage";
 import MyPage from "./pages/MyPage";
 import AuctionPage from "./pages/AuctionPage";
+import NotLoggedInPage from "./pages/NotLoggedInPage";
 
 function App() {
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/FAQ" element={<Faq />} />
           <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser}/>} />
           <Route path="/auction-page" element={<AuctionPage chosenAuction={chosenAuction}/>} />
+          <Route path="/not-logged-in" element={<NotLoggedInPage />} />
           <Route
             path="/google-play-store"
             element={"https://play.google.com/store"}
