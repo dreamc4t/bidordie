@@ -1,6 +1,9 @@
 import {GoLocation} from "react-icons/go"
 import {GoPencil} from "react-icons/go"
-import {GoLogoGithub} from "react-icons/go"
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import {FaLinkedinIn} from "react-icons/fa"
 
 const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, userLocation, userPhoneNumber, userCV, userBio, userReferences, userPreviousAuctions}) => {
     return (
@@ -11,11 +14,12 @@ const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, us
           <img src="/img/erik.jpeg" className="profile-picture" />
           
         </div>
+        <div className="tempNameOMG">
         <div className='user-page-top'>
           <div className="user-profile-info">
             <h1>{userFirstName} {userLastName}</h1>
             <p>{userShortDescript}</p>
-            <p><GoLocation className="user-page-location-icon"/>{userLocation} - {userPhoneNumber}</p>
+            <p><GoLocation size={15} className="user-page-icons"/>{userLocation} - {userPhoneNumber}</p>
           </div>
           <div className="user-cv">
             {userCV}
@@ -27,7 +31,20 @@ const UserPage = ({userImage, userFirstName, userLastName, userShortDescript, us
         <div className="user-references">
           {userReferences}
         </div>
-        <div className="user-page-bottom">
+        </div>
+        <div className="user-page-social-media-links">
+          <a href="https://www.facebook.com" target="_blank">
+            <FaFacebook size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <FaInstagram size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <FaTwitter size={25} className="user-page-icons"/>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank">
+            <FaLinkedinIn size={25} className="user-page-icons"/>
+          </a>
         </div>
       </div>
     )

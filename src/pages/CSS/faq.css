@@ -18,7 +18,7 @@
 
 .faqs {
     width: 100%;
-    max-width: 768px;
+    max-width: 420px;
     margin: 0 auto;
     padding: 15px;
 }
@@ -81,10 +81,44 @@
 }
 
 .FAQ button {
+    cursor: pointer;
+    position: center;
+    padding: 4px 10px;
+    border: 1px solid white;
+    border-radius: 4px;
     background-color: rgb(28,36,53);
     color: white;
 }
 
+.FAQ button:hover {
+    background-color: rgba(47, 57, 80);
+}
+
+.FAQ input {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 7px 13px;
+    background-color: rgb(28,36,53);
+    color: white;
+}
+
+.FAQ input:hover {
+    background-color: rgb(47, 57, 80);
+}
+
+.FAQ p input {
+    border-radius: 5px;
+    padding: 7px 13px;
+    background-color: white;
+    color: rgb(28,36,53);
+}
+
 .FAQ p {
     font-size: large;
+}
+
+.FAQ b {
+    display: flex;
+    justify-content: center;
+    font-size: medium;
 }

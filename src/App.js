@@ -1,27 +1,22 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom"
-import { useState,useEffect } from "react";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
-import AddAuctionPage from "./pages/AddAuctionPage"; 
+import AddAuctionPage from "./pages/AddAuctionPage";
 import Faq from "./pages/Faq";
 import UserPage from "./pages/UserPage";
 import MyPage from "./pages/MyPage";
+import AuctionPage from "./pages/AuctionPage";
 
 function App() {
-
-  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null)
+  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
   useEffect(() => {
-    console.log(idOfLoggedInUser)
-  }, [idOfLoggedInUser]) //printar  i console id:t för user som är inloggad
+    console.log(idOfLoggedInUser);
+  }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
   const [chosenAuction, setChosenAuction] = useState(-1)
 
