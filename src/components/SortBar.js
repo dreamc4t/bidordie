@@ -1,9 +1,19 @@
+import {useState} from "react";
+
 
 
 const SortBar = () => {
 
-  
+  // const [sort, setSort] = useState("")
 
+  // sortHandler = (e) => {
+    
+  // }
+
+  // sortSubmit = (e) => {
+  //   e.preventDefault()
+
+  // }
 
   return (
     <form className="sortbar-form">
