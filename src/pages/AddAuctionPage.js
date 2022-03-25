@@ -33,7 +33,7 @@ const AddAuctionPage = () => {
             endTime: e.target.startTime.value,
             openingPrice: e.target.buyoutPrice.value,
             buyoutPrice: e.target.endTime.value,
-            userId: e.target.buyoutPrice.value
+            userId: 2
         }
 
         addAuction(newAuction)
