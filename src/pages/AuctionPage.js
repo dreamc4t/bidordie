@@ -27,11 +27,11 @@ const AuctionPage = (props) => {
     openingPrice,
     buyoutPrice,
     currentBid,
-    userId = "";
+    userId = 0;
 
   auctions &&
     auctions.map((auction) => {
-      if (auction.id === 1) {
+      if (auction.id === 4) {
         startTime = auction.startTime;
         endTime = auction.endTime;
         openingPrice = auction.openingPrice;
@@ -62,30 +62,25 @@ const AuctionPage = (props) => {
     github,
     linkedin,
     otherInfo,
-    competence = "";
+    competence = 0;
 
-  // users.map((user) => {
-  //   if (user.id === userId) {
-  //     firstName = user.firstName;
-  //     lastName = user.lastName;
-  //     email = user.email;
-  //     imageUrl = user.imageUrl;
-  //     phone = user.phone;
-  //     address = user.address;
-  //     zipCode = user.zipCode;
-  //     town = user.town;
-  //     github = user.github;
-  //     linkedin = user.linkedin;
-  //     otherInfo = user.otherInfo;
-  //     competence = user.competence;
-  //   }
-  // });
-
-  // const firstName = "Dennis";
-  // const lastName = "Hasselnöt";
-  // const imageUrl = "/img/dennis.jpg";
-  // const otherInfo = "Hemligt kär i Erik";
-  // const competence = ["React", "Javascript", "Python"];
+  users &&
+    users.map((user) => {
+      if (user.id === userId) {
+        firstName = user.firstName;
+        lastName = user.lastName;
+        email = user.email;
+        imageUrl = user.imageUrl;
+        phone = user.phone;
+        address = user.address;
+        zipCode = user.zipCode;
+        town = user.town;
+        github = user.github;
+        linkedin = user.linkedin;
+        otherInfo = user.otherInfo;
+        competence = user.competence;
+      }
+    });
 
   return (
     <div>
