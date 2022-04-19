@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
