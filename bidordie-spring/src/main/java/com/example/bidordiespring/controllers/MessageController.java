@@ -21,6 +21,6 @@ public class MessageController {
         FaqMessage message = new FaqMessage(m.getMessage(), m.getNameOfSender(), m.getEmailOfSender(), m.getPhone());
 
         messagesRepository.save(message);
-        return ResponseEntity.ok("Question has been sent");
+        return ResponseEntity.ok("Question has been sent!");
     }
 }
