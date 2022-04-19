@@ -3,12 +3,14 @@ import InputField from "../components/InputField";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
-import UserService from "../UserService";
 
 const API_URL_USERS = "http://localhost:8080/api/users";
 const API_URL_COMPANIES = "http://localhost:8080/api/companies"
 
 const BecomeAMember = () => {
+
+  const [view, setView] = useState("person-view");
+
   const personInputs = [
     { key: 1, label: "First name*" },
     { key: 2, label: "Last name*" },
@@ -62,7 +64,6 @@ const BecomeAMember = () => {
     { key: 5, label: "Python" },
   ];
 
-  const [view, setView] = useState("person-view");
 
   const createNewUser = (e) => {
 
@@ -90,7 +91,7 @@ const BecomeAMember = () => {
         firstName: e.target.firstname.value,
         lastName: e.target.lastname.value,
         email: e.target.email.value,
-        imageUrl: "/img/erik.jpeg",
+        imageUrl: e.target.profilepicture.value,
         CV: "cv-uasdfasdfasdf här",
         phone: e.target.telephonenumber.value,
         address: e.target.address.value,
@@ -105,6 +106,7 @@ const BecomeAMember = () => {
         competence: tempCompetence,
       };
   
+      console.log(e.target.profilepicture.files[0])
        addUser(newUser);
     };
 
@@ -157,6 +159,7 @@ const BecomeAMember = () => {
       companyInfo: e.target.companyinfo.value
     };
 
+    console.log(e.target.companylogo.files[0])
     addCompany(newCompany);
   };
 
