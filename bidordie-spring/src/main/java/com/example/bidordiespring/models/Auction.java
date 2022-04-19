@@ -2,15 +2,18 @@ package com.example.bidordiespring.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
+@Document(collection = "auctions")
 public class Auction {
 
     @Id
     private String auctionId;
+
     @NotBlank
     private Date startTimePeriod;
     @NotBlank
@@ -20,11 +23,10 @@ public class Auction {
     private String ownerId;
     @NotBlank
     private Double openingPrice;
-    private Double currentHighestBid;
-    private Double currentBid;
     @NotBlank
     private Double buyoutPrice;
-    private List<String> bidIdHistory;
+
+    private Bid currentHighestBid;
     private Date auctionStartTime;
     private Date auctionEndTime;
 
@@ -72,22 +74,6 @@ public class Auction {
         this.openingPrice = openingPrice;
     }
 
-    public Double getCurrentHighestBid() {
-        return currentHighestBid;
-    }
-
-    public void setCurrentHighestBid(Double currentHighestBid) {
-        this.currentHighestBid = currentHighestBid;
-    }
-
-    public Double getCurrentBid() {
-        return currentBid;
-    }
-
-    public void setCurrentBid(Double currentBid) {
-        this.currentBid = currentBid;
-    }
-
     public Double getBuyoutPrice() {
         return buyoutPrice;
     }
@@ -96,12 +82,12 @@ public class Auction {
         this.buyoutPrice = buyoutPrice;
     }
 
-    public List<String> getBidIdHistory() {
-        return bidIdHistory;
+    public Bid getcurrentHighestBid() {
+        return this.currentHighestBid;
     }
 
-    public void setBidIdHistory(List<String> bidIdHistory) {
-        this.bidIdHistory = bidIdHistory;
+    public void setCurrentHighestBid(Bid bid) {
+        this.currentHighestBid = bid;
     }
 
     public Date getAuctionStartTime() {

@@ -32,7 +32,4 @@ public class UserController {
         return ResponseEntity.ok("Gytt med ny user");
     }
 
-
-
-
 }
