@@ -1,4 +1,4 @@
-
+import AuctionService from "../services/AuctionService";
 import {useState} from "react"
 import { v4 as uuidv4 } from 'uuid';
 
@@ -21,12 +21,11 @@ const AddAuctionPage = () => {
             buyoutPrice: e.target.buyoutPrice.value,
             ownerId: 12,
             endTime: e.target.endtime.value,
-
         }).then(() => {
-          setInputText("")
-        })
+          setInputText("")}
+        )
       };
-    }
+    
 
     const inputTextHandler = (event) => {
         setInputText(event.target.value)
