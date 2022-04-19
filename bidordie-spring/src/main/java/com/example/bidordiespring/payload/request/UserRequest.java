@@ -1,16 +1,8 @@
-package com.example.bidordiespring.models;
-
-import org.springframework.data.annotation.Id;
+package com.example.bidordiespring.payload.request;
 
 import javax.validation.constraints.NotBlank;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "users")
-public class User {
-
-    @Id
-    private String id;
-
+public class UserRequest {
     @NotBlank
     private String firstName;
     @NotBlank
@@ -32,38 +24,6 @@ public class User {
     private String biography;
     private String [] competence;
     private String [] auctionsId;
-
-
-    public User() {
-    }
-
-    public User(String firstName, String lastName, String email, String password, String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence, String[] auctionsId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.imageUrl = imageUrl;
-        this.cvUrl = cvUrl;
-        this.phone = phone;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.town = town;
-        this.githubLink = githubLink;
-        this.linkedinLink = linkedinLink;
-        this.otherLinks = otherLinks;
-        this.otherInfo = otherInfo;
-        this.biography = biography;
-        this.competence = competence;
-        this.auctionsId = auctionsId;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

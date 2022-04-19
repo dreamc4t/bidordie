@@ -1,90 +1,104 @@
 {
     "auctions": [
         {
-            "_id": {
+            "id": {
                 "$oid": "625e6545588e2de6f0c339be"
             },
-            "start-time-period": {
+            "startTimePeriod": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
-            "end-time-period": {
+            "endTimePeriod": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
-            "opening-price": 1,
-            "buyout-price": 2,
-            "current-bid": 1,
-            "auction-start-time": {
+            "openingPrice": 1,
+            "buyoutPrice": 2,
+            "currentBid": 1,
+            "auctionStartTime": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
-            "auction-end-time": {
+            "auctionEndTime": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
-            "owner-auction-id": "1",
-            "current-highest-bidder-id": "1",
-            "bid-id-history": ["asdfasd12341234"]
+            "ownerAuctionId": "1",
+            "currentHighestBidderId": "1",
+            "bidIdHistory": ["asdfasd12341234", "asdasd123"]
         }
     ],
     "users": [ 
         {
-            "_id": {
-                "$oid": "625e66a9588e2de6f0c339c1"
-            },
-            "first-name": "erik",
-            "last-name": "sund",
-            "email": "erik@77.se",
-            "password": "asd",
-            "image-url": "hptt/asd.se",
-            "cv-url": "hptt/asd.se",
-            "phone": "112",
-            "address": "gatan 666",
-            "zipcode": "1337",
+            "id": "625e94f8ab2bb82fa88775e6",
+            "firstName": "erik ",
+            "lastName": "sund",
+            "email": "asdasdasd@77.se",
+            "password": "123",
+            "imageUrl": "http/bild.com",
+            "cvUrl": "http.cv/hej",
+            "phone": "1122",
+            "address": "gaasdtan 666",
+            "zipCode": "21411",
             "town": "malmö",
-            "links": ["linkedin", "github"],
-            "other-info": "",
-            "biography": "",
-            "competence": ["react", "javascript", "C#", "pyhton", "java"],
-            "auctions-id": []
+            "githubLink": "github.com",
+            "linkedinLink": "linkedIn.com",
+            "otherLinks": [
+                "facebook.com",
+                "lemonparty.org"
+            ],
+            "otherInfo": "mer info bla bla",
+            "biography": "hej he jhej jak heter erek ",
+            "competence": [
+                "react",
+                "javascript",
+                "C#",
+                "pyhton"
+            ],
+            "auctionsId": [
+                "123",
+                "asd123",
+                "vvv1"
+            ]
         }
     ],
     "companies": [
         {
-            "_id": {
-                "$oid": "625e66a9588e2de6f0c339c1"
-            },
-            "company-name": "microsoft",
-            "org-nr": "12332132",
-            "email": "microsoft@77.se",
-            "password": "asd",
-            "image-url": "hptt/asd.se",
-            "phone": "112",
-            "address": "gatan 666",
-            "zipcode": "1337",
+            "id": "625e9479ab2bb82fa88775e5",
+            "companyName": "bidordie AB ",
+            "orgNr": "123123123-321123",
+            "email": "biodordie@bidoeio.se",
+            "password": "123",
+            "imageUrl": "http/bild.com",
+            "phone": "07071122",
+            "address": "gaatan 1337",
+            "zipCode": "21411",
             "town": "malmö",
-            "links": ["webpage", "linkedin"],
-            "company-info": ""
+            "webpage": "linkedIn.com",
+            "otherLinks": [
+                "lemonparty.org",
+                "ingarsgram.com"
+            ],
+            "companyInfo": "mer info bla bla"
         }
     ],
     "bids": [
         {
-            "_id": {
+            "id": {
                 "$oid": "625e68ce588e2de6f0c339cd"
             },
-            "time-of-bid": {
+            "timeOfBid": {
                 "$date": "1991-08-31T22:00:00.000Z"
             },
-            "bidder-id": "123",
-            "auction-id": "2",
+            "bidderId": "123",
+            "auctionId": "2",
             "amount": 123
         }
     ],
     "messages": [
         {
-            "_id": {
+            "id": {
                 "$oid": "625e695e588e2de6f0c339d8"
             },
             "message": "hej vad heter ni????",
-            "email-of-sender": "noob@hej.se",
-            "name-of-sender": "erik",
+            "emailOfSender": "noob@hej.se",
+            "nameOfSender": "erik",
             "phone": "123456"
         }
     ]
