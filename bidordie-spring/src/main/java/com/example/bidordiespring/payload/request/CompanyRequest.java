@@ -1,7 +1,5 @@
 package com.example.bidordiespring.payload.request;
 
-import org.springframework.data.annotation.Id;
-
 import javax.validation.constraints.NotBlank;
 
 public class CompanyRequest {
