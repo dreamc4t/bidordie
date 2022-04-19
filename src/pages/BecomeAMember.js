@@ -1,9 +1,12 @@
 import OtherLoginOption from "../components/OtherLoginOption";
-import { Rating } from "react-simple-star-rating";
 import InputField from "../components/InputField";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import UserService from "../UserService";
+
+const API_URL_USERS = "http://localhost:8080/api/users";
+const API_URL_COMPANIES = "http://localhost:8080/api/companies"
 
 const BecomeAMember = () => {
   const personInputs = [
@@ -31,7 +34,7 @@ const BecomeAMember = () => {
   const personLinks = [
     { key: 1, label: "Link to github" },
     { key: 2, label: "Link to linkedin" },
-    { key: 3, label: "Other links" },
+    { key: 3, label: "Other links" }
   ];
 
   const companyLinks = [
@@ -50,6 +53,7 @@ const BecomeAMember = () => {
     { key: 2, label: "Other files to attach" },
   ];
 
+
   const personCompetences = [
     { key: 1, label: "Java" },
     { key: 2, label: "C#" },
@@ -59,6 +63,51 @@ const BecomeAMember = () => {
   ];
 
   const [view, setView] = useState("person-view");
+
+  const createNewUser = (e) => {
+
+      let tempCompetence = [];
+      if (e.target.javaComp.checked === true) {
+        tempCompetence.push("Java");
+      }
+      if (e.target.javascriptComp.checked === true) {
+        tempCompetence.push("Javascript");
+      }
+      if (e.target.cComp.checked === true) {
+        tempCompetence.push("C#");
+      }
+      if (e.target.reactComp.checked === true) {
+        tempCompetence.push("React");
+      }
+      if (e.target.pythonComp.checked === true) {
+        tempCompetence.push("Python");
+      } 
+  
+  
+      console.log("Creating new user..");
+      const newUser = {
+        id: uuidv4(),
+        firstName: e.target.firstname.value,
+        lastName: e.target.lastname.value,
+        email: e.target.email.value,
+        imageUrl: "/img/erik.jpeg",
+        CV: "cv-uasdfasdfasdf här",
+        phone: e.target.telephonenumber.value,
+        address: e.target.address.value,
+        zipCode: e.target.zipcode.value,
+        town: e.target.town.value,
+        password: e.target.password.value,
+        githubLink: e.target.linktogithub.value,
+        linkedinLink: e.target.linktolinkedin.value,
+        otherLinks: [e.target.otherlinks.value],
+        otherInfo: e.target.otherinfo.value,
+        biography: e.target.biography.value,
+        competence: tempCompetence,
+      };
+  
+       addUser(newUser);
+    };
+
 
   /* DATABAS EVENT/ADD/HANTERING */
   const request = ({ endpoint, method, data }) => {
@@ -71,9 +120,10 @@ const BecomeAMember = () => {
     });
   };
 
+
   const addUser = (data) => {
     request({
-      endpoint: "http://localhost:6001/users",
+      endpoint:`${API_URL_USERS}/new`,
       method: "POST",
       data,
     });
@@ -81,75 +131,30 @@ const BecomeAMember = () => {
 
   const addCompany = (data) => {
     request({
-      endpoint: "http://localhost:6001/companies",
+      endpoint: `${API_URL_COMPANIES}/new`,
       method: "POST",
       data,
     });
   };
 
-  const createNewUser = (e) => {
-
-    let tempCompetence = []
-    if (e.target.javaComp.checked ===true ) {
-      tempCompetence.push('Java')
-    } 
-    if (e.target.javascriptComp.checked ===true ) {
-      tempCompetence.push('Javascript')
-    } 
-    if (e.target.cComp.checked ===true ) {
-      tempCompetence.push('C#')
-    } 
-    if (e.target.reactComp.checked ===true ) {
-      tempCompetence.push('React')
-    } 
-    if (e.target.pythonComp.checked ===true ) {
-      tempCompetence.push('Python')
-    } 
-
-
-    console.log("Creating new user..");
-    console.log(e.target.profilepicture.value);
-    const newUser = {
-      id: uuidv4(),
-      firstName: e.target.firstname.value,
-      lastName: e.target.lastname.value,
-      imageUrl: "/img/erik.jpeg",
-      CV: "cv-uasdfasdfasdf här",
-      phone: e.target.telephonenumber.value,
-      address: e.target.address.value,
-      zipCode: e.target.zipcode.value,
-      town: e.target.town.value,
-      password: e.target.password.value,
-
-      links: [
-        { github: e.target.linktogithub.value },
-        { linkedin: e.target.linktolinkedin.value },
-        { otherLinks: e.target.otherlinks.value },
-      ],
-      otherInfo: e.target.otherinfo.value,
-      competence: tempCompetence
-    };
-
-     addUser(newUser);
-  };
+ 
 
   const createNewCompany = (e) => {
     console.log("Creating new company..");
     const newCompany = {
       id: uuidv4(),
       companyName: e.target.companyname.value,
-      orgNum: e.target.orgnumber.value,
+      orgNr: e.target.orgnumber.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
       imageUrl: "/img/erik.jpeg",
       phone: e.target.telephonenumber.value,
       address: e.target.address.value,
       zipCode: e.target.zipcode.value,
       town: e.target.town.value,
-      password: e.target.password.value,
-      links: [
-        { github: "https://github.com/" },
-        { linkedin: "https://www.linkedin.com/in/erik-sund-25ab87b0/" },
-      ],
-      otherInfo: e.target.otherinfo.value,
+      webpage: e.target.linktowebpage.value,
+      otherLinks: [e.target.otherlinks.value],
+      companyInfo: e.target.companyinfo.value
     };
 
     addCompany(newCompany);
@@ -170,6 +175,8 @@ const BecomeAMember = () => {
   };
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
+
+  
 
   return (
     <div id="become-a-member-div">
@@ -282,8 +289,10 @@ const BecomeAMember = () => {
               ) : (
                 <></>
               )}
-              <div>
-                <label>Other info:</label>
+              
+                {view === "person-view" ? 
+                <div>
+                <label>Other info:</label>  
                 <br></br>
                 <input
                   className="other-info-field"
@@ -291,7 +300,28 @@ const BecomeAMember = () => {
                   placeholder="Type other info here"
                   name="otherinfo"
                 ></input>
-              </div>
+                 <input
+                  className="other-info-field"
+                  type="text"
+                  placeholder="Biography "
+                  name="biography"
+                ></input>
+                </div>
+                :
+                <div>
+
+                <label>Company info:</label> 
+                <br></br>
+                <input
+                  className="other-info-field"
+                  type="text"
+                  placeholder="Type company info here"
+                  name="companyinfo"
+                ></input>
+                </div>
+                }
+         
+              
             </div>
           </div>
           <div className="submit-button-div">
