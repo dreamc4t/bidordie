@@ -29,6 +29,8 @@ public class UserController {
         return userRepository.findById(id);
     }
 
+    public String deleteUser(@PathVariable String id) {return userService.deleteUser(id)}
+
 
     @PostMapping("/new")
     public ResponseEntity<?> newUser(@RequestBody UserRequest u) {
