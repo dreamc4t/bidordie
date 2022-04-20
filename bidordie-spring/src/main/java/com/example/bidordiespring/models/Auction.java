@@ -19,27 +19,45 @@ public class Auction {
     @NotBlank
     private Date endTimePeriod;
     @NotBlank
-    @DBRef
-    private String ownerId;
-    @NotBlank
     private Double openingPrice;
     @NotBlank
     private Double buyoutPrice;
 
-    private Bid currentHighestBid;
     private Date auctionStartTime;
     private Date auctionEndTime;
 
+    private double currentHighestBid;
+    private String highestBidderId;
+    private Date timeOfBid;
 
-    public Auction() {
-    }
-
-    public Auction(Date startTimePeriod, Date endTimePeriod, String ownerId, Double openingPrice, Double buyoutPrice) {
+    public Auction(Date startTimePeriod, Date endTimePeriod, Double openingPrice, Double buyoutPrice, Date auctionEndTime) {
         this.startTimePeriod = startTimePeriod;
         this.endTimePeriod = endTimePeriod;
-        this.ownerId = ownerId;
         this.openingPrice = openingPrice;
         this.buyoutPrice = buyoutPrice;
+
+        this.auctionStartTime = new Date();
+        this.auctionEndTime = auctionEndTime;
+
+        this.currentHighestBid = 0;
+        this.highestBidderId = null;
+        this.timeOfBid = null;
+    }
+
+    public String getHighestBidderId() {
+        return highestBidderId;
+    }
+
+    public void setHighestBidderId(String highestBidderId) {
+        this.highestBidderId = highestBidderId;
+    }
+
+    public Date getTimeOfBid() {
+        return timeOfBid;
+    }
+
+    public void setTimeOfBid(Date timeOfBid) {
+        this.timeOfBid = timeOfBid;
     }
 
     public Date getStartTimePeriod() {
@@ -58,14 +76,6 @@ public class Auction {
         this.endTimePeriod = endTimePeriod;
     }
 
-    public String getOwnerAuctionId() {
-        return ownerId;
-    }
-
-    public void setOwnerAuctionId(String ownerAuctionId) {
-        this.ownerId = ownerAuctionId;
-    }
-
     public Double getOpeningPrice() {
         return openingPrice;
     }
@@ -82,11 +92,11 @@ public class Auction {
         this.buyoutPrice = buyoutPrice;
     }
 
-    public Bid getcurrentHighestBid() {
+    public double getcurrentHighestBid() {
         return this.currentHighestBid;
     }
 
-    public void setCurrentHighestBid(Bid bid) {
+    public void setCurrentHighestBid(double bid) {
         this.currentHighestBid = bid;
     }
 
