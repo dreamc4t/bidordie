@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import FAQfunctions from "../components/FAQfunctions";
 import PopUp from "../components/PopUp";
+import FaqMessageService from "../services/FaqMessageService";
 
 function Faq () {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [allmessages, setAllmessages] = useState([]);
+  const [messages, setMessages] = useState([]);
+  
+  useEffect(() => {
+    getAllMessages();
+  }, [])
+
+  const getAllMessages = () => {
+    FaqMessageService.getAllMessages().then((response) => {
+      setAllmessages(response.data);
+      console.log(response.data);
+    })
+  }
+
+  useEffect(() => {
+    createMessage();
+  }, [])
+
+  const createMessage = () => {
+    FaqMessageService.createMessage().then((response) => {
+      setMessages(response.data);
+      console.log(response.data);
+    })
+  }
  
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -96,6 +121,15 @@ function Faq () {
           handleClose={togglePopup}
         />}
         <br></br>
+        <p>Newly submitted questions</p>
+            {allmessages.map((messages) => (
+              <div className="mess" key={messages.id}>
+                <p>{messages.nameOfSender}</p>
+                <p>{messages.phone}</p>
+                <p>{messages.emailOfSender}</p>
+                <p>{messages.message}</p>
+              </div>
+            ))}
         <Link to="/">
           <FaArrowLeft size={30} />
         </Link>

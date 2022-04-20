@@ -5,14 +5,14 @@ import javax.validation.constraints.NotBlank;
 public class MessageRequest {
 
     @NotBlank
-    private String message;
-    @NotBlank
-    private String emailOfSender;
-    @NotBlank
     private String nameOfSender;
     @NotBlank
     private String phone;
-
+    @NotBlank
+    private String emailOfSender;
+    @NotBlank
+    private String message;
+    
     public String getMessage() {
         return message;
     }

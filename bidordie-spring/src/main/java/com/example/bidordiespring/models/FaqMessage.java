@@ -11,15 +11,15 @@ public class FaqMessage {
     private String id;
 
     @NotBlank
-    private String message;
-    @NotBlank
-    private String emailOfSender;
-    @NotBlank
     private String nameOfSender;
     @NotBlank
     private String phone;
+    @NotBlank
+    private String emailOfSender;
+    @NotBlank
+    private String message;
 
-    public FaqMessage(String message, String emailOfSender, String nameOfSender, String phone) {
+    public FaqMessage(String nameOfSender, String phone, String emailOfSender, String message) {
         this.message = message;
         this.emailOfSender = emailOfSender;
         this.nameOfSender = nameOfSender;
