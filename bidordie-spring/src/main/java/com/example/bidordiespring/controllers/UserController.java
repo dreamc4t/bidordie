@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -23,9 +24,9 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/getByName{name}")
-    public User getUserByName(@PathVariable String name) {
-        return userRepository.getUserByName(name);
+    @GetMapping("/getById/{id}")
+    public Optional<User> getUserById(@PathVariable String id) {
+        return userRepository.findById(id);
     }
 
 
