@@ -24,7 +24,6 @@ public class Auction {
     private Double buyoutPrice;
 
     private Date auctionStartTime;
-    @NotBlank
     private Date auctionEndTime;
 
     private double currentHighestBid;

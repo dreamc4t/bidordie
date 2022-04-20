@@ -44,7 +44,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence, String[] auctionsId) {
+    public User(String firstName, String lastName, String email, String password, String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

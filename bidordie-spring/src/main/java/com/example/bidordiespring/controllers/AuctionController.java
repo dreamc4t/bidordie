@@ -1,6 +1,5 @@
 package com.example.bidordiespring.controllers;
 
-
 import com.example.bidordiespring.models.Auction;
 import com.example.bidordiespring.models.User;
 import com.example.bidordiespring.payload.request.BidRequest;
@@ -18,7 +17,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

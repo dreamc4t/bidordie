@@ -1,6 +1,9 @@
 package com.example.bidordiespring.payload.request;
 
+import com.example.bidordiespring.models.Auction;
+
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 public class UserRequest {
     @NotBlank
@@ -23,7 +26,7 @@ public class UserRequest {
     private String otherInfo;
     private String biography;
     private String [] competence;
-    private String [] auctionsId;
+    private Set<Auction> auctions;
 
     public String getFirstName() {
         return firstName;
@@ -153,11 +156,11 @@ public class UserRequest {
         this.competence = competence;
     }
 
-    public String[] getAuctionsId() {
-        return auctionsId;
+    public Set<Auction> getAuctions() {
+        return this.auctions;
     }
 
-    public void setAuctionsId(String[] auctionsId) {
-        this.auctionsId = auctionsId;
+    public void setAuctions(Set<Auction> auctions) {
+        this.auctions = auctions;
     }
 }
