@@ -3,7 +3,12 @@ package com.example.bidordiespring.models;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Document(collection = "users")
 public class User {
@@ -31,7 +36,9 @@ public class User {
     private String otherInfo;
     private String biography;
     private String [] competence;
-    private String [] auctionsId;
+
+    @DBRef
+    private Set<Auction> auctions; // Variabeln bör ha samma namn som den collection den refererar till i databasen.
 
 
     public User() {
@@ -54,7 +61,11 @@ public class User {
         this.otherInfo = otherInfo;
         this.biography = biography;
         this.competence = competence;
-        this.auctionsId = auctionsId;
+        this.auctions = new HashSet<>();
+    }
+
+    public void addAuction(Auction auction) {
+        this.auctions.add(auction);
     }
 
     public String getId() {
@@ -193,11 +204,11 @@ public class User {
         this.competence = competence;
     }
 
-    public String[] getAuctionsId() {
-        return auctionsId;
+    public Set<Auction> getAuctions() {
+        return auctions;
     }
 
-    public void setAuctionsId(String[] auctionsId) {
-        this.auctionsId = auctionsId;
+    public void setAuctions(Set<Auction> auctions) {
+        this.auctions = auctions;
     }
 }
