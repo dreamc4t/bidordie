@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL_AUTH = "http://localhost:8080/api/auth";
+const API_URL_AUTH = "http://localhost:8080/api/users";
 
 class AuthService {
   login(loginRequest) {
@@ -8,7 +8,11 @@ class AuthService {
   }
 
   getUserById(userId) {
-      return axios.get(`${API_URL_AUTH}/`)
+      return axios.get(`${API_URL_AUTH}/getUserById/${userId}`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   }
 }
 

@@ -27,11 +27,6 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/getUserById/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userRepository.findUserById(id);
-    }
-
     @PutMapping("/editUserById/{id}")
     public ResponseEntity<?> editUser(@PathVariable("id") String id, @RequestBody UserRequest userRequest) {
         Optional<User> userData = userRepository.findById(id);

@@ -17,7 +17,6 @@ import AuctionService from "./services/AuctionService";
 function App() {
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
   useEffect(() => {
-    console.log(idOfLoggedInUser);
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
   const [chosenAuction, setChosenAuction] = useState(-1)
@@ -25,7 +24,6 @@ function App() {
   const getAllAuctions= () => {
     AuctionService.getAllAuctions().then(function(response){
       setChosenAuction(response.data)
-      console.log(response.data)
     });
   }
 
