@@ -15,27 +15,27 @@ public class Auction {
     private String auctionId;
 
     @NotBlank
-    private Date startTimePeriod;
+    private Date availablePeriodStart;
     @NotBlank
-    private Date endTimePeriod;
+    private Date availablePeriodEnd;
     @NotBlank
     private Double openingPrice;
     @NotBlank
     private Double buyoutPrice;
 
     private Date auctionStartTime;
+    @NotBlank
     private Date auctionEndTime;
 
     private double currentHighestBid;
     private String highestBidderId;
     private Date timeOfBid;
 
-    public Auction(Date startTimePeriod, Date endTimePeriod, Double openingPrice, Double buyoutPrice, Date auctionEndTime) {
-        this.startTimePeriod = startTimePeriod;
-        this.endTimePeriod = endTimePeriod;
+    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime, String ownerId) {
+        this.availablePeriodStart = availablePeriodStart;
+        this.availablePeriodEnd = availablePeriodEnd;
         this.openingPrice = openingPrice;
         this.buyoutPrice = buyoutPrice;
-
         this.auctionStartTime = new Date();
         this.auctionEndTime = auctionEndTime;
 
@@ -44,36 +44,28 @@ public class Auction {
         this.timeOfBid = null;
     }
 
-    public String getHighestBidderId() {
-        return highestBidderId;
+    public String getAuctionId() {
+        return auctionId;
     }
 
-    public void setHighestBidderId(String highestBidderId) {
-        this.highestBidderId = highestBidderId;
+    public void setAuctionId(String auctionId) {
+        this.auctionId = auctionId;
     }
 
-    public Date getTimeOfBid() {
-        return timeOfBid;
+    public Date getAvailablePeriodStart() {
+        return availablePeriodStart;
     }
 
-    public void setTimeOfBid(Date timeOfBid) {
-        this.timeOfBid = timeOfBid;
+    public void setAvailablePeriodStart(Date availablePeriodStart) {
+        this.availablePeriodStart = availablePeriodStart;
     }
 
-    public Date getStartTimePeriod() {
-        return startTimePeriod;
+    public Date getAvailablePeriodEnd() {
+        return availablePeriodEnd;
     }
 
-    public void setStartTimePeriod(Date startTimePeriod) {
-        this.startTimePeriod = startTimePeriod;
-    }
-
-    public Date getEndTimePeriod() {
-        return endTimePeriod;
-    }
-
-    public void setEndTimePeriod(Date endTimePeriod) {
-        this.endTimePeriod = endTimePeriod;
+    public void setAvailablePeriodEnd(Date availablePeriodEnd) {
+        this.availablePeriodEnd = availablePeriodEnd;
     }
 
     public Double getOpeningPrice() {
@@ -114,5 +106,21 @@ public class Auction {
 
     public void setAuctionEndTime(Date auctionEndTime) {
         this.auctionEndTime = auctionEndTime;
+    }
+
+    public String getHighestBidderId() {
+        return highestBidderId;
+    }
+
+    public void setHighestBidderId(String highestBidderId) {
+        this.highestBidderId = highestBidderId;
+    }
+
+    public Date getTimeOfBid() {
+        return timeOfBid;
+    }
+
+    public void setTimeOfBid(Date timeOfBid) {
+        this.timeOfBid = timeOfBid;
     }
 }
