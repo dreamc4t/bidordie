@@ -2,6 +2,7 @@ package com.example.bidordiespring.controllers;
 
 
 import com.example.bidordiespring.models.Auction;
+import com.example.bidordiespring.models.User;
 import com.example.bidordiespring.payload.request.BidRequest;
 import com.example.bidordiespring.payload.request.AuctionRequest;
 import com.example.bidordiespring.payload.response.MessageResponse;
@@ -16,6 +17,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -25,6 +27,11 @@ public class AuctionController {
 
     @Autowired
     AuctionRepository auctionRepository;
+
+    @GetMapping("/all")
+    public List<Auction> getAllAuctions() {
+        return auctionRepository.findAll();
+    }
 
     @GetMapping("/getAuctionById/{id}")
     public Auction getAuctionById(@PathVariable String id) {

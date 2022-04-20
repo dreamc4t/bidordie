@@ -9,7 +9,7 @@ class AuctionService {
     }
 
     getAllAuctions() {
-        return axios. get(`${API_URL_AUCTIONS}/all`);
+        return axios.get(`${API_URL_AUCTIONS}/all`);
     }
 
 
