@@ -23,6 +23,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/getByName{name}")
+    public User getUserByName(@PathVariable String name) {
+        return userRepository.getUserByName(name);
+    }
+
+
     @PostMapping("/new")
     public ResponseEntity<?> newUser(@RequestBody UserRequest u) {
 
