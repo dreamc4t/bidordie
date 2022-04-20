@@ -31,7 +31,7 @@ public class Auction {
     private String highestBidderId;
     private Date timeOfBid;
 
-    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime, String ownerId) {
+    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime) {
         this.availablePeriodStart = availablePeriodStart;
         this.availablePeriodEnd = availablePeriodEnd;
         this.openingPrice = openingPrice;

@@ -32,8 +32,8 @@ public class AuctionController {
             return auctionRepository.findById(id).orElseThrow();
         } catch (Exception e) {
             System.out.println("getAuctionById error was: " + e);
-            return null;
         }
+        return null;
     }
 
     @PostMapping("/placeBid/{id}")
@@ -62,14 +62,12 @@ public class AuctionController {
         Date availablePeriodEnd = null;
         Double openingPrice = null;
         Double buyoutPrice = null;
-        String ownerId = "";
         Date auctionEndTime = null;
         try{
             availablePeriodStart = new SimpleDateFormat("yyyy-MM-dd").parse(aReq.getAvailablePeriodStart());
             availablePeriodEnd = new SimpleDateFormat("yyyy-MM-dd").parse(aReq.getAvailablePeriodEnd());
             openingPrice = aReq.getOpeningPrice();
             buyoutPrice = aReq.getBuyoutPrice();
-            ownerId = aReq.getOwnerId();
             auctionEndTime = new SimpleDateFormat("yyyy-MM-dd").parse(aReq.getAuctionEndTime());
 
         }catch (Exception e){
@@ -77,7 +75,7 @@ public class AuctionController {
         }
 
 
-        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime, ownerId);
+        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime);
         auctionRepository.save(auction);
         return ResponseEntity.ok(new MessageResponse("Auction created succesfully"));
     }
