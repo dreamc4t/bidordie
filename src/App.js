@@ -35,14 +35,14 @@ function App() {
       <main>
         <Routes>
           {/*Pages go here as <Route>*/}
-          <Route exact path="/" element={<AuctionList setChosenAuction={setChosenAuction} chosenAuction={chosenAuction}/>} />
-          <Route path="/login" element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser}/>} />
+          <Route exact path="/" element={<AuctionList setChosenAuction={setChosenAuction} chosenAuction={chosenAuction} />} />
+          <Route path="/login" element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser} />} />
           <Route path="/become-a-member" element={<BecomeAMember />} />
           <Route path="/new-auction" element={<AddAuctionPage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
-          <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser}/>} />
-          <Route path="/auction-page" element={<AuctionPage chosenAuction={chosenAuction}/>} />
+          <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser} />} />
+          <Route path="/auction-page" element={<AuctionPage idOfLoggedInUser={idOfLoggedInUser} auctionId={chosenAuction} />} />
           <Route path="/not-logged-in" element={<NotLoggedInPage />} />
           <Route
             path="/google-play-store"

@@ -1,96 +1,44 @@
+import { Navigate } from "react-router-dom";
 import useFetch from "../customHooks/useFetch";
+import AuctionService from "../services/AuctionService";
+import AuthService from "../services/AuthService";
 
-const AuctionPage = (props) => {
-  const request = ({ endpoint, method, data }) => {
-    fetch(endpoint, {
-      body: JSON.stringify(data),
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  };
+const AuctionPage = ({ idOfLoggedInUser, auctionId }) => {
 
-  const UpdateAuction = (data) => {
-    request({
-      endpoint: "http://localhost:6001/auctions",
-      method: "GET",
-      data,
-    });
-  };
+  const navigate = Navigate()
+  const auction = null
+  const user = null
 
-  const chosenId = props.chosenAuction;
-
-  const { data: auctions } = useFetch("http://localhost:6001/auctions");
-
-  let auctionId,
-    startTime,
-    endTime,
-    openingPrice,
-    buyoutPrice,
-    currentBid,
-    timer,
-    userId = 0;
-
-  auctions &&
-    auctions.map((auction) => {
-      if (auction.id === chosenId) {
-        startTime = auction.startTime;
-        endTime = auction.endTime;
-        openingPrice = auction.openingPrice;
-        buyoutPrice = auction.buyoutPrice;
-        currentBid = auction.currentBid;
-        timer = auction.timer;
-        userId = auction.userId;
+  // get user from db
+  AuthService.getUserById( idOfLoggedInUser )
+    .then(response => {
+      if (response === null) {
+        console.log('user not found')
+        navigate("/", {replace: true})
+      } else {
+        user = response.data
       }
-    });
+    })
 
-  // const getUser = (data) => {
-  //   request({
-  //     endpoint: "http://localhost:6001/users",
-  //     method: "GET",
-  //     data,
-  //   });
-  // };
-
-  const { data: users } = useFetch("http://localhost:6001/users");
-
-  let firstName,
-    lastName,
-    email,
-    imageUrl,
-    phone,
-    address,
-    zipCode,
-    town,
-    github,
-    linkedin,
-    otherInfo,
-    competence = 0;
-
-  users &&
-    users.map((user) => {
-      if (user.id === userId) {
-        firstName = user.firstName;
-        lastName = user.lastName;
-        email = user.email;
-        imageUrl = user.imageUrl;
-        phone = user.phone;
-        address = user.address;
-        zipCode = user.zipCode;
-        town = user.town;
-        github = user.github;
-        linkedin = user.linkedin;
-        otherInfo = user.otherInfo;
-        competence = user.competence;
+  // get auction from db
+  AuctionService.getAuctionById(auctionId)
+    .then(response => {
+      if (response === null) {
+        alert("Auction Page not found")
+        navigate("/", {replace: true})
+      } else {
+        auction = response.data
       }
-    });
+    })
+    .catch(response => {
+      console.log(response)
+    })
 
   return (
     <div>
       <div className="auction__page">
         <div className="AuctionPersonInfo">
-          <img src={imageUrl} alt="image of {firstName} " width="250"></img>
+          <img src={auction.imageUrl} alt="image of {firstName} " width="250"></img>
         </div>
 
         <form className="auction__form">
