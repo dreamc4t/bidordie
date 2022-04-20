@@ -12,6 +12,7 @@ import UserPage from "./pages/UserPage";
 import MyPage from "./pages/MyPage";
 import AuctionPage from "./pages/AuctionPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
+import AuctionService from "./services/AuctionService";
 
 function App() {
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
@@ -20,6 +21,13 @@ function App() {
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
   const [chosenAuction, setChosenAuction] = useState(-1)
+
+  const getAllAuctions= () => {
+    AuctionService.getAllAuctions().then(function(response){
+      setChosenAuction(response.data)
+      console.log(response.data)
+    });
+  }
 
   return (
     <Router>

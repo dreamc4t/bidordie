@@ -2,19 +2,21 @@ package com.example.bidordiespring.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
+@Document(collection = "auctions")
 public class Auction {
 
     @Id
     private String auctionId;
     @NotBlank
-    private Date startTimePeriod;
+    private Date availablePeriodStart;
     @NotBlank
-    private Date endTimePeriod;
+    private Date availablePeriodEnd;
     @NotBlank
     @DBRef
     private String ownerId;
@@ -26,34 +28,53 @@ public class Auction {
     private Double buyoutPrice;
     private List<String> bidIdHistory;
     private Date auctionStartTime;
+    @NotBlank
     private Date auctionEndTime;
 
 
     public Auction() {
     }
 
-    public Auction(Date startTimePeriod, Date endTimePeriod, String ownerId, Double openingPrice, Double buyoutPrice) {
-        this.startTimePeriod = startTimePeriod;
-        this.endTimePeriod = endTimePeriod;
-        this.ownerId = ownerId;
+    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime, String ownerId) {
+        this.availablePeriodStart = availablePeriodStart;
+        this.availablePeriodEnd = availablePeriodEnd;
         this.openingPrice = openingPrice;
         this.buyoutPrice = buyoutPrice;
+        this.auctionStartTime = new Date();
+        this.auctionEndTime = auctionEndTime;
+        this.ownerId = ownerId;
     }
 
-    public Date getStartTimePeriod() {
-        return startTimePeriod;
+    public String getAuctionId() {
+        return auctionId;
     }
 
-    public void setStartTimePeriod(Date startTimePeriod) {
-        this.startTimePeriod = startTimePeriod;
+    public void setAuctionId(String auctionId) {
+        this.auctionId = auctionId;
     }
 
-    public Date getEndTimePeriod() {
-        return endTimePeriod;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setEndTimePeriod(Date endTimePeriod) {
-        this.endTimePeriod = endTimePeriod;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public Date getAvailablePeriodStart() {
+        return availablePeriodStart;
+    }
+
+    public void setAvailablePeriodStart(Date availablePeriodStart) {
+        this.availablePeriodStart = availablePeriodStart;
+    }
+
+    public Date getAvailablePeriodEnd() {
+        return availablePeriodEnd;
+    }
+
+    public void setAvailablePeriodEnd(Date availablePeriodEnd) {
+        this.availablePeriodEnd = availablePeriodEnd;
     }
 
     public String getOwnerAuctionId() {
