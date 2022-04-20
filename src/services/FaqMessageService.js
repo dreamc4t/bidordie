@@ -9,7 +9,7 @@ class FaqMessageService {
     }
 
     getAllMessages() {
-        return axios. get(`${API_URL_AUCTIONS}/allmessages`);
+        return axios.get(`${API_URL_AUCTIONS}/allmessages`);
     }
 
 }

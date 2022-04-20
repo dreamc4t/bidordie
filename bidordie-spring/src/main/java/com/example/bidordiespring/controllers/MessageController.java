@@ -24,7 +24,7 @@ public class MessageController {
     }
 
     @PostMapping("/messages")
-        public ResponseEntity<?> newMessage(@RequestBody MessageRequest m) {
+        public ResponseEntity<?> createMessage(@RequestBody MessageRequest m) {
         FaqMessage message = new FaqMessage(m.getNameOfSender(), m.getPhone(), m.getEmailOfSender(), m.getMessage());
 
         messagesRepository.save(message);
