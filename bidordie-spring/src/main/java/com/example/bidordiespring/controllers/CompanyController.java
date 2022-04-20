@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -21,6 +22,12 @@ public class CompanyController {
     public List<Company> getAllCompanies() {
         return companyRepository.findAll();
     }
+
+    @GetMapping("/getCompanyById/{id}")
+    public Company getCompanyById(@PathVariable String id) {return companyRepository.findCompanyById(id);}
+
+    @DeleteMapping("/deleteCompanyById/{id}")
+    public Company deleteCompany(@PathVariable String id) {return companyRepository.deleteCompanyById(id);}
 
     @PostMapping("/new")
     public ResponseEntity<?> newCompany(@RequestBody CompanyRequest c) {
