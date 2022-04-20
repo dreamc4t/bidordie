@@ -1,43 +1,31 @@
-
+import AuctionService from "../services/AuctionService";
 import {useState} from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 
 const AddAuctionPage = () => {
 
-    const [inputText, setInputText]= useState("");
+    const [inputText, setInputText] = useState("");
+    const [auctions, setAuctions] = useState([]);
 
-    const request = ({ endpoint, method, data }) => {
-        fetch(endpoint, {
-          body: JSON.stringify(data),
-          method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+
+
+    const addAuction = (e) => {
+        e.preventDefault();
+        if (inputText.trim() === "") return;
+    
+        AuctionService.createAuction({
+            availablePeriodStart: e.target.availablePeriodStart.value,
+            availablePeriodEnd: e.target.availablePeriodEnd.value,
+            openingPrice: e.target.openingPrice.value,
+            buyoutPrice: e.target.buyoutPrice.value,
+            ownerId: 12,
+            endTime: e.target.endtime.value,
+        }).then(() => {
+          setInputText("")}
+        )
       };
-
-    const addAuction = (data) => {
-        request({
-          endpoint: "http://localhost:6001/auctions",
-          method: "POST",
-          data,
-        });
-      };
-      
-
-    const createAuction = (e) => {
-        const newAuction = {
-            id: uuidv4(),
-            startTime: e.target.openingPrice.value,
-            endTime: e.target.startTime.value,
-            openingPrice: e.target.buyoutPrice.value,
-            buyoutPrice: e.target.endTime.value,
-            userId: 2
-        }
-
-        addAuction(newAuction)
-    }
+    
 
     const inputTextHandler = (event) => {
         setInputText(event.target.value)
@@ -45,7 +33,7 @@ const AddAuctionPage = () => {
 
     const submitAuction = (event) => {
         event.preventDefault();
-        createAuction(event)
+        addAuction(event)
         setInputText("");
     }
 
@@ -53,38 +41,13 @@ const AddAuctionPage = () => {
     <div className="add-auction-page">
         <div className="add-auction-container">
             <form onSubmit={submitAuction} className="add-auction-form">
-                <div className="form-left-side">
-                    <img src="https://i.pinimg.com/originals/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"  className="add-auction-image" alt=""></img>
-                    <div className="competence-container">
-                        <div className="competence">
-                            <label htmlFor="java"> Java</label>
-                            <input type="checkbox" id="competence-button" name="java"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="python"> Python</label>
-                            <input type="checkbox" id="competence-button" name="python"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="c#"> C#</label>
-                            <input type="checkbox" id="competence-button" name="c#"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="javascript"> Javascript</label>
-                            <input type="checkbox" id="competence-button" name="javascript"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="html-css"> HTML/CSS</label>
-                            <input type="checkbox" id="competence-button" name="html-css"></input>
-                        </div>
-                    </div>
-                </div>
                 <div className="form-mid-side">
                     <div className="add-input-container">
                         <label>Start price:</label>
                         <input onChange={inputTextHandler} name="openingPrice" value={inputText.openingPrice} type="text"></input>
                     </div>
                     <div className="add-input-container">
-                        <label>Start date:</label>
+                        <label>Available start date:</label>
                         <input onChange={inputTextHandler} name="startTime" value={inputText.startTime} type="date"></input>
                     </div>
                     <div className="comment-container">
@@ -97,7 +60,11 @@ const AddAuctionPage = () => {
                         <input onChange={inputTextHandler} name="buyoutPrice" type="text" value={inputText.buyoutPrice}></input>
                     </div>
                     <div className="add-input-container">
-                        <label>End date:</label>
+                        <label>Available end date:</label>
+                        <input onChange={inputTextHandler} name="endTime" value={inputText.endTime} type="date"></input>
+                    </div>
+                    <div className="add-input-container">
+                        <label>Auction end time:</label>
                         <input onChange={inputTextHandler} name="endTime" value={inputText.endTime} type="date"></input>
                     </div>
                     <div className="add-button-container">
