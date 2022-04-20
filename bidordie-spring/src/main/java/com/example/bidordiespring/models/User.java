@@ -64,6 +64,10 @@ public class User {
         this.auctions = new HashSet<>();
     }
 
+    public void addAuction(Auction auction) {
+        this.auctions.add(auction);
+    }
+
     public String getId() {
         return id;
     }
