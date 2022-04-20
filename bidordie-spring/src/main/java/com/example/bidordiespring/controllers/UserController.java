@@ -26,12 +26,13 @@ public class UserController {
 
     @GetMapping("/getUserById/{id}")
     public Optional<User> getUserById(@PathVariable String id) {
-        return userRepository.findById(id);
+        return userRepository.findUserById(id);
     }
 
     @DeleteMapping("deleteUserById/{id}")
-    public User deleteUser(@PathVariable String id) {return userRepository.deleteUserById(id);}
-
+    public User deleteUser(@PathVariable String id) {
+        return userRepository.deleteUserById(id);
+    }
 
     @PostMapping("/new")
     public ResponseEntity<?> newUser(@RequestBody UserRequest u) {

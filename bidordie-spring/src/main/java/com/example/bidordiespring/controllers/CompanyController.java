@@ -24,10 +24,14 @@ public class CompanyController {
     }
 
     @GetMapping("/getCompanyById/{id}")
-    public Company getCompanyById(@PathVariable String id) {return companyRepository.findCompanyById(id);}
+    public Company getCompanyById(@PathVariable String id) {
+        return companyRepository.findCompanyById(id);
+    }
 
     @DeleteMapping("/deleteCompanyById/{id}")
-    public Company deleteCompany(@PathVariable String id) {return companyRepository.deleteCompanyById(id);}
+    public Company deleteCompany(@PathVariable String id) {
+        return companyRepository.deleteCompanyById(id);
+    }
 
     @PostMapping("/new")
     public ResponseEntity<?> newCompany(@RequestBody CompanyRequest c) {
