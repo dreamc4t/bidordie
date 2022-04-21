@@ -8,23 +8,26 @@ import java.util.List;
 
 public class AuctionRequest {
 
-
+    @NotBlank
+    private String ownerId;
     @NotBlank
     private String availablePeriodStart;
     @NotBlank
     private String availablePeriodEnd;
     @NotBlank
-    @DBRef
-    private String ownerId;
-    @NotBlank
     private Double openingPrice;
     @NotBlank
     private Double buyoutPrice;
     @NotBlank
-    private String auctionStartTime;
-    @NotBlank
     private String auctionEndTime;
 
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
 
     public String getAvailablePeriodStart() {
         return availablePeriodStart;
@@ -42,14 +45,6 @@ public class AuctionRequest {
         this.availablePeriodEnd = availablePeriodEnd;
     }
 
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
-
     public Double getOpeningPrice() {
         return openingPrice;
     }
@@ -64,14 +59,6 @@ public class AuctionRequest {
 
     public void setBuyoutPrice(Double buyoutPrice) {
         this.buyoutPrice = buyoutPrice;
-    }
-
-    public String getAuctionStartTime() {
-        return auctionStartTime;
-    }
-
-    public void setAuctionStartTime(String auctionStartTime) {
-        this.auctionStartTime = auctionStartTime;
     }
 
     public String getAuctionEndTime() {

@@ -22,22 +22,25 @@ public class Auction {
     private Double openingPrice;
     @NotBlank
     private Double buyoutPrice;
+    @NotBlank
+    @DBRef
+    private User owner;
 
     private Date auctionStartTime;
-    @NotBlank
     private Date auctionEndTime;
 
     private double currentHighestBid;
     private String highestBidderId;
     private Date timeOfBid;
 
-    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime) {
+    public Auction(Date availablePeriodStart, Date availablePeriodEnd, Double openingPrice, Double buyoutPrice, Date auctionEndTime, User owner) {
         this.availablePeriodStart = availablePeriodStart;
         this.availablePeriodEnd = availablePeriodEnd;
         this.openingPrice = openingPrice;
         this.buyoutPrice = buyoutPrice;
         this.auctionStartTime = new Date();
         this.auctionEndTime = auctionEndTime;
+        this.owner = owner;
 
         this.currentHighestBid = 0;
         this.highestBidderId = null;
@@ -82,6 +85,14 @@ public class Auction {
 
     public void setBuyoutPrice(Double buyoutPrice) {
         this.buyoutPrice = buyoutPrice;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public double getcurrentHighestBid() {
