@@ -20,7 +20,10 @@ function App() {
   useEffect(() => {
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
-  const [chosenAuctionInfo, setChosenAuctionInfo] = useState()
+  const [chosenAuctionInfo, setChosenAuctionInfo] = useState({
+    user: null,
+    auction: null
+  })
 
   return (
     <Router>
@@ -35,7 +38,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
           <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser} />} />
-          <Route path="/auction-page" element={<AuctionPage idOfLoggedInUser={idOfLoggedInUser} chosenAuctionInfo={chosenAuctionInfo} />} />
+          <Route path="/auction-page" element={<AuctionPage chosenAuctionInfo={chosenAuctionInfo} setChosenAuctionInfo={setChosenAuctionInfo} idOfLoggedInUser={idOfLoggedInUser}/>} />
           <Route path="/not-logged-in" element={<NotLoggedInPage />} />
           <Route
             path="/google-play-store"

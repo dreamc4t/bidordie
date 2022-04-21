@@ -2,45 +2,31 @@ import { useEffect, useState } from "react";
 import AuctionService from "../services/AuctionService";
 import AuthService from "../services/AuthService";
 
-const AuctionPage = ({ auctionOwnerId, auctionId }) => {
+const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser }) => {
 
-  // temp fix
-  auctionId = "625fc145f5b7233e4ed15e1f"
-  auctionOwnerId = "625eec4b50707060314a00f0" //id from mongoDB
-  // end of temp fix
-
-  const [user, setUser] = useState(null)
-  const [auction, setAuction] = useState(null)
+  const [user, setUser] = useState()
+  const [auction, setAuction] = useState()
+  const [bidValue, setBidValue] = useState()
 
   useEffect(() => {
-    getUserFromDb()
-    getAuctionFromDb()
-  })
+    setBidValue(chosenAuctionInfo.auction.currentHighestBid + 10)
+    setUser(chosenAuctionInfo.user)
+    setAuction(chosenAuctionInfo.auction)
+    setChosenAuctionInfo({
+      user: null,
+      auction: null
+    })
+  }, [])
 
-  function getUserFromDb() {
-    AuthService.getUserById(auctionOwnerId)
-      .then(function(response) {
-          setUser(response.data)
-      })
-      .catch(function(response) {
-        console.log('get user error: ' +  response)
-      })
+  function handleSubmit(e) { 
+    e.preventDefault()
+    console.log(bidValue)
+    AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
   }
 
-  function getAuctionFromDb() {
-    AuctionService.getAuctionById(auctionId)
-      .then(function(response) {
-          setAuction(response.data)
-      })
-      .catch(response => {
-        console.log('get auction error: ' + response)
-      })
+  function handleChange(e) {
+    setBidValue(e.target.value)
   }
-
-  function handleSubmit(e) {
-    console.log(e.target)
-  }
-
 
   return (
     (auction && user) ?
@@ -69,7 +55,7 @@ const AuctionPage = ({ auctionOwnerId, auctionId }) => {
               Lägg {auction.currentHighestBid + 10}kr/h eller mer
             </div>
             <div className="bid-container">
-              <input type="number" min={auction.currentHighestBid + 10}></input>
+              <input type="text" value={bidValue} onChange={handleChange}></input>
               <button type="submit">Lägg bud</button>
               <button>Like</button>
             </div>
