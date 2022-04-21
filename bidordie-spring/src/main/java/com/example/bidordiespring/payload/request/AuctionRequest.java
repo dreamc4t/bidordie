@@ -9,8 +9,6 @@ import java.util.List;
 public class AuctionRequest {
 
     @NotBlank
-    private String ownerId;
-    @NotBlank
     private String availablePeriodStart;
     @NotBlank
     private String availablePeriodEnd;
@@ -20,14 +18,6 @@ public class AuctionRequest {
     private Double buyoutPrice;
     @NotBlank
     private String auctionEndTime;
-
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
 
     public String getAvailablePeriodStart() {
         return availablePeriodStart;
