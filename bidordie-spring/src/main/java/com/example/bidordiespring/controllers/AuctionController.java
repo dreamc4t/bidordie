@@ -66,8 +66,8 @@ public class AuctionController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
     }
 
-    @PostMapping("/create/{userId}")
-    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq, @PathVariable String userId) throws ParseException {
+    @PostMapping("/create/{ownerId}")
+    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq, @PathVariable String ownerId) throws ParseException {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
@@ -90,7 +90,7 @@ public class AuctionController {
 
         User user;
         try {
-            user = userRepository.findById(userId).orElseThrow();
+            user = userRepository.findById(ownerId).orElseThrow();
             user.addAuction(auction);
             userRepository.save(user);
         } catch(Exception e) {

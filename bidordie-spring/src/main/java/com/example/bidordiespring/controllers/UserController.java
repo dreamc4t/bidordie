@@ -32,40 +32,62 @@ public class UserController {
         Optional<User> userData = userRepository.findById(id);
         if (userData.isPresent()) {
             User user = userData.get();
-            user.setFirstName(userRequest.getFirstName());
-            user.setLastName(userRequest.getLastName());
-            user.setEmail(userRequest.getEmail());
-            user.setPassword(userRequest.getEmail());
-            user.setImageUrl(userRequest.getImageUrl());
-            user.setCvUrl(userRequest.getCvUrl());
-            user.setPhone(userRequest.getPhone());
-            user.setAddress(userRequest.getAddress());
-            user.setZipCode(userRequest.getZipCode());
-            user.setTown(userRequest.getTown());
-            user.setGithubLink(userRequest.getGithubLink());
-            user.setLinkedinLink(userRequest.getLinkedinLink());
-            user.setOtherLinks(userRequest.getOtherLinks());
-            user.setOtherInfo(userRequest.getOtherInfo());
-            user.setBiography(userRequest.getBiography());
-            user.setCompetence(userRequest.getCompetence());
-            // user.setAuctions(userRequest.getAuctionsId());
+            if(userRequest.getFirstName() != null) {
+                user.setFirstName(userRequest.getFirstName());
+            }
+            if(userRequest.getLastName() != null) {
+                user.setLastName(userRequest.getLastName());
+            }
+            if(userRequest.getEmail() != null) {
+                user.setEmail(userRequest.getEmail());
+            }
+            if(userRequest.getPassword() != null) {
+                user.setPassword((userRequest.getPassword()));
+            }
+            if(userRequest.getImageUrl() != null) {
+                user.setImageUrl(userRequest.getImageUrl());
+            }
+            if(userRequest.getCvUrl() != null) {
+                user.setCvUrl(userRequest.getCvUrl());
+            }
+            if(userRequest.getPhone() != null) {
+                user.setPhone(userRequest.getPhone());
+            }
+            if(userRequest.getAddress() != null) {
+                user.setAddress(userRequest.getAddress());
+            }
+            if(userRequest.getZipCode() != null) {
+                user.setZipCode(userRequest.getZipCode());
+            }
+            if(userRequest.getTown() != null) {
+                user.setTown(userRequest.getTown());
+            }
+            if(userRequest.getGithubLink() != null) {
+                user.setGithubLink(userRequest.getGithubLink());
+            }
+            if(userRequest.getLinkedinLink() != null) {
+                user.setLinkedinLink(userRequest.getLinkedinLink());
+            }
+            if(userRequest.getOtherLinks() != null) {
+                user.setOtherLinks(userRequest.getOtherLinks());
+            }
+            if(userRequest.getOtherInfo() != null) {
+                user.setOtherInfo(userRequest.getOtherInfo());
+            }
+            if(userRequest.getBiography() != null) {
+                user.setBiography(userRequest.getBiography());
+            }
+            if(userRequest.getCompetence() != null) {
+                user.setCompetence(userRequest.getCompetence());
+            }
+            /*if(userRequest.getAuctions() != null) {
+                user.setAuctions(userRequest.getAuctionsId());
+            }*/
             return new ResponseEntity<>(userRepository.save(user), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-    /*@PutMapping("/editUserById/{id}")
-    public ResponseEntity<User> editUser(@PathVariable String id, @Valid @RequestBody User user) {
-        Optional<User> userToEdit = userRepository.findById(id));
-        if (!userToEdit.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        if(userToEdit.get().getFirstName() != null) {
-            userToEdit.get().setFirstName(user.getFirstName());
-        }
-
-    }*/
 
     @DeleteMapping("deleteUserById/{id}")
     public User deleteUser(@PathVariable String id) {

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class AuctionRequest {
 
-
     @NotBlank
     private String availablePeriodStart;
     @NotBlank
@@ -19,7 +18,6 @@ public class AuctionRequest {
     private Double buyoutPrice;
     @NotBlank
     private String auctionEndTime;
-
 
     public String getAvailablePeriodStart() {
         return availablePeriodStart;
