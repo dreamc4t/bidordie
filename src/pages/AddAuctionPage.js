@@ -1,6 +1,5 @@
 import AuctionService from "../services/AuctionService";
-import {useState} from "react"
-import { v4 as uuidv4 } from 'uuid';
+import {useState} from "react";
 
 
 const AddAuctionPage = () => {
@@ -9,10 +8,8 @@ const AddAuctionPage = () => {
         availablePeriodEnd: "",
         openingPrice: "",
         buyoutPrice: "",
-        auctionEndTime: "",
+        auctionEndTime: ""
     });
-    
-    const [auction, setAuction] = useState([]);
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -24,8 +21,10 @@ const AddAuctionPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(auctions)
         if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
             const newAuction = {auctions}
+            console.log(newAuction)
             AuctionService.createAuction(newAuction)
             setAuctions({
                 availablePeriodStart: "",
@@ -48,7 +47,7 @@ const AddAuctionPage = () => {
                     </div>
                     <div className="add-input-container">
                         <label>Available start date:</label>
-                        <input onChange={handleChange} name="startTime" value={auctions.availablePeriodStart} type="date"></input>
+                        <input onChange={handleChange} name="availablePeriodStart" value={auctions.availablePeriodStart} type="date"></input>
                     </div>
                 </div>
                 <div className="form-right-side">
@@ -58,11 +57,11 @@ const AddAuctionPage = () => {
                     </div>
                     <div className="add-input-container">
                         <label>Available end date:</label>
-                        <input onChange={handleChange} name="endTime" value={auctions.availablePeriodEnd} type="date"></input>
+                        <input onChange={handleChange} name="availablePeriodEnd" value={auctions.availablePeriodEnd} type="date"></input>
                     </div>
                     <div className="add-input-container">
                         <label>Auction end time:</label>
-                        <input onChange={handleChange} name="endTime" value={auctions.auctionEndTime} type="date"></input>
+                        <input onChange={handleChange} name="auctionEndTime" value={auctions.auctionEndTime} type="date"></input>
                     </div>
                     <div className="add-button-container">
                         <button type="submit" id="add-auction-button" onClick={handleSubmit}>Add Auction</button>
