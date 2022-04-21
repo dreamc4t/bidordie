@@ -38,7 +38,7 @@ public class Auction {
         this.auctionStartTime = new Date();
         this.auctionEndTime = auctionEndTime;
 
-        this.currentHighestBid = 0;
+        this.currentHighestBid = openingPrice;
         this.highestBidderId = null;
         this.timeOfBid = null;
     }

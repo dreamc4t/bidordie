@@ -72,7 +72,7 @@ public class AuctionController {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
-        Double openingPrice = null;
+        Double openingPrice = 0.0;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{
@@ -86,7 +86,7 @@ public class AuctionController {
             System.out.println(e);
         }
 
-        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime);
+        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice, auctionEndTime);
         auctionRepository.save(auction);
 
         User user;
@@ -99,9 +99,7 @@ public class AuctionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No such user");
         }
 
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin", "*");
-        return ResponseEntity.ok().headers(responseHeaders).body("Auction was created successfully");
+        return ResponseEntity.ok().body("Auction was created successfully");
     }
 
 }

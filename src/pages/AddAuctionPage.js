@@ -23,9 +23,9 @@ const AddAuctionPage = ({ownerId}) => {
         e.preventDefault();
         console.log(auctions)
         if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
-            const newAuction = {auctions}
+            const newAuction = auctions
             console.log(newAuction)
-            AuctionService.createAuction(newAuction)
+            AuctionService.createAuction(newAuction, ownerId)
             setAuctions({
                 availablePeriodStart: "",
                 availablePeriodEnd: "",
