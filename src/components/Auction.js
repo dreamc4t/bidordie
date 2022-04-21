@@ -19,7 +19,7 @@ const Auction = ({ auction, user }) => {
       lastName = user.lastName
       imageUrl = user.imageUrl
       otherInfo = user.otherInfo
-      competence = user.competence.join(', ');
+      user.competence && (competence= user.competence.join(', '));
 
 
     return (

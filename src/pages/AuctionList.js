@@ -33,12 +33,12 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
           {users &&
             users.map((user) => (
               user.auctions.map((auction) =>(
-                <div className="auction-kort" key={auction} onClick={() => setChosenAuctionInfo({
+                <div className="auction-kort" key={auction.auctionId} onClick={() => setChosenAuctionInfo({
                   user: user, 
                   auction: auction
                 })}>
                 <Link to="/auction-page">
-                <Auction auction={auction} user={user} key={auction}/>
+                <Auction auction={auction} user={user}/>
                 </Link> 
 
                </div>
