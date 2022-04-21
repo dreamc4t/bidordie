@@ -6,27 +6,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import {useHistory, useLocation} from "react-router-dom"
 import AuthService from "../services/AuthService";
+import AuctionService from "../services/AuctionService";
 
 
 
-const Auction = ({ auction, setChosenAuction }) => {
-
-    const handleOnClick = () => {
-      setChosenAuction(auction.id)
-    }
-    const [user, setUser] = useState()
-
-    useEffect(() =>{
-      setUser()
-    }) 
-
-    const getUserById= () => {
-      const userId = auction.owner
-      AuthService.getUserById(userId).then(function(response){
-        setUser(response.data)
-          console.log(response.data)
-      });
-    }
+const Auction = ({ auction, user }) => {
 
 
     let town, firstName, lastName, imageUrl, otherInfo, competence = ""
@@ -39,7 +23,8 @@ const Auction = ({ auction, setChosenAuction }) => {
 
 
     return (
-          <div className="auction" onClick={handleOnClick}>
+      (auction) ?
+          <div className="auction">
             <div className="image">
                 <img src={imageUrl} alt= '' />
             </div>
@@ -47,7 +32,7 @@ const Auction = ({ auction, setChosenAuction }) => {
                 <div className="personalInfo">
                     <p className="boldText">{firstName} {lastName}</p>
                     <p><GoLocation/>{town}</p>
-                    <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
+                    <p><AiFillCalendar/>From {auction.availablePeriodStart.replace('T', ' ').slice(0, auction.availablePeriodStart.length-19)} to {auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19)}</p>
                     <p><AiOutlineHeart/></p>
                 </div>
                   <div className="briefInfo">
@@ -57,6 +42,7 @@ const Auction = ({ auction, setChosenAuction }) => {
                   </div>
               </div>
           </div>
+          :null
     );
 }
 

@@ -3,42 +3,51 @@ import SortBar from "../components/SortBar";
 import Auction from "../components/Auction";
 import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import AuctionService from "../services/AuctionService";
+import AuthService from "../services/AuthService";
 
-const AuctionList = ({ setChosenAuction, chosenAuction }) => {
+const AuctionList = ({ setChosenAuctionInfo}) => {
 
     useEffect(() => {
-      //setChosenAuction(-1)
-      getAllAuctions()
+      getUsers()
     }, [])
 
-  const [AllAuctions, setAllAuctions] = useState([]);
+  const [users, setUsers] = useState();
 
-  const getAllAuctions= () => {
-    AuctionService.getAllAuctions().then(function(response){
-      setAllAuctions(response.data)
-        console.log(response.data)
 
-    });
+  const getUsers= () => {
+    AuthService.getAllUsers().then(function(response){
+      setUsers(response.data)
+      console.log(response.data)
+    }).catch(function(response){
+      console.log(response)
+    })
   }
 
     return (
+      (users) ?
       <div className="auction-list" >
-        {chosenAuction != -1 && <Navigate to="auction-page" />} 
         <SortBar />
         <div className="auction-container">
-          {AllAuctions &&
-            AllAuctions.map((auction) => (
-              <div className="auction-kort" key={auction.id}>
-                 
-                 <Auction auction={auction} setChosenAuction={setChosenAuction}/>
+          {users &&
+            users.map((user) => (
+              user.auctions.map((auction) =>(
+                <div className="auction-kort" key={auction} onClick={() => setChosenAuctionInfo({
+                  user: user, 
+                  auction: auction
+                })}>
+                <Link to="/auction-page">
+                <Auction auction={auction} user={user} key={auction}/>
+                </Link> 
 
-                </div>
+               </div>
+              ))
 
             ))}
         </div>
       </div>
+      : null
     );
 
 
