@@ -36,18 +36,42 @@ public class CompanyController {
         Optional<Company> companyData = companyRepository.findById(id);
         if (companyData.isPresent()) {
             Company company = companyData.get();
-            company.setCompanyName(companyRequest.getCompanyName());
-            company.setOrgNr(companyRequest.getOrgNr());
-            company.setEmail(companyRequest.getEmail());
-            company.setPassword(companyRequest.getPassword());
-            company.setImageUrl(companyRequest.getImageUrl());
-            company.setPhone(companyRequest.getPhone());
-            company.setAddress(companyRequest.getAddress());
-            company.setZipCode(companyRequest.getZipCode());
-            company.setTown(companyRequest.getTown());
-            company.setWebpage(companyRequest.getWebpage());
-            company.setOtherLinks(companyRequest.getOtherLinks());
-            company.setCompanyInfo(companyRequest.getCompanyInfo());
+            if(companyRequest.getCompanyName() != null) {
+                company.setCompanyName(companyRequest.getCompanyName());
+            }
+            if(companyRequest.getOrgNr() != null) {
+                company.setOrgNr(companyRequest.getOrgNr());
+            }
+            if(companyRequest.getEmail() != null) {
+                company.setEmail(companyRequest.getEmail());
+            }
+            if(companyRequest.getPassword() != null) {
+                company.setPassword(companyRequest.getPassword());
+            }
+            if(companyRequest.getImageUrl() != null) {
+                company.setImageUrl(companyRequest.getImageUrl());
+            }
+            if(companyRequest.getPhone() != null) {
+                company.setPhone(companyRequest.getPhone());
+            }
+            if(companyRequest.getAddress() != null) {
+                company.setAddress(companyRequest.getAddress());
+            }
+            if(companyRequest.getZipCode() != null) {
+                company.setZipCode(companyRequest.getZipCode());
+            }
+            if(companyRequest.getTown() != null) {
+                company.setTown(companyRequest.getTown());
+            }
+            if(companyRequest.getWebpage() != null) {
+                company.setWebpage(companyRequest.getWebpage());
+            }
+            if(companyRequest.getOtherLinks() != null) {
+                company.setOtherLinks(companyRequest.getOtherLinks());
+            }
+            if(companyRequest.getCompanyInfo() != null) {
+                company.setCompanyInfo(companyRequest.getCompanyInfo());
+            }
             return new ResponseEntity<>(companyRepository.save(company), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
