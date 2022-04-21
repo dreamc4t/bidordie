@@ -66,15 +66,17 @@ public class AuctionController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
     }
 
-    @PostMapping("/create/{userId}")
-    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq, @PathVariable String userId) throws ParseException {
+    @PostMapping("/create")
+    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq) throws ParseException {
 
+        User owner = null;
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
         Double openingPrice = null;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{
+            owner = userRepository.findById(aReq.getOwnerId()).orElseThrow();
             availablePeriodStart = new SimpleDateFormat("yyyy-MM-dd").parse(aReq.getAvailablePeriodStart());
             availablePeriodEnd = new SimpleDateFormat("yyyy-MM-dd").parse(aReq.getAvailablePeriodEnd());
             openingPrice = aReq.getOpeningPrice();
@@ -85,12 +87,12 @@ public class AuctionController {
             System.out.println(e);
         }
 
-        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime);
+        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime, owner);
         auctionRepository.save(auction);
 
         User user;
         try {
-            user = userRepository.findById(userId).orElseThrow();
+            user = userRepository.findById(aReq.getOwnerId()).orElseThrow();
             user.addAuction(auction);
             userRepository.save(user);
         } catch(Exception e) {
