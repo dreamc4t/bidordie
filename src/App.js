@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -17,17 +18,27 @@ import AuctionService from "./services/AuctionService";
 function App() {
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
   useEffect(() => {
-    console.log(idOfLoggedInUser);
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
   const [chosenAuction, setChosenAuction] = useState(-1)
+  
+  /*const [AllAuctions, setAllAuctions] = useState([]);
+
+  useEffect(() =>{
+    axios.getAllAuctions("http://localhost:8080/api/auctions/all")
+    .then((AllAuctions)=>{
+     setAllAuctions(AllAuctions.data)
+    })
+  }, [])
 
   const getAllAuctions= () => {
     AuctionService.getAllAuctions().then(function(response){
+      setAllAuctions(response.data)
+        console.log(response.data)
       setChosenAuction(response.data)
-      console.log(response.data)
+
     });
-  }
+  }*/
 
   return (
     <Router>

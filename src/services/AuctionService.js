@@ -15,10 +15,13 @@ class AuctionService {
 
     getAllAuctions() {
         return axios.get(`${API_URL_AUCTIONS}/all`);
+
+
     }
     
     getAuctionById(auctionId) {
         return axios.get(`${API_URL_AUCTIONS}/getAuctionById/${auctionId}`)
+
     }
 
 }
