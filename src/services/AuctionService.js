@@ -9,11 +9,16 @@ class AuctionService {
     }
 
     getAllAuctions() {
-        return axios.get(`${API_URL_AUCTIONS}/all`);
+        return axios.get(`${API_URL_AUCTIONS}/all`, { 
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
     }
     
     getAuctionById(auctionId) {
         return axios.get(`${API_URL_AUCTIONS}/getAuctionById/${auctionId}`)
+
     }
 
 }

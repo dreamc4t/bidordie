@@ -11,6 +11,11 @@
     transition: width 2s, height 4s;
     
 }
+.auction-kort>a{
+    color: black;
+    text-decoration: none;
+
+}
 .auction:hover{
     transition: width 2s, height 4s;
 }

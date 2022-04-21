@@ -14,6 +14,14 @@ class AuthService {
         }
       })
   }
+
+  getAllUsers() {
+    return axios.get(`${API_URL_AUTH}/all`, { 
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    });
+}
 }
 
 export default new AuthService();

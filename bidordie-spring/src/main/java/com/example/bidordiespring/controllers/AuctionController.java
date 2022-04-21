@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -26,8 +27,15 @@ public class AuctionController {
     @Autowired
     AuctionRepository auctionRepository;
 
+
+    @GetMapping("/all")
+    public List<Auction> getAllAuctions() {
+        return auctionRepository.findAll();
+    }
+
     @Autowired
     UserRepository userRepository;
+
 
     @GetMapping("/getAuctionById/{id}")
     public Auction getAuctionById(@PathVariable String id) {
@@ -58,8 +66,8 @@ public class AuctionController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
     }
 
-    @PostMapping("/create/{userId}")
-    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq, @PathVariable String userId) throws ParseException {
+    @PostMapping("/create/{ownerId}")
+    public ResponseEntity<?> createAuction(@Valid @RequestBody AuctionRequest aReq, @PathVariable String ownerId) throws ParseException {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
@@ -82,7 +90,7 @@ public class AuctionController {
 
         User user;
         try {
-            user = userRepository.findById(userId).orElseThrow();
+            user = userRepository.findById(ownerId).orElseThrow();
             user.addAuction(auction);
             userRepository.save(user);
         } catch(Exception e) {
