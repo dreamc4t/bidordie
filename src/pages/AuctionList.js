@@ -32,17 +32,18 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
         <div className="auction-container">
           {users &&
             users.map((user) => (
-              user.auctions.map((auction) =>(
-                <div className="auction-kort" key={auction.auctionId} onClick={() => setChosenAuctionInfo({
-                  user: user, 
-                  auction: auction
-                })}>
-                <Link to="/auction-page">
-                <Auction auction={auction} user={user}/>
-                </Link> 
+              user.auctions &&
+                user.auctions.map((auction) =>(
+                  <div className="auction-kort" key={auction.auctionId} onClick={() => setChosenAuctionInfo({
+                    user: user, 
+                    auction: auction
+                  })}>
+                  <Link to="/auction-page">
+                  <Auction auction={auction} user={user}/>
+                  </Link> 
 
-               </div>
-              ))
+                </div>
+                ))
 
             ))}
         </div>

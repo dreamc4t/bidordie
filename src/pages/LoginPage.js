@@ -22,6 +22,7 @@ const LoginPage = ({ idOfLoggedInUser, setIdOfLoggedInUser }) => {
         for (const user of users) {
             if(loginAttempt.email === user.email && loginAttempt.password === user.password) {
                 couldLogIn = true
+                console.log('id of logged in user will be set to: ' + user.id)
                 setIdOfLoggedInUser(user.id)
             }
         }

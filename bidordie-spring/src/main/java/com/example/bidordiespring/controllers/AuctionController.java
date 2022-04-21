@@ -8,6 +8,7 @@ import com.example.bidordiespring.payload.response.MessageResponse;
 import com.example.bidordiespring.repository.AuctionRepository;
 import com.example.bidordiespring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -71,7 +72,7 @@ public class AuctionController {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
-        Double openingPrice = null;
+        Double openingPrice = 0.0;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{
@@ -85,7 +86,7 @@ public class AuctionController {
             System.out.println(e);
         }
 
-        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime);
+        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice, auctionEndTime);
         auctionRepository.save(auction);
 
         User user;
@@ -98,7 +99,7 @@ public class AuctionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No such user");
         }
 
-        return ResponseEntity.ok(new MessageResponse("Auction created successfully"));
+        return ResponseEntity.ok().body("Auction was created successfully");
     }
 
 }

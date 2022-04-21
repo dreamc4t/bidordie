@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/" element={<AuctionList setChosenAuctionInfo={setChosenAuctionInfo} chosenAuctionInfo={chosenAuctionInfo} />} />
           <Route path="/login" element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser} />} />
           <Route path="/become-a-member" element={<BecomeAMember />} />
-          <Route path="/new-auction" element={<AddAuctionPage />} />
+          <Route path="/new-auction" element={<AddAuctionPage ownerId={idOfLoggedInUser} />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
           <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser} />} />
