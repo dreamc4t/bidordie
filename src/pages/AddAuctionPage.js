@@ -2,7 +2,7 @@ import AuctionService from "../services/AuctionService";
 import {useState} from "react";
 
 
-const AddAuctionPage = () => {
+const AddAuctionPage = ({ownerId}) => {
     const [auctions, setAuctions] = useState({
         availablePeriodStart: "",
         availablePeriodEnd: "",
