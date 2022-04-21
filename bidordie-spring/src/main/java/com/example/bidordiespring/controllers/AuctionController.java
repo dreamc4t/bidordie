@@ -8,6 +8,7 @@ import com.example.bidordiespring.payload.response.MessageResponse;
 import com.example.bidordiespring.repository.AuctionRepository;
 import com.example.bidordiespring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -98,7 +99,9 @@ public class AuctionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No such user");
         }
 
-        return ResponseEntity.ok(new MessageResponse("Auction created successfully"));
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        return ResponseEntity.ok().headers(responseHeaders).body("Auction was created successfully");
     }
 
 }
