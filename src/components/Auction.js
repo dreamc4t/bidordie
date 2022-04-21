@@ -1,10 +1,12 @@
-import {useCallback, userState} from "react";
+import {useCallback, useState, useEffect} from "react";
 import {GoLocation} from "react-icons/go";
 import {AiFillCalendar} from "react-icons/ai";
 import useFetch from "../customHooks/useFetch";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import {useHistory, useLocation} from "react-router-dom"
+import AuthService from "../services/AuthService";
+
 
 
 const Auction = ({ auction, setChosenAuction }) => {
@@ -12,24 +14,28 @@ const Auction = ({ auction, setChosenAuction }) => {
     const handleOnClick = () => {
       setChosenAuction(auction.id)
     }
+    const [user, setUser] = useState()
 
-    const { data: users } = useFetch("http://localhost:6001/users");
-    const { data: auctions} = useFetch("http://localhost:6001/auctions");
+    useEffect(() =>{
+      setUser()
+    }) 
+
+    const getUserById= () => {
+      const userId = auction.owner
+      AuthService.getUserById(userId).then(function(response){
+        setUser(response.data)
+          console.log(response.data)
+      });
+    }
 
 
     let town, firstName, lastName, imageUrl, otherInfo, competence = ""
-
-    users &&
-      users.map((user) => {
-        if ((auction.userId === user.id)) {
-          town = user.town
-          firstName = user.firstName
-          lastName = user.lastName
-          imageUrl = user.imageUrl
-          otherInfo = user.otherInfo
-          competence = user.competence.join(', ')
-        }
-      });
+      town = user.town
+      firstName = user.firstName
+      lastName = user.lastName
+      imageUrl = user.imageUrl
+      otherInfo = user.otherInfo
+      competence = user.competence.join(', ');
 
 
     return (

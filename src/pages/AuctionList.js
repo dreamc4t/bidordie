@@ -4,23 +4,32 @@ import Auction from "../components/Auction";
 import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 import { Navigate } from "react-router-dom";
+import AuctionService from "../services/AuctionService";
 
 const AuctionList = ({ setChosenAuction, chosenAuction }) => {
 
     useEffect(() => {
-      setChosenAuction(-1)
+      //setChosenAuction(-1)
+      getAllAuctions()
     }, [])
 
-    const { data: auctions, isLoading } = useFetch("http://localhost:6001/auctions");
+  const [AllAuctions, setAllAuctions] = useState([]);
+
+  const getAllAuctions= () => {
+    AuctionService.getAllAuctions().then(function(response){
+      setAllAuctions(response.data)
+        console.log(response.data)
+
+    });
+  }
 
     return (
       <div className="auction-list" >
         {chosenAuction != -1 && <Navigate to="auction-page" />} 
         <SortBar />
         <div className="auction-container">
-          {isLoading && <div> LOADING CONTENT....</div>}
-          {auctions &&
-            auctions.map((auction) => (
+          {AllAuctions &&
+            AllAuctions.map((auction) => (
               <div className="auction-kort" key={auction.id}>
                  
                  <Auction auction={auction} setChosenAuction={setChosenAuction}/>

@@ -21,24 +21,6 @@ function App() {
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
   const [chosenAuction, setChosenAuction] = useState(-1)
-  
-  /*const [AllAuctions, setAllAuctions] = useState([]);
-
-  useEffect(() =>{
-    axios.getAllAuctions("http://localhost:8080/api/auctions/all")
-    .then((AllAuctions)=>{
-     setAllAuctions(AllAuctions.data)
-    })
-  }, [])
-
-  const getAllAuctions= () => {
-    AuctionService.getAllAuctions().then(function(response){
-      setAllAuctions(response.data)
-        console.log(response.data)
-      setChosenAuction(response.data)
-
-    });
-  }*/
 
   return (
     <Router>
