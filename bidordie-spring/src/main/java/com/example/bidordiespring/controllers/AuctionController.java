@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -26,8 +27,15 @@ public class AuctionController {
     @Autowired
     AuctionRepository auctionRepository;
 
+
+    @GetMapping("/all")
+    public List<Auction> getAllAuctions() {
+        return auctionRepository.findAll();
+    }
+
     @Autowired
     UserRepository userRepository;
+
 
     @GetMapping("/getAuctionById/{id}")
     public Auction getAuctionById(@PathVariable String id) {
