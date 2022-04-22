@@ -15,10 +15,6 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
     setBidValue(chosenAuctionInfo.auction.currentHighestBid + 10)
     setUser(chosenAuctionInfo.user)
     setAuction(chosenAuctionInfo.auction)
-    setChosenAuctionInfo({
-      user: null,
-      auction: null
-    })
     console.log(user)
     console.log(auction)
   }, [])
@@ -38,14 +34,23 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
   function handleSubmit(e) { 
     e.preventDefault()
     console.log('Bid placed. Amount: ' + bidValue)
+
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
       .then((response) => {
+
         if (response.status === 200) {
-          let changedAuction = auction
-          changedAuction.currentHighestBid = bidValue
-          setAuction(changedAuction)
-          setBidValue(bidValue + 10)
+          AuctionService.getAuctionById(auction.auctionId)
+            .then((response) => {
+              setAuction(response.data)
+              setBidValue(response.data.currentHighestBid + 10)
+              console.log('auction updated from db')
+            }).catch((response) => {
+              console.log(response)
+            })
         }
+
+      }).catch((response) => {
+        console.log(response)
       })
   }
 
