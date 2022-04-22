@@ -12,16 +12,17 @@
             },
             "openingPrice": 1,
             "buyoutPrice": 2,
-            "currentBid": 1,
             "auctionStartTime": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
             "auctionEndTime": {
                 "$date": "2022-04-11T22:00:00.000Z"
             },
-            "ownerAuctionId": "1",
-            "currentHighestBidderId": "1",
-            "bidIdHistory": ["asdfasd12341234", "asdasd123"]
+            "currentHighestBid": 20000,
+            "highestBidderId": "1",
+            "timeOfBid": {
+                "$date": "1991-08-31T22:00:00.000Z"
+            }
         }
     ],
     "users": [ 
@@ -51,10 +52,8 @@
                 "C#",
                 "pyhton"
             ],
-            "auctionsId": [
-                "123",
-                "asd123",
-                "vvv1"
+            "auctions": [
+                "DBRef ('auctions', '625e6545588e2de6f0c339be')" 
             ]
         }
     ],
@@ -76,19 +75,6 @@
                 "ingarsgram.com"
             ],
             "companyInfo": "mer info bla bla"
-        }
-    ],
-    "bids": [
-        {
-            "id": {
-                "$oid": "625e68ce588e2de6f0c339cd"
-            },
-            "timeOfBid": {
-                "$date": "1991-08-31T22:00:00.000Z"
-            },
-            "bidderId": "123",
-            "auctionId": "2",
-            "amount": 123
         }
     ],
     "messages": [

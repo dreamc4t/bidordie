@@ -1,39 +1,35 @@
-import {useCallback, userState} from "react";
+import {useCallback, useState, useEffect} from "react";
 import {GoLocation} from "react-icons/go";
 import {AiFillCalendar} from "react-icons/ai";
 import useFetch from "../customHooks/useFetch";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import {useHistory, useLocation} from "react-router-dom"
+import AuthService from "../services/AuthService";
+import AuctionService from "../services/AuctionService";
 
 
-const Auction = ({ auction, setChosenAuction }) => {
 
-    const handleOnClick = () => {
-      setChosenAuction(auction.id)
+const Auction = ({ auction, user }) => {
+
+
+    let town, firstName, lastName, imageUrl, otherInfo, competence, availablePeriodStart, availablePeriodEnd = ""
+    town = user.town
+    firstName = user.firstName
+    lastName = user.lastName
+    imageUrl = user.imageUrl
+    otherInfo = user.otherInfo
+    user.competence && (competence= user.competence.join(', '));
+    if (availablePeriodEnd) {
+      availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19) ;
+    }
+    if (availablePeriodEnd) {
+      availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19) ;
     }
 
-    const { data: users } = useFetch("http://localhost:6001/users");
-    const { data: auctions} = useFetch("http://localhost:6001/auctions");
-
-
-    let town, firstName, lastName, imageUrl, otherInfo, competence = ""
-
-    users &&
-      users.map((user) => {
-        if ((auction.userId === user.id)) {
-          town = user.town
-          firstName = user.firstName
-          lastName = user.lastName
-          imageUrl = user.imageUrl
-          otherInfo = user.otherInfo
-          competence = user.competence.join(', ')
-        }
-      });
-
-
     return (
-          <div className="auction" onClick={handleOnClick}>
+      (auction) ?
+          <div className="auction">
             <div className="image">
                 <img src={imageUrl} alt= '' />
             </div>
@@ -41,7 +37,7 @@ const Auction = ({ auction, setChosenAuction }) => {
                 <div className="personalInfo">
                     <p className="boldText">{firstName} {lastName}</p>
                     <p><GoLocation/>{town}</p>
-                    <p><AiFillCalendar/>From {auction.startTime} to {auction.endTime}</p>
+                    <p><AiFillCalendar/>From {availablePeriodStart} to {availablePeriodEnd}</p>
                     <p><AiOutlineHeart/></p>
                 </div>
                   <div className="briefInfo">
@@ -51,6 +47,7 @@ const Auction = ({ auction, setChosenAuction }) => {
                   </div>
               </div>
           </div>
+          :null
     );
 }
 

@@ -1,148 +1,102 @@
-import useFetch from "../customHooks/useFetch";
+import { useEffect, useState } from "react";
+import AuctionService from "../services/AuctionService";
+import AuthService from "../services/AuthService";
 
-const AuctionPage = (props) => {
-  const request = ({ endpoint, method, data }) => {
-    fetch(endpoint, {
-      body: JSON.stringify(data),
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  };
+const AuctionPage = ({ auctionOwnerId, auctionId }) => {
 
-  const UpdateAuction = (data) => {
-    request({
-      endpoint: "http://localhost:6001/auctions",
-      method: "GET",
-      data,
-    });
-  };
+  // temp fix
+  auctionId = "625fc145f5b7233e4ed15e1f"
+  auctionOwnerId = "625eec4b50707060314a00f0" //id from mongoDB
+  // end of temp fix
 
-  const chosenId = props.chosenAuction;
+  const [user, setUser] = useState(null)
+  const [auction, setAuction] = useState(null)
 
-  const { data: auctions } = useFetch("http://localhost:6001/auctions");
+  useEffect(() => {
+    getUserFromDb()
+    getAuctionFromDb()
+  })
 
-  let auctionId,
-    startTime,
-    endTime,
-    openingPrice,
-    buyoutPrice,
-    currentBid,
-    timer,
-    userId = 0;
+  function getUserFromDb() {
+    AuthService.getUserById(auctionOwnerId)
+      .then(function(response) {
+          setUser(response.data)
+      })
+      .catch(function(response) {
+        console.log('get user error: ' +  response)
+      })
+  }
 
-  auctions &&
-    auctions.map((auction) => {
-      if (auction.id === chosenId) {
-        startTime = auction.startTime;
-        endTime = auction.endTime;
-        openingPrice = auction.openingPrice;
-        buyoutPrice = auction.buyoutPrice;
-        currentBid = auction.currentBid;
-        timer = auction.timer;
-        userId = auction.userId;
-      }
-    });
+  function getAuctionFromDb() {
+    AuctionService.getAuctionById(auctionId)
+      .then(function(response) {
+          setAuction(response.data)
+      })
+      .catch(response => {
+        console.log('get auction error: ' + response)
+      })
+  }
 
-  // const getUser = (data) => {
-  //   request({
-  //     endpoint: "http://localhost:6001/users",
-  //     method: "GET",
-  //     data,
-  //   });
-  // };
+  function handleSubmit(e) {
+    console.log(e.target)
+  }
 
-  const { data: users } = useFetch("http://localhost:6001/users");
-
-  let firstName,
-    lastName,
-    email,
-    imageUrl,
-    phone,
-    address,
-    zipCode,
-    town,
-    github,
-    linkedin,
-    otherInfo,
-    competence = 0;
-
-  users &&
-    users.map((user) => {
-      if (user.id === userId) {
-        firstName = user.firstName;
-        lastName = user.lastName;
-        email = user.email;
-        imageUrl = user.imageUrl;
-        phone = user.phone;
-        address = user.address;
-        zipCode = user.zipCode;
-        town = user.town;
-        github = user.github;
-        linkedin = user.linkedin;
-        otherInfo = user.otherInfo;
-        competence = user.competence;
-      }
-    });
 
   return (
-    <div>
-      <div className="auction__page">
-        <div className="AuctionPersonInfo">
-          <img src={imageUrl} alt="image of {firstName} " width="250"></img>
-        </div>
+    (auction && user) ?
+      <div>
+        <div className="auction-page">
+          <div className="auction-person-info">
+            <img src={user.imageUrl} alt={`image of ${user.firstName}`} width="250"></img>
+          </div>
 
-        <form className="auction__form">
-          <div className="bidding__info">
-            <div className="leading__offer">
-              <label>Ledande bud</label>
-              <p>{currentBid}kr/h</p>
+          <form className="auction-form" onSubmit={handleSubmit}>
+            <div className="bidding-info">
+              <div className="leading-offer">
+                <label>Ledande bud</label>
+                <p>{auction.currentHighestBid}kr/h</p>
+              </div>
+              <div className="end-time">
+                <label>Sluttid</label>
+                <p>{auction.auctionEndTime.replace('T', ' ').slice(0, auction.auctionEndTime.length-13)}</p>
+              </div>
+              <div className="buy-out">
+                <label>Vinn auktion direkt: </label>
+                <p>{auction.buyoutPrice}</p>
+              </div>
             </div>
-            <div className="end__time">
-              <label>Sluttid</label>
-              <p>{timer}</p>
+            <div className="lowest-offer-tomake">
+              Lägg {auction.currentHighestBid + 10}kr/h eller mer
             </div>
-            <div className="number_of_bids">
-              <label>Antal bud</label>
-              <p>5st</p>
+            <div className="bid-container">
+              <input type="number" min={auction.currentHighestBid + 10}></input>
+              <button type="submit">Lägg bud</button>
+              <button>Like</button>
             </div>
-            <div className="butOut">
-              <label>Köp ut</label>
-              <p>{buyoutPrice}</p>
-            </div>
-          </div>
-          <label className="lowest__offer__tomake">
-            Lägg {currentBid + 10}kr/h eller mer
-          </label>
-          <div className="bid_container">
-            <input type="number" min={currentBid + 10}></input>
-            <button type="submit">Lägg bud</button>
-            <button>Like</button>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div className="description-container">
+          <h2>
+            {user.firstName} {user.lastName}
+          </h2>
+          <h5>Beskrivning</h5>
+          <p>{user.otherInfo}</p>
+        </div>
+        <div className="question-container">
+          <input
+            className="question-input"
+            placeholder="Ask a question!"
+            type="text"
+          ></input>
+          <button className="question-button" type="submit">
+            ASK!
+          </button>
+        </div>
+        <div className="question-list-container">
+          <ul className="qustion-list"> </ul>
+        </div>
       </div>
-      <div className="description__container">
-        <h2>
-          {firstName} {lastName}
-        </h2>
-        <h5>Beskrivning</h5>
-        <p>{otherInfo}</p>
-      </div>
-      <div className="question__container">
-        <input
-          className="question__input"
-          placeholder="Ask a question!"
-          type="text"
-        ></input>
-        <button className="question__button" type="submit">
-          ASK!
-        </button>
-      </div>
-      <div className="question_list_container">
-        <ul className="qustion_list"> </ul>
-      </div>
-    </div>
+      : null
   );
 };
 

@@ -1,107 +1,70 @@
+import AuctionService from "../services/AuctionService";
+import {useState} from "react";
 
-import {useState} from "react"
-import { v4 as uuidv4 } from 'uuid';
 
+const AddAuctionPage = ({ownerId}) => {
+    const [auctions, setAuctions] = useState({
+        availablePeriodStart: "",
+        availablePeriodEnd: "",
+        openingPrice: "",
+        buyoutPrice: "",
+        auctionEndTime: ""
+    });
 
-const AddAuctionPage = () => {
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
 
-    const [inputText, setInputText]= useState("");
+        console.log(name,value)
+        setAuctions({...auctions, [name]: value });
+    }
 
-    const request = ({ endpoint, method, data }) => {
-        fetch(endpoint, {
-          body: JSON.stringify(data),
-          method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-      };
-
-    const addAuction = (data) => {
-        request({
-          endpoint: "http://localhost:6001/auctions",
-          method: "POST",
-          data,
-        });
-      };
-      
-
-    const createAuction = (e) => {
-        const newAuction = {
-            id: uuidv4(),
-            startTime: e.target.openingPrice.value,
-            endTime: e.target.startTime.value,
-            openingPrice: e.target.buyoutPrice.value,
-            buyoutPrice: e.target.endTime.value,
-            userId: 2
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(auctions)
+        if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
+            const newAuction = auctions
+            console.log(newAuction)
+            AuctionService.createAuction(newAuction, ownerId)
+            setAuctions({
+                availablePeriodStart: "",
+                availablePeriodEnd: "",
+                openingPrice: "",
+                buyoutPrice: "",
+                auctionEndTime: "",
+        })
         }
-
-        addAuction(newAuction)
-    }
-
-    const inputTextHandler = (event) => {
-        setInputText(event.target.value)
-    }
-
-    const submitAuction = (event) => {
-        event.preventDefault();
-        createAuction(event)
-        setInputText("");
     }
 
   return (
     <div className="add-auction-page">
         <div className="add-auction-container">
-            <form onSubmit={submitAuction} className="add-auction-form">
-                <div className="form-left-side">
-                    <img src="https://i.pinimg.com/originals/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"  className="add-auction-image" alt=""></img>
-                    <div className="competence-container">
-                        <div className="competence">
-                            <label htmlFor="java"> Java</label>
-                            <input type="checkbox" id="competence-button" name="java"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="python"> Python</label>
-                            <input type="checkbox" id="competence-button" name="python"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="c#"> C#</label>
-                            <input type="checkbox" id="competence-button" name="c#"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="javascript"> Javascript</label>
-                            <input type="checkbox" id="competence-button" name="javascript"></input>
-                        </div>
-                        <div className="competence">
-                            <label htmlFor="html-css"> HTML/CSS</label>
-                            <input type="checkbox" id="competence-button" name="html-css"></input>
-                        </div>
-                    </div>
-                </div>
+            <form className="add-auction-form">
                 <div className="form-mid-side">
                     <div className="add-input-container">
                         <label>Start price:</label>
-                        <input onChange={inputTextHandler} name="openingPrice" value={inputText.openingPrice} type="text"></input>
+                        <input onChange={handleChange} name="openingPrice" value={auctions.openingPrice} type="text"></input>
                     </div>
                     <div className="add-input-container">
-                        <label>Start date:</label>
-                        <input onChange={inputTextHandler} name="startTime" value={inputText.startTime} type="date"></input>
-                    </div>
-                    <div className="comment-container">
-                        <textarea className="comment" placeholder="Comment.."></textarea>
+                        <label>Available start date:</label>
+                        <input onChange={handleChange} name="availablePeriodStart" value={auctions.availablePeriodStart} type="date"></input>
                     </div>
                 </div>
                 <div className="form-right-side">
                     <div className="add-input-container">
                         <label>End price:</label>
-                        <input onChange={inputTextHandler} name="buyoutPrice" type="text" value={inputText.buyoutPrice}></input>
+                        <input onChange={handleChange} name="buyoutPrice" type="text" value={auctions.buyoutPrice}></input>
                     </div>
                     <div className="add-input-container">
-                        <label>End date:</label>
-                        <input onChange={inputTextHandler} name="endTime" value={inputText.endTime} type="date"></input>
+                        <label>Available end date:</label>
+                        <input onChange={handleChange} name="availablePeriodEnd" value={auctions.availablePeriodEnd} type="date"></input>
+                    </div>
+                    <div className="add-input-container">
+                        <label>Auction end time:</label>
+                        <input onChange={handleChange} name="auctionEndTime" value={auctions.auctionEndTime} type="date"></input>
                     </div>
                     <div className="add-button-container">
-                        <button type="submit" id="add-auction-button">Add Auction</button>
+                        <button type="submit" id="add-auction-button" onClick={handleSubmit}>Add Auction</button>
                     </div>
                 </div>
             </form>
