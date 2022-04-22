@@ -64,7 +64,10 @@
       ],
       "otherInfo": "Kan stå på händer",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 2,
@@ -88,7 +91,10 @@
       ],
       "otherInfo": "Blev utkastad ur scouterna som ung",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": "626143ad8252096c6efa4e58",
@@ -112,7 +118,10 @@
       ],
       "otherInfo": "Har 2500 timmar i Rocket League",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 5,
@@ -136,7 +145,10 @@
       ],
       "otherInfo": "Redig Halo nörd",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
     },
     {
       "id": 4,
@@ -163,7 +175,11 @@
       ],
       "otherInfo": "Kan stå längre på händer än Erik",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["react.js", "js", "python"]
+      "competence": [
+        "react.js",
+        "js",
+        "python"
+      ]
     },
     {
       "id": 6,
@@ -178,12 +194,18 @@
       "zipCode": 1337,
       "town": "Pungpinan",
       "links": [
-        { "github": "https://github.com/" },
-        { "linkedin": "https://www.linkedin.com/in/dennis-hasselgren/" }
+        {
+          "github": "https://github.com/"
+        },
+        {
+          "linkedin": "https://www.linkedin.com/in/dennis-hasselgren/"
+        }
       ],
       "otherInfo": "Gillar Hasselnötter och stjärnelever",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["Javascript"]
+      "competence": [
+        "Javascript"
+      ]
     },
     {
       "id": 7,
@@ -207,7 +229,35 @@
       ],
       "otherInfo": "Älskar promenader i skogen och stresshetsen i Stockholm",
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
-      "competence": ["React", "Javascript"]
+      "competence": [
+        "React",
+        "Javascript"
+      ]
+    },
+    {
+      "id": "7a7f3134-ec29-4120-a558-74d056b64185",
+      "firstName": "Erik",
+      "lastName": "Sund",
+      "imageUrl": "/img/erik.jpeg",
+      "CV": "cv-uasdfasdfasdf här",
+      "phone": "0707479291",
+      "address": "Åhusgatan 6, 6, 6",
+      "zipCode": "21438",
+      "town": "Malmö",
+      "password": "123123",
+      "links": [
+        {
+          "github": "asd"
+        },
+        {
+          "linkedin": ""
+        },
+        {
+          "otherLinks": ""
+        }
+      ],
+      "otherInfo": "",
+      "competence": []
     }
   ],
   "companies": [
