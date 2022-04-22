@@ -1,22 +1,39 @@
 import { useEffect, useState } from "react";
 import AuctionService from "../services/AuctionService";
 import AuthService from "../services/AuthService";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser, setChosenProfilePage }) => {
+const AuctionPage = ({ idOfLoggedInUser }) => {
 
-  // TODO make sure when user refreshes it sends you back to auctions
+  let {auctionId, auctionOwnerId} = useParams()
 
   const [user, setUser] = useState()
   const [auction, setAuction] = useState()
   const [bidValue, setBidValue] = useState()
 
   useEffect(() => {
-    setBidValue(chosenAuctionInfo.auction.currentHighestBid + 10)
-    setUser(chosenAuctionInfo.user)
-    setAuction(chosenAuctionInfo.auction)
-    console.log(user)
-    console.log(auction)
+    AuthService.getUserById(auctionOwnerId)
+      .then(response => {
+        console.log('auctionOwnerId: ' + auctionOwnerId)
+        setUser(response.data)
+        console.log('user was set to: ' + response.data)
+        console.log(response)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+    
+    AuctionService.getAuctionById(auctionId)
+      .then(response => {
+        console.log('auctionId: ' + auctionId)
+        setAuction(response.data)
+        console.log('auction was set to: ' + response.data)
+        console.log(response)
+        setBidValue(response.data.currentHighestBid + 10)
+      })
+      .catch(response => {
+        console.error(response)
+      })
   }, [])
 
   function capitalizeFirstLetter(string) {
@@ -31,7 +48,7 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
     return string.replace('T', ' ').slice(0, string.length-13)
   }
 
-  function handleSubmit(e) { 
+  function handleSubmit(e) {
     e.preventDefault()
     console.log('Bid placed. Amount: ' + bidValue)
 
@@ -72,10 +89,8 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           <h2>
             {capitalizeFirstLetter(user.firstName)} {capitalizeFirstLetter(user.lastName)}
           </h2>
-          <button className="auction-page-button" onClick={() => setChosenProfilePage({
-            user: user
-          })}>
-            <Link to="/profile-page-user">Go to profile</Link>
+          <button className="auction-page-button">
+            <Link to={"/profile-page-user/" + user.id}>Go to profile</Link>
           </button>
           
           <div className="auction-info">

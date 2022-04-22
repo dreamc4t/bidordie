@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import BecomeAMember from "./pages/BecomeAMember";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -9,11 +8,8 @@ import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage";
 import Faq from "./pages/Faq";
-import UserPage from "./pages/UserPage";
-import MyPage from "./pages/MyPage";
 import AuctionPage from "./pages/AuctionPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
-import AuctionService from "./services/AuctionService";
 import ProfilePageUser from "./pages/ProfilePageUser";
 
 function App() {
@@ -21,14 +17,6 @@ function App() {
   useEffect(() => {
   }, [idOfLoggedInUser]); //printar  i console id:t för user som är inloggad
 
-  const [chosenAuctionInfo, setChosenAuctionInfo] = useState({
-    user: null,
-    auction: null
-  })
-
-  const [chosenProfilePage, setChosenProfilePage] = useState({
-    user: null
-  })
 
   return (
     <Router>
@@ -36,14 +24,14 @@ function App() {
       <main>
         <Routes>
           {/*Pages go here as <Route>*/}
-          <Route exact path="/" element={<AuctionList setChosenAuctionInfo={setChosenAuctionInfo} chosenAuctionInfo={chosenAuctionInfo} />} />
+          <Route exact path="/" element={<AuctionList/>} />
           <Route path="/login" element={<LoginPage idOfLoggedInUser={idOfLoggedInUser} setIdOfLoggedInUser={setIdOfLoggedInUser} />} />
           <Route path="/become-a-member" element={<BecomeAMember />} />
           <Route path="/new-auction" element={<AddAuctionPage ownerId={idOfLoggedInUser} />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
-          <Route path="/profile-page-user" element={<ProfilePageUser loggedInUserID={idOfLoggedInUser} chosenProfilePage={chosenProfilePage} setChosenProfilePage={setChosenProfilePage} />} />
-          <Route path="/auction-page" element={<AuctionPage chosenAuctionInfo={chosenAuctionInfo} setChosenAuctionInfo={setChosenAuctionInfo} idOfLoggedInUser={idOfLoggedInUser} setChosenProfilePage={setChosenProfilePage}/>} />
+          <Route path="/profile-page-user/:auctionOwnerId" element={<ProfilePageUser loggedInUserID={idOfLoggedInUser}/>} />
+          <Route path="/auction-page/:auctionId/:auctionOwnerId" element={<AuctionPage idOfLoggedInUser={idOfLoggedInUser}/>} />
           <Route path="/not-logged-in" element={<NotLoggedInPage />} />
           <Route
             path="/google-play-store"

@@ -7,7 +7,7 @@ import { Link, Navigate } from "react-router-dom";
 import AuctionService from "../services/AuctionService";
 import AuthService from "../services/AuthService";
 
-const AuctionList = ({ setChosenAuctionInfo}) => {
+const AuctionList = () => {
 
     useEffect(() => {
       getUsers()
@@ -34,11 +34,8 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
             users.map((user) => (
               user.auctions &&
                 user.auctions.map((auction) =>(
-                  <div className="auction-kort" key={auction.auctionId} onClick={() => setChosenAuctionInfo({
-                    user: user, 
-                    auction: auction
-                  })}>
-                    <Link to="/auction-page">
+                  <div className="auction-kort" key={auction.auctionId}>
+                    <Link to={"/auction-page/" + auction.auctionId + "/" + user.id}>
                       <Auction auction={auction} user={user}/>
                     </Link> 
 
