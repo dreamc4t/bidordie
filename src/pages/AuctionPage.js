@@ -53,7 +53,7 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
               <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
               <p>Sluttid: {auction.auctionEndTime.replace('T', ' ').slice(0, auction.auctionEndTime.length-13)}</p>
               
-              <button onClick={setChosenProfilePage(user)}><Link to="/ProfilePageUser">Go to profile</Link></button>
+              <button onClick={setChosenProfilePage(user)}><Link to="/profile-page-user">Go to profile</Link></button>
           </div>
 
           <div className="lowest-offer-tomake">

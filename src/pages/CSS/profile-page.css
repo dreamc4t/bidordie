@@ -1,9 +1,9 @@
-.user-page-wrapper {
+.profile-page-wrapper {
     align-items: center;
     flex-direction: column;
 }
 
-.user-page {
+.profile-page {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -17,7 +17,7 @@
     overflow: hidden;
 }
 
-.user-page-top {
+.profile-page-top {
     margin-top: 1%;
     margin-bottom: 1%;
     display: flex;
@@ -25,7 +25,7 @@
     flex-direction: column;
 }
 
-.user-page-pictures {
+.profile-page-pictures {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -34,7 +34,7 @@
     left: 0;
 }
 
-.userBackgroundPicture {
+.profile-background-picture {
     position: relative;
     top: -75px;
     left: 0;
@@ -49,7 +49,7 @@
     top: 100px;
 }
 
-.user-profile-info {
+.profile-page-info {
     font-size: 20px;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@
     flex-wrap: wrap;
 }
 
-.user-bio {
+.profile-bio {
     max-width: 500px;
 }
 
