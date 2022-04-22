@@ -9,8 +9,6 @@ import AboutUs from "./pages/AboutUs";
 import AuctionList from "./pages/AuctionList";
 import AddAuctionPage from "./pages/AddAuctionPage";
 import Faq from "./pages/Faq";
-import UserPage from "./pages/UserPage";
-import MyPage from "./pages/MyPage";
 import AuctionPage from "./pages/AuctionPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
 import AuctionService from "./services/AuctionService";
