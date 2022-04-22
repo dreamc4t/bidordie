@@ -50,12 +50,16 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const userIsSure = window.confirm('Du kommer nu binda dig till att lägga ett bud på ' + bidValue + 'kr. Är du säker?')
+    if (userIsSure != true) return
+
     console.log('Bid placed. Amount: ' + bidValue)
 
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
       .then((response) => {
 
         if (response.status === 200) {
+          alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
           AuctionService.getAuctionById(auction.auctionId)
             .then((response) => {
               setAuction(response.data)
