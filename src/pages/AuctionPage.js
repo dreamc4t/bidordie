@@ -70,7 +70,7 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           <button className="auction-page-button" onClick={() => setChosenProfilePage({
             user: user
           })}>
-            <Link to="/ProfilePageUser">Go to profile</Link>
+            <Link to="/profile-page-user">Go to profile</Link>
           </button>
           
           <div className="auction-info">
