@@ -5,10 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 
 const API_URL_USERS = "http://localhost:8080/api/users";
-const API_URL_COMPANIES = "http://localhost:8080/api/companies"
+const API_URL_COMPANIES = "http://localhost:8080/api/companies";
 
 const BecomeAMember = () => {
-
   const [view, setView] = useState("person-view");
 
   const personInputs = [
@@ -36,7 +35,7 @@ const BecomeAMember = () => {
   const personLinks = [
     { key: 1, label: "Link to github" },
     { key: 2, label: "Link to linkedin" },
-    { key: 3, label: "Other links" }
+    { key: 3, label: "Other links" },
   ];
 
   const companyLinks = [
@@ -55,6 +54,7 @@ const BecomeAMember = () => {
     { key: 2, label: "Other files to attach" },
   ];
 
+  const [pictureFile, setPictureFile] = useState();
 
   const personCompetences = [
     { key: 1, label: "Java" },
@@ -64,54 +64,8 @@ const BecomeAMember = () => {
     { key: 5, label: "Python" },
   ];
 
-
-  const createNewUser = (e) => {
-
-      let tempCompetence = [];
-      if (e.target.javaComp.checked === true) {
-        tempCompetence.push("Java");
-      }
-      if (e.target.javascriptComp.checked === true) {
-        tempCompetence.push("Javascript");
-      }
-      if (e.target.cComp.checked === true) {
-        tempCompetence.push("C#");
-      }
-      if (e.target.reactComp.checked === true) {
-        tempCompetence.push("React");
-      }
-      if (e.target.pythonComp.checked === true) {
-        tempCompetence.push("Python");
-      } 
-  
-  
-      console.log("Creating new user..");
-      const newUser = {
-        id: uuidv4(),
-        firstName: e.target.firstname.value,
-        lastName: e.target.lastname.value,
-        email: e.target.email.value,
-        imageUrl: e.target.profilepicture.value,
-        CV: "cv-uasdfasdfasdf här",
-        phone: e.target.telephonenumber.value,
-        address: e.target.address.value,
-        zipCode: e.target.zipcode.value,
-        town: e.target.town.value,
-        password: e.target.password.value,
-        githubLink: e.target.linktogithub.value,
-        linkedinLink: e.target.linktolinkedin.value,
-        otherLinks: [e.target.otherlinks.value],
-        otherInfo: e.target.otherinfo.value,
-        biography: e.target.biography.value,
-        competence: tempCompetence,
-      };
-  
-      console.log(e.target.profilepicture.files[0])
-       addUser(newUser);
-    };
-
-
   /* DATABAS EVENT/ADD/HANTERING */
+
   const request = ({ endpoint, method, data }) => {
     fetch(endpoint, {
       body: JSON.stringify(data),
@@ -122,24 +76,48 @@ const BecomeAMember = () => {
     });
   };
 
+  const createNewUser = (e) => {
+    let tempCompetence = [];
+    if (e.target.javaComp.checked === true) {
+      tempCompetence.push("Java");
+    }
+    if (e.target.javascriptComp.checked === true) {
+      tempCompetence.push("Javascript");
+    }
+    if (e.target.cComp.checked === true) {
+      tempCompetence.push("C#");
+    }
+    if (e.target.reactComp.checked === true) {
+      tempCompetence.push("React");
+    }
+    if (e.target.pythonComp.checked === true) {
+      tempCompetence.push("Python");
+    }
 
-  const addUser = (data) => {
-    request({
-      endpoint:`${API_URL_USERS}/new`,
-      method: "POST",
-      data,
-    });
+    console.log("Creating new user..");
+    const newUser = {
+      id: uuidv4(),
+      firstName: e.target.firstname.value,
+      lastName: e.target.lastname.value,
+      email: e.target.email.value,
+      imageUrl: e.target.profilepicture.value,
+      CV: "cv-uasdfasdfasdf här",
+      phone: e.target.telephonenumber.value,
+      address: e.target.address.value,
+      zipCode: e.target.zipcode.value,
+      town: e.target.town.value,
+      password: e.target.password.value,
+      githubLink: e.target.linktogithub.value,
+      linkedinLink: e.target.linktolinkedin.value,
+      otherLinks: [e.target.otherlinks.value],
+      otherInfo: e.target.otherinfo.value,
+      biography: e.target.biography.value,
+      competence: tempCompetence,
+    };
+
+    console.log(e.target.profilepicture.files[0]);
+    addUser(newUser);
   };
-
-  const addCompany = (data) => {
-    request({
-      endpoint: `${API_URL_COMPANIES}/new`,
-      method: "POST",
-      data,
-    });
-  };
-
- 
 
   const createNewCompany = (e) => {
     console.log("Creating new company..");
@@ -156,12 +134,30 @@ const BecomeAMember = () => {
       town: e.target.town.value,
       webpage: e.target.linktowebpage.value,
       otherLinks: [e.target.otherlinks.value],
-      companyInfo: e.target.companyinfo.value
+      companyInfo: e.target.companyinfo.value,
     };
 
-    console.log(e.target.companylogo.files[0])
+    console.log(e.target.companylogo.files[0]);
     addCompany(newCompany);
   };
+
+  const addUser = (data) => {
+    request({
+      endpoint: `${API_URL_USERS}/new`,
+      method: "POST",
+      data,
+    });
+  };
+
+  const addCompany = (data) => {
+    request({
+      endpoint: `${API_URL_COMPANIES}/new`,
+      method: "POST",
+      data,
+    });
+  };
+
+
 
   const handleChange = (e) => {
     setView(e.target.value);
@@ -171,15 +167,16 @@ const BecomeAMember = () => {
     e.preventDefault();
     console.log("Submittt");
 
-
     view === "person-view" ? createNewUser(e) : createNewCompany(e);
     alert("New account created!");
     //window.location.replace("/my-page");
+
+
+
+
   };
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
-
-  
 
   return (
     <div id="become-a-member-div">
@@ -228,21 +225,28 @@ const BecomeAMember = () => {
             <div className="basic-info-div column-div">
               {view === "person-view" ? (
                 <>
-                                <InputField inpt={personInputs} type="text" />
-                <label htmlFor="password">Password*</label>
-                <br></br>
-                <input type="password" required name="password" placeholder="Enter password*" />
+                  <InputField inpt={personInputs} type="text" />
+                  <label htmlFor="password">Password*</label>
+                  <br></br>
+                  <input
+                    type="password"
+                    required
+                    name="password"
+                    placeholder="Enter password*"
+                  />
                 </>
-
-
               ) : (
                 <>
-                <InputField inpt={companyInputs} type="text" />
-                <label htmlFor="password">Password*</label>
-                <br></br>
-                <input type="password" required name="password" placeholder="Enter password*"/>
+                  <InputField inpt={companyInputs} type="text" />
+                  <label htmlFor="password">Password*</label>
+                  <br></br>
+                  <input
+                    type="password"
+                    required
+                    name="password"
+                    placeholder="Enter password*"
+                  />
                 </>
-                
               )}
             </div>
 
@@ -271,10 +275,12 @@ const BecomeAMember = () => {
                         type="checkbox"
                         id={inpt.key + "CompBox"}
                         style={{ cursor: "pointer" }}
-                        name={inpt.label
-                          .replace(/\s/g, "")
-                          .toLocaleLowerCase()
-                          .replace(/[^a-z0-9]/gi, "") + "Comp"}
+                        name={
+                          inpt.label
+                            .replace(/\s/g, "")
+                            .toLocaleLowerCase()
+                            .replace(/[^a-z0-9]/gi, "") + "Comp"
+                        }
                       ></input>
                       <label
                         htmlFor={inpt.key + "CompBox"}
@@ -292,39 +298,36 @@ const BecomeAMember = () => {
               ) : (
                 <></>
               )}
-              
-                {view === "person-view" ? 
-                <div>
-                <label>Other info:</label>  
-                <br></br>
-                <input
-                  className="other-info-field"
-                  type="text"
-                  placeholder="Type other info here"
-                  name="otherinfo"
-                ></input>
-                 <input
-                  className="other-info-field"
-                  type="text"
-                  placeholder="Biography "
-                  name="biography"
-                ></input>
-                </div>
-                :
-                <div>
 
-                <label>Company info:</label> 
-                <br></br>
-                <input
-                  className="other-info-field"
-                  type="text"
-                  placeholder="Type company info here"
-                  name="companyinfo"
-                ></input>
+              {view === "person-view" ? (
+                <div>
+                  <label>Other info:</label>
+                  <br></br>
+                  <input
+                    className="other-info-field"
+                    type="text"
+                    placeholder="Type other info here"
+                    name="otherinfo"
+                  ></input>
+                  <input
+                    className="other-info-field"
+                    type="text"
+                    placeholder="Biography "
+                    name="biography"
+                  ></input>
                 </div>
-                }
-         
-              
+              ) : (
+                <div>
+                  <label>Company info:</label>
+                  <br></br>
+                  <input
+                    className="other-info-field"
+                    type="text"
+                    placeholder="Type company info here"
+                    name="companyinfo"
+                  ></input>
+                </div>
+              )}
             </div>
           </div>
           <div className="submit-button-div">
