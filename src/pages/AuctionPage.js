@@ -40,7 +40,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  function formatToDate(string) {
+  function formatToDateWithoutTime(string) {
     return string.replace('T', ' ').slice(0, string.length-19)
   }
 
@@ -51,30 +51,25 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
   function handleSubmit(e) {
     e.preventDefault()
     const userIsSure = window.confirm('Du kommer nu binda dig till att lägga ett bud på ' + bidValue + 'kr. Är du säker?')
-    if (userIsSure != true) return
+    if (userIsSure !== true) return
 
     console.log('Bid placed. Amount: ' + bidValue)
 
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
-      .then((response) => {
-
-        if (response.status === 200) {
-          alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
-          AuctionService.getAuctionById(auction.auctionId)
-            .then((response) => {
-              setAuction(response.data)
-              setBidValue(response.data.currentHighestBid + 10)
-              console.log('auction updated from db')
-            }).catch((response) => {
-              console.log(response)
-            })
-        }
-
+      .then(() => {
+        alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
+        AuctionService.getAuctionById(auction.auctionId)
+          .then((response) => {
+            setAuction(response.data)
+            setBidValue(response.data.currentHighestBid + 10)
+            console.log('auction updated from db')
+          }).catch((response) => {
+            console.log(response)
+          })
       }).catch((response) => {
-        console.log(response)
+        console.error(response)
       })
   }
-
 
   function handleChange(e) {
     setBidValue(e.target.value)
@@ -96,15 +91,15 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
           <button className="auction-page-button">
             <Link to={"/profile-page-user/" + user.id}>Go to profile</Link>
           </button>
-          
+        
           <div className="auction-info">
               
-              <p>Gäller period: {formatToDate(auction.availablePeriodStart)} - {formatToDate(auction.availablePeriodEnd)}</p>
-              <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
-              <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
-              <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
-              
-              </div>
+            <p>Gäller period: {formatToDateWithoutTime(auction.availablePeriodStart)} - {formatToDateWithoutTime(auction.availablePeriodEnd)}</p>
+            <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
+            <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
+            <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
+        
+          </div>
 
           <div className="lowest-offer-tomake">
             Lägg {auction.currentHighestBid + 10}kr/h eller mer
@@ -135,6 +130,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
           Skicka
         </button>
       </form>
+
     </div>
     : <p>Loading info</p>
   );
