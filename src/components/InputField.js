@@ -1,4 +1,6 @@
 const InputField = ({ inpt, type }) => {
+
+
   return (
     <div>
       {inpt.map((inpt) => (

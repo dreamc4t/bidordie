@@ -18,7 +18,13 @@ class AuctionService {
     
     getAuctionById(auctionId) {
         return axios.get(`${API_URL_AUCTIONS}/getAuctionById/${auctionId}`)
+    }
 
+    placeBid(auctionOwnerId, bidderId, amount) {
+        return axios.post(`${API_URL_AUCTIONS}/placeBid/${auctionOwnerId}`, {
+            bidderId: bidderId,
+            amount: amount
+        })
     }
 
 }
