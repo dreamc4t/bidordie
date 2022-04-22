@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser, setChosenProfilePage }) => {
 
+  // TODO make sure when user refreshes it sends you back to auctions
+
   const [user, setUser] = useState()
   const [auction, setAuction] = useState()
   const [bidValue, setBidValue] = useState()
@@ -17,17 +19,36 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
       user: null,
       auction: null
     })
+    console.log(user)
+    console.log(auction)
   }, [])
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
+  function formatToDate(string) {
+    return string.replace('T', ' ').slice(0, string.length-19)
+  }
+
+  function formatToDateWithTime(string) {
+    return string.replace('T', ' ').slice(0, string.length-13)
+  }
+
   function handleSubmit(e) { 
     e.preventDefault()
     console.log('Bid placed. Amount: ' + bidValue)
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
+      .then((response) => {
+        if (response.status === 200) {
+          let changedAuction = auction
+          changedAuction.currentHighestBid = bidValue
+          setAuction(changedAuction)
+          setBidValue(bidValue + 10)
+        }
+      })
   }
+
 
   function handleChange(e) {
     setBidValue(e.target.value)
@@ -46,15 +67,20 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           <h2>
             {capitalizeFirstLetter(user.firstName)} {capitalizeFirstLetter(user.lastName)}
           </h2>
-
+          <button className="auction-page-button" onClick={() => setChosenProfilePage({
+            user: user
+          })}>
+            <Link to="/ProfilePageUser">Go to profile</Link>
+          </button>
+          
           <div className="auction-info">
               
-              <p>Ledande bud: {auction.currentHighestBid}kr/h</p>
+              <p>Gäller period: {formatToDate(auction.availablePeriodStart)} - {formatToDate(auction.availablePeriodEnd)}</p>
+              <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
               <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
-              <p>Sluttid: {auction.auctionEndTime.replace('T', ' ').slice(0, auction.auctionEndTime.length-13)}</p>
+              <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
               
-              <button onClick={setChosenProfilePage(user)}><Link to="/profile-page-user">Go to profile</Link></button>
-          </div>
+              </div>
 
           <div className="lowest-offer-tomake">
             Lägg {auction.currentHighestBid + 10}kr/h eller mer
@@ -63,7 +89,7 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           <form className="auction-form" onSubmit={handleSubmit}>
             <div className="bid-container">
               <input type="text" value={bidValue} onChange={handleChange}></input>
-              <button type="submit">Lägg bud</button>
+              <button className="auction-page-button" type="submit">Lägg bud</button>
             </div>
           </form>
         </div>
@@ -81,12 +107,12 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           cols="30"
           rows="5"
         />
-        <button className="question-button">
+        <button className="auction-page-button">
           Skicka
         </button>
       </form>
     </div>
-    : null
+    : <p>Loading info</p>
   );
 };
 

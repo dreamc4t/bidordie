@@ -38,9 +38,9 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
                     user: user, 
                     auction: auction
                   })}>
-                  <Link to="/auction-page">
-                  <Auction auction={auction} user={user}/>
-                  </Link> 
+                    <Link to="/auction-page">
+                      <Auction auction={auction} user={user}/>
+                    </Link> 
 
                 </div>
                 ))

@@ -64,7 +64,7 @@ public class AuctionController {
         relevantAuction.setTimeOfBid(new Date());
 
         auctionRepository.save(relevantAuction);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
+        return ResponseEntity.status(HttpStatus.OK).body("Bid was placed successfully.");
     }
 
     @PostMapping("/create/{ownerId}")
