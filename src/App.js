@@ -14,6 +14,7 @@ import MyPage from "./pages/MyPage";
 import AuctionPage from "./pages/AuctionPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
 import AuctionService from "./services/AuctionService";
+import ProfilePageUser from "./pages/ProfilePageUser";
 
 function App() {
   const [idOfLoggedInUser, setIdOfLoggedInUser] = useState(null);
@@ -41,7 +42,7 @@ function App() {
           <Route path="/new-auction" element={<AddAuctionPage ownerId={idOfLoggedInUser} />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/FAQ" element={<Faq />} />
-          <Route path="/my-page" element={<MyPage loggedInUserID={idOfLoggedInUser} />} />
+          <Route path="/profile-page-user" element={<ProfilePageUser loggedInUserID={idOfLoggedInUser} chosenProfilePage={chosenProfilePage} setChosenProfilePage={setChosenProfilePage} />} />
           <Route path="/auction-page" element={<AuctionPage chosenAuctionInfo={chosenAuctionInfo} setChosenAuctionInfo={setChosenAuctionInfo} idOfLoggedInUser={idOfLoggedInUser} setChosenProfilePage={setChosenProfilePage}/>} />
           <Route path="/not-logged-in" element={<NotLoggedInPage />} />
           <Route
