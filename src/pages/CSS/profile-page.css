@@ -61,7 +61,7 @@
     max-width: 500px;
 }
 
-.user-page-edit-button {
+.profile-page-edit-button {
     background-color: rgb(28,36,53);
     align-self: flex-start;
     z-index: 1;
@@ -71,19 +71,19 @@
     font-size: large;
 }
 
-.user-page-edit-button:hover {
+.profile-page-edit-button:hover {
     background-color: rgb(75, 78, 83);
 }
 
-.user-page-edit-icon {
+.profile-page-edit-icon {
     fill: rgb(250, 249, 249);
 }
 
-.user-page-icons {
+.profile-page-icons {
     fill: black;
 }
 
-.user-page-social-media-links {
+.profile-page-social-media-links {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
