@@ -1,0 +1,126 @@
+.user-page-wrapper {
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    color: black;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 25px;
+    padding: 20px 60px;
+    max-width: 950px;
+    overflow: hidden;
+}
+
+.user-page-top {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-page-pictures {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.userBackgroundPicture {
+    position: relative;
+    top: -75px;
+    left: 0;
+    border-radius: 25px 25px 0 0;
+}
+
+.profile-picture {
+    margin: 1px;
+    border-radius: 10px;
+    height: 250px;
+    position: absolute;
+    top: 100px;
+}
+
+.user-profile-info {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.user-bio {
+    max-width: 500px;
+}
+
+.user-page-edit-button {
+    background-color: rgb(28,36,53);
+    align-self: flex-start;
+    z-index: 1;
+    margin-left: 3%;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: large;
+}
+
+.user-page-edit-button:hover {
+    background-color: rgb(75, 78, 83);
+}
+
+.user-page-edit-icon {
+    fill: rgb(250, 249, 249);
+}
+
+.user-page-icons {
+    fill: black;
+}
+
+.user-page-social-media-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+
+.previous-commisions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center   
+}
+
+.auction-history-container {
+    border-radius: 5px;
+    width: 475px;
+    height: 244px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0px 40px 15px;
+}
+
+.hiring-company {
+    position: absolute;
+    height: 244px;
+    width: 175px;
+    background-color: rgb(28,36,53);
+    opacity: 0.9;
+    bottom: 0;
+    left: 0px;
+}
+
+.hiring-company-text {
+    padding:0;
+    margin:10px 0 10px 15px;
+    font-size: 13;
+    font-weight: bold;
+    color: rgb(250, 250, 250);
+}
