@@ -106,7 +106,7 @@
     background-color: rgb(47, 57, 80);
 }
 
-.FAQ p input {
+.FAQ form input {
     border-radius: 5px;
     padding: 7px 13px;
     background-color: white;

@@ -10,7 +10,12 @@ function Faq () {
 
   const [isOpen, setIsOpen] = useState(false);
   const [allmessages, setAllmessages] = useState([]);
-  const [messages, setMessages] = useState("");
+  const [messages, setMessages] = useState({
+    nameOfSender: "",
+    phone: "",
+    emailOfSender: "",
+    message: ""
+  });
   
   useEffect(() => {
     getAllMessages();
@@ -23,36 +28,37 @@ function Faq () {
     })
   }
 
-  // useEffect(() => {
-  //    addMessage();
-  //  }, [])
+  const inputMessageHandler = (e) => {
+    const name= e.target.name
+    const value = e.target.value;
 
-  const addMessage = (m) => {
-    m.preventDefault();
-    if(messages.trim() === "") return;
-
-    FaqMessageService.createMessage({
-      nameOfSender: m.target.nameOfSender.value,
-      phone: m.target.phone.value,
-      emailOfSender: m.target.emailOfSender.value,
-      message: m.target.message.value
-    }).then(() => {
-      setMessages("")}
-      )
+    console.log(name, value)
+    setMessages({...messages, [name]: value})
   }
 
-  const inputMessageHandler = (event) => {
-    setMessages(event.target.value)
+  const addMessage = (e) => {
+    e.preventDefault();
+    console.log(messages)
+    if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
+      const newMessage = messages
+      console.log(newMessage)
+      FaqMessageService.createMessage(newMessage)
+      setMessages({
+        nameOfSender: "",
+        phone: "",
+        emailOfSender: "",
+        message: ""
+      })
+    }
   }
 
-  const submitMessage = (event) => {
-    event.preventDefault();
-    addMessage(event)
-    setMessages("");
-  }
- 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+  }
+
+  function closeAndSubmit(){
+    addMessage();
+    togglePopup();
   }
 
   const [faqs, setfaqs] = useState([
@@ -123,8 +129,8 @@ function Faq () {
         {isOpen && <PopUp
           content={<>
             <b>Put in your contact info and your question</b>
-            <p>
-              <form onSubmit={submitMessage}>
+            <div>
+              <form>
                 <input onChange={inputMessageHandler} name="nameOfSender" type="text" value={messages.nameOfSender} placeholder="Firstname and Lastname"/>
                 <br></br>
                 <input onChange={inputMessageHandler} name="phone" type="text" value={messages.phone} placeholder="Telephone number"/>
@@ -133,9 +139,9 @@ function Faq () {
                 <br></br>
                 <input onChange={inputMessageHandler} name="message" type="text" value={messages.message} placeholder="Write your question here!"/>
                 <br></br>
-                <button type="submit" onClick={togglePopup}><FaEnvelope /> Submit</button>
+                <button type="submit" onClick={closeAndSubmit} ><FaEnvelope /> Submit</button>
               </form>
-            </p>
+            </div>
           </>}
           handleClose={togglePopup}
         />}
@@ -158,4 +164,4 @@ function Faq () {
 
 export default Faq;
 
-{/* <button className="button-element"><FaEnvelope /> Contact Us</button> */}
+//onClick={togglePopup}
