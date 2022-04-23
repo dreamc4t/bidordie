@@ -17,8 +17,8 @@ export const LoginContext = createContext()
 
 function App() {
 
-  // Will be unneccesary
-  const idOfLoggedInUser = null;
+  // idOfLoggedInUser will not be used after we implement getting this information directly from a service/endpoint
+  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isACompany, setIsACompany] = useState(false)
@@ -34,7 +34,7 @@ function App() {
           <Routes>
             {/*Pages go here as <Route>*/}
             <Route exact path="/" element={<AuctionList/>} />
-            <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setIsACompany={setIsACompany}/>} />
+            <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setIsACompany={setIsACompany} setIdOfLoggedInUser={setIdOfLoggedInUser}/>} />
             <Route path="/become-a-member" element={<BecomeAMember />} />
             <Route path="/new-auction" element={<AddAuctionPage ownerId={idOfLoggedInUser} />} />
             <Route path="/about-us" element={<AboutUs />} />

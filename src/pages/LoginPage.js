@@ -4,7 +4,7 @@ import { useState } from "react"
 import OtherLoginOption from "../components/OtherLoginOption"
 import useFetch from "../customHooks/useFetch";
 
-const LoginPage = ({ setIsLoggedIn }) => {
+const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,6 +25,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
             if(loginAttempt.email === user.email && loginAttempt.password === user.password) {
                 couldLogIn = true
                 setIsLoggedIn(true)
+                setIdOfLoggedInUser(user.id)
             }
         }
         if(couldLogIn) {
