@@ -20,7 +20,7 @@ public class AuctionRequest {
     private String auctionEndTime;
 
     public String getAvailablePeriodStart() {
-        return availablePeriodStart;
+        return this.availablePeriodStart;
     }
 
     public void setAvailablePeriodStart(String availablePeriodStart) {
@@ -28,7 +28,7 @@ public class AuctionRequest {
     }
 
     public String getAvailablePeriodEnd() {
-        return availablePeriodEnd;
+        return this.availablePeriodEnd;
     }
 
     public void setAvailablePeriodEnd(String availablePeriodEnd) {
@@ -36,7 +36,7 @@ public class AuctionRequest {
     }
 
     public Double getOpeningPrice() {
-        return openingPrice;
+        return this.openingPrice;
     }
 
     public void setOpeningPrice(Double openingPrice) {
@@ -44,7 +44,7 @@ public class AuctionRequest {
     }
 
     public Double getBuyoutPrice() {
-        return buyoutPrice;
+        return this.buyoutPrice;
     }
 
     public void setBuyoutPrice(Double buyoutPrice) {
@@ -52,7 +52,7 @@ public class AuctionRequest {
     }
 
     public String getAuctionEndTime() {
-        return auctionEndTime;
+        return this.auctionEndTime;
     }
 
     public void setAuctionEndTime(String auctionEndTime) {

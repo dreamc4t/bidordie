@@ -12,16 +12,16 @@ import AuctionService from "../services/AuctionService";
 
 const Auction = ({ auction, user }) => {
 
-
-    let town, firstName, lastName, imageUrl, otherInfo, competence = ""
-      town = user.town
-      firstName = user.firstName
-      lastName = user.lastName
-      imageUrl = user.imageUrl
-      otherInfo = user.otherInfo
-      user.competence && (competence= user.competence.join(', '));
-
-
+    let town, firstName, lastName, imageUrl, otherInfo, competence, availablePeriodStart, availablePeriodEnd = ""
+    town = user.town
+    firstName = user.firstName
+    lastName = user.lastName
+    imageUrl = user.imageUrl
+    otherInfo = user.otherInfo
+    user.competence && (competence= user.competence.join(', '));
+    auction.availablePeriodStart && (availablePeriodStart = auction.availablePeriodStart.replace('T', ' ').slice(0, auction.availablePeriodStart.length-19)) 
+    auction.availablePeriodEnd && (availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19))
+    
     return (
       (auction) ?
           <div className="auction">
@@ -32,7 +32,7 @@ const Auction = ({ auction, user }) => {
                 <div className="personalInfo">
                     <p className="boldText">{firstName} {lastName}</p>
                     <p><GoLocation/>{town}</p>
-                    <p><AiFillCalendar/>From {auction.availablePeriodStart.replace('T', ' ').slice(0, auction.availablePeriodStart.length-19)} to {auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19)}</p>
+                    <p><AiFillCalendar/>From {availablePeriodStart} to {availablePeriodEnd}</p>
                     <p><AiOutlineHeart/></p>
                 </div>
                   <div className="briefInfo">

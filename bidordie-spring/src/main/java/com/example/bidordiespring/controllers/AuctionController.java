@@ -8,6 +8,7 @@ import com.example.bidordiespring.payload.response.MessageResponse;
 import com.example.bidordiespring.repository.AuctionRepository;
 import com.example.bidordiespring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,23 +48,23 @@ public class AuctionController {
         return null;
     }
 
-    @PostMapping("/placeBid/{id}")
-    public ResponseEntity<?> placeBid(@Valid @RequestBody BidRequest bidRequest, @PathVariable String id) {
+    @PostMapping("/placeBid/{auctionId}")
+    public ResponseEntity<?> placeBid(@Valid @RequestBody BidRequest bidRequest, @PathVariable String auctionId) {
 
-        if (this.getAuctionById(id) == null) {
+        if (this.getAuctionById(auctionId) == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No auction found with passed id.");
         }
-        if (bidRequest.getAmount() < this.getAuctionById(id).getcurrentHighestBid()) {
+        if (bidRequest.getAmount() < this.getAuctionById(auctionId).getcurrentHighestBid()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Amount was not higher than current highest bid.");
         }
 
-        Auction relevantAuction = this.getAuctionById(id);
+        Auction relevantAuction = this.getAuctionById(auctionId);
         relevantAuction.setCurrentHighestBid(bidRequest.getAmount());
         relevantAuction.setHighestBidderId(bidRequest.getBidderId());
         relevantAuction.setTimeOfBid(new Date());
 
         auctionRepository.save(relevantAuction);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
+        return ResponseEntity.status(HttpStatus.OK).body("Bid was placed successfully.");
     }
 
     @PostMapping("/create/{ownerId}")
@@ -71,7 +72,7 @@ public class AuctionController {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
-        Double openingPrice = null;
+        Double openingPrice = 0.0;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{
@@ -85,7 +86,7 @@ public class AuctionController {
             System.out.println(e);
         }
 
-        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice,  auctionEndTime);
+        Auction auction = new Auction(availablePeriodStart, availablePeriodEnd, openingPrice, buyoutPrice, auctionEndTime);
         auctionRepository.save(auction);
 
         User user;
@@ -98,7 +99,7 @@ public class AuctionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No such user");
         }
 
-        return ResponseEntity.ok(new MessageResponse("Auction created successfully"));
+        return ResponseEntity.ok().body("Auction was created successfully");
     }
 
 }

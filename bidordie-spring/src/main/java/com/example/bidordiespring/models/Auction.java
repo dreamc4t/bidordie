@@ -24,6 +24,7 @@ public class Auction {
     private Double buyoutPrice;
 
     private Date auctionStartTime;
+    @NotBlank
     private Date auctionEndTime;
 
     private double currentHighestBid;
@@ -38,7 +39,7 @@ public class Auction {
         this.auctionStartTime = new Date();
         this.auctionEndTime = auctionEndTime;
 
-        this.currentHighestBid = 0;
+        this.currentHighestBid = openingPrice;
         this.highestBidderId = null;
         this.timeOfBid = null;
     }
