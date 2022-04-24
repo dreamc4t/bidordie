@@ -9,8 +9,6 @@ import FaqMessageService from "../services/FaqMessageService";
 
 function Faq () {
 
-  //const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
-
   const [isOpen, setIsOpen] = useState(false);
   const [allmessages, setAllmessages] = useState([]);
   const [messages, setMessages] = useState({
@@ -218,3 +216,5 @@ const addMessage = (data) => {
     },
   });
 }; */
+
+//const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
