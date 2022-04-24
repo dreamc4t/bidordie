@@ -6,18 +6,25 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import {FaLinkedinIn} from "react-icons/fa"
+import AuthService from "../services/AuthService";
 
 import UserPageMockAuctions from "../components/UserPageMockAuctions";
+import { useParams } from "react-router-dom";
 
-const ProfilePageUser = ({idOfLoggedInUser, chosenProfilePage, setChosenProfilePage}) => {
+const ProfilePageUser = ({idOfLoggedInUser}) => {
 
-const [user, setUser] = useState()
+  let {auctionOwnerId} = useParams()
+
+  const [user, setUser] = useState()
 
   useEffect(() => {
-    setUser(chosenProfilePage.user)
-    setChosenProfilePage({
-      user: null
-    })
+    AuthService.getUserById(auctionOwnerId)
+      .then(response => {
+        setUser(response.data)
+      })
+      .catch(response => {
+        console.error(response)
+      })
   }, [])
 
   return (

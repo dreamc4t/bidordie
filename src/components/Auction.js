@@ -12,7 +12,6 @@ import AuctionService from "../services/AuctionService";
 
 const Auction = ({ auction, user }) => {
 
-
     let town, firstName, lastName, imageUrl, otherInfo, competence, availablePeriodStart, availablePeriodEnd = ""
     town = user.town
     firstName = user.firstName
@@ -20,13 +19,9 @@ const Auction = ({ auction, user }) => {
     imageUrl = user.imageUrl
     otherInfo = user.otherInfo
     user.competence && (competence= user.competence.join(', '));
-    if (availablePeriodEnd) {
-      availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19) ;
-    }
-    if (availablePeriodEnd) {
-      availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19) ;
-    }
-
+    auction.availablePeriodStart && (availablePeriodStart = auction.availablePeriodStart.replace('T', ' ').slice(0, auction.availablePeriodStart.length-19)) 
+    auction.availablePeriodEnd && (availablePeriodEnd = auction.availablePeriodEnd.replace('T', ' ').slice(0, auction.availablePeriodEnd.length-19))
+    
     return (
       (auction) ?
           <div className="auction">

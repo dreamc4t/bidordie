@@ -9,17 +9,11 @@ class AuthService {
 
   getUserById(userId) {
       return axios.get(`${API_URL_AUTH}/getUserById/${userId}`, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
       })
   }
 
   getAllUsers() {
-    return axios.get(`${API_URL_AUTH}/all`, { 
-        headers: {
-            'Access-Control-Allow-Origin': '*'
-        }
+    return axios.get(`${API_URL_AUTH}/all`, {
     });
 }
 }

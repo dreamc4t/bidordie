@@ -1,33 +1,46 @@
 import { useEffect, useState } from "react";
 import AuctionService from "../services/AuctionService";
 import AuthService from "../services/AuthService";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser, setChosenProfilePage }) => {
+const AuctionPage = ({ idOfLoggedInUser }) => {
 
-  // TODO make sure when user refreshes it sends you back to auctions
+  let {auctionId, auctionOwnerId} = useParams()
 
   const [user, setUser] = useState()
   const [auction, setAuction] = useState()
   const [bidValue, setBidValue] = useState()
 
   useEffect(() => {
-    setBidValue(chosenAuctionInfo.auction.currentHighestBid + 10)
-    setUser(chosenAuctionInfo.user)
-    setAuction(chosenAuctionInfo.auction)
-    setChosenAuctionInfo({
-      user: null,
-      auction: null
-    })
-    console.log(user)
-    console.log(auction)
+    AuthService.getUserById(auctionOwnerId)
+      .then(response => {
+        console.log('auctionOwnerId: ' + auctionOwnerId)
+        setUser(response.data)
+        console.log('user was set to: ' + response.data)
+        console.log(response)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+    
+    AuctionService.getAuctionById(auctionId)
+      .then(response => {
+        console.log('auctionId: ' + auctionId)
+        setAuction(response.data)
+        console.log('auction was set to: ' + response.data)
+        console.log(response)
+        setBidValue(response.data.currentHighestBid + 10)
+      })
+      .catch(response => {
+        console.error(response)
+      })
   }, [])
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  function formatToDate(string) {
+  function formatToDateWithoutTime(string) {
     return string.replace('T', ' ').slice(0, string.length-19)
   }
 
@@ -35,20 +48,28 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
     return string.replace('T', ' ').slice(0, string.length-13)
   }
 
-  function handleSubmit(e) { 
+  function handleSubmit(e) {
     e.preventDefault()
+    const userIsSure = window.confirm('Du kommer nu binda dig till att lägga ett bud på ' + bidValue + 'kr. Är du säker?')
+    if (userIsSure !== true) return
+
     console.log('Bid placed. Amount: ' + bidValue)
+
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
-      .then((response) => {
-        if (response.status === 200) {
-          let changedAuction = auction
-          changedAuction.currentHighestBid = bidValue
-          setAuction(changedAuction)
-          setBidValue(bidValue + 10)
-        }
+      .then(() => {
+        alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
+        AuctionService.getAuctionById(auction.auctionId)
+          .then((response) => {
+            setAuction(response.data)
+            setBidValue(response.data.currentHighestBid + 10)
+            console.log('auction updated from db')
+          }).catch((response) => {
+            console.log(response)
+          })
+      }).catch((response) => {
+        console.error(response)
       })
   }
-
 
   function handleChange(e) {
     setBidValue(e.target.value)
@@ -67,20 +88,18 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           <h2>
             {capitalizeFirstLetter(user.firstName)} {capitalizeFirstLetter(user.lastName)}
           </h2>
-          <button className="auction-page-button" onClick={() => setChosenProfilePage({
-            user: user
-          })}>
-            <Link to="/profile-page-user">Go to profile</Link>
+          <button className="auction-page-button">
+            <Link to={"/profile-page-user/" + user.id}>Go to profile</Link>
           </button>
-          
+        
           <div className="auction-info">
               
-              <p>Gäller period: {formatToDate(auction.availablePeriodStart)} - {formatToDate(auction.availablePeriodEnd)}</p>
-              <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
-              <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
-              <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
-              
-              </div>
+            <p>Gäller period: {formatToDateWithoutTime(auction.availablePeriodStart)} - {formatToDateWithoutTime(auction.availablePeriodEnd)}</p>
+            <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
+            <p>Vinn auktion direkt: {auction.buyoutPrice}</p>
+            <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
+        
+          </div>
 
           <div className="lowest-offer-tomake">
             Lägg {auction.currentHighestBid + 10}kr/h eller mer
@@ -111,6 +130,7 @@ const AuctionPage = ({ chosenAuctionInfo, setChosenAuctionInfo, idOfLoggedInUser
           Skicka
         </button>
       </form>
+
     </div>
     : <p>Loading info</p>
   );
