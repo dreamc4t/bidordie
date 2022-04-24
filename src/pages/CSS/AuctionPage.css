@@ -11,20 +11,37 @@
 }
 
 #auction-top-left-div {
-  width: 250px;
+  min-width: 250px;
+  max-width: 350px;
+  display: flex;
+  align-items: flex-end;
+}
+#auction-top-left-div>img {
+  margin: 0;
+  padding: 0;
 }
 
 #auction-top-right-div {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 #auction-top-right-div>h2 {
   font-size: 300%;
   margin: 0;
+}
+
+.auction-info, .lowest-offer-tomake, .auction-form {
+  align-self: flex-start;
+}
+
+.auction-info>p>svg {
+  color: black;
+  fill: black;
 }
 
 .leading-offer {
@@ -43,7 +60,7 @@
   padding: 0 5px 0 5px;
 }
 .lowest-offer-tomake {
-  margin: 24px 0 8px 0;
+  margin: 0;
 }
 .bid-container {
   display: flex;
@@ -65,7 +82,15 @@
   margin: 24px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+}
+
+.description-container>h5 {
+  margin-top: 16px;
+}
+
+.description-container>ul {
+  margin: 0 32px 16px;
 }
 
 .question-container {
