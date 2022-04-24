@@ -36,7 +36,7 @@ const ProfilePageUser = () => {
     <div className="profile-page">
       <div className="profile-page-pictures">
         {(user.id === loginContext.idOfLoggedInUser) && <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button>}
-        <img src="img/profileBackground.jpg" className="profile-background-picture" />
+        <img src="/img/profileBackground.jpg" className="profile-background-picture" />
         <img src={user.imageUrl} className="profile-picture" />
       </div>
           

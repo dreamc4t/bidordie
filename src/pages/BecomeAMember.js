@@ -182,7 +182,7 @@ const BecomeAMember = () => {
     <div id="become-a-member-div">
       <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
-          <h1>Create account</h1>
+          <h1>Create account</h1>        
 
           <div className="create-acc-with-other">
             <p>----- or signup with -----</p>
