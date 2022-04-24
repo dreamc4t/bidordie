@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 import FAQfunctions from "../components/FAQfunctions";
 import PopUp from "../components/PopUp";
 import FaqMessageService from "../services/FaqMessageService";
 
 function Faq () {
+
+  //const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
 
   const [isOpen, setIsOpen] = useState(false);
   const [allmessages, setAllmessages] = useState([]);
@@ -14,7 +17,7 @@ function Faq () {
     nameOfSender: "",
     phone: "",
     emailOfSender: "",
-    message: ""
+    message: "",
   });
   
   useEffect(() => {
@@ -29,17 +32,17 @@ function Faq () {
   }
 
   const handleChange = (e) => {
-    const name= e.target.name
+    const name = e.target.name;
     const value = e.target.value;
-
+  
     console.log(name, value)
     setMessages({...messages, [name]: value})
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(messages)
-    if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
+    if(messages.id && messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
       const newMessage = messages
       console.log(newMessage)
       FaqMessageService.createMessage(newMessage)
@@ -139,7 +142,7 @@ function Faq () {
                 <br></br>
                 <input onChange={handleChange} name="message" type="text" value={messages.message} placeholder="Write your question here!"/>
                 <br></br>
-                <button type="submit" onClick={closeAndSubmit} ><FaEnvelope /> Submit</button>
+                <button type="submit" onClick={handleSubmit} ><FaEnvelope /> Submit</button>
               </form>
             </div>
           </>}
@@ -165,3 +168,53 @@ function Faq () {
 export default Faq;
 
 //onClick={togglePopup}
+
+/* const handleChange = (e) => {
+    setMessages(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+   e.preventDefault()
+   console.log("Submiitt")
+
+   messages = createNewMessage(e)
+  } */
+
+/* const [messages, setMessages] = useState({
+  id: "",
+  nameOfSender: "",
+  phone: "",
+  emailOfSender: "",
+  message: ""
+}); */
+
+
+/* const createNewMessage = (e) => {
+  const newMessage = {
+    id: uuidv4(),
+    nameOfSender: e.target.nameOfSender.value,
+    phone: e.target.phone.value,
+    emailOfSender: e.target.emailOfSender.value,
+    message: e.target.message.value
+  }
+
+  addMessage(newMessage)
+}
+
+const addMessage = (data) => {
+  request({
+    endpoint: `${API_URL_MESSAGES}/messages`,
+    method: "POST",
+    data,
+  })
+} */
+
+/* const request = ({ endpoint, method, data }) => {
+  fetch(endpoint, {
+    body: JSON.stringify(data),
+    method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}; */
