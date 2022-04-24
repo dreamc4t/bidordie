@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 
 import OtherLoginOption from "../components/OtherLoginOption"
-import useFetch from "../customHooks/useFetch";
+import AuthService from "../services/AuthService";
 
 const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
@@ -10,36 +10,41 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
     const [password, setPassword] = useState("")
     const [failedToLogIn, setFailedToLogIn] = useState(false)
 
-    const { data: users } = useFetch("http://localhost:6001/users");
-
     const navigate = useNavigate()
 
     const validateLogin = (e) => {
         e.preventDefault()
-        const loginAttempt = {
-            email,
-            password
+
+        const loginRequest = {
+            "email": email,
+            "password": password
         }
-        let couldLogIn = false
-        for (const user of users) {
-            if(loginAttempt.email === user.email && loginAttempt.password === user.password) {
-                couldLogIn = true
-                setIsLoggedIn(true)
-                setIdOfLoggedInUser(user.id)
-            }
-        }
-        if(couldLogIn) {
-            setFailedToLogIn(false)
-            console.log('Successful login')
-            navigate("/", true)
-        } else {
-            setFailedToLogIn(true)
-            console.log('Failed to login')
-        }
+
+        AuthService.login(loginRequest)
+            .then(response => {
+                console.log(response)
+                if (response.status === 200) {
+                    setIsLoggedIn(response.data.loggedIn)
+                    setIsACompany(response.data.company)
+                    setIdOfLoggedInUser(response.data.userId)
+                    setFailedToLogIn(false)
+                    console.log('Successful Login!')
+                    navigate('/', true)
+                } else {
+                    setFailedToLogIn(true)
+                    console.log('Could not log in')
+                }
+                console.log('server response: ' + response)
+            })
+            .catch(response => {
+                console.error('error: ' + response)
+            })
     }
+
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
+
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
     }

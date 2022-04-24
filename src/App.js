@@ -17,30 +17,29 @@ export const LoginContext = createContext()
 
 function App() {
 
-  // idOfLoggedInUser will not be used after we implement getting this information directly from a service/endpoint
-  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState();
-
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isACompany, setIsACompany] = useState(false)
+  const [idOfLoggedInUser, setIdOfLoggedInUser] = useState("")
 
   return (
     <LoginContext.Provider value={{
       isLoggedIn: isLoggedIn,
-      isACompany: isACompany
+      isACompany: isACompany,
+      idOfLoggedInUser: idOfLoggedInUser
     }}>
       <Router>
-        <Header setIsLoggedIn={setIsLoggedIn} setIsACompany={setIsACompany}/>
+        <Header setIsLoggedIn={setIsLoggedIn} setIsACompany={setIsACompany} setIdOfLoggedInUser={setIdOfLoggedInUser}/>
         <main>
           <Routes>
             {/*Pages go here as <Route>*/}
             <Route exact path="/" element={<AuctionList/>} />
             <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setIsACompany={setIsACompany} setIdOfLoggedInUser={setIdOfLoggedInUser}/>} />
             <Route path="/become-a-member" element={<BecomeAMember />} />
-            <Route path="/new-auction" element={<AddAuctionPage ownerId={idOfLoggedInUser} />} />
+            <Route path="/new-auction" element={<AddAuctionPage />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/FAQ" element={<Faq />} />
-            <Route path="/profile-page-user/:auctionOwnerId" element={<ProfilePageUser loggedInUserID={idOfLoggedInUser}/>} />
-            <Route path="/auction-page/:auctionId/:auctionOwnerId" element={<AuctionPage idOfLoggedInUser={idOfLoggedInUser}/>} />
+            <Route path="/profile-page-user/:auctionOwnerId" element={<ProfilePageUser/>} />
+            <Route path="/auction-page/:auctionId/:auctionOwnerId" element={<AuctionPage />} />
             <Route path="/not-logged-in" element={<NotLoggedInPage />} />
             <Route
               path="/google-play-store"
