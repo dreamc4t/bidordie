@@ -28,7 +28,7 @@ function Faq () {
     })
   }
 
-  const inputMessageHandler = (e) => {
+  const handleChange = (e) => {
     const name= e.target.name
     const value = e.target.value;
 
@@ -36,7 +36,7 @@ function Faq () {
     setMessages({...messages, [name]: value})
   }
 
-  const addMessage = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(messages)
     if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
@@ -57,7 +57,7 @@ function Faq () {
   }
 
   function closeAndSubmit(){
-    addMessage();
+    handleSubmit();
     togglePopup();
   }
 
@@ -131,13 +131,13 @@ function Faq () {
             <b>Put in your contact info and your question</b>
             <div>
               <form>
-                <input onChange={inputMessageHandler} name="nameOfSender" type="text" value={messages.nameOfSender} placeholder="Firstname and Lastname"/>
+                <input onChange={handleChange} name="nameOfSender" type="text" value={messages.nameOfSender} placeholder="Firstname and Lastname"/>
                 <br></br>
-                <input onChange={inputMessageHandler} name="phone" type="text" value={messages.phone} placeholder="Telephone number"/>
+                <input onChange={handleChange} name="phone" type="text" value={messages.phone} placeholder="Telephone number"/>
                 <br></br>
-                <input onChange={inputMessageHandler} name="email" type="text" value={messages.emailOfSender} placeholder="Email"/>
+                <input onChange={handleChange} name="email" type="text" value={messages.emailOfSender} placeholder="Email"/>
                 <br></br>
-                <input onChange={inputMessageHandler} name="message" type="text" value={messages.message} placeholder="Write your question here!"/>
+                <input onChange={handleChange} name="message" type="text" value={messages.message} placeholder="Write your question here!"/>
                 <br></br>
                 <button type="submit" onClick={closeAndSubmit} ><FaEnvelope /> Submit</button>
               </form>
