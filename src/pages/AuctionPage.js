@@ -1,148 +1,160 @@
-import useFetch from "../customHooks/useFetch";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom"
+import {GoLocation} from "react-icons/go";
+import AuctionService from "../services/AuctionService";
+import AuthService from "../services/AuthService";
 
-const AuctionPage = (props) => {
-  const request = ({ endpoint, method, data }) => {
-    fetch(endpoint, {
-      body: JSON.stringify(data),
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  };
+import { LoginContext } from "../App";
 
-  const UpdateAuction = (data) => {
-    request({
-      endpoint: "http://localhost:6001/auctions",
-      method: "GET",
-      data,
-    });
-  };
+const AuctionPage = ({ idOfLoggedInUser }) => {
 
-  const chosenId = props.chosenAuction;
+  const {auctionId, auctionOwnerId} = useParams()
 
-  const { data: auctions } = useFetch("http://localhost:6001/auctions");
+  const login = useContext(LoginContext)
 
-  let auctionId,
-    startTime,
-    endTime,
-    openingPrice,
-    buyoutPrice,
-    currentBid,
-    timer,
-    userId = 0;
+  const [user, setUser] = useState()
+  const [auction, setAuction] = useState()
+  const [bidValue, setBidValue] = useState("")
+  const [questionValue, setQuestionValue] = useState("")
 
-  auctions &&
-    auctions.map((auction) => {
-      if (auction.id === chosenId) {
-        startTime = auction.startTime;
-        endTime = auction.endTime;
-        openingPrice = auction.openingPrice;
-        buyoutPrice = auction.buyoutPrice;
-        currentBid = auction.currentBid;
-        timer = auction.timer;
-        userId = auction.userId;
-      }
-    });
+  useEffect(() => {
+    AuthService.getUserById(auctionOwnerId)
+      .then(response => {
+        setUser(response.data)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+    
+    AuctionService.getAuctionById(auctionId)
+      .then(response => {
+        setAuction(response.data)
+        setBidValue(response.data.currentHighestBid + 10)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+  }, [])
 
-  // const getUser = (data) => {
-  //   request({
-  //     endpoint: "http://localhost:6001/users",
-  //     method: "GET",
-  //     data,
-  //   });
-  // };
 
-  const { data: users } = useFetch("http://localhost:6001/users");
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
 
-  let firstName,
-    lastName,
-    email,
-    imageUrl,
-    phone,
-    address,
-    zipCode,
-    town,
-    github,
-    linkedin,
-    otherInfo,
-    competence = 0;
+  function formatToDateWithoutTime(string) {
+    return string.replace('T', ' ').slice(0, string.length-19)
+  }
 
-  users &&
-    users.map((user) => {
-      if (user.id === userId) {
-        firstName = user.firstName;
-        lastName = user.lastName;
-        email = user.email;
-        imageUrl = user.imageUrl;
-        phone = user.phone;
-        address = user.address;
-        zipCode = user.zipCode;
-        town = user.town;
-        github = user.github;
-        linkedin = user.linkedin;
-        otherInfo = user.otherInfo;
-        competence = user.competence;
-      }
-    });
+  function formatToDateWithTime(string) {
+    return string.replace('T', ' ').slice(0, string.length-13)
+  }
+
+
+  function handleBidSubmit(e) {
+    e.preventDefault()
+    if (bidValue < auction.currentHighestBid) return
+    if (!login.isACompany) return
+    const userIsSure = window.confirm('Du kommer nu binda dig till att lägga ett bud på ' + bidValue + 'kr. Är du säker?')
+    if (userIsSure !== true) return
+
+    AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
+      .then(() => {
+        alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
+        AuctionService.getAuctionById(auction.auctionId)
+          .then((response) => {
+            setAuction(response.data)
+            setBidValue(response.data.currentHighestBid + 10)
+          }).catch((response) => {
+            console.log(response)
+          })
+      }).catch((response) => {
+        console.error(response)
+      })
+  }
+
+  function handleQuestionSubmit(e) {
+    e.preventDefault()
+    window.open('mailto:' + user.email + '?subject=Regarding your auction for period that starts ' + auction.availablePeriodStart + '&body=' + questionValue);
+  }
+
+  function handleBidChange(e) {
+    setBidValue(e.target.value)
+  }
+
+  function handleQuestionChange(e) {
+    setQuestionValue(e.target.value)
+  }
 
   return (
-    <div>
-      <div className="auction__page">
-        <div className="AuctionPersonInfo">
-          <img src={imageUrl} alt="image of {firstName} " width="250"></img>
+    (auction && user) ?
+    <div className="auction-page">
+
+      <div id="auction-top-div">
+        <div id="auction-top-left-div">
+          <img src={user.imageUrl} alt={`${user.firstName}`} width="250"></img>
         </div>
 
-        <form className="auction__form">
-          <div className="bidding__info">
-            <div className="leading__offer">
-              <label>Ledande bud</label>
-              <p>{currentBid}kr/h</p>
-            </div>
-            <div className="end__time">
-              <label>Sluttid</label>
-              <p>{timer}</p>
-            </div>
-            <div className="number_of_bids">
-              <label>Antal bud</label>
-              <p>5st</p>
-            </div>
-            <div className="butOut">
-              <label>Köp ut</label>
-              <p>{buyoutPrice}</p>
-            </div>
+        <div id="auction-top-right-div">
+
+          <h2>
+            {capitalizeFirstLetter(user.firstName)} {capitalizeFirstLetter(user.lastName)}
+          </h2>
+
+          <button className="auction-page-button">
+            <Link to={"/profile-page-user/" + user.id}>Go to profile</Link>
+          </button>
+        
+          <div className="auction-info">
+            {user.town && <p><GoLocation/> {capitalizeFirstLetter(user.town)}</p>}
+            <p>Gäller period: {formatToDateWithoutTime(auction.availablePeriodStart)} - {formatToDateWithoutTime(auction.availablePeriodEnd)}</p>
+            <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
+            <p>Vinn auktion direkt: {auction.buyoutPrice}kr</p>
+            <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
           </div>
-          <label className="lowest__offer__tomake">
-            Lägg {currentBid + 10}kr/h eller mer
-          </label>
-          <div className="bid_container">
-            <input type="number" min={currentBid + 10}></input>
-            <button type="submit">Lägg bud</button>
-            <button>Like</button>
+
+          <div className="lowest-offer-tomake">
+            Lägg {auction.currentHighestBid + 10}kr/h eller mer
           </div>
-        </form>
+
+          <form className="auction-form" onSubmit={handleBidSubmit}>
+            <div className="bid-container">
+              <input type="text" value={bidValue} onChange={handleBidChange}></input>
+              {(bidValue >= auction.currentHighestBid + 10 && login.isACompany) ? <button className="auction-page-button" type="submit">Lägg bud</button> : <button className="auction-page-button" type="submit" disabled>Lägg bud</button>}
+            </div>
+          </form>
+          
+        </div>
       </div>
-      <div className="description__container">
-        <h2>
-          {firstName} {lastName}
-        </h2>
-        <h5>Beskrivning</h5>
-        <p>{otherInfo}</p>
+
+      <div className="description-container">
+        {user.biography && <h5>Om {capitalizeFirstLetter(user.firstName)}</h5>}
+        {user.biography && <p>{user.biography}</p>}
+        {user.competence && <h5>Kompetenser: </h5>}
+        <ul>
+        {user.competence &&
+          user.competence.map(item => {
+            return <li>{item}</li>
+          })
+        }
+        </ul>
       </div>
-      <div className="question__container">
-        <input
-          className="question__input"
+
+      <form className="question-container" onSubmit={handleQuestionSubmit}>
+        <textarea
+          id="question-textarea"
           placeholder="Ask a question!"
-          type="text"
-        ></input>
-        <button className="question__button" type="submit">
-          ASK!
+          cols="30"
+          rows="5"
+          value={questionValue}
+          onChange={handleQuestionChange}
+        />
+        <button className="auction-page-button" type="submit">
+          Skicka
         </button>
-      </div>
-      <div className="question_list_container">
-        <ul className="qustion_list"> </ul>
-      </div>
+      </form>
+
     </div>
+    : <p>Loading info</p>
   );
 };
 

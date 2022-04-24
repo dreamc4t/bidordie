@@ -3,33 +3,49 @@ import SortBar from "../components/SortBar";
 import Auction from "../components/Auction";
 import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import AuctionService from "../services/AuctionService";
+import AuthService from "../services/AuthService";
 
-const AuctionList = ({ setChosenAuction, chosenAuction }) => {
+const AuctionList = () => {
 
     useEffect(() => {
-      setChosenAuction(-1)
+      getUsers()
     }, [])
 
-    const { data: auctions, isLoading } = useFetch("http://localhost:6001/auctions");
+  const [users, setUsers] = useState();
+
+
+  const getUsers= () => {
+    AuthService.getAllUsers().then(function(response){
+      setUsers(response.data)
+      console.log(response.data)
+    }).catch(function(response){
+      console.log(response)
+    })
+  }
 
     return (
+      (users) ?
       <div className="auction-list" >
-        {chosenAuction != -1 && <Navigate to="auction-page" />} 
         <SortBar />
         <div className="auction-container">
-          {isLoading && <div> LOADING CONTENT....</div>}
-          {auctions &&
-            auctions.map((auction) => (
-              <div className="auction-kort" key={auction.id}>
-                 
-                 <Auction auction={auction} setChosenAuction={setChosenAuction}/>
+          {users &&
+            users.map((user) => (
+              user.auctions &&
+                user.auctions.map((auction) =>(
+                  <div className="auction-kort" key={auction.auctionId}>
+                    <Link to={"/auction-page/" + auction.auctionId + "/" + user.id}>
+                      <Auction auction={auction} user={user}/>
+                    </Link> 
 
                 </div>
+                ))
 
             ))}
         </div>
       </div>
+      : null
     );
 
 
