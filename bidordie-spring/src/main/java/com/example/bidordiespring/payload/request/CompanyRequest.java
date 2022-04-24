@@ -1,5 +1,6 @@
 package com.example.bidordiespring.payload.request;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class CompanyRequest {
@@ -9,6 +10,7 @@ public class CompanyRequest {
     @NotBlank
     private String orgNr;
     @NotBlank
+    @Email
     private String email;
     @NotBlank
     private String password;

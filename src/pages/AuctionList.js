@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 import { Link, Navigate } from "react-router-dom";
 import AuctionService from "../services/AuctionService";
-import AuthService from "../services/AuthService";
+import UserService from "../services/UserService";
 
 const AuctionList = () => {
 
@@ -17,7 +17,7 @@ const AuctionList = () => {
 
 
   const getUsers= () => {
-    AuthService.getAllUsers().then(function(response){
+    UserService.getAllUsers().then(function(response){
       setUsers(response.data)
       console.log(response.data)
     }).catch(function(response){

@@ -1,8 +1,13 @@
 import AuctionService from "../services/AuctionService";
-import {useState} from "react";
+import {useState, useContext} from "react";
+
+import { LoginContext } from "../App";
 
 
-const AddAuctionPage = ({ownerId}) => {
+const AddAuctionPage = () => {
+
+    const loginContext = useContext(LoginContext)
+
     const [auctions, setAuctions] = useState({
         availablePeriodStart: "",
         availablePeriodEnd: "",
@@ -25,7 +30,7 @@ const AddAuctionPage = ({ownerId}) => {
         if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
             const newAuction = auctions
             console.log(newAuction)
-            AuctionService.createAuction(newAuction, ownerId)
+            AuctionService.createAuction(newAuction, loginContext.idOfLoggedInUser)
             setAuctions({
                 availablePeriodStart: "",
                 availablePeriodEnd: "",
