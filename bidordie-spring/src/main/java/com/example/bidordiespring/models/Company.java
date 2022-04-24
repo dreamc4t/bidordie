@@ -3,6 +3,7 @@ package com.example.bidordiespring.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Document(collection = "companies")
@@ -16,6 +17,7 @@ public class Company {
     @NotBlank
     private String orgNr;
     @NotBlank
+    @Email
     private String email;
     @NotBlank
     private String password;

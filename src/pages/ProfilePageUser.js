@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useEffect } from "react";
 import {GoLocation} from "react-icons/go"
 import {GoPencil} from "react-icons/go"
@@ -6,19 +6,22 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import {FaLinkedinIn} from "react-icons/fa"
-import AuthService from "../services/AuthService";
+import UserService from "../services/UserService";
 
 import UserPageMockAuctions from "../components/UserPageMockAuctions";
 import { useParams } from "react-router-dom";
+import { LoginContext } from "../App";
 
-const ProfilePageUser = ({idOfLoggedInUser}) => {
+const ProfilePageUser = () => {
+
+  const loginContext = useContext(LoginContext)
 
   let {auctionOwnerId} = useParams()
 
   const [user, setUser] = useState()
 
   useEffect(() => {
-    AuthService.getUserById(auctionOwnerId)
+    UserService.getUserById(auctionOwnerId)
       .then(response => {
         setUser(response.data)
       })
@@ -32,7 +35,7 @@ const ProfilePageUser = ({idOfLoggedInUser}) => {
     user ?
     <div className="profile-page">
       <div className="profile-page-pictures">
-        {(user.id === idOfLoggedInUser) && <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button>}
+        {(user.id === loginContext.idOfLoggedInUser) && <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button>}
         <img src="img/profileBackground.jpg" className="profile-background-picture" />
         <img src={user.imageUrl} className="profile-picture" />
       </div>
