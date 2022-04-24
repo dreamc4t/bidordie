@@ -40,12 +40,12 @@ const BecomeAMember = () => {
   const personLinks = [
     { key: 1, label: "Link to github" },
     { key: 2, label: "Link to linkedin" },
-    { key: 3, label: "Other links" },
+    { key: 3, label: "Other link" },
   ];
 
   const companyLinks = [
     { key: 1, label: "Link to webpage" },
-    { key: 2, label: "Other links" },
+    { key: 2, label: "Other link" },
   ];
 
   const personAttachedItems = [
@@ -222,8 +222,8 @@ const BecomeAMember = () => {
         <div className="become-a-member-background">
           <h1>Create account</h1>
           <div className="create-acc-with-other">
-            <p>----- or signup with -----</p>
-            <OtherLoginOption />
+            {/* <p>----- or signup with -----</p>
+            <OtherLoginOption /> */}
           </div>
 
           <div className="company-or-person-div">
