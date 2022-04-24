@@ -100,12 +100,12 @@ const BecomeAMember = () => {
 
     let cvUrl = "noCvUploaded";
     if (e.target.cv.files[0]) {
-      cvUrl = "uploadedFiles/" + e.target.cv.files[0].name;
+      cvUrl = "/uploadedFiles/" + e.target.cv.files[0].name;
     }
 
     let imgUrl = "noImgUploaded";
     if (e.target.profilepicture.files[0]) {
-      imgUrl = "uploadedFiles/" + e.target.profilepicture.files[0].name;
+      imgUrl = "/uploadedFiles/" + e.target.profilepicture.files[0].name;
     }
 
     console.log("Creating new user..");
@@ -123,7 +123,7 @@ const BecomeAMember = () => {
       password: e.target.password.value,
       githubLink: e.target.linktogithub.value,
       linkedinLink: e.target.linktolinkedin.value,
-      otherLinks: [e.target.otherlinks.value],
+      otherLink: [e.target.otherlink.value],
       otherInfo: e.target.otherinfo.value,
       biography: e.target.biography.value,
       competence: tempCompetence,
@@ -138,7 +138,7 @@ const BecomeAMember = () => {
 
     let imgUrl = "noImgUploaded";
     if (e.target.profilepicture.files[0]) {
-      imgUrl = "uploadedFiles/" + e.target.profilepicture.files[0].name;
+      imgUrl = "/uploadedFiles/" + e.target.profilepicture.files[0].name;
     }
     const newCompany = {
       id: uuidv4(),
@@ -152,7 +152,7 @@ const BecomeAMember = () => {
       zipCode: e.target.zipcode.value,
       town: e.target.town.value,
       webpage: e.target.linktowebpage.value,
-      otherLinks: [e.target.otherlinks.value],
+      otherLink: [e.target.otherlink.value],
       companyInfo: e.target.companyinfo.value,
     };
 
