@@ -115,7 +115,8 @@ const BecomeAMember = () => {
       competence: tempCompetence,
     };
 
-    console.log(e.target.profilepicture.files[0]);
+    console.log(e.target.profilepicture.files[0].name);
+    console.log("HEJ")
     addUser(newUser);
   };
 
