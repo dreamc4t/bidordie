@@ -4,6 +4,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MyPage from "./MyPage";
 
 const API_URL_USERS = "http://localhost:8080/api/users";
 const API_URL_COMPANIES = "http://localhost:8080/api/companies";
@@ -220,7 +221,6 @@ const BecomeAMember = () => {
       <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
-
           <div className="create-acc-with-other">
             <p>----- or signup with -----</p>
             <OtherLoginOption />
