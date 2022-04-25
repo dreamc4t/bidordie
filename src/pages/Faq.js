@@ -29,6 +29,16 @@ function Faq () {
     })
   }
 
+ /*  useEffect(() => {
+    FaqMessageService.createMessage()
+      .then(response => {
+        setMessages(response.data)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+  }, []); */
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -51,15 +61,12 @@ function Faq () {
         message: ""
     })
     }
+    togglePopup();
+    alert("Message Sent!")
   }
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
-  }
-
-  function closeAndSubmit(){
-    handleSubmit();
-    togglePopup();
   }
 
   const [faqs, setfaqs] = useState([
