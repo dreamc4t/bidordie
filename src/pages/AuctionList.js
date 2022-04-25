@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import useFetch from "../customHooks/useFetch";
 import { Link, Navigate } from "react-router-dom";
 import AuctionService from "../services/AuctionService";
-import AuthService from "../services/AuthService";
+import UserService from "../services/UserService";
 
-const AuctionList = ({ setChosenAuctionInfo}) => {
+const AuctionList = () => {
 
     useEffect(() => {
       getUsers()
@@ -17,7 +17,7 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
 
 
   const getUsers= () => {
-    AuthService.getAllUsers().then(function(response){
+    UserService.getAllUsers().then(function(response){
       setUsers(response.data)
       console.log(response.data)
     }).catch(function(response){
@@ -34,13 +34,10 @@ const AuctionList = ({ setChosenAuctionInfo}) => {
             users.map((user) => (
               user.auctions &&
                 user.auctions.map((auction) =>(
-                  <div className="auction-kort" key={auction.auctionId} onClick={() => setChosenAuctionInfo({
-                    user: user, 
-                    auction: auction
-                  })}>
-                  <Link to="/auction-page">
-                  <Auction auction={auction} user={user}/>
-                  </Link> 
+                  <div className="auction-kort" key={auction.auctionId}>
+                    <Link to={"/auction-page/" + auction.auctionId + "/" + user.id}>
+                      <Auction auction={auction} user={user}/>
+                    </Link> 
 
                 </div>
                 ))

@@ -48,23 +48,23 @@ public class AuctionController {
         return null;
     }
 
-    @PostMapping("/placeBid/{id}")
-    public ResponseEntity<?> placeBid(@Valid @RequestBody BidRequest bidRequest, @PathVariable String id) {
+    @PostMapping("/placeBid/{auctionId}")
+    public ResponseEntity<?> placeBid(@Valid @RequestBody BidRequest bidRequest, @PathVariable String auctionId) {
 
-        if (this.getAuctionById(id) == null) {
+        if (this.getAuctionById(auctionId) == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No auction found with passed id.");
         }
-        if (bidRequest.getAmount() < this.getAuctionById(id).getcurrentHighestBid()) {
+        if (bidRequest.getAmount() < this.getAuctionById(auctionId).getcurrentHighestBid()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Amount was not higher than current highest bid.");
         }
 
-        Auction relevantAuction = this.getAuctionById(id);
+        Auction relevantAuction = this.getAuctionById(auctionId);
         relevantAuction.setCurrentHighestBid(bidRequest.getAmount());
         relevantAuction.setHighestBidderId(bidRequest.getBidderId());
         relevantAuction.setTimeOfBid(new Date());
 
         auctionRepository.save(relevantAuction);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Bid was placed successfully.");
+        return ResponseEntity.status(HttpStatus.OK).body("Bid was placed successfully.");
     }
 
     @PostMapping("/create/{ownerId}")

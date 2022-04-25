@@ -1,32 +1,13 @@
 {
-    "questions": [
-      {
-        "id": 1,
-        "name": "Bert Bertilsson",
-        "telephone number": "0735848686",
-        "email": "bert.bertilsson@gmail.com",
-        "question": "Is there free coffee?"
-      },
-      {
-        "id": 2,
-        "name": "Sven Svensson",
-        "telephone number": "0738797676",
-        "email": "sven.svensson@gmail.com",
-        "question": "Is there free coffee?"
-      },
-      {
-        "id": 3,
-        "name": "Mats Matsson",
-        "telephone number": "0734546476",
-        "email": "mats.matsson@gmail.com",
-        "question": "Is there free coffee?"
-      },
-      {
-        "id": 4,
-        "name": "Peter Petersson",
-        "telephone number": "0731213146",
-        "email": "peter.petersson@gmail.com",
-        "question": "Is there free coffee?"
-      }
-    ]
+  "messages": [
+    {
+        "id": {
+            "$oid": "625e695e588e2de6f0c339d8"
+        },
+        "message": "hej vad heter ni????",
+        "emailOfSender": "noob@hej.se",
+        "nameOfSender": "erik",
+        "phone": "123456"
+    }
+  ]
 }    
