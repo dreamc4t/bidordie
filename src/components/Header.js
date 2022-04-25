@@ -32,9 +32,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
           <HeaderButton text={"About"}  />
         </Link>
         {!loginContext.isLoggedIn ? <Link to={"login"} style={{textDecoration: "none"}}><HeaderButton text={"Login"}  /></Link> : <Link to={"/"} style={{textDecoration: "none"}} onClick={logOut}><HeaderButton text={"Log Out"}  /></Link>}
-        <Link to={"my-page"} style={{textDecoration: "none"}}>
-          <HeaderButton text={"My page"}  />
-        </Link>
+        {loginContext.isLoggedIn ? <Link to={"profile-page"} style={{textDecoration: "none"}}><HeaderButton text={"My page"}  /></Link> : null}
         <GiHamburgerMenu className="burger-menu" />
       </nav>
     </header>
