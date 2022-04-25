@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import HeaderButton from "./HeaderButton";
 import { LoginContext } from "../App";
+import userEvent from "@testing-library/user-event";
 
 const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
@@ -32,7 +33,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
           <HeaderButton text={"About"}  />
         </Link>
         {!loginContext.isLoggedIn ? <Link to={"login"} style={{textDecoration: "none"}}><HeaderButton text={"Login"}  /></Link> : <Link to={"/"} style={{textDecoration: "none"}} onClick={logOut}><HeaderButton text={"Log Out"}  /></Link>}
-        {loginContext.isLoggedIn ? <Link to={"profile-page"} style={{textDecoration: "none"}}><HeaderButton text={"My page"}  /></Link> : null}
+        {loginContext.isLoggedIn ? <Link to={"profile-page-user/" + loginContext.idOfLoggedInUser} style={{textDecoration: "none"}}><HeaderButton text={"My page"}  /></Link> : null}
         <GiHamburgerMenu className="burger-menu" />
       </nav>
     </header>
