@@ -2,13 +2,13 @@
   "auctions": [
     {
       "id": 1,
-      "startTime": "2022-03-29",
-      "endTime": "2022-11-29",
+      "availablePeriodStart": "2022-03-29",
+      "avialablePeriodEnd": "2022-11-29",
       "openingPrice": 500,
       "buyoutPrice": 1500,
       "currentBid": 550,
-      "timer": "09-05-2022",
-      "userId": 1
+      "auctionEndTime": "09-05-2022",
+      "userId": "6262588f2f193800c21610fd"
     },
     {
       "id": 2,
@@ -121,7 +121,11 @@
       "competence": [
         "React",
         "Javascript"
+      ],
+      "auctions": [
+
       ]
+      
     },
     {
       "id": 5,
@@ -182,7 +186,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6262588f2f193800c21610fd",
       "firstName": "Daniel",
       "lastName": "Frank",
       "email": "whosthapimp@hotmail.com",
@@ -205,6 +209,9 @@
       "biography": "I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative.",
       "competence": [
         "Javascript"
+      ],
+      "auctions": [
+       
       ]
     },
     {

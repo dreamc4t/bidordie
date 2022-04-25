@@ -72,7 +72,7 @@ public class AuctionController {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
-        Double openingPrice = 0.0;
+        Double openingPrice = null;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{
