@@ -18,6 +18,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
   const [user, setUser] = useState()
   const [auction, setAuction] = useState()
   const [bidValue, setBidValue] = useState("")
+  const [bidMessage, setBidMessage] = useState("")
   const [questionValue, setQuestionValue] = useState("")
 
   // UseEffect on re-render
@@ -63,7 +64,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
 
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
       .then(() => {
-        alert('Grattis, du har lagt ett bud på ' + bidValue + 'kr.')
+        alert('Congratulations, you successfully placed a bid of ' + bidValue + 'kr.')
         AuctionService.getAuctionById(auction.auctionId)
           .then((response) => {
             setAuction(response.data)
@@ -82,11 +83,30 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
   }
 
   function handleBidChange(e) {
-    setBidValue(e.target.value)
+    if (e.target.value > auction.buyoutPrice) {
+      setBidValue(auction.buyoutPrice)
+    } else {
+       if (e.target.value) {
+         setBidValue(parseFloat(e.target.value))
+       } else {
+         setBidValue(e.target.value)
+       }
+    }
   }
 
   function handleQuestionChange(e) {
     setQuestionValue(e.target.value)
+  }
+
+  // Helper Functions
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+  function formatToDateWithoutTime(string) {
+    return string.replace('T', ' ').slice(0, string.length-19)
+  }
+  function formatToDateWithTime(string) {
+    return string.replace('T', ' ').slice(0, string.length-13)
   }
 
   return (
@@ -110,14 +130,14 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
         
           <div className="auction-info">
             {user.town && <p><GoLocation/> {capitalizeFirstLetter(user.town)}</p>}
-            <p>Gäller period: {formatToDateWithoutTime(auction.availablePeriodStart)} - {formatToDateWithoutTime(auction.availablePeriodEnd)}</p>
-            <p>Högsta bud: {auction.currentHighestBid}kr/h</p>
-            <p>Vinn auktion direkt: {auction.buyoutPrice}kr</p>
-            <p>Sluttid: {formatToDateWithTime(auction.auctionEndTime)}</p>
+            <p>Concerns time-period: {formatToDateWithoutTime(auction.availablePeriodStart)} - {formatToDateWithoutTime(auction.availablePeriodEnd)}</p>
+            <p>Current winning bid: {auction.currentHighestBid}kr/h</p>
+            <p>Buyout price: {auction.buyoutPrice}kr</p>
+            <p>Auction ends at: {formatToDateWithTime(auction.auctionEndTime)}</p>
           </div>
 
           <div className="lowest-offer-tomake">
-            Lägg {auction.currentHighestBid + 10}kr/h eller mer
+            Minimum bid: {auction.currentHighestBid + 10}kr/h
           </div>
 
           <form className="auction-form" onSubmit={handleBidSubmit}>
@@ -133,7 +153,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
       <div className="description-container">
         {user.biography && <h5>Om {capitalizeFirstLetter(user.firstName)}</h5>}
         {user.biography && <p>{user.biography}</p>}
-        {user.competence && <h5>Kompetenser: </h5>}
+        {user.competence && <h5>Competences: </h5>}
         <ul>
         {user.competence &&
           user.competence.map((item, index) => {
@@ -153,7 +173,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
           onChange={handleQuestionChange}
         />
         <button className="auction-page-button" type="submit">
-          Skicka
+          Send
         </button>
       </form>
 

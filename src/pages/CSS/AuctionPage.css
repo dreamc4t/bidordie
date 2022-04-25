@@ -74,8 +74,12 @@
 .bid-container>input:focus {
   outline: none;
 }
-.bid-container>* {
+.bid-container>input, .bid-container>button {
   width: 100px;
+  max-height: 25px;
+}
+.bid-container>#bid-message {
+  color: rgb(255, 16, 16);
 }
 
 .description-container {
