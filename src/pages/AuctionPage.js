@@ -41,19 +41,6 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
       })
   }, [auctionId, auctionOwnerId])
 
-  useEffect(() => {
-    setBidMessage("")
-    if ((bidValue && bidValue < auction.currentHighestBid + 10) || !bidValue) {
-      setBidMessage("Bid too low")
-    }
-    if (bidValue && bidValue == auction.buyoutPrice) {
-      setBidMessage("Place bid to win auction!")
-    }
-    if (!loginContext.isACompany) {
-      setBidMessage("Only companies can place bids")
-    }
-  }, [bidValue])
-
   // Helper Functions
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -157,7 +144,6 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
             <div className="bid-container">
               <input type="text" value={bidValue} onChange={handleBidChange}></input>
               {(bidValue >= auction.currentHighestBid + 10 && loginContext.isACompany) ? <button className="auction-page-button" type="submit">Lägg bud</button> : <button className="auction-page-button" type="submit" disabled>Lägg bud</button>}
-              <p id="bid-message">{bidMessage}</p>
             </div>
           </form>
           
