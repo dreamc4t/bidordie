@@ -72,7 +72,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
     e.preventDefault()
     if (bidValue < auction.currentHighestBid) return
     if (!loginContext.isACompany) return
-    const userIsSure = window.confirm('Du kommer nu binda dig till att lägga ett bud på ' + bidValue + 'kr. Är du säker?')
+    const userIsSure = window.confirm('You are now committing to placing a bid of ' + bidValue + 'kr. Are you sure?')
     if (userIsSure !== true) return
 
     AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
@@ -156,7 +156,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
           <form className="auction-form" onSubmit={handleBidSubmit}>
             <div className="bid-container">
               <input type="text" value={bidValue} onChange={handleBidChange}></input>
-              {(bidValue >= auction.currentHighestBid + 10 && loginContext.isACompany) ? <button className="auction-page-button" type="submit">Lägg bud</button> : <button className="auction-page-button" type="submit" disabled>Lägg bud</button>}
+              {(bidValue >= auction.currentHighestBid + 10 && loginContext.isACompany) ? <button className="auction-page-button" type="submit">Place bid</button> : <button className="auction-page-button" type="submit" disabled>Place bid</button>}
               <p id="bid-message">{bidMessage}</p>
             </div>
           </form>
@@ -165,7 +165,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
       </div>
 
       <div className="description-container">
-        {user.biography && <h5>Om {capitalizeFirstLetter(user.firstName)}</h5>}
+        {user.biography && <h5>About {capitalizeFirstLetter(user.firstName)}: </h5>}
         {user.biography && <p>{user.biography}</p>}
         {user.competence && <h5>Competences: </h5>}
         <ul>
