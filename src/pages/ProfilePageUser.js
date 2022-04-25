@@ -7,6 +7,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import {FaLinkedinIn} from "react-icons/fa"
 import UserService from "../services/UserService";
+import { Link } from "react-router-dom";
+import HeaderButton from "../components/HeaderButton";
 
 import UserPageMockAuctions from "../components/UserPageMockAuctions";
 import { useParams } from "react-router-dom";
@@ -35,7 +37,9 @@ const ProfilePageUser = () => {
     user ?
     <div className="profile-page">
       <div className="profile-page-pictures">
-        {(user.id === loginContext.idOfLoggedInUser) && <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button>}
+        {(user.id === loginContext.idOfLoggedInUser) && <Link to={"/edit-user-page"} style={{textDecoration: "none"}}>
+          <HeaderButton text={"Edit information"}  />
+        </Link> /* <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button> */}
         <img src="/img/profileBackground.jpg" className="profile-background-picture" />
         <img src={user.imageUrl} className="profile-picture" />
       </div>
