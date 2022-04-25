@@ -50,7 +50,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
       setBidMessage("Place bid to win auction!")
     }
     if (!loginContext.isACompany) {
-      setBidMessage("Only companies can place bids")
+      setBidMessage("Only logged in companies can place bids")
     }
   }, [bidValue])
 
