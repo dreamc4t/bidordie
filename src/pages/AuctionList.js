@@ -9,11 +9,21 @@ import UserService from "../services/UserService";
 
 const AuctionList = () => {
 
-    useEffect(() => {
-      getUsers()
-    }, [])
+  const [users, setUsers] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [filteredUsers, setFilteredUsers]= useState([]); 
 
-  const [users, setUsers] = useState();
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  useEffect(() =>{
+    getFilteredUsers()
+  }, [users])
+
+  useEffect(()=>{
+    getFilteredUsers()
+  }, [checked])
 
 
   const getUsers= () => {
@@ -25,13 +35,36 @@ const AuctionList = () => {
     })
   }
 
+  const getFilteredUsers= () =>{
+    if(checked.length===0){ 
+      setFilteredUsers(users)
+    }else{
+      setFilteredUsers([])
+      for(const user of users){
+        let userPassesFilter = false  
+        for(const userCompetence of user.competence){
+          for(const competence of checked){
+            if(competence===userCompetence){
+              userPassesFilter=true
+            }
+          }
+        }
+        if(userPassesFilter===true){
+          setFilteredUsers(filteredUsers =>[...filteredUsers,user])
+            
+          
+        }
+      }
+    }   
+  }
+
     return (
-      (users) ?
+      (filteredUsers.length>0) ?
       <div className="auction-list" >
-        <SortBar />
+        <SortBar setChecked={setChecked} checked={checked}/>
         <div className="auction-container">
-          {users &&
-            users.map((user) => (
+          {filteredUsers &&
+            filteredUsers.map((user) => (
               user.auctions &&
                 user.auctions.map((auction) =>(
                   <div className="auction-kort" key={auction.auctionId}>

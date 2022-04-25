@@ -5,6 +5,7 @@ import { LoginContext } from "../App";
 
 
 const AddAuctionPage = () => {
+    
 
     const loginContext = useContext(LoginContext)
 

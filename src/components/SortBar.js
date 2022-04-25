@@ -2,12 +2,9 @@ import {useState} from "react";
 
 
 
-const SortBar = () => {
+const SortBar = ({setChecked, checked}) => {
 
   const checkList = ["Java", "Javascript", "C#", "Python", "React"]
-  const [checked, setChecked] = useState([]);
-
-  const isChecked = [];
   
   const handleCheck = (e) => {
     var updatedList = [...checked];
