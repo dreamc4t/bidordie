@@ -2,7 +2,7 @@ const UserPageMockAuctions = () => {
   return (
     <div className="auction-history-container">
                 <div>
-            <img src="img\TryggHansaLogo.png" />
+            <img src="/img/TryggHansaLogo.png" />
         </div>
         <div className="hiring-company">
             <p className="hiring-company-text">Trygg Hansa</p>
