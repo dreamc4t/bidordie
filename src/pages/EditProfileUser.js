@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputField from "../components/InputField";
 import { LoginContext } from "../App";
 
@@ -9,6 +9,8 @@ const API_URL_FILES = "http://localhost:8080/api/files";
 
 
 const EditProfileUser = () => {
+
+    const loginContext = useContext(LoginContext)
 
     const [view, setView] = useState("person-view");
     const [cvFile, setCvFile] = useState("no file");
@@ -110,16 +112,36 @@ const EditProfileUser = () => {
 
   const updateUser = (data) => {
     request({
-      endpoint: `${API_URL_USERS}/editUserById/${LoginContext.idOfLoggedInUser}`,
+      endpoint: `${API_URL_USERS}/editUserById/${loginContext.idOfLoggedInUser}`,
       mode: "no-cors",
       method: "PUT",
       data,
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    editUser(e)
+  }
+
+  const handleChange = (e) => {
+    setView(e.target.value);
+  };
+
+  const handleImgChange = (e) => {
+    e.preventDefault();
+    setImgFile(e.target.files[0]);
+  };
+
+  const handleCvChange = (e) => {
+    e.preventDefault();
+    setCvFile(e.target.files[0]);
+  };
+
 
   return (
-    <div>
+    <div id="become-a-member-div">
+        <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
             <div className="basic-info-div column-div">
                 <>
@@ -135,10 +157,73 @@ const EditProfileUser = () => {
                 </>
             </div>
         </div>
+        <div className="links-attached-div column-div">
+                <>
+                  {/* <InputField inpt={personAttachedItems} type="file" /> */}
+                  <label htmlFor="profilepicture">Profile picture</label>
+                  <input
+                    type="file"
+                    name="profilepicture"
+                    onChange={handleImgChange}
+                  ></input>
+                  <label htmlFor="cv">CV</label>
+                  <input
+                    type="file"
+                    name="cv"
+                    onChange={handleCvChange}
+                  ></input>
+                </>
+                <InputField inpt={personLinks} type="text" />
+        </div>
+        <div className="competences-div column-div">
+                <div>
+                    <h3>Competences: </h3>
+                    {personCompetences.map((inpt) => (
+                    <div key={inpt.key}>
+                      {" "}
+                      <input
+                        type="checkbox"
+                        id={inpt.key + "CompBox"}
+                        style={{ cursor: "pointer" }}
+                        name={
+                          inpt.label
+                            .replace(/\s/g, "")
+                            .toLocaleLowerCase()
+                            .replace(/[^a-z0-9]/gi, "") + "Comp"
+                        }
+                      ></input>
+                      <label
+                        htmlFor={inpt.key + "CompBox"}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {" "}
+                        <span> {inpt.label}</span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <label>Other info:</label>
+                  <br></br>
+                  <input
+                    className="other-info-field"
+                    type="text"
+                    placeholder="Type other info here"
+                    name="otherinfo"
+                  ></input>
+                  <input
+                    className="other-info-field"
+                    type="text"
+                    placeholder="Biography "
+                    name="biography"
+                  ></input>
+                </div>
+        </div>
         
         <button type="submit" className="submit-button">
               Update information
         </button>
+        </form>
 
     </div>
   )
