@@ -78,7 +78,9 @@ const AuctionList = () => {
             ))}
         </div>
       </div>
-      : null
+      : <div className="auction-list">
+          <SortBar setChecked={setChecked} checked={checked}/>
+        </div>
     );
 
 
