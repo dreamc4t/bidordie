@@ -36,8 +36,10 @@ public class FileController {
 
     }
 
-    @DeleteMapping("/del")
-    public void deleteFile() {
-
-    }
+//    @DeleteMapping("/del")
+//    public void deleteFile(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+//        fileUploadService.init();
+//        fileUploadService.deleteFile(file);
+//        filesRepository.delete(new Files(fileUploadService.getPathOfUploadedFile()));
+//    }
 }
