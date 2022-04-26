@@ -4,6 +4,8 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import UserService from "../services/UserService";
+import CompanyService from "../services/CompanyService";
 
 const API_URL_USERS = "http://localhost:8080/api/users";
 const API_URL_COMPANIES = "http://localhost:8080/api/companies";
@@ -13,6 +15,7 @@ const BecomeAMember = () => {
   const [view, setView] = useState("person-view");
   const [cvFile, setCvFile] = useState("no file");
   const [imgFile, setImgFile] = useState("no file");
+
 
   const personInputs = [
     { key: 1, label: "First name*" },
@@ -78,8 +81,13 @@ const BecomeAMember = () => {
     });
   };
 
+
+
+
+
   const createNewUser = (e) => {
     e.preventDefault();
+
     let tempCompetence = [];
     if (e.target.javaComp.checked === true) {
       tempCompetence.push("Java");
@@ -128,6 +136,7 @@ const BecomeAMember = () => {
       competence: tempCompetence,
     };
 
+  
     addUser(newUser);
   };
 
@@ -158,6 +167,7 @@ const BecomeAMember = () => {
     addCompany(newCompany);
   };
 
+
   const addUser = (data) => {
     request({
       endpoint: `${API_URL_USERS}/new`,
@@ -165,6 +175,29 @@ const BecomeAMember = () => {
       method: "POST",
       data,
     });
+
+    if (imgFile != "no file") {
+      let imgFormData = new FormData();
+      imgFormData.append("file", imgFile);
+      axios.post(`${API_URL_FILES}/new`, imgFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
+    } else {
+      console.log("No image file uploaded")
+    }
+
+
+    if (cvFile != "no file") {
+      let cvFormData = new FormData();
+      cvFormData.append("file", cvFile);
+      axios.post(`${API_URL_FILES}/new`, cvFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
+    }
+    else {
+      console.log("No CV uploaded")
+    }
+    
   };
 
   const addCompany = (data) => {
@@ -174,6 +207,18 @@ const BecomeAMember = () => {
       method: "POST",
       data,
     });
+
+    if (imgFile != "no file") {
+      let imgFormData = new FormData();
+      imgFormData.append("file", imgFile);
+      axios.post(`${API_URL_FILES}/new`, imgFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      })
+    
+    } else {
+      console.log("No image file uploaded")
+    }
+
   };
 
   const handleChange = (e) => {
@@ -183,6 +228,7 @@ const BecomeAMember = () => {
   const handleImgChange = (e) => {
     e.preventDefault();
     setImgFile(e.target.files[0]);
+
   };
 
   const handleCvChange = (e) => {
@@ -193,22 +239,10 @@ const BecomeAMember = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //let imgFileToUpload = imgFile;
-    let imgFormData = new FormData();
-
-    imgFormData.append("file", imgFile);
-    axios.post(`${API_URL_FILES}/new`, imgFormData, {
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-
-    let cvFormData = new FormData();
-
-    cvFormData.append("file", cvFile);
-    axios.post(`${API_URL_FILES}/new`, cvFormData, {
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-
-    view === "person-view" ? createNewUser(e) : createNewCompany(e);
+    view === "person-view" ? 
+    createNewUser(e)
+    : 
+    createNewCompany(e);
     alert("New account created!");
     // window.location.replace("/my-page");
   };
@@ -294,12 +328,14 @@ const BecomeAMember = () => {
                   <input
                     type="file"
                     name="profilepicture"
+                    accept="image/*"
                     onChange={handleImgChange}
                   ></input>
                   <label htmlFor="cv">CV</label>
                   <input
                     type="file"
                     name="cv"
+                    accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, .pages"
                     onChange={handleCvChange}
                   ></input>
                 </>
@@ -309,6 +345,7 @@ const BecomeAMember = () => {
                   <input
                     type="file"
                     name="profilepicture"
+                    accept="image/*"
                     onChange={handleImgChange}
                   ></input>
                 </>

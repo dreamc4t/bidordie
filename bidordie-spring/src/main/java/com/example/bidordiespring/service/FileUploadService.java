@@ -1,5 +1,6 @@
 package com.example.bidordiespring.service;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,9 +36,15 @@ public class FileUploadService {
         file.transferTo(new File(rootPath + "/public/uploadedFiles/"+ file.getOriginalFilename()));
         System.out.println("Uploading file " + file.getOriginalFilename());
 
-
-
     }
+
+//    public void deleteFile(MultipartFile file) throws IllegalStateException, IOException {
+//        Path filePath = Path.of(rootPath + "/public/uploadedFiles/" + file.getOriginalFilename());
+//        System.out.println(filePath);
+//        Files.delete(filePath);
+    // }
+
+
 }
 
 

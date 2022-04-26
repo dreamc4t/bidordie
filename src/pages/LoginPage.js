@@ -64,7 +64,7 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                     <p id="log-in-with">
                        ---- or log in with ---- 
                     </p>
-                    <OtherLoginOption />
+                  {/*  <OtherLoginOption />*/}
                 </form>
             </div>
         </div>
