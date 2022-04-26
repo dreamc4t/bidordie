@@ -101,12 +101,9 @@
   resize: none;
 }
 
-.question-textarea {
+#question-textarea {
   border: none;
-}
-
-.question-input:focus {
-  outline: none;
+  padding: 5px;
 }
 
 .auction-page-button {
