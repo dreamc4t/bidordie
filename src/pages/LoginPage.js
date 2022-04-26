@@ -61,10 +61,10 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>
-                    <p id="log-in-with">
+                    {/*<p id="log-in-with">
                        ---- or log in with ---- 
                     </p>
-                  {/*  <OtherLoginOption />*/}
+                    <OtherLoginOption />*/}
                 </form>
             </div>
         </div>
