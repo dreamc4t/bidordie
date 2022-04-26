@@ -54,6 +54,7 @@ function Faq () {
       const newMessage = messages
       console.log(newMessage)
       FaqMessageService.createMessage(newMessage)
+        .then(() => getAllMessages())
       setMessages({
         nameOfSender: "",
         phone: "",
