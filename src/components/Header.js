@@ -25,13 +25,11 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
         <Link to="/" style={{textDecoration: "none"}}>
           <HeaderButton text={"Auctions"}  />
         </Link>
-        {!loginContext.isLoggedIn ? <Link to={"become-a-member"} style={{textDecoration: "none"}}><HeaderButton text={"Signup"}  /></Link>:null}
-        <Link to={"new-auction"} style={{textDecoration: "none"}}>
-          <HeaderButton text={"New auction"}  />
-        </Link>
+        {loginContext.isLoggedIn ? <Link to={"new-auction"} style={{textDecoration: "none"}}> <HeaderButton text={"New auction"}  /></Link>:null}
         <Link to={"/about-us"} style={{textDecoration: "none"}}>
           <HeaderButton text={"About"}  />
         </Link>
+        {!loginContext.isLoggedIn ? <Link to={"become-a-member"} style={{textDecoration: "none"}}><HeaderButton text={"Signup"}  /></Link>:null}
         {!loginContext.isLoggedIn ? <Link to={"login"} style={{textDecoration: "none"}}><HeaderButton text={"Login"}  /></Link> : <Link to={"/"} style={{textDecoration: "none"}} onClick={logOut}><HeaderButton text={"Log Out"}  /></Link>}
         {loginContext.isLoggedIn ? <Link to={"profile-page-user/" + loginContext.idOfLoggedInUser} style={{textDecoration: "none"}}><HeaderButton text={"My page"}  /></Link> : null}
         <GiHamburgerMenu className="burger-menu" />
