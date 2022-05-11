@@ -40,6 +40,9 @@ public class User {
     @DBRef
     private Set<Auction> auctions; // Variabeln bör ha samma namn som den collection den refererar till i databasen.
 
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
+
 
     public User() {
     }
@@ -210,5 +213,13 @@ public class User {
 
     public void setAuctions(Set<Auction> auctions) {
         this.auctions = auctions;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
