@@ -32,20 +32,24 @@ public class AuthController {
 
     @Autowired
     AuthenticationManager authenticationManager;
+
     @Autowired
     JwtUtils jwtUtils;
+
     @Autowired
     RoleRepository roleRepository;
+
     @Autowired
     PasswordEncoder encoder;
 
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     CompanyRepository companyRepository;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody @NotNull LoginRequest loginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
 
         Authentication authentication = authenticationManager.authenticate(
