@@ -1,75 +1,20 @@
-import OtherLoginOption from "../components/OtherLoginOption";
 import InputField from "../components/InputField";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import UserService from "../services/UserService";
-import CompanyService from "../services/CompanyService";
 
-const API_URL_USERS = "http://localhost:8080/api/users";
-const API_URL_COMPANIES = "http://localhost:8080/api/companies";
-const API_URL_FILES = "http://localhost:8080/api/files";
+
+import {personCompetences, personInputs,personLinks} from "../constants/userConstants";
+import {companyInputs, companyLinks} from "../constants/companyConstants";
+import { API_URL_COMPANIES, API_URL_FILES, API_URL_USERS } from "../constants/urlConstants"; 
+
+
 
 const BecomeAMember = () => {
   const [view, setView] = useState("person-view");
   const [cvFile, setCvFile] = useState("no file");
   const [imgFile, setImgFile] = useState("no file");
 
-
-  const personInputs = [
-    { key: 1, label: "First name*" },
-    { key: 2, label: "Last name*" },
-    { key: 3, label: "Address" },
-    { key: 4, label: "Email*" },
-    { key: 5, label: "Town" },
-    { key: 6, label: "Zip code" },
-    { key: 7, label: "Telephone number" },
-    // { key: 8, label: "Password*" },
-  ];
-
-  const companyInputs = [
-    { key: 1, label: "Company name*" },
-    { key: 2, label: "Org number*" },
-    { key: 3, label: "Address" },
-    { key: 4, label: "Email*" },
-    { key: 5, label: "Town" },
-    { key: 6, label: "Zip code" },
-    { key: 7, label: "Telephone number" },
-    // { key: 8, label: "Password*" },
-  ];
-
-  const personLinks = [
-    { key: 1, label: "Link to github" },
-    { key: 2, label: "Link to linkedin" },
-    { key: 3, label: "Other link" },
-  ];
-
-  const companyLinks = [
-    { key: 1, label: "Link to webpage" },
-    { key: 2, label: "Other link" },
-  ];
-
-  const personAttachedItems = [
-    { key: 1, label: "CV" },
-    { key: 2, label: "Profile Picture" },
-    { key: 3, label: "Other files to attach" },
-  ];
-
-  const companypAttachedItems = [
-    { key: 1, label: "Company logo" },
-    { key: 2, label: "Other files to attach" },
-  ];
-
-  const personCompetences = [
-    { key: 1, label: "Java" },
-    { key: 2, label: "C#" },
-    { key: 3, label: "REACT" },
-    { key: 4, label: "Javascript" },
-    { key: 5, label: "Python" },
-  ];
-
-  /* DATABAS EVENT/ADD/HANTERING */
 
   const request = ({ endpoint, method, data }) => {
     fetch(endpoint, {
@@ -80,10 +25,6 @@ const BecomeAMember = () => {
       },
     });
   };
-
-
-
-
 
   const createNewUser = (e) => {
     e.preventDefault();
@@ -255,8 +196,6 @@ const BecomeAMember = () => {
         <div className="become-a-member-background">
           <h1>Create account</h1>
           <div className="create-acc-with-other">
-            {/* <p>----- or signup with -----</p>
-            <OtherLoginOption /> */}
           </div>
 
           <div className="company-or-person-div">
