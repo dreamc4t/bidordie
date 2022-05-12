@@ -3,7 +3,6 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
-
 import {personCompetences, personInputs,personLinks} from "../constants/userConstants";
 import {companyInputs, companyLinks} from "../constants/companyConstants";
 import { API_URL_COMPANIES, API_URL_FILES, API_URL_USERS } from "../constants/urlConstants"; 
