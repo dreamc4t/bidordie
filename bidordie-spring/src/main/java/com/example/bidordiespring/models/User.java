@@ -24,10 +24,6 @@ public class User {
     private String email;
     @NotBlank
     private String password;
-
-    @NotBlank
-    private String username;
-
     private String imageUrl;
     private String cvUrl;
     private String phone;
@@ -44,21 +40,15 @@ public class User {
     @DBRef
     private Set<Auction> auctions; // Variabeln bör ha samma namn som den collection den refererar till i databasen.
 
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
-
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String username,String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence) {
+    public User(String firstName, String lastName, String email, String password, String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-
-        this.username = username;
-
         this.imageUrl = imageUrl;
         this.cvUrl = cvUrl;
         this.phone = phone;
@@ -116,14 +106,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getImageUrl() {
@@ -228,13 +210,5 @@ public class User {
 
     public void setAuctions(Set<Auction> auctions) {
         this.auctions = auctions;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 }
