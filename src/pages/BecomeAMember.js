@@ -120,7 +120,9 @@ const BecomeAMember = () => {
       let imgFormData = new FormData();
       imgFormData.append("file", imgFile);
       axios.post(`${API_URL_FILES}/new`, imgFormData, {
-        headers: { "Access-Control-Allow-Origin": "*" },
+        headers: { 
+        "Access-Control-Allow-Origin": "*",
+      },
       });
     } else {
       console.log("No image file uploaded")
@@ -131,7 +133,10 @@ const BecomeAMember = () => {
       let cvFormData = new FormData();
       cvFormData.append("file", cvFile);
       axios.post(`${API_URL_FILES}/new`, cvFormData, {
-        headers: { "Access-Control-Allow-Origin": "*" },
+
+        headers: { 
+          "Access-Control-Allow-Origin": "*",
+        },
       });
     }
     else {
