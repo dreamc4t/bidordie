@@ -111,7 +111,7 @@ const BecomeAMember = () => {
 
   const addUser = (data) => {
     request({
-      endpoint: `${API_URL_USERS}/new`,
+      endpoint: `${API_URL_USERS}/signup`,
       mode: "no-cors",
       method: "POST",
       data,

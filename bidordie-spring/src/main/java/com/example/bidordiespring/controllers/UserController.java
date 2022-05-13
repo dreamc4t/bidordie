@@ -110,12 +110,6 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<?> newUser(@Valid @RequestBody UserRequest u) {
 
-        if (userRepository.existsByUsername(u.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
-        }
-
         if (userRepository.existsByEmail(u.getEmail())) {
             return ResponseEntity
                     .badRequest()
@@ -123,7 +117,7 @@ public class UserController {
         }
 
 
-        User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), encoder.encode(u.getPassword()), u.getUsername(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
+        User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), encoder.encode(u.getPassword()), u.getEmail(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
 
         Set<Role> roles = new HashSet<>();
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
