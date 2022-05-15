@@ -18,7 +18,8 @@ function Faq () {
     message: ""
   });
   
-  useEffect(() => {
+  // Original funktionerna
+  /* useEffect(() => {
     getAllMessages();
   }, [])
 
@@ -28,16 +29,6 @@ function Faq () {
       console.log(response.data);
     })
   }
-
- /*  useEffect(() => {
-    FaqMessageService.createMessage()
-      .then(response => {
-        setMessages(response.data)
-      })
-      .catch(response => {
-        console.error(response)
-      })
-  }, []); */
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -55,6 +46,45 @@ function Faq () {
       console.log(newMessage)
       FaqMessageService.createMessage(newMessage)
         .then(() => getAllMessages())
+      setMessages({
+        nameOfSender: "",
+        phone: "",
+        emailOfSender: "",
+        message: ""
+    })
+    }
+    togglePopup();
+    alert("Message Sent!")
+  }*/
+
+  // C#/.Net Microservice
+  useEffect(() => {
+    GetAllMessages();
+  }, [])
+
+  const GetAllMessages = () => {
+    FaqMessageService.GetAllMessages().then((response) => {
+      setAllmessages(response.data);
+      console.log(response.data);
+    })
+  }
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+  
+    console.log(name, value)
+    setMessages({...messages, [name]: value})
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(messages)
+    if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
+      const newMessage = messages
+      console.log(newMessage)
+      FaqMessageService.AddMessage(newMessage)
+        .then(() => GetAllMessages())
       setMessages({
         nameOfSender: "",
         phone: "",
@@ -172,5 +202,3 @@ function Faq () {
 }
 
 export default Faq;
-
-//onClick={togglePopup}

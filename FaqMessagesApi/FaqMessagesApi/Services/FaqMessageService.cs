@@ -30,5 +30,17 @@ namespace FaqMessagesApi.Services
             var faqmessages = await dbContext.FaqMessages.ToListAsync();
             return faqmessages;
         }
+
+        public Task Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task DeleteMessage(int id)
+        {
+            var message = await dbContext.FaqMessages.FindAsync(id);
+            dbContext.FaqMessages.Remove(message);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

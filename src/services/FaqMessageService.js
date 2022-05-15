@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
+// Original funktion
+//const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
+
+const API_URL_MESSAGES = "https://localhost:7065/api/FaqMessages";
 
 class FaqMessageService {
 
-    createMessage(newMessage){
+    // Original funktionerna
+    /* createMessage(newMessage){
         return axios.post(`${API_URL_MESSAGES}/messages`, newMessage, {
             headers: {
                 'Access-Control-Allow-Origin': '*'
@@ -14,6 +18,19 @@ class FaqMessageService {
 
     getAllMessages() {
         return axios.get(`${API_URL_MESSAGES}/allmessages`);
+    } */
+
+    // C#/.Net Microservice
+    AddMessage(newMessage){
+        return axios.post(`${API_URL_MESSAGES}`, newMessage, {
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
+    }
+
+    GetAllMessages() {
+        return axios.get(`${API_URL_MESSAGES}`);
     }
 
 }

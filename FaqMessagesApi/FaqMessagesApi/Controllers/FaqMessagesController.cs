@@ -27,22 +27,26 @@ namespace FaqMessagesApi.Controllers
             _faqMessageService = faqMessageService;
         }
 
-        // GET: api/FaqMessagesApiControllers
-        // currently returning a listof strings
+        // GET: api/FaqMessages
         [HttpGet]
         public async Task<IEnumerable<FaqMessage>> Get()
         {
-            // Get all Messages method
-            // need to use Task
             var faqmessages = await _faqMessageService.GetAllMessages();
             return faqmessages;
         }
 
-        // POST: api/VehiclesApiControllers
+        // POST: api/FaqMessages
         [HttpPost]
         public async Task Post([FromBody] FaqMessage message)
         {
             await _faqMessageService.AddMessage(message);
+        }
+
+        // DELETE: api/FaqMessages
+        [HttpDelete("{id}")]
+        public async Task Delete(int id)
+        {
+            await _faqMessageService.DeleteMessage(id);
         }
     }
 }

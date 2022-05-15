@@ -10,5 +10,8 @@ namespace FaqMessagesApi.Interfaces
 
         // Add message
         Task AddMessage(FaqMessage message);
+
+        // Delete message
+        Task DeleteMessage(int id);
     }
 }
