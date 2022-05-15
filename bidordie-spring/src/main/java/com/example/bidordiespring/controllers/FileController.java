@@ -22,6 +22,7 @@ public class FileController {
     @Autowired
     FilesRepository filesRepository;
 
+
     @PostMapping("/new")
     public void uploadFile(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
         fileUploadService.init();
@@ -29,6 +30,7 @@ public class FileController {
         filesRepository.save(new Files(fileUploadService.getPathOfUploadedFile()));
 
     }
+
     @PutMapping("/change")
     public void changeFile() {
 
