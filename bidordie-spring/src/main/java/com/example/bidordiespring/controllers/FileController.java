@@ -1,16 +1,12 @@
 package com.example.bidordiespring.controllers;
 
 import com.example.bidordiespring.models.Files;
-import com.example.bidordiespring.payload.response.MessageResponse;
-import com.example.bidordiespring.repository.FilesRepository;
 import com.example.bidordiespring.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -21,9 +17,6 @@ public class FileController {
 
     @Autowired
     FileUploadService fileUploadService;
-
-    @Autowired
-    FilesRepository filesRepository;
 
 
     @PostMapping("/new")
