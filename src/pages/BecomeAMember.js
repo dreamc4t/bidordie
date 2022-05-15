@@ -75,6 +75,8 @@ const BecomeAMember = () => {
       otherInfo: e.target.otherinfo.value,
       biography: e.target.biography.value,
       competence: tempCompetence,
+     // roles: ["ROLE_USER"]
+
     };
 
   
@@ -103,6 +105,7 @@ const BecomeAMember = () => {
       webpage: e.target.linktowebpage.value,
       otherLink: [e.target.otherlink.value],
       companyInfo: e.target.companyinfo.value,
+      //roles: ["ROLE_COMPANY"]
     };
 
     addCompany(newCompany);
@@ -190,11 +193,24 @@ const BecomeAMember = () => {
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
 
+  const showAllFiles = () => {
+    console.log("HEJ")
+
+    axios.get(`${API_URL_FILES}/all`).then(resp => {
+
+    console.log(resp.data);
+});
+  }
+
+
+
+
   return (
     <div id="become-a-member-div">
       <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
+          <button onClick={showAllFiles}>TEST KNAPP</button>
           <div className="create-acc-with-other">
           </div>
 
