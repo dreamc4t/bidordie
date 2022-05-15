@@ -111,10 +111,14 @@ public class UserController {
     public ResponseEntity<?> newUser(@Valid @RequestBody UserRequest u) {
 
         if (userRepository.existsByEmail(u.getEmail())) {
+            System.out.println("Email already exists, no account created");
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
+
+
         }
+
 
 
         User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), encoder.encode(u.getPassword()), u.getEmail(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
@@ -127,6 +131,7 @@ public class UserController {
 
         System.out.println(user.getEmail());
         userRepository.save(user);
+        System.out.println("New user added");
         return ResponseEntity.ok(new MessageResponse("Gytt med ny user"));
     }
 
