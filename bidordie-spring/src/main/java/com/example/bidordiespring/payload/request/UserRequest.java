@@ -14,6 +14,7 @@ public class UserRequest {
     private String email;
     @NotBlank
     private String password;
+
     private String imageUrl;
     private String cvUrl;
     private String phone;

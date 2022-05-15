@@ -16,7 +16,7 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
         e.preventDefault()
 
         const loginRequest = {
-            "email": email,
+            "username": email,
             "password": password
         }
 

@@ -10,6 +10,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class FileUploadService {
@@ -38,11 +44,24 @@ public class FileUploadService {
 
     }
 
-//    public void deleteFile(MultipartFile file) throws IllegalStateException, IOException {
-//        Path filePath = Path.of(rootPath + "/public/uploadedFiles/" + file.getOriginalFilename());
-//        System.out.println(filePath);
-//        Files.delete(filePath);
-    // }
+    public void deleteFile(MultipartFile file) throws IllegalStateException, IOException {
+        Path filePath = Path.of(rootPath + "/public/uploadedFiles/" + file.getOriginalFilename());
+        System.out.println("Deleting file " + file.getOriginalFilename());
+        Files.delete(filePath);
+     }
+     
+     public List<String> getFilesList() {
+        List<String> listOfFiles = null;
+         try (Stream<Path> walk = Files.walk(Paths.get(pathOfUploadedFile))) {
+             listOfFiles = walk.filter(Files::isRegularFile)
+                     .map(x -> x.toString()).collect(Collectors.toList());
+
+             listOfFiles.forEach(System.out::println);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+         return listOfFiles;
+     }
 
 
 }
