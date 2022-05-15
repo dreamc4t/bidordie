@@ -193,14 +193,14 @@ const BecomeAMember = () => {
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
 
-  const showAllFiles = () => {
-    console.log("HEJ")
 
-    axios.get(`${API_URL_FILES}/all`).then(resp => {
-
-    console.log(resp.data);
-});
-  }
+  // Console logga alla filer i uploadedFiles-mappen
+  // const showAllFiles = () => {
+  //   console.log("HEJ");
+  //   axios.get(`${API_URL_FILES}/all`).then((resp) => {
+  //     console.log(resp.data);
+  //   });
+  // };
 
 
 
@@ -210,7 +210,6 @@ const BecomeAMember = () => {
       <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
-          <button onClick={showAllFiles}>TEST KNAPP</button>
           <div className="create-acc-with-other">
           </div>
 
