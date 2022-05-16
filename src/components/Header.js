@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
@@ -9,6 +9,10 @@ import userEvent from "@testing-library/user-event";
 const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
   const loginContext = useContext(LoginContext)
+
+  useEffect(() => {
+    console.log(loginContext)
+  }, [loginContext])
 
   const logOut = () => {
     setIsLoggedIn(false)
