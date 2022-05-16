@@ -9,6 +9,11 @@ class UserService {
       })
   }
 
+  getAuctionUserById(userId) {
+    return axios.get(`${API_URL_USERS}/getAuctionUserById/${userId}`, {
+    })
+  }
+
   getAllUsers() {
     return axios.get(`${API_URL_USERS}/all`, {
     });
