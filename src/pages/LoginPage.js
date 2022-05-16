@@ -24,8 +24,7 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
             .then(response => {
                 console.log(response)
                 if (response.status === 200) {
-                    setIsLoggedIn(response.data.loggedIn)
-                    setIsACompany(response.data.company)
+                    setIsLoggedIn(true)
                     setIdOfLoggedInUser(response.data.userId)
                     setFailedToLogIn(false)
                     console.log('Successful Login!')
