@@ -1,5 +1,5 @@
 import InputField from "../components/InputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
@@ -14,6 +14,26 @@ const BecomeAMember = () => {
   const [view, setView] = useState("person-view");
   const [cvFile, setCvFile] = useState("no file");
   const [imgFile, setImgFile] = useState("no file");
+  let [emailList, setEmailList] = useState([])
+
+ 
+  //Set emailList []
+  useEffect(() => {
+    emailList = [];
+      axios.get(`${API_URL_USERS}/all`).then((resp) => {
+        resp.data.forEach(user => {
+          emailList.push(user.email)
+        });
+      });
+      axios.get(`${API_URL_COMPANIES}/all`).then((resp) => {
+        resp.data.forEach(company => {
+          emailList.push(company.email)
+        });
+      });
+      console.log(emailList)
+    }, [view])
+  
+
 
 
   const request = ({ endpoint, method, data }) => {
@@ -27,6 +47,7 @@ const BecomeAMember = () => {
   };
 
   const createNewUser = (e) => {
+
     e.preventDefault();
 
     let tempCompetence = [];
@@ -56,7 +77,6 @@ const BecomeAMember = () => {
       imgUrl = "/uploadedFiles/" + e.target.profilepicture.files[0].name;
     }
 
-    console.log("Creating new user..");
     const newUser = {
       id: uuidv4(),
       firstName: e.target.firstname.value,
@@ -71,19 +91,35 @@ const BecomeAMember = () => {
       password: e.target.password.value,
       githubLink: e.target.linktogithub.value,
       linkedinLink: e.target.linktolinkedin.value,
-      otherLink: [e.target.otherlink.value],
+      otherLinks: [e.target.otherlink.value],
       otherInfo: e.target.otherinfo.value,
       biography: e.target.biography.value,
       competence: tempCompetence,
+      // roles: ["ROLE_USER???"]
     };
 
+
+    let doesEmailExist = false;
+    emailList.forEach(email => {
+      if (email === e.target.email.value) {
+        console.log("EMAILEN FINNS REDAN")
+        doesEmailExist = true;
+      }
+    });
   
-    addUser(newUser);
+
+    if (doesEmailExist === false) {
+      addUser(newUser);
+    }
+    else {
+      alert("Email already exist, try another")
+    }
+  
+    
   };
 
   const createNewCompany = (e) => {
     e.preventDefault();
-    console.log("Creating new company..");
 
     let imgUrl = "noImgUploaded";
     if (e.target.profilepicture.files[0]) {
@@ -101,11 +137,27 @@ const BecomeAMember = () => {
       zipCode: e.target.zipcode.value,
       town: e.target.town.value,
       webpage: e.target.linktowebpage.value,
-      otherLink: [e.target.otherlink.value],
+      otherLinks: [e.target.otherlink.value],
       companyInfo: e.target.companyinfo.value,
+      //roles: ["ROLE_COMPANY???"]
     };
 
-    addCompany(newCompany);
+    let doesEmailExist = false;
+    emailList.forEach(email => {
+      if (email === e.target.email.value) {
+        console.log("EMAILEN FINNS REDAN")
+        doesEmailExist = true;
+      }
+    });
+  
+
+    if (doesEmailExist === false) {
+      addCompany(newCompany);
+    }
+    else {
+      alert("Email already exist, try another")
+    }
+
   };
 
 
@@ -116,6 +168,7 @@ const BecomeAMember = () => {
       method: "POST",
       data,
     });
+
 
     if (imgFile != "no file") {
       let imgFormData = new FormData();
@@ -138,6 +191,9 @@ const BecomeAMember = () => {
     else {
       console.log("No CV uploaded")
     }
+    console.log("Creating new user..");
+    alert("New user account created!");
+
     
   };
 
@@ -159,6 +215,10 @@ const BecomeAMember = () => {
     } else {
       console.log("No image file uploaded")
     }
+    console.log("Creating new company..");
+    alert("New company account created!");
+
+
 
   };
 
@@ -184,11 +244,23 @@ const BecomeAMember = () => {
     createNewUser(e)
     : 
     createNewCompany(e);
-    alert("New account created!");
     // window.location.replace("/my-page");
   };
 
   /* DATABAS EVENT/ADD/HANTERING SLUT */
+
+
+  // Console logga alla filer i uploadedFiles-mappen
+  // const showAllFiles = () => {
+  //   console.log("HEJ");
+  //   axios.get(`${API_URL_FILES}/all`).then((resp) => {
+  //     console.log(resp.data);
+  //   });
+  // };
+
+
+
+
 
   return (
     <div id="become-a-member-div">
