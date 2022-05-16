@@ -25,7 +25,7 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                 console.log(response)
                 if (response.status === 200) {
                     setIsLoggedIn(true)
-                    setIdOfLoggedInUser(response.data.userId)
+                    setIdOfLoggedInUser(response.data.id)
                     setFailedToLogIn(false)
                     console.log('Successful Login!')
                     navigate('/', true)
