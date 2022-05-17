@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\halfl\\source\\repos\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {}
+    "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\halfl\\source\\repos\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {
+    "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\halfl\\source\\repos\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
+        "projectUniqueName": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
         "projectName": "FaqMessagesApi",
-        "projectPath": "C:\\Users\\halfl\\source\\repos\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
+        "projectPath": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
         "packagesPath": "C:\\Users\\halfl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\halfl\\source\\repos\\FaqMessagesApi\\FaqMessagesApi\\obj\\",
+        "outputPath": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\halfl\\AppData\\Roaming\\NuGet\\NuGet.Config",
