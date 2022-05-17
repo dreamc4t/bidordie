@@ -5,6 +5,7 @@ import com.example.bidordiespring.models.ERole;
 import com.example.bidordiespring.models.Role;
 import com.example.bidordiespring.models.User;
 import com.example.bidordiespring.payload.request.UserRequest;
+import com.example.bidordiespring.payload.response.AuctionUserResponse;
 import com.example.bidordiespring.payload.response.MessageResponse;
 import com.example.bidordiespring.repository.RoleRepository;
 import com.example.bidordiespring.repository.UserRepository;
@@ -144,6 +145,18 @@ public class UserController {
             System.out.println(e);
         }
         return null;
+    }
+
+    @GetMapping("/getAuctionUserById/{id}")
+    public AuctionUserResponse getAuctionUserById(@PathVariable String id) {
+        AuctionUserResponse response;
+        try {
+            User user = this.getUserById(id);
+            response = new AuctionUserResponse(user.getEmail(), user.getImageUrl(), user.getFirstName(), user.getLastName(), user.getTown(), user.getBiography(), user.getCompetence());
+            return response;
+        } catch(Exception e) {
+            return null;
+        }
     }
 
 }

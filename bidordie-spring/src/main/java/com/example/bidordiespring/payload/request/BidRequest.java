@@ -1,13 +1,14 @@
 package com.example.bidordiespring.payload.request;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class BidRequest {
 
     @NotBlank
     String bidderId;
-    @NotBlank
+    @NotNull
     double amount;
 
     public String getBidderId() {

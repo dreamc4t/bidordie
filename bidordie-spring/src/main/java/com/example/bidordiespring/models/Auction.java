@@ -1,12 +1,11 @@
 package com.example.bidordiespring.models;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 
 @Document(collection = "auctions")
 public class Auction {
@@ -14,17 +13,17 @@ public class Auction {
     @Id
     private String auctionId;
 
-    @NotBlank
+    @NotNull
     private Date availablePeriodStart;
-    @NotBlank
+    @NotNull
     private Date availablePeriodEnd;
-    @NotBlank
+    @NotNull
     private Double openingPrice;
-    @NotBlank
+    @NotNull
     private Double buyoutPrice;
 
     private Date auctionStartTime;
-    @NotBlank
+    @NotNull
     private Date auctionEndTime;
 
     private double currentHighestBid;
