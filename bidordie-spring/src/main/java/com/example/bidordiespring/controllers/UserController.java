@@ -5,6 +5,7 @@ import com.example.bidordiespring.models.ERole;
 import com.example.bidordiespring.models.Role;
 import com.example.bidordiespring.models.User;
 import com.example.bidordiespring.payload.request.UserRequest;
+import com.example.bidordiespring.payload.response.AuctionUserResponse;
 import com.example.bidordiespring.payload.response.MessageResponse;
 import com.example.bidordiespring.repository.RoleRepository;
 import com.example.bidordiespring.repository.UserRepository;
@@ -111,10 +112,14 @@ public class UserController {
     public ResponseEntity<?> newUser(@Valid @RequestBody UserRequest u) {
 
         if (userRepository.existsByEmail(u.getEmail())) {
+            System.out.println("Email already exists, no account created");
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
+
+
         }
+
 
 
         User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), encoder.encode(u.getPassword()), u.getEmail(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
@@ -127,6 +132,7 @@ public class UserController {
 
         System.out.println(user.getEmail());
         userRepository.save(user);
+        System.out.println("New user added");
         return ResponseEntity.ok(new MessageResponse("Gytt med ny user"));
     }
 
@@ -139,6 +145,18 @@ public class UserController {
             System.out.println(e);
         }
         return null;
+    }
+
+    @GetMapping("/getAuctionUserById/{id}")
+    public AuctionUserResponse getAuctionUserById(@PathVariable String id) {
+        AuctionUserResponse response;
+        try {
+            User user = this.getUserById(id);
+            response = new AuctionUserResponse(user.getEmail(), user.getImageUrl(), user.getFirstName(), user.getLastName(), user.getTown(), user.getBiography(), user.getCompetence());
+            return response;
+        } catch(Exception e) {
+            return null;
+        }
     }
 
 }

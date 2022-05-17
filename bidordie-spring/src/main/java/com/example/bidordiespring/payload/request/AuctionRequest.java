@@ -3,6 +3,8 @@ package com.example.bidordiespring.payload.request;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +14,9 @@ public class AuctionRequest {
     private String availablePeriodStart;
     @NotBlank
     private String availablePeriodEnd;
-    @NotBlank
+    @NotNull
     private Double openingPrice;
-    @NotBlank
+    @NotNull
     private Double buyoutPrice;
     @NotBlank
     private String auctionEndTime;

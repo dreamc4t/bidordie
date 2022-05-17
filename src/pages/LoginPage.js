@@ -24,10 +24,10 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
             .then(response => {
                 console.log(response)
                 if (response.status === 200) {
-                    setIsLoggedIn(response.data.loggedIn)
-                    setIsACompany(response.data.company)
-                    setIdOfLoggedInUser(response.data.userId)
+                    setIsLoggedIn(true)
                     setFailedToLogIn(false)
+                    setIdOfLoggedInUser(response.data.id)
+                    localStorage.setItem('token', response.data.token)
                     console.log('Successful Login!')
                     navigate('/', true)
                 } else {
