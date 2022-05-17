@@ -199,7 +199,7 @@ const BecomeAMember = () => {
 
   const addCompany = (data) => {
     request({
-      endpoint: `${API_URL_COMPANIES}/new`,
+      endpoint: `${API_URL_COMPANIES}/signup`,
       mode: "no-cors",
       method: "POST",
       data,

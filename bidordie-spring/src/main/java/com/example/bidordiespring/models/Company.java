@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
-@Document(collection = "companies")
+@Document(collection = "users")
 public class Company {
 
     @Id

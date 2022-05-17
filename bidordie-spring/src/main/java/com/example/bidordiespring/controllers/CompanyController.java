@@ -12,8 +12,10 @@ import com.example.bidordiespring.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.beans.Encoder;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +31,9 @@ public class CompanyController {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping("/all")
     public List<Company> getAllCompanies() {
@@ -102,7 +107,7 @@ public class CompanyController {
         }
 
 
-        Company company = new Company(c.getCompanyName(), c.getOrgNr(), c.getEmail(), c.getPassword(), c.getImageUrl(), c.getPhone(), c.getAddress(), c.getZipCode(), c.getTown(), c.getWebpage(), c.getOtherLinks(), c.getCompanyInfo());
+        Company company = new Company(c.getCompanyName(), c.getOrgNr(), c.getEmail(), encoder.encode(c.getPassword()), c.getImageUrl(), c.getPhone(), c.getAddress(), c.getZipCode(), c.getTown(), c.getWebpage(), c.getOtherLinks(), c.getCompanyInfo());
 
         Set<Role> roles = new HashSet<>();
         Role companyRole = roleRepository.findByName(ERole.ROLE_COMPANY)
