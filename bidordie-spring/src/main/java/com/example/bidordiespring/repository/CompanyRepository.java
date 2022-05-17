@@ -10,5 +10,6 @@ public interface CompanyRepository extends MongoRepository <Company, String> {
     Company findCompanyById(String id);
     Company deleteCompanyById(String id);
     Optional<Company> findByEmail(String email);
+    Boolean existsByEmail(String email);
 
 }
