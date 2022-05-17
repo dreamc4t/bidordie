@@ -1,7 +1,18 @@
 using FaqMessagesApi.Interfaces;
 using FaqMessagesApi.Services;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                      });
+});
 
 // Add services to the container.
 
@@ -13,6 +24,7 @@ builder.Services.AddScoped<IFaqMessage, FaqMessageService>();
 
 var app = builder.Build();
 
+app.UseCors(MyAllowSpecificOrigins);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

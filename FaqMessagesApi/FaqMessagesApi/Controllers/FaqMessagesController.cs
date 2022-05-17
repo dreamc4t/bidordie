@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FaqMessagesApi.Interfaces;
 using FaqMessagesApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 // NuGet packages
 // Microsoft.EntityFrameworkCore
@@ -27,16 +28,18 @@ namespace FaqMessagesApi.Controllers
             _faqMessageService = faqMessageService;
         }
 
-        // GET: api/FaqMessages
-        [HttpGet]
+        // GET: api/FaqMessages/allmessages
+        [EnableCors]
+        [HttpGet("allmessages")]
         public async Task<IEnumerable<FaqMessage>> Get()
         {
             var faqmessages = await _faqMessageService.GetAllMessages();
             return faqmessages;
         }
 
-        // POST: api/FaqMessages
-        [HttpPost]
+        // POST: api/FaqMessages/messages
+        [EnableCors]
+        [HttpPost("messages")]
         public async Task Post([FromBody] FaqMessage message)
         {
             await _faqMessageService.AddMessage(message);
