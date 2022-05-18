@@ -25,15 +25,14 @@ const AuctionList = () => {
     getFilteredUsers()
   }, [checked])
 
-
   const getUsers= () => {
     UserService.getAllUsers().then(function(response){
       setUsers(response.data)
-      console.log(response.data)
     }).catch(function(response){
       console.log(response)
     })
   }
+
 
   const getFilteredUsers= () =>{
     if(checked.length===0){ 
