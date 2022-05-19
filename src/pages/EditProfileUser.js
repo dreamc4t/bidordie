@@ -1,8 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import InputField from "../components/InputField";
 import { LoginContext } from "../App";
 import { API_URL_USERS } from "../constants/urlConstants"; 
-import UserService from "../services/UserService";
 
 
 
@@ -10,21 +9,6 @@ import UserService from "../services/UserService";
 const EditProfileUser = () => {
 
     const loginContext = useContext(LoginContext)
-
-    const [user, setUser] = useState()
-
-
-    useEffect(() => {
-      UserService.getUserById(loginContext.idOfLoggedInUser)
-        .then(response => {
-          setUser(response.data)
-          console.log(response)
-        })
-        .catch(response => {
-          console.error(response)
-        })
-    }, [])
-
 
     const [view, setView] = useState("person-view");
     const [cvFile, setCvFile] = useState("no file");
@@ -153,9 +137,8 @@ const EditProfileUser = () => {
   };
 
 
-   return (
+  return (
     <div id="become-a-member-div">
-      {user.roles[0].name}
         <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
             <div className="basic-info-div column-div">
