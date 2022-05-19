@@ -13,6 +13,7 @@ import HeaderButton from "../components/HeaderButton";
 import UserPageMockAuctions from "../components/UserPageMockAuctions";
 import { useParams } from "react-router-dom";
 import { LoginContext } from "../App";
+import EditProfileButton from "../components/EditProfileButton";
 
 const ProfilePageUser = () => {
 
@@ -38,9 +39,11 @@ const ProfilePageUser = () => {
     user ?
     <div className="profile-page">
       <div className="profile-page-pictures">
-        {(user.id === loginContext.idOfLoggedInUser) && <Link to={"/edit-user-page"} style={{textDecoration: "none"}}>
-          <HeaderButton text={"Edit information"}  />
-        </Link> /* <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button> */}
+        {(user.id === loginContext.idOfLoggedInUser) && <div className="profile-button-element">
+        <Link to={"/edit-user-page"}>
+          <GoPencil size={35} />
+          {/* <EditProfileButton text={"Edit information"}  /> */}
+        </Link> </div>/* <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button> */}
         <img src="/img/profileBackground.jpg" className="profile-background-picture" />
         <img src={user.imageUrl} className="profile-picture" />
       </div>
@@ -79,12 +82,12 @@ const ProfilePageUser = () => {
         </a>
       </div>
 
-      <div className="previous-commisions">
+      {/* <div className="previous-commisions">
           <UserPageMockAuctions />
           <UserPageMockAuctions />
           <UserPageMockAuctions />
           <UserPageMockAuctions />
-      </div>
+      </div> */}
 
     </div>
 
