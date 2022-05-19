@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import InputField from "../components/InputField";
+import UserService from "../services/UserService";
 import { LoginContext } from "../App";
 
 
@@ -10,7 +11,21 @@ const API_URL_FILES = "http://localhost:8080/api/files";
 
 const EditProfileUser = () => {
 
-    const loginContext = useContext(LoginContext)
+  const loginContext = useContext(LoginContext)
+
+  const [user, setUser] = useState()
+
+
+  useEffect(() => {
+    UserService.getUserById(loginContext.idOfLoggedInUser)
+      .then(response => {
+        setUser(response.data)
+        console.log(response)
+      })
+      .catch(response => {
+        console.error(response)
+      })
+  }, [])
 
     const [view, setView] = useState("person-view");
     const [cvFile, setCvFile] = useState("no file");
@@ -144,6 +159,7 @@ const EditProfileUser = () => {
         <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
             <div className="basic-info-div column-div">
+              {user.roles[0].name === "ROLE_USER" ? (
                 <>
                   <InputField inpt={personInputs} type="text" />
                   <label htmlFor="password">Password*</label>
@@ -155,6 +171,11 @@ const EditProfileUser = () => {
                     placeholder="Enter password*"
                   />
                 </>
+              ) : (
+                <>
+                
+                </>
+                )}
             </div>
         </div>
         <div className="links-attached-div column-div">
