@@ -29,6 +29,8 @@ public class User {
     private String username;
 
     private String companyName;
+    private String orgNr;
+    private String companyInfo;
 
     private String imageUrl;
     private String cvUrl;
@@ -82,6 +84,22 @@ public class User {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getOrgNr() {
+        return orgNr;
+    }
+
+    public void setOrgNr(String orgNr) {
+        this.orgNr = orgNr;
+    }
+
+    public String getCompanyInfo() {
+        return companyInfo;
+    }
+
+    public void setCompanyInfo(String companyInfo) {
+        this.companyInfo = companyInfo;
     }
 
     public void addAuction(Auction auction) {
