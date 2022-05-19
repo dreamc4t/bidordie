@@ -39,21 +39,26 @@ const AuctionList = () => {
       setFilteredUsers(users)
     }else{
       setFilteredUsers([])
-      for(const user of users){
-        let userPassesFilter = false  
-        for(const userCompetence of user.competence){
-          for(const competence of checked){
-            if(competence===userCompetence){
-              userPassesFilter=true
+        for(const user of users){
+          if(user.competence){
+            let userPassesFilter = false  
+            for(const userCompetence of user.competence){
+              for(const competence of checked){
+                if(competence===userCompetence){
+                  userPassesFilter=true
+                }
+              }
             }
-          }
+            if(userPassesFilter===true){
+              setFilteredUsers(filteredUsers =>[...filteredUsers,user])
+                
+              
+            }    
+          } 
+         
         }
-        if(userPassesFilter===true){
-          setFilteredUsers(filteredUsers =>[...filteredUsers,user])
-            
-          
-        }
-      }
+      
+      
     }   
   }
 
