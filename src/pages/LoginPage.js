@@ -22,7 +22,6 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
         AuthService.login(loginRequest)
             .then(response => {
-                console.log(response)
                 if (response.status === 200) {
                     setIsLoggedIn(true)
                     setFailedToLogIn(false)
