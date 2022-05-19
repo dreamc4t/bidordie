@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import InputField from "../components/InputField";
 import UserService from "../services/UserService";
 import { LoginContext } from "../App";
+import {companyInputs, companyLinks} from "../constants/companyConstants";
 
 
 
@@ -155,6 +156,8 @@ const EditProfileUser = () => {
 
 
   return (
+
+    user ? 
     <div id="become-a-member-div">
         <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
@@ -173,7 +176,15 @@ const EditProfileUser = () => {
                 </>
               ) : (
                 <>
-                
+                  <InputField inpt={companyInputs} type="text" />
+                  <label htmlFor="password">Password*</label>
+                  <br></br>
+                  <input
+                    type="password"
+                    required
+                    name="password"
+                    placeholder="Enter password*"
+                  />
                 </>
                 )}
             </div>
@@ -246,6 +257,12 @@ const EditProfileUser = () => {
         </button>
         </form>
 
+    </div>
+
+    :
+
+    <div>
+      Loading edit page...
     </div>
   )
 }
