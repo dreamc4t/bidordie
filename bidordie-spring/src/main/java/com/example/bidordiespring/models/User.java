@@ -28,6 +28,8 @@ public class User {
     @NotBlank
     private String username;
 
+    private String companyName;
+
     private String imageUrl;
     private String cvUrl;
     private String phone;
@@ -72,6 +74,14 @@ public class User {
         this.biography = biography;
         this.competence = competence;
         this.auctions = new HashSet<>();
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public void addAuction(Auction auction) {
