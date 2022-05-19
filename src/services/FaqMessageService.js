@@ -3,7 +3,9 @@ import axios from "axios";
 // Original funktion
 //const API_URL_MESSAGES = "http://localhost:8080/api/FAQ";
 
-const API_URL_MESSAGES = "https://localhost:7065/api/FaqMessages";
+//const API_URL_MESSAGES = "https://localhost:7065/api/FaqMessages";
+import { API_URL_MESSAGES } from "../constants/urlConstants"; 
+
 
 class FaqMessageService {
 

@@ -30,7 +30,6 @@ const BecomeAMember = () => {
           emailList.push(company.email)
         });
       });
-      console.log(emailList)
     }, [view])
   
 

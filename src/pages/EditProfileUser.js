@@ -3,11 +3,9 @@ import InputField from "../components/InputField";
 import UserService from "../services/UserService";
 import { LoginContext } from "../App";
 import {companyInputs, companyLinks} from "../constants/companyConstants";
+import { API_URL_USERS } from "../constants/urlConstants"; 
 
 
-
-const API_URL_USERS = "http://localhost:8080/api/users";
-const API_URL_FILES = "http://localhost:8080/api/files";
 
 
 const EditProfileUser = () => {
