@@ -26,6 +26,7 @@ const ProfilePageUser = () => {
     UserService.getUserById(auctionOwnerId)
       .then(response => {
         setUser(response.data)
+        console.log(response)
       })
       .catch(response => {
         console.error(response)
@@ -47,7 +48,7 @@ const ProfilePageUser = () => {
       <div className="profile-page-body">
         <div className='profile-page-top'>
           <div className="profile-page-info">
-            <h1>{user.firstName} {user.lastName}</h1>
+            <h1>{user.firstName} {user.lastName} {user.companyName} </h1>
             <p>{user.competence}</p>
             <p><GoLocation size={15} className="profile-page-icons"/>{user.town} - {user.phone}</p>
           </div>

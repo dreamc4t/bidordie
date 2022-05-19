@@ -15,6 +15,10 @@ public class UserRequest {
     @NotBlank
     private String password;
 
+    private String companyName;
+    private String orgNr;
+    private String companyInfo;
+
     private String imageUrl;
     private String cvUrl;
     private String phone;
@@ -43,6 +47,30 @@ public class UserRequest {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getOrgNr() {
+        return orgNr;
+    }
+
+    public void setOrgNr(String orgNr) {
+        this.orgNr = orgNr;
+    }
+
+    public String getCompanyInfo() {
+        return companyInfo;
+    }
+
+    public void setCompanyInfo(String companyInfo) {
+        this.companyInfo = companyInfo;
     }
 
     public String getEmail() {
