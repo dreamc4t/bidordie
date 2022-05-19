@@ -21,6 +21,10 @@ public class User {
     @NotBlank
     private String lastName;
     @NotBlank
+    private String companyName;
+    @NotBlank
+    private String orgNr;
+    @NotBlank
     private String email;
     @NotBlank
     private String password;
@@ -40,6 +44,7 @@ public class User {
     private String otherInfo;
     private String biography;
     private String [] competence;
+    private String companyInfo;
 
     @DBRef
     private Set<Auction> auctions; // Variabeln bör ha samma namn som den collection den refererar till i databasen.
@@ -51,13 +56,17 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, String username,String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence) {
+    public User(String firstName, String lastName, String email, String password, String username,String imageUrl, String cvUrl, String phone, String address, String zipCode, String town, String githubLink, String linkedinLink, String[] otherLinks, String otherInfo, String biography, String[] competence, String companyName, String orgNr, String companyInfo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
 
         this.username = username;
+
+        this.companyName = companyName;
+        this.orgNr = orgNr;
+        this.companyInfo = companyInfo;
 
         this.imageUrl = imageUrl;
         this.cvUrl = cvUrl;
@@ -236,5 +245,30 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    //Company
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getOrgNr() {
+        return orgNr;
+    }
+
+    public void setOrgNr(String orgNr) {
+        this.orgNr = orgNr;
+    }
+
+    public String getCompanyInfo() {
+        return companyInfo;
+    }
+
+    public void setCompanyInfo(String companyInfo) {
+        this.companyInfo = companyInfo;
     }
 }
