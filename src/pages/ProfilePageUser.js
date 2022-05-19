@@ -91,7 +91,7 @@ const ProfilePageUser = () => {
     :
 
     <div>
-      HEJ HEJ HEJ
+      Loading user profile...
     </div>    
     
     
