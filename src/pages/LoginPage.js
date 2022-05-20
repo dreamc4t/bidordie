@@ -28,13 +28,14 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                     setIsACompany(response.data.company)
                     setIdOfLoggedInUser(response.data.userId)
                     setFailedToLogIn(false)
-                    console.log('Successful Login!')
+                    setIdOfLoggedInUser(response.data.id)
+                    console.log(response)
+                    setIsACompany(response.data.roles.includes('ROLE_COMPANY'))
+                    localStorage.setItem('token', response.data.token)
                     navigate('/', true)
                 } else {
                     setFailedToLogIn(true)
-                    console.log('Could not log in')
                 }
-                console.log('server response: ' + response)
             })
             .catch(response => {
                 console.error('error: ' + response)
