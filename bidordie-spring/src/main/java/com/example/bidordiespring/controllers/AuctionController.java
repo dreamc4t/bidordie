@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -49,6 +50,7 @@ public class AuctionController {
     }
 
     @PostMapping("/placeBid/{auctionId}")
+    @PreAuthorize("hasRole('COMPANY')")
     public ResponseEntity<?> placeBid(@Valid @RequestBody BidRequest bidRequest, @PathVariable String auctionId) {
 
         if (this.getAuctionById(auctionId) == null) {
@@ -72,7 +74,7 @@ public class AuctionController {
 
         Date availablePeriodStart = null;
         Date availablePeriodEnd = null;
-        Double openingPrice = 0.0;
+        Double openingPrice = null;
         Double buyoutPrice = null;
         Date auctionEndTime = null;
         try{

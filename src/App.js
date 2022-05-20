@@ -12,6 +12,7 @@ import Faq from "./pages/Faq";
 import AuctionPage from "./pages/AuctionPage";
 import NotLoggedInPage from "./pages/NotLoggedInPage";
 import ProfilePageUser from "./pages/ProfilePageUser";
+import EditProfileUser from "./pages/EditProfileUser";
 
 export const LoginContext = createContext()
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/FAQ" element={<Faq />} />
             <Route path="/profile-page-user/:auctionOwnerId" element={<ProfilePageUser/>} />
+            <Route path="/edit-user-page" element={<EditProfileUser/>} />
             <Route path="/auction-page/:auctionId/:auctionOwnerId" element={<AuctionPage />} />
             <Route path="/not-logged-in" element={<NotLoggedInPage />} />
             <Route

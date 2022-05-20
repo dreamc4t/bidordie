@@ -82,10 +82,11 @@
             "id": {
                 "$oid": "625e695e588e2de6f0c339d8"
             },
-            "message": "hej vad heter ni????",
-            "emailOfSender": "noob@hej.se",
             "nameOfSender": "erik",
-            "phone": "123456"
+            "phone": "123456",
+            "emailOfSender": "noob@hej.se",
+            "message": "hej vad heter ni????"
+            
         }
     ]
 }

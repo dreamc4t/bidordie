@@ -1,18 +1,26 @@
 package com.example.bidordiespring.controllers;
 
 
+import com.example.bidordiespring.models.ERole;
+import com.example.bidordiespring.models.Role;
 import com.example.bidordiespring.models.User;
 import com.example.bidordiespring.payload.request.UserRequest;
+import com.example.bidordiespring.payload.response.AuctionUserResponse;
+import com.example.bidordiespring.payload.response.MessageResponse;
+import com.example.bidordiespring.repository.RoleRepository;
 import com.example.bidordiespring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -21,6 +29,12 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping("/all")
     public List<User> getAllUsers() {
@@ -42,7 +56,7 @@ public class UserController {
                 user.setEmail(userRequest.getEmail());
             }
             if(userRequest.getPassword() != null) {
-                user.setPassword((userRequest.getPassword()));
+                user.setPassword(encoder.encode(userRequest.getPassword()));
             }
             if(userRequest.getImageUrl() != null) {
                 user.setImageUrl(userRequest.getImageUrl());
@@ -94,13 +108,32 @@ public class UserController {
         return userRepository.deleteUserById(id);
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<?> newUser(@RequestBody UserRequest u) {
+    @PostMapping("/signup")
+    public ResponseEntity<?> newUser(@Valid @RequestBody UserRequest u) {
 
-        User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), u.getPassword(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
+        if (userRepository.existsByEmail(u.getEmail())) {
+            System.out.println("Email already exists, no account created");
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+
+
+        }
+
+
+
+        User user = new User(u.getFirstName(), u.getLastName(), u.getEmail(), encoder.encode(u.getPassword()), u.getEmail(), u.getImageUrl(),u.getCvUrl(), u.getPhone(), u.getAddress(), u.getZipCode(), u.getTown(), u.getGithubLink(), u.getLinkedinLink(), u.getOtherLinks(), u.getOtherInfo(), u.getBiography(), u.getCompetence());
+
+        Set<Role> roles = new HashSet<>();
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(userRole);
+        user.setRoles(roles);
+
         System.out.println(user.getEmail());
         userRepository.save(user);
-        return ResponseEntity.ok("Gytt med ny user");
+        System.out.println("New user added");
+        return ResponseEntity.ok(new MessageResponse("Gytt med ny user"));
     }
 
     @GetMapping("/getUserById/{id}")
@@ -112,6 +145,18 @@ public class UserController {
             System.out.println(e);
         }
         return null;
+    }
+
+    @GetMapping("/getAuctionUserById/{id}")
+    public AuctionUserResponse getAuctionUserById(@PathVariable String id) {
+        AuctionUserResponse response;
+        try {
+            User user = this.getUserById(id);
+            response = new AuctionUserResponse(user.getEmail(), user.getImageUrl(), user.getFirstName(), user.getLastName(), user.getTown(), user.getBiography(), user.getCompetence());
+            return response;
+        } catch(Exception e) {
+            return null;
+        }
     }
 
 }

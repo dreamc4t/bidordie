@@ -1,12 +1,15 @@
 package com.example.bidordiespring.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
-@Document(collection = "companies")
+@Document(collection = "users")
 public class Company {
 
     @Id
@@ -29,6 +32,9 @@ public class Company {
     private String webpage;
     private String [] otherLinks;
     private String companyInfo;
+
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
 
     public Company(String companyName, String orgNr, String email, String password, String imageUrl, String phone, String address, String zipCode, String town, String webpage, String[] otherLinks, String companyInfo) {
         this.companyName = companyName;
@@ -147,5 +153,13 @@ public class Company {
 
     public void setCompanyInfo(String companyInfo) {
         this.companyInfo = companyInfo;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

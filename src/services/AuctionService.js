@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL_AUCTIONS = "http://localhost:8080/api/auctions";
+import { API_URL_AUCTIONS } from "../constants/urlConstants"; 
+
+// const API_URL_AUCTIONS = "http://localhost:8080/api/auctions";
 
 class AuctionService {
 

@@ -2,38 +2,32 @@ import {useState} from "react";
 
 
 
-const SortBar = () => {
+const SortBar = ({setChecked, checked}) => {
 
-  // const [sort, setSort] = useState("")
+  const checkList = ["Java", "Javascript", "C#", "Python", "React"]
+  
+  const handleCheck = (e) => {
+    var updatedList = [...checked];
+    if (e.target.checked) {
+      updatedList = [...checked, e.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(e.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
 
-  // sortHandler = (e) => {
-    
-  // }
-
-  // sortSubmit = (e) => {
-  //   e.preventDefault()
-
-  // }
 
   return (
-    <form className="sortbar-form">
+    <div className="sortbar-form">
         <div className="action-container">
-            <input placeholder="..." type="text" id="search-input"></input>
-            <button className="button-element" type="submit">Search</button>
-            <select name="competences" id="filter-competence">
-                <option value="all">Competence</option>
-                <option value="java">Java</option>
-                <option value="c#">C#</option>
-                <option value="python">Python</option>
-                <option value="javascript">Javascript</option>
-            </select>
-            <select name="sort" id="sort">
-                <option value="all">Sort</option>
-                <option value="price">Price</option>
-                <option value="time-left">Time left</option>
-            </select>
+          {checkList.map((item, index) => (
+            <div key={index}>
+              <input className="sort-input" value={item} type="checkbox" onChange={handleCheck}/>
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
-    </form>
+    </div>
 
     
   );

@@ -5,6 +5,7 @@ import { LoginContext } from "../App";
 
 
 const AddAuctionPage = () => {
+    
 
     const loginContext = useContext(LoginContext)
 
@@ -20,16 +21,13 @@ const AddAuctionPage = () => {
         const name = e.target.name;
         const value = e.target.value;
 
-        console.log(name,value)
         setAuctions({...auctions, [name]: value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(auctions)
         if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
             const newAuction = auctions
-            console.log(newAuction)
             AuctionService.createAuction(newAuction, loginContext.idOfLoggedInUser)
             setAuctions({
                 availablePeriodStart: "",

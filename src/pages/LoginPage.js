@@ -16,17 +16,14 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
         e.preventDefault()
 
         const loginRequest = {
-            "email": email,
+            "username": email,
             "password": password
         }
 
         AuthService.login(loginRequest)
             .then(response => {
-                console.log(response)
                 if (response.status === 200) {
-                    setIsLoggedIn(response.data.loggedIn)
-                    setIsACompany(response.data.company)
-                    setIdOfLoggedInUser(response.data.userId)
+                    setIsLoggedIn(true)
                     setFailedToLogIn(false)
                     setIdOfLoggedInUser(response.data.id)
                     console.log(response)
@@ -62,10 +59,10 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                     <Link to="/become-a-member">
                         <button className="button-element">Create Account</button>
                     </Link>
-                    <p id="log-in-with">
+                    {/*<p id="log-in-with">
                        ---- or log in with ---- 
                     </p>
-                    <OtherLoginOption />
+                    <OtherLoginOption />*/}
                 </form>
             </div>
         </div>

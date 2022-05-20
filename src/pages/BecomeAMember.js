@@ -1,70 +1,39 @@
-import OtherLoginOption from "../components/OtherLoginOption";
 import InputField from "../components/InputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
+import axios from "axios";
 
-const API_URL_USERS = "http://localhost:8080/api/users";
-const API_URL_COMPANIES = "http://localhost:8080/api/companies";
+
+import {personCompetences, personInputs,personLinks} from "../constants/userConstants";
+import {companyInputs, companyLinks} from "../constants/companyConstants";
+import { API_URL_COMPANIES, API_URL_FILES, API_URL_USERS } from "../constants/urlConstants"; 
+
+
 
 const BecomeAMember = () => {
   const [view, setView] = useState("person-view");
+  const [cvFile, setCvFile] = useState("no file");
+  const [imgFile, setImgFile] = useState("no file");
+  let [emailList, setEmailList] = useState([])
 
-  const personInputs = [
-    { key: 1, label: "First name*" },
-    { key: 2, label: "Last name*" },
-    { key: 3, label: "Address" },
-    { key: 4, label: "Email*" },
-    { key: 5, label: "Town" },
-    { key: 6, label: "Zip code" },
-    { key: 7, label: "Telephone number" },
-    // { key: 8, label: "Password*" },
-  ];
+ 
+  //Set emailList []
+  useEffect(() => {
+    emailList = [];
+      axios.get(`${API_URL_USERS}/all`).then((resp) => {
+        resp.data.forEach(user => {
+          emailList.push(user.email)
+        });
+      });
+      axios.get(`${API_URL_COMPANIES}/all`).then((resp) => {
+        resp.data.forEach(company => {
+          emailList.push(company.email)
+        });
+      });
+    }, [view])
+  
 
-  const companyInputs = [
-    { key: 1, label: "Company name*" },
-    { key: 2, label: "Org number*" },
-    { key: 3, label: "Address" },
-    { key: 4, label: "Email*" },
-    { key: 5, label: "Town" },
-    { key: 6, label: "Zip code" },
-    { key: 7, label: "Telephone number" },
-    // { key: 8, label: "Password*" },
-  ];
 
-  const personLinks = [
-    { key: 1, label: "Link to github" },
-    { key: 2, label: "Link to linkedin" },
-    { key: 3, label: "Other links" },
-  ];
-
-  const companyLinks = [
-    { key: 1, label: "Link to webpage" },
-    { key: 2, label: "Other links" },
-  ];
-
-  const personAttachedItems = [
-    { key: 1, label: "CV" },
-    { key: 2, label: "Profile Picture" },
-    { key: 3, label: "Other files to attach" },
-  ];
-
-  const companypAttachedItems = [
-    { key: 1, label: "Company logo" },
-    { key: 2, label: "Other files to attach" },
-  ];
-
-  const [pictureFile, setPictureFile] = useState();
-
-  const personCompetences = [
-    { key: 1, label: "Java" },
-    { key: 2, label: "C#" },
-    { key: 3, label: "REACT" },
-    { key: 4, label: "Javascript" },
-    { key: 5, label: "Python" },
-  ];
-
-  /* DATABAS EVENT/ADD/HANTERING */
 
   const request = ({ endpoint, method, data }) => {
     fetch(endpoint, {
@@ -77,6 +46,9 @@ const BecomeAMember = () => {
   };
 
   const createNewUser = (e) => {
+
+    e.preventDefault();
+
     let tempCompetence = [];
     if (e.target.javaComp.checked === true) {
       tempCompetence.push("Java");
@@ -94,14 +66,23 @@ const BecomeAMember = () => {
       tempCompetence.push("Python");
     }
 
-    console.log("Creating new user..");
+    let cvUrl = "noCvUploaded";
+    if (e.target.cv.files[0]) {
+      cvUrl = "/uploadedFiles/" + e.target.cv.files[0].name;
+    }
+
+    let imgUrl = "noImgUploaded";
+    if (e.target.profilepicture.files[0]) {
+      imgUrl = "/uploadedFiles/" + e.target.profilepicture.files[0].name;
+    }
+
     const newUser = {
       id: uuidv4(),
       firstName: e.target.firstname.value,
       lastName: e.target.lastname.value,
       email: e.target.email.value,
-      imageUrl: e.target.profilepicture.value,
-      CV: "cv-uasdfasdfasdf här",
+      imageUrl: imgUrl,
+      cvUrl: cvUrl,
       phone: e.target.telephonenumber.value,
       address: e.target.address.value,
       zipCode: e.target.zipcode.value,
@@ -109,84 +90,183 @@ const BecomeAMember = () => {
       password: e.target.password.value,
       githubLink: e.target.linktogithub.value,
       linkedinLink: e.target.linktolinkedin.value,
-      otherLinks: [e.target.otherlinks.value],
+      otherLinks: [e.target.otherlink.value],
       otherInfo: e.target.otherinfo.value,
       biography: e.target.biography.value,
       competence: tempCompetence,
+      // roles: ["ROLE_USER???"]
     };
 
-    console.log(e.target.profilepicture.files[0]);
-    addUser(newUser);
+
+    let doesEmailExist = false;
+    emailList.forEach(email => {
+      if (email === e.target.email.value) {
+        console.log("EMAILEN FINNS REDAN")
+        doesEmailExist = true;
+      }
+    });
+  
+
+    if (doesEmailExist === false) {
+      addUser(newUser);
+    }
+    else {
+      alert("Email already exist, try another")
+    }
+  
+    
   };
 
   const createNewCompany = (e) => {
-    console.log("Creating new company..");
+    e.preventDefault();
+
+    let imgUrl = "noImgUploaded";
+    if (e.target.profilepicture.files[0]) {
+      imgUrl = "/uploadedFiles/" + e.target.profilepicture.files[0].name;
+    }
     const newCompany = {
       id: uuidv4(),
       companyName: e.target.companyname.value,
       orgNr: e.target.orgnumber.value,
       email: e.target.email.value,
       password: e.target.password.value,
-      imageUrl: "/img/erik.jpeg",
+      imageUrl: imgUrl,
       phone: e.target.telephonenumber.value,
       address: e.target.address.value,
       zipCode: e.target.zipcode.value,
       town: e.target.town.value,
       webpage: e.target.linktowebpage.value,
-      otherLinks: [e.target.otherlinks.value],
+      otherLinks: [e.target.otherlink.value],
       companyInfo: e.target.companyinfo.value,
+      //roles: ["ROLE_COMPANY???"]
     };
 
-    console.log(e.target.companylogo.files[0]);
-    addCompany(newCompany);
+    let doesEmailExist = false;
+    emailList.forEach(email => {
+      if (email === e.target.email.value) {
+        console.log("EMAILEN FINNS REDAN")
+        doesEmailExist = true;
+      }
+    });
+  
+
+    if (doesEmailExist === false) {
+      addCompany(newCompany);
+    }
+    else {
+      alert("Email already exist, try another")
+    }
+
   };
+
 
   const addUser = (data) => {
     request({
-      endpoint: `${API_URL_USERS}/new`,
+      endpoint: `${API_URL_USERS}/signup`,
+      mode: "no-cors",
       method: "POST",
       data,
     });
+
+
+    if (imgFile != "no file") {
+      let imgFormData = new FormData();
+      imgFormData.append("file", imgFile);
+      axios.post(`${API_URL_FILES}/new`, imgFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
+    } else {
+      console.log("No image file uploaded")
+    }
+
+
+    if (cvFile != "no file") {
+      let cvFormData = new FormData();
+      cvFormData.append("file", cvFile);
+      axios.post(`${API_URL_FILES}/new`, cvFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
+    }
+    else {
+      console.log("No CV uploaded")
+    }
+    console.log("Creating new user..");
+    alert("New user account created!");
+
+    
   };
 
   const addCompany = (data) => {
     request({
-      endpoint: `${API_URL_COMPANIES}/new`,
+      endpoint: `${API_URL_COMPANIES}/signup`,
+      mode: "no-cors",
       method: "POST",
       data,
     });
+
+    if (imgFile != "no file") {
+      let imgFormData = new FormData();
+      imgFormData.append("file", imgFile);
+      axios.post(`${API_URL_FILES}/new`, imgFormData, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      })
+    
+    } else {
+      console.log("No image file uploaded")
+    }
+    console.log("Creating new company..");
+    alert("New company account created!");
+
+
+
   };
-
-
 
   const handleChange = (e) => {
     setView(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleImgChange = (e) => {
     e.preventDefault();
-    console.log("Submittt");
-
-    view === "person-view" ? createNewUser(e) : createNewCompany(e);
-    alert("New account created!");
-    //window.location.replace("/my-page");
-
-
-
+    setImgFile(e.target.files[0]);
 
   };
 
+  const handleCvChange = (e) => {
+    e.preventDefault();
+    setCvFile(e.target.files[0]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    view === "person-view" ? 
+    createNewUser(e)
+    : 
+    createNewCompany(e);
+    // window.location.replace("/my-page");
+  };
+
   /* DATABAS EVENT/ADD/HANTERING SLUT */
+
+
+  // Console logga alla filer i uploadedFiles-mappen
+  // const showAllFiles = () => {
+  //   console.log("HEJ");
+  //   axios.get(`${API_URL_FILES}/all`).then((resp) => {
+  //     console.log(resp.data);
+  //   });
+  // };
+
+
+
+
 
   return (
     <div id="become-a-member-div">
       <form onSubmit={handleSubmit}>
         <div className="become-a-member-background">
           <h1>Create account</h1>
-
           <div className="create-acc-with-other">
-            <p>----- or signup with -----</p>
-            <OtherLoginOption />
           </div>
 
           <div className="company-or-person-div">
@@ -252,10 +332,37 @@ const BecomeAMember = () => {
 
             <div className="links-attached-div column-div">
               {view === "person-view" ? (
-                <InputField inpt={personAttachedItems} type="file" />
+                <>
+                  {/* <InputField inpt={personAttachedItems} type="file" /> */}
+                  <label htmlFor="profilepicture">Profile picture</label>
+                  <input
+                    type="file"
+                    name="profilepicture"
+                    accept="image/*"
+                    onChange={handleImgChange}
+                  ></input>
+                  <label htmlFor="cv">CV</label>
+                  <input
+                    type="file"
+                    name="cv"
+                    accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, .pages"
+                    onChange={handleCvChange}
+                  ></input>
+                </>
               ) : (
-                <InputField inpt={companypAttachedItems} type="file" />
+                <>
+                  <label htmlFor="profilepicture">Company logo</label>
+                  <input
+                    type="file"
+                    name="profilepicture"
+                    accept="image/*"
+                    onChange={handleImgChange}
+                  ></input>
+                </>
+
+                // <InputField inpt={companypAttachedItems} type="file" />
               )}
+
               <br></br>
               {view === "person-view" ? (
                 <InputField inpt={personLinks} type="text" />

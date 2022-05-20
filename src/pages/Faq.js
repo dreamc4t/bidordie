@@ -1,14 +1,97 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 import FAQfunctions from "../components/FAQfunctions";
 import PopUp from "../components/PopUp";
+import FaqMessageService from "../services/FaqMessageService";
 
 function Faq () {
 
   const [isOpen, setIsOpen] = useState(false);
- 
+  const [allmessages, setAllmessages] = useState([]);
+  const [messages, setMessages] = useState({
+    nameOfSender: "",
+    phone: "",
+    emailOfSender: "",
+    message: ""
+  });
+  
+  // Original funktionerna
+  /* useEffect(() => {
+    getAllMessages();
+  }, [])
+
+  const getAllMessages = () => {
+    FaqMessageService.getAllMessages().then((response) => {
+      setAllmessages(response.data);
+      console.log(response.data);
+    })
+  }
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+  
+    console.log(name, value)
+    setMessages({...messages, [name]: value})
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(messages)
+    if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
+      const newMessage = messages
+      console.log(newMessage)
+      FaqMessageService.createMessage(newMessage)
+        .then(() => getAllMessages())
+      setMessages({
+        nameOfSender: "",
+        phone: "",
+        emailOfSender: "",
+        message: ""
+    })
+    }
+    togglePopup();
+    alert("Message Sent!")
+  }*/
+
+  // C#/.Net Microservice
+  useEffect(() => {
+    GetAllMessages();
+  }, [])
+
+  const GetAllMessages = () => {
+    FaqMessageService.GetAllMessages().then((response) => {
+      setAllmessages(response.data);
+    })
+  }
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+  
+    setMessages({...messages, [name]: value})
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
+      const newMessage = messages
+      FaqMessageService.AddMessage(newMessage)
+        .then(() => GetAllMessages())
+      setMessages({
+        nameOfSender: "",
+        phone: "",
+        emailOfSender: "",
+        message: ""
+    })
+    }
+    togglePopup();
+    alert("Message Sent!")
+  }
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   }
@@ -81,21 +164,32 @@ function Faq () {
         {isOpen && <PopUp
           content={<>
             <b>Put in your contact info and your question</b>
-            <p>
-              <input type="text" placeholder="Firstname and Lastname"/>
-              <br></br>
-              <input type="text" placeholder="Telephone number"/>
-              <br></br>
-              <input type="text" placeholder="Email"/>
-              <br></br>
-              <input type="text" placeholder="Write your question here!"/>
-              <br></br>
-              <button onClick={togglePopup}><FaEnvelope /> Submit</button>
-            </p>
+            <div>
+              <form>
+                <input onChange={handleChange} name="nameOfSender" type="text" value={messages.nameOfSender} placeholder="Firstname and Lastname"/>
+                <br></br>
+                <input onChange={handleChange} name="phone" type="text" value={messages.phone} placeholder="Telephone number"/>
+                <br></br>
+                <input onChange={handleChange} name="emailOfSender" type="text" value={messages.emailOfSender} placeholder="Email"/>
+                <br></br>
+                <input onChange={handleChange} name="message" type="text" value={messages.message} placeholder="Write your question here!"/>
+                <br></br>
+                <button type="submit" onClick={handleSubmit} ><FaEnvelope /> Submit</button>
+              </form>
+            </div>
           </>}
           handleClose={togglePopup}
         />}
         <br></br>
+        <p>Newly submitted questions</p>
+            {allmessages.map((messages) => (
+              <div className="mess" key={messages.id}>
+                <p>{messages.nameOfSender}</p>
+                <p>{messages.phone}</p>
+                <p>{messages.emailOfSender}</p>
+                <p>{messages.message}</p>
+              </div>
+            ))}
         <Link to="/">
           <FaArrowLeft size={30} />
         </Link>
@@ -104,5 +198,3 @@ function Faq () {
 }
 
 export default Faq;
-
-{/* <button className="button-element"><FaEnvelope /> Contact Us</button> */}
