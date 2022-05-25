@@ -34,8 +34,8 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
                     setFailedToLogIn(true)
                 }
             })
-            .catch(response => {
-                console.error('error: ' + response)
+            .catch(() => {
+                setFailedToLogIn(true)
             })
     }
 
