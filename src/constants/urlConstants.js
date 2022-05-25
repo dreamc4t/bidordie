@@ -9,7 +9,10 @@ const API_URL_FILES = URL_HOME + "8080/api/files";
 const API_URL_USERS = URL_HOME + "8080/api/users";
 const API_URL_AUCTIONS = URL_HOME + "8080/api/auctions";
 const API_URL_AUTH = URL_HOME + "8080/api/auth";
-const API_URL_MESSAGES = "https://localhost:7065/api/FaqMessages";
+const API_URL_MESSAGES = URL_HOME + "8080/api/FAQ";
+
+// C#/.Net Microservice
+//const API_URL_MESSAGES = "https://localhost:7065/api/FaqMessages";
 
 
 
