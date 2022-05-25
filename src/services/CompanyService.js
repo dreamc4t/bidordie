@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL_COMPANIES = "http://localhost:8080/api/companies";
+// const API_URL_COMPANIES = "http://localhost:8080/api/companies";
+import { API_URL_COMPANIES } from "../constants/urlConstants"; 
 
 class CompanyService {
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {}
+    "C:\\Users\\danii\\OneDrive\\Dokument\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {
+    "C:\\Users\\danii\\OneDrive\\Dokument\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
+        "projectUniqueName": "C:\\Users\\danii\\OneDrive\\Dokument\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
         "projectName": "FaqMessagesApi",
-        "projectPath": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
-        "packagesPath": "C:\\Users\\halfl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\halfl\\Documents\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\obj\\",
+        "projectPath": "C:\\Users\\danii\\OneDrive\\Dokument\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\FaqMessagesApi.csproj",
+        "packagesPath": "C:\\Users\\danii\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danii\\OneDrive\\Dokument\\GitHub\\bidordie\\FaqMessagesApi\\FaqMessagesApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\halfl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

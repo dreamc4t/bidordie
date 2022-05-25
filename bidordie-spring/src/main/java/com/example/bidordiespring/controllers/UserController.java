@@ -56,7 +56,7 @@ public class UserController {
                 user.setEmail(userRequest.getEmail());
             }
             if(userRequest.getPassword() != null) {
-                user.setPassword((userRequest.getPassword()));
+                user.setPassword(encoder.encode(userRequest.getPassword()));
             }
             if(userRequest.getImageUrl() != null) {
                 user.setImageUrl(userRequest.getImageUrl());

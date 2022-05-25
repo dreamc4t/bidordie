@@ -13,6 +13,7 @@ import HeaderButton from "../components/HeaderButton";
 import UserPageMockAuctions from "../components/UserPageMockAuctions";
 import { useParams } from "react-router-dom";
 import { LoginContext } from "../App";
+import EditProfileButton from "../components/EditProfileButton";
 
 const ProfilePageUser = () => {
 
@@ -26,6 +27,7 @@ const ProfilePageUser = () => {
     UserService.getUserById(auctionOwnerId)
       .then(response => {
         setUser(response.data)
+        console.log(response)
       })
       .catch(response => {
         console.error(response)
@@ -37,9 +39,11 @@ const ProfilePageUser = () => {
     user ?
     <div className="profile-page">
       <div className="profile-page-pictures">
-        {(user.id === loginContext.idOfLoggedInUser) && <Link to={"/edit-user-page"} style={{textDecoration: "none"}}>
-          <HeaderButton text={"Edit information"}  />
-        </Link> /* <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button> */}
+        {(user.id === loginContext.idOfLoggedInUser) && <div className="profile-button-element">
+        <Link to={"/edit-user-page"}>
+          <GoPencil size={35} />
+          {/* <EditProfileButton text={"Edit information"}  /> */}
+        </Link> </div>/* <button className="profile-page-edit-button"><GoPencil className="profile-page-edit-icon"/></button> */}
         <img src="/img/profileBackground.jpg" className="profile-background-picture" />
         <img src={user.imageUrl} className="profile-picture" />
       </div>
@@ -47,7 +51,7 @@ const ProfilePageUser = () => {
       <div className="profile-page-body">
         <div className='profile-page-top'>
           <div className="profile-page-info">
-            <h1>{user.firstName} {user.lastName}</h1>
+            <h1>{user.firstName} {user.lastName} {user.companyName} </h1>
             <p>{user.competence}</p>
             <p><GoLocation size={15} className="profile-page-icons"/>{user.town} - {user.phone}</p>
           </div>
@@ -78,19 +82,19 @@ const ProfilePageUser = () => {
         </a>
       </div>
 
-      <div className="previous-commisions">
+      {/* <div className="previous-commisions">
           <UserPageMockAuctions />
           <UserPageMockAuctions />
           <UserPageMockAuctions />
           <UserPageMockAuctions />
-      </div>
+      </div> */}
 
     </div>
 
     :
 
     <div>
-      HEJ HEJ HEJ
+      Loading user profile...
     </div>    
     
     

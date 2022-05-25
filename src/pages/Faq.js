@@ -65,7 +65,6 @@ function Faq () {
   const GetAllMessages = () => {
     FaqMessageService.GetAllMessages().then((response) => {
       setAllmessages(response.data);
-      console.log(response.data);
     })
   }
 
@@ -73,16 +72,13 @@ function Faq () {
     const name = e.target.name;
     const value = e.target.value;
   
-    console.log(name, value)
     setMessages({...messages, [name]: value})
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(messages)
     if(messages.nameOfSender && messages.phone && messages.emailOfSender && messages.message){
       const newMessage = messages
-      console.log(newMessage)
       FaqMessageService.AddMessage(newMessage)
         .then(() => GetAllMessages())
       setMessages({

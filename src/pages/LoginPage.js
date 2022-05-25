@@ -22,19 +22,17 @@ const LoginPage = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
 
         AuthService.login(loginRequest)
             .then(response => {
-                console.log(response)
                 if (response.status === 200) {
                     setIsLoggedIn(true)
                     setFailedToLogIn(false)
                     setIdOfLoggedInUser(response.data.id)
+                    console.log(response)
+                    setIsACompany(response.data.roles.includes('ROLE_COMPANY'))
                     localStorage.setItem('token', response.data.token)
-                    console.log('Successful Login!')
                     navigate('/', true)
                 } else {
                     setFailedToLogIn(true)
-                    console.log('Could not log in')
                 }
-                console.log('server response: ' + response)
             })
             .catch(response => {
                 console.error('error: ' + response)

@@ -72,11 +72,11 @@ public class AuthController {
 
         /*if (userRepository.findByEmail(loginRequest.getEmail()).isPresent()){
             if (userRepository.findByEmail(loginRequest.getEmail()).get().getPassword().equals(loginRequest.getPassword())){
-                return ResponseEntity.ok().body(new LoginResponse(true, false, userRepository.findByEmail(loginRequest.getEmail()).get().getId()));
+                return ResponseEntity.ok().body(new LoginResponse(true, false, userRepository.findByEmail(loginRequest.getEmail()).get().getId(), "Login Successful"));
             }
         } else if (companyRepository.findByEmail(loginRequest.getEmail()).isPresent()) {
             if (companyRepository.findByEmail(loginRequest.getEmail()).get().getPassword().equals(loginRequest.getPassword())) {
-                return ResponseEntity.ok().body(new LoginResponse(true, true, companyRepository.findByEmail(loginRequest.getEmail()).get().getId()));
+                return ResponseEntity.ok().body(new LoginResponse(true, true, companyRepository.findByEmail(loginRequest.getEmail()).get().getId(), "Login Successful"));
             }
         }
         return ResponseEntity.badRequest().body(new MessageResponse("The login failed. Please check username and password."));*/
