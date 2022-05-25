@@ -1,6 +1,5 @@
 package com.example.bidordiespring.controllers;
 
-
 import com.example.bidordiespring.models.ERole;
 import com.example.bidordiespring.models.Role;
 import com.example.bidordiespring.models.User;
@@ -107,6 +106,12 @@ public class UserController {
     public User deleteUser(@PathVariable String id) {
         return userRepository.deleteUserById(id);
     }
+
+    @DeleteMapping("/deleteUserByEmail/{email}")
+    public User deleteUserByEmail(@PathVariable String email) {
+        System.out.println("Deleting user with email " + email);
+        return userRepository.deleteUserByEmail(email)
+                ; }
 
     @PostMapping("/signup")
     public ResponseEntity<?> newUser(@Valid @RequestBody UserRequest u) {
