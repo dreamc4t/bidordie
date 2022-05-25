@@ -30,4 +30,4 @@ jobs:
         run: ssh dev 'cd /var/www/bidordie && git fetch && git reset --hard origin/rel && npm install'
 
       - name: Restart app (Important read how to link pm2 for sudoers https://stackoverflow.com/questions/62863080/github-actions-err-bash-line-3-npm-command-not-found )
-        run: ssh dev 'pm2 restart BidordieFrontEnd'        
+        run: ssh dev 'pm2 restart bidordie'        
