@@ -19,7 +19,7 @@ function Faq () {
   });
   
   // Original funktionerna
-  /* useEffect(() => {
+  useEffect(() => {
     getAllMessages();
   }, [])
 
@@ -55,10 +55,10 @@ function Faq () {
     }
     togglePopup();
     alert("Message Sent!")
-  }*/
+  }
 
   // C#/.Net Microservice
-  useEffect(() => {
+  /* useEffect(() => {
     GetAllMessages();
   }, [])
 
@@ -94,7 +94,7 @@ function Faq () {
     }
     togglePopup();
     alert("Message Sent!")
-  }
+  } */
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
