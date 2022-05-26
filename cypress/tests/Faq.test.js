@@ -9,7 +9,7 @@ describe('Faq', function () {
     })
 
     it("Toggles faq questions when clicked", () => {
-        cy.get(':nth-child(2) > .faq-question').click({ multiple: true})
+        cy.get(':nth-child(2) > .faq-question').click({ multiple: true })
     })
 
     it("Finds contact us button, clicks it and input fields", () => {
