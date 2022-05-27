@@ -144,7 +144,7 @@ const BecomeAMember = () => {
     let doesEmailExist = false;
     emailList.forEach(email => {
       if (email === e.target.email.value) {
-        console.log("EMAILEN FINNS REDAN")
+        console.log("EMAILEN FINNS  REDAN")
         doesEmailExist = true;
       }
     });
