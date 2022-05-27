@@ -1,14 +1,35 @@
-function login() {
+import axios from "axios";
+import { API_URL_USERS } from "../../src/constants/urlConstants";
+
+function createTestUser() {
+    cy.visit("/become-a-member")
+    cy.get(':nth-child(1) > :nth-child(1) > div > input').clear().type('HeaderTestFirstName')
+    cy.get(':nth-child(1) > :nth-child(2) > div > input').clear().type('HeaderTestLastName')
+    cy.get('.basic-info-div > :nth-child(1) > :nth-child(4) > div > input').clear().type('header@test.com')
+    cy.get('[type="password"]').clear().type('test123')
+    cy.get('.submit-button-div > div > input').click()
+    cy.get('.submit-button').click()
+}
+
+function deleteTestUser() {
+    axios.delete(`${API_URL_USERS}/deleteUserByEmail/header@test.com`)
+}
+
+function loginTestUser() {
     cy.visit('/login')
-    cy.get('[type="text"]').type('test@test.com')
+    cy.get('[type="text"]').type('header@test.com')
     cy.get('[type="password"]').type('test123')
     cy.get('form > :nth-child(3)').click()
-}1
+}
 
 describe("Header", () => {
 
     beforeEach(() => {
         cy.visit("/")
+    })
+
+    afterEach(() => {
+        deleteTestUser()
     })
 
     it("displays the logo", () => {
@@ -21,7 +42,8 @@ describe("Header", () => {
             .should('include.text', 'About')
             .should('include.text', 'Signup')
             .should('include.text', 'Login')
-        login()
+        createTestUser()
+        loginTestUser()
         cy.get('.header-nav')
             .should('include.text', 'Auctions')
             .should('include.text', 'New auction')
@@ -34,6 +56,7 @@ describe("Header", () => {
         cy.get('[href="/"] > div > .header-button-element').click()
         cy.url().should('equal', 'http://localhost:3000/')
     })
+    
     it("redirects to about page when clicking About", () => {
         cy.get('[href="/about-us"] > div > .header-button-element').click()
         cy.url().should('equal', 'http://localhost:3000/about-us')
@@ -50,19 +73,22 @@ describe("Header", () => {
     })
 
     it('redirects to new auction page when clicking New Auction', () => {
-        login()
+        createTestUser()
+        loginTestUser()
         cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.url().should('equal', 'http://localhost:3000/new-auction')
     })
 
     it('redirects to my page when clicking My page', () => {
-        login()
-        cy.get('[href="/profile-page-user/628e2346f282dd5d3a20db29"] > div > .header-button-element').click()
-        cy.url().should('equal', 'http://localhost:3000/profile-page-user/628e2346f282dd5d3a20db29')
+        createTestUser()
+        loginTestUser()
+        cy.get(':nth-child(5) > div > .header-button-element').click()
+        cy.get('.profile-page').contains('HeaderTestFirstName')
     })
 
     it('logs out and redirects to auction-list page when clicking Log Out', () => {
-        login()
+        createTestUser()
+        loginTestUser()
         cy.get(':nth-child(4) > div > .header-button-element').contains('Log Out')
         cy.get(':nth-child(4) > div > .header-button-element').click()
         cy.get('.header-nav').contains('Login')
