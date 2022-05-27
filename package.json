@@ -7,7 +7,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
-    "concurrently": "^7.1.0",
+    "concurrently": "^7.2.1",
     "cypress": "^9.7.0",
     "json-server": "^0.17.0",
     "react": "^17.0.2",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "server": "json-server --watch data/auctions-db.json --port 6001",
-    "dev": "concurrently \"npm run server\" \"npm start\" ",
+    "dev": "concurrently \"cd bidordie-spring && mvn spring-boot:run\" \"npm start\"  ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
