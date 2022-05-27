@@ -6,27 +6,27 @@ describe("Footer", () => {
 
     it("redirects to google store when clicking the Google button", () => {
         cy.get('[href="https://play.google.com/store"]').click()
-        cy.url().should('https://play.google.com/store')
+        cy.url('/google-play-store')
     })
 
     it("redirects to apple store when clicking the Apple button", () => {
         cy.get('[href="https://www.apple.com/app-store/"]').click()
-        cy.url().should('https://www.apple.com/app-store/')
+        cy.url('/apple-store')
     })
 
     it("redirects to Facebook when clicking the Facebook button", () => {
         cy.get('[href="https://www.facebook.com"]').click()
-        cy.url().should('https://www.facebook.com')
+        cy.url('/facebook')
     })
 
     it("redirects to Instagram when clicking the Instagram button", () => {
         cy.get('[href="https://www.instagram.com"]').click()
-        cy.url().should('https://www.instagram.com')
+        cy.url('/instagram')
     })
 
     it("redirects to Twitter when clicking the Twitter button", () => {
         cy.get('[href="https://www.twitter.com"]').click()
-        cy.url().should('https://www.twitter.com')
+        cy.url('/twitter')
     })
 
     it("redirects to faq page when clicking the ? button", () => {
