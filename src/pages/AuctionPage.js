@@ -6,7 +6,7 @@ import UserService from "../services/UserService";
 
 import { LoginContext } from "../App";
 
-const AuctionPage = ({ idOfLoggedInUser }) => {
+const AuctionPage = () => {
 
   // Params
   const {auctionId, auctionOwnerId} = useParams()
@@ -75,7 +75,7 @@ const AuctionPage = ({ idOfLoggedInUser }) => {
     const userIsSure = window.confirm('You are now committing to placing a bid of ' + bidValue + 'kr. Are you sure?')
     if (userIsSure !== true) return
 
-    AuctionService.placeBid(auction.auctionId, idOfLoggedInUser, bidValue)
+    AuctionService.placeBid(auction.auctionId, loginContext.idOfLoggedInUser, bidValue)
       .then(() => {
         alert('Congratulations, you successfully placed a bid of ' + bidValue + 'kr.')
         AuctionService.getAuctionById(auction.auctionId)
