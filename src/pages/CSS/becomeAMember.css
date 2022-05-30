@@ -160,6 +160,18 @@ display: flex;
 
     }
 
+    .info-wrapper {
+        align-items: left;
+    }
+    .become-a-member-background {
+        width: unset;
+    }
+
+    .become-a-member-div {
+        align-items: unset;
+    }
+   
+
 
 
 
