@@ -17,11 +17,16 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
   const handleBurgerClick = () => {
     setBurgerNav((prev) => !prev);
   };
+  const burgerClick = () => {
+    setBurgerNav(true)
+  }
 
   const logOut = () => {
     setIsLoggedIn(false);
     setIsACompany(false);
     setIdOfLoggedInUser("");
+    setBurgerNav(true)
+
   };
 
   return (
@@ -73,26 +78,26 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
        <></> 
        :
        <nav className="burger-header-nav">
-       <Link to="/" style={{ textDecoration: "none" }}>
+       <Link to="/" style={{ textDecoration: "none" }} onClick={burgerClick}>
          <HeaderButton text={"Auctions"} />
        </Link>
        {loginContext.isLoggedIn ? (
-         <Link to={"new-auction"} style={{ textDecoration: "none" }}>
+         <Link to={"new-auction"} style={{ textDecoration: "none" }} onClick={burgerClick}>
            {" "}
            <HeaderButton text={"New auction"} />
          </Link>
        ) : null}
-       <Link to={"/about-us"} style={{ textDecoration: "none" }}>
+       <Link to={"/about-us"} style={{ textDecoration: "none" }} onClick={burgerClick}>
          <HeaderButton text={"About"} />
        </Link>
        {!loginContext.isLoggedIn ? (
-         <Link to={"become-a-member"} style={{ textDecoration: "none" }}>
+         <Link to={"become-a-member"} style={{ textDecoration: "none" }} onClick={burgerClick}>
            <HeaderButton text={"Signup"} />
          </Link>
        ) : null}
        {!loginContext.isLoggedIn ? (
-         <Link to={"login"} style={{ textDecoration: "none" }}>
-           <HeaderButton text={"Login"} />
+         <Link to={"login"} style={{ textDecoration: "none" }} onClick={burgerClick}>
+           <HeaderButton text={"Login"}/>
          </Link>
        ) : (
          <Link to={"/"} style={{ textDecoration: "none" }} onClick={logOut}>
@@ -103,7 +108,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
          <Link
            to={"profile-page-user/" + loginContext.idOfLoggedInUser}
            style={{ textDecoration: "none" }}
-         >
+           onClick={burgerClick}>
            <HeaderButton text={"My page"} />
          </Link>
        ) : null}
