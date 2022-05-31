@@ -6,7 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../App";
 import {companyInputs, companyLinks} from "../constants/companyConstants";
 import { API_URL_USERS } from "../constants/urlConstants"; 
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -143,6 +143,7 @@ const EditProfileUser = () => {
     setCvFile(e.target.files[0]);
   };
 
+  const navigate = useNavigate()
 
   const deleteUser = () => {
     request({
@@ -152,6 +153,7 @@ const EditProfileUser = () => {
     })
     console.log("User deleted!");
     alert("Your account has been deleted.");
+    navigate('/',true)
   }
 
 
