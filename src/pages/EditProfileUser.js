@@ -196,6 +196,7 @@ const EditProfileUser = () => {
                     name="profilepicture"
                     onChange={handleImgChange}
                   ></input>
+                  <br></br>
                   <label htmlFor="cv">CV</label>
                   <input
                     type="file"
