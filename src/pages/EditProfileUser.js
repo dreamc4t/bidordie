@@ -234,12 +234,12 @@ const EditProfileUser = () => {
                   ))}
                 </div>
                 <div>
-                  <label>Other info:</label>
+                  <label>Description:</label>
                   <br></br>
                   <input
                     className="other-info-field"
                     type="text"
-                    placeholder="Type other info here"
+                    placeholder="Short description"
                     name="otherinfo"
                   ></input>
                   <input
