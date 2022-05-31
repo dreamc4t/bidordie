@@ -13,7 +13,7 @@ function createTestUser() {
 }
 
 function deleteTestUser() {
-    axios.delete(`${API_URL_USERS}/deleteUserByEmail/login@test.com`)
+    cy.request('DELETE', `${API_URL_USERS}/deleteUserByEmail/login@test.com`)
 }
 
 describe('LoginPage', () => {
