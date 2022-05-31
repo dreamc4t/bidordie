@@ -23,9 +23,16 @@ class AuctionService {
     }
 
     placeBid(auctionOwnerId, bidderId, amount) {
-        return axios.post(`${API_URL_AUCTIONS}/placeBid/${auctionOwnerId}`, {
-            bidderId: bidderId,
-            amount: amount
+        return axios({
+            method: 'post',
+            url: `${API_URL_AUCTIONS}/placeBid/${auctionOwnerId}`,
+            data: {
+                bidderId: bidderId,
+                amount: amount
+            },
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         })
     }
 

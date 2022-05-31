@@ -1,4 +1,4 @@
-const URL_HOME = 'http://localhost:'
+const URL_HOME = 'http://146.190.18.24:'
 //const URL_HOME = 'http://192.168.1.254:'
 // byts denna till ens lokala IP adress kan man köra den på hela nätverket!
 // Hade varit guld med en hämtad lokal ip som default, verkar mkt svårt dock 
