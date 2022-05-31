@@ -1,9 +1,12 @@
-import { useContext, useState, useEffect } from "react";
+
 import InputField from "../components/InputField";
 import UserService from "../services/UserService";
+
+import { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../App";
 import {companyInputs, companyLinks} from "../constants/companyConstants";
 import { API_URL_USERS } from "../constants/urlConstants"; 
+import axios from "axios";
 
 
 
@@ -26,7 +29,6 @@ const EditProfileUser = () => {
       })
   }, [])
 
-    const [view, setView] = useState("person-view");
     const [cvFile, setCvFile] = useState("no file");
     const [imgFile, setImgFile] = useState("no file");
 
@@ -38,19 +40,12 @@ const EditProfileUser = () => {
         { key: 5, label: "Town" },
         { key: 6, label: "Zip code" },
         { key: 7, label: "Telephone number" },
-        // { key: 8, label: "Password*" },
       ];
 
   const personLinks = [
     { key: 1, label: "Link to github" },
     { key: 2, label: "Link to linkedin" },
     { key: 3, label: "Other link" },
-  ];
-
-  const personAttachedItems = [
-    { key: 1, label: "CV" },
-    { key: 2, label: "Profile Picture" },
-    { key: 3, label: "Other files to attach" },
   ];
 
   const personCompetences = [
@@ -149,12 +144,11 @@ const EditProfileUser = () => {
   };
 
 
-  const deleteUser = (user) => {
+  const deleteUser = () => {
     request({
       endpoint: `${API_URL_USERS}/deleteUserById/${loginContext.idOfLoggedInUser}`,
       mode: "no-cors",
-      method: "DELETE",
-      user,
+      method: "DELETE"
     })
   }
 
@@ -265,11 +259,11 @@ const EditProfileUser = () => {
         </button>
         </form>
         
-        <form onSubmit={deleteUser}>
-        <button type="submit" className="submit-button">
+        
+        <button onClick={deleteUser} type="submit" className="submit-button">
           Delete user
         </button>
-        </form>
+        
       </div>               
     </div>
 
