@@ -1,13 +1,15 @@
 import AuctionService from "../services/AuctionService";
 import {useState, useContext} from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 import { LoginContext } from "../App";
 
 
 const AddAuctionPage = () => {
     
-
+    const navigate = useNavigate()
     const loginContext = useContext(LoginContext)
+    const [missingInput, setMissingInput] = useState(false)
 
     const [auctions, setAuctions] = useState({
         availablePeriodStart: "",
@@ -27,6 +29,7 @@ const AddAuctionPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(auctions.availablePeriodStart && auctions.availablePeriodEnd && auctions.openingPrice && auctions.buyoutPrice && auctions.auctionEndTime){
+            setMissingInput(false)
             const newAuction = auctions
             AuctionService.createAuction(newAuction, loginContext.idOfLoggedInUser)
             setAuctions({
@@ -36,7 +39,13 @@ const AddAuctionPage = () => {
                 buyoutPrice: "",
                 auctionEndTime: "",
         })
+        alert("Auction created!")
+        navigate('/',true)
         }
+        else{
+            setMissingInput(true)
+        }
+
     }
 
   return (
@@ -68,6 +77,9 @@ const AddAuctionPage = () => {
                     </div>
                     <div className="add-button-container">
                         <button type="submit" id="add-auction-button" onClick={handleSubmit}>Add Auction</button>
+                    </div>
+                    <div className="missingInputContainer">
+                        {missingInput && <p id="missingInput">All fields required</p>}
                     </div>
                 </div>
             </form>
