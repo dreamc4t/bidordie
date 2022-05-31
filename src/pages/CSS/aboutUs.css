@@ -23,4 +23,26 @@
     display: flex;
     justify-content: center;
     font-size: medium;
+    text-align: center;
+}
+
+@media (max-width:420px) {
+
+    .about-us h2{
+        margin:auto;
+        position: relative;
+    }
+    
+    .about-us h3{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .about-us p{
+        margin:auto;
+        position: relative;
+        text-align: center;
+    }
+
 }
