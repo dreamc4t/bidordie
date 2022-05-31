@@ -162,8 +162,6 @@ const EditProfileUser = () => {
     user ? 
     <div id="become-a-member-div">
       <div>
-        Edit your fucking info
-        {loginContext.idOfLoggedInUser}
         <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
             <div className="basic-info-div column-div">
