@@ -14,6 +14,7 @@
     font-size: x-large;
     font-weight: 700;
     border-radius: 8px;
+    max-width: 420px;
 }
 
 .faqs {
@@ -117,6 +118,10 @@
     font-size: large;
 }
 
+.FAQ pb {
+    font-size: large;
+}
+
 .FAQ b {
     display: flex;
     justify-content: center;
@@ -130,4 +135,24 @@
     background-color: rgb(28,36,53);
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width:420px) {
+
+    .FAQ h2{
+        margin:auto;
+        position: relative;
+    }
+    
+    .FAQ pb{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .FAQ input{
+        margin:auto;
+        position: relative;
+    }
+
 }

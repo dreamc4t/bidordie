@@ -154,7 +154,7 @@ function Faq () {
             <FAQfunctions faq={faq} index={i} toggleFAQ={toggleFAQ} />
           ))}
         </div>
-        <p>If you have any more questions, feel free to contact us on the link below!</p>
+        <pb>If you have any more questions, feel free to contact us on the link below!</pb>
         <br></br>
         <input 
           type="button"
@@ -181,7 +181,7 @@ function Faq () {
           handleClose={togglePopup}
         />}
         <br></br>
-        <p>Newly submitted questions</p>
+        <pb>Newly submitted questions</pb>
             {allmessages.map((messages) => (
               <div className="mess" key={messages.id}>
                 <p>{messages.nameOfSender}</p>

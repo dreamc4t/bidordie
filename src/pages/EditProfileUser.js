@@ -174,7 +174,7 @@ const EditProfileUser = () => {
                 </>
               ) : (
                 <>
-                  <InputField inpt={companyInputs} type="text" />
+                  <InputField inpt={companyInputs} type="text" placeholder="what" />
                   <label htmlFor="password">Password*</label>
                   <br></br>
                   <input

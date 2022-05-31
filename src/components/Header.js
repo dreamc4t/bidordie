@@ -44,7 +44,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
           {loginContext.isLoggedIn ? (
             <Link to={"new-auction"} style={{ textDecoration: "none" }}>
               {" "}
-              <HeaderButton text={"New auction"} />
+              <HeaderButton text={"New Auction"} />
             </Link>
           ) : null}
           <Link to={"/about-us"} style={{ textDecoration: "none" }}>
@@ -84,7 +84,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
        {loginContext.isLoggedIn ? (
          <Link to={"new-auction"} style={{ textDecoration: "none" }} onClick={burgerClick}>
            {" "}
-           <HeaderButton text={"New auction"} />
+           <HeaderButton text={"New Auction"} />
          </Link>
        ) : null}
        <Link to={"/about-us"} style={{ textDecoration: "none" }} onClick={burgerClick}>
@@ -109,7 +109,7 @@ const Header = ({ setIsLoggedIn, setIsACompany, setIdOfLoggedInUser }) => {
            to={"profile-page-user/" + loginContext.idOfLoggedInUser}
            style={{ textDecoration: "none" }}
            onClick={burgerClick}>
-           <HeaderButton text={"My page"} />
+           <HeaderButton text={"My Page"} />
          </Link>
        ) : null}
      </nav>}
