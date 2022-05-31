@@ -19,7 +19,12 @@ class UserService {
   getAllUsers() {
     return axios.get(`${API_URL_USERS}/all`, {
     });
-}
+  }
+
+  deleteUserByid(userId) {
+    return axios.delete(`${API_URL_USERS}/deleteUserById${userId}`, {
+    })
+  }
 }
 
 export default new UserService();

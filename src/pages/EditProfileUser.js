@@ -138,10 +138,6 @@ const EditProfileUser = () => {
     editUser(e)
   }
 
-  const handleChange = (e) => {
-    setView(e.target.value);
-  };
-
   const handleImgChange = (e) => {
     e.preventDefault();
     setImgFile(e.target.files[0]);
@@ -153,10 +149,23 @@ const EditProfileUser = () => {
   };
 
 
+  const deleteUser = (user) => {
+    request({
+      endpoint: `${API_URL_USERS}/deleteUserById/${loginContext.idOfLoggedInUser}`,
+      mode: "no-cors",
+      method: "DELETE",
+      user,
+    })
+  }
+
+
   return (
 
     user ? 
     <div id="become-a-member-div">
+      <div>
+        Edit your fucking info
+        {loginContext.idOfLoggedInUser}
         <form onSubmit={handleSubmit}>
         <div className="info-wrapper">
             <div className="basic-info-div column-div">
@@ -252,10 +261,16 @@ const EditProfileUser = () => {
         </div>
         
         <button type="submit" className="submit-button">
-              Update information
+          Update information
         </button>
         </form>
-
+        
+        <form onSubmit={deleteUser}>
+        <button type="submit" className="submit-button">
+          Delete user
+        </button>
+        </form>
+      </div>               
     </div>
 
     :
