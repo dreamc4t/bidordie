@@ -150,6 +150,8 @@ const EditProfileUser = () => {
       mode: "no-cors",
       method: "DELETE"
     })
+    console.log("User deleted!");
+    alert("Your account has been deleted.");
   }
 
 
