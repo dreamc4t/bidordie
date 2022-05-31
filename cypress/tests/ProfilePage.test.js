@@ -7,7 +7,7 @@ function createTestUser() {
     cy.get(':nth-child(1) > :nth-child(1) > div > input').clear().type('ProfileTestFirstName')
     cy.get(':nth-child(1) > :nth-child(2) > div > input').clear().type('ProfileTestLastName')
     cy.get('.basic-info-div > :nth-child(1) > :nth-child(4) > div > input').clear().type('profilelogin@test.com')
-    cy.get('[type="password"]').clear().type('profiletest123')
+    cy.get('[type="password"]').clear().type('123')
     cy.get('.submit-button-div > div > input').click()
     cy.get('.submit-button').click()
 }
@@ -15,7 +15,7 @@ function createTestUser() {
 function loginTestUser() {
     cy.visit('/login')
     cy.get('[type="text"]').type('profilelogin@test.com')
-    cy.get('[type="password"]').type('profiletest123')
+    cy.get('[type="password"]').type('123')
     cy.get('form > :nth-child(3)').click()
 }
 
@@ -31,12 +31,16 @@ function deleteTestUser() {
 describe('ProfilePage', () => {
 
     beforeEach(() => {
-        cy.visit('/profile-page-user')
+        cy.visit('/')
     })
 
-    it('displays user information', () => {
-        cy.get('#profile-page').should('exist')
+    afterEach(() => {
+        deleteTestUser()
     })
+
+    /* it('displays user information', () => {
+        cy.get('#profile-page').should('exist')
+    }) */
 
     //Testar så att Edit User Page-knappen renderas om användaren är inloggad.
     it('redirects user to EditProfileUserPage when clicking the Edit button', () => {
