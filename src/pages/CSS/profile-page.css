@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 50px;
+    
     color: black;
     background-color: white;
     border: 1px solid rgba(0,0,0,0.4);
@@ -16,6 +16,7 @@
     max-width: 950px;
     overflow: hidden;
     margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .profile-page-top {
@@ -97,6 +98,10 @@
     margin-top: 2%;
 }
 
+.profile-page-icons:hover {
+    fill:rgb(102, 105, 110);
+}
+
 .previous-commisions {
     display: flex;
     flex-direction: row;
@@ -141,4 +146,8 @@
     border-radius: 50%;
     padding: 10px;
     font-size: large;
+}
+
+.profile-button-element:hover {
+    filter: brightness(200%);
 }
