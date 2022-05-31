@@ -79,7 +79,7 @@ const AddAuctionPage = () => {
                         <button type="submit" id="add-auction-button" onClick={handleSubmit}>Add Auction</button>
                     </div>
                     <div className="missingInputContainer">
-                        {missingInput && <p id="missingInput">All fields required</p>}
+                        {missingInput && <p id="missingInput">All fields required!</p>}
                     </div>
                 </div>
             </form>
