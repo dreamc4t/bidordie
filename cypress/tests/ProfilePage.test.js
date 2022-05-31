@@ -20,12 +20,11 @@ function loginTestUser() {
 }
 
 function clickMyPage() {
-    cy.visit('/')
     cy.get(':nth-child(5) > div > .header-button-element').click()
 }
 
 function deleteTestUser() {
-    axios.delete(`${API_URL_USERS}/deleteUserByEmail/profilelogin@test.com`)
+    cy.request('DELETE',`${API_URL_USERS}/deleteUserByEmail/profilelogin@test.com`)
 }
 
 describe('ProfilePage', () => {
@@ -45,10 +44,17 @@ describe('ProfilePage', () => {
     //Testar så att Edit User Page-knappen renderas om användaren är inloggad.
     it('redirects user to EditProfileUserPage when clicking the Edit button', () => {
         createTestUser()
+        cy.wait(500)
         loginTestUser()
+        /* cy.intercept({
+            method: "GET",
+            url: "http://146.190.18.24:8080/api/auth/signin"
+        }).as("dataGetFirst")
+        cy.wait("@dataGetFirst") */
+        cy.wait(500)
         clickMyPage()
         cy.get('[href="/edit-user-page"]').click()
-        cy.url().should('equal', '/edit-user-page')
+        cy.url().should('contain', '/edit-user-page')
         deleteTestUser()
     })
 })
