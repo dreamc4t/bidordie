@@ -59,12 +59,13 @@ const ProfilePageUser = () => {
             {user.cvUrl}
           </div>
         </div>
+        <div className="profile-short-descript">
+          {user.otherInfo}
+        </div>
         <div className="profile-bio">
           {user.biography}
         </div>
-        <div className="profile-references">
-          {user.otherInfo}
-        </div>
+        
       </div>
 
       <div className="profile-page-social-media-links">
