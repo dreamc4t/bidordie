@@ -37,20 +37,32 @@ describe('ProfilePage', () => {
         deleteTestUser()
     })
 
-    /* it('displays user information', () => {
-        cy.get('#profile-page').should('exist')
-    }) */
+    it('displays profile window', () => {
+        createTestUser()
+        cy.wait(500)
+        loginTestUser()
+        cy.wait(500)
+        clickMyPage()
+        cy.get('.profile-page').should('exist')
+        deleteTestUser()
+    })
+
+    it('displays user information', () => {
+        createTestUser()
+        cy.wait(500)
+        loginTestUser()
+        cy.wait(500)
+        clickMyPage()
+        cy.get('.profile-page').contains('ProfileTestFirstName')
+        cy.get('.profile-page').contains('ProfileTestLastName')
+        deleteTestUser()
+    })
 
     //Testar så att Edit User Page-knappen renderas om användaren är inloggad.
     it('redirects user to EditProfileUserPage when clicking the Edit button', () => {
         createTestUser()
         cy.wait(500)
         loginTestUser()
-        /* cy.intercept({
-            method: "GET",
-            url: "http://146.190.18.24:8080/api/auth/signin"
-        }).as("dataGetFirst")
-        cy.wait("@dataGetFirst") */
         cy.wait(500)
         clickMyPage()
         cy.get('[href="/edit-user-page"]').click()
