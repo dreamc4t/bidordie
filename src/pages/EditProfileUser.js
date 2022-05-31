@@ -162,7 +162,7 @@ const EditProfileUser = () => {
             <div className="basic-info-div column-div">
               {user.roles[0].name === "ROLE_USER" ? (
                 <>
-                  <InputField inpt={personInputs} type="text" />
+                  <InputField inpt={personInputs} type="text"/>
                   <label htmlFor="password">Password*</label>
                   <br></br>
                   <input
@@ -174,7 +174,7 @@ const EditProfileUser = () => {
                 </>
               ) : (
                 <>
-                  <InputField inpt={companyInputs} type="text" placeholder="what" />
+                  <InputField inpt={companyInputs} type="text"/>
                   <label htmlFor="password">Password*</label>
                   <br></br>
                   <input
@@ -261,7 +261,7 @@ const EditProfileUser = () => {
 
     <div>
       Loading edit page...
-w    </div>
+    </div>
   )
 }
 

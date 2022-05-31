@@ -52,7 +52,7 @@ const ProfilePageUser = () => {
         <div className='profile-page-top'>
           <div className="profile-page-info">
             <h1>{user.firstName} {user.lastName} {user.companyName} </h1>
-            <p>{user.competence}</p>
+            <p>{user.competence + ""}</p>
             <p><GoLocation size={15} className="profile-page-icons"/>{user.town} - {user.phone}</p>
           </div>
           <div className="profile-cv">

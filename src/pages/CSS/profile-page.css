@@ -17,6 +17,7 @@
     overflow: hidden;
     margin-top: 20px;
     margin-bottom: 60px;
+    max-height: 95%;
 }
 
 .profile-page-top {
