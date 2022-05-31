@@ -77,7 +77,7 @@ const ProfilePageUser = () => {
         <a href="https://www.twitter.com" target="_blank">
           <FaTwitter size={25} className="profile-page-icons"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank">
+        <a href={user.linkedinLink} target="_blank">
           <FaLinkedinIn size={25} className="profile-page-icons"/>
         </a>
       </div>
