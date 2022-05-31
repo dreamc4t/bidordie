@@ -261,7 +261,7 @@ const EditProfileUser = () => {
 
     <div>
       Loading edit page...
-w    </div>
+    </div>
   )
 }
 
