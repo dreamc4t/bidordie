@@ -17,7 +17,10 @@
 
 }
 .auction:hover{
-    transition: width 2s, height 4s;
+    transform: scale(1.05);
+    z-index: 1;
+    box-shadow: 10px 10px 5px rgb(28,36,53);
+    
 }
 .info-container {
     display: flex;
@@ -63,9 +66,7 @@
     font-size: small;
     font-weight: 600;
 }
-.briefInfo>p>svg{
-    fill: black;
-}
+
 
 @media (max-width:500px) {
 
@@ -109,8 +110,4 @@
 
 }
 
-@media (orientation:landscape) and (max-width:500px){
 
-
-
-}
