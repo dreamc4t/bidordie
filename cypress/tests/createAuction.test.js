@@ -30,7 +30,6 @@ describe("addAuction", () => {
         deleteTestUser()
         createTestUser()
         loginTestUser()
-        cy.visit("/new-auction")
     })
 
     afterEach(() => {
@@ -38,6 +37,7 @@ describe("addAuction", () => {
     })
 
     it("direct you to new auction and shows correct texts", () => {
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > label")
         .contains("Start price")
         cy.get(".form-mid-side > :nth-child(2) > label")
@@ -51,17 +51,17 @@ describe("addAuction", () => {
     })
 
     it("Test if all fields are filled if not all fields required should appear", () => {
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
@@ -69,7 +69,7 @@ describe("addAuction", () => {
         cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
@@ -79,7 +79,7 @@ describe("addAuction", () => {
         cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
@@ -95,7 +95,7 @@ describe("addAuction", () => {
     })
 
     it("Should create new auction succesfully with alert and redirect to /", () =>{
-        cy.visit("/new-auction")
+        cy.get('[href="/new-auction"] > div > .header-button-element').click()
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
