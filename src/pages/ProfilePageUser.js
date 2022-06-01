@@ -59,12 +59,13 @@ const ProfilePageUser = () => {
             {user.cvUrl}
           </div>
         </div>
+        <div className="profile-short-descript">
+          {user.otherInfo}
+        </div>
         <div className="profile-bio">
           {user.biography}
         </div>
-        <div className="profile-references">
-          {user.otherInfo}
-        </div>
+        
       </div>
 
       <div className="profile-page-social-media-links">
@@ -77,7 +78,7 @@ const ProfilePageUser = () => {
         <a href="https://www.twitter.com" target="_blank">
           <FaTwitter size={25} className="profile-page-icons"/>
         </a>
-        <a href="https://www.linkedin.com" target="_blank">
+        <a href={user.linkedinLink} target="_blank">
           <FaLinkedinIn size={25} className="profile-page-icons"/>
         </a>
       </div>
