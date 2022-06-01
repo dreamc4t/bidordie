@@ -1,5 +1,5 @@
-import cypress from "cypress";
-import { after } from "cypress/types/lodash";
+
+import axios from "axios";
 import { API_URL_USERS } from "../../src/constants/urlConstants";
 
 
@@ -15,7 +15,7 @@ function createTestUser() {
 }
 
 function deleteTestUser() {
-    axios.delete(`${API_URL_USERS}/deleteUserByEmail/testtest`)
+    cy.request('DELETE', `${API_URL_USERS}/deleteUserByEmail/testtest`)
 }
 
 function loginTestUser() {
@@ -27,12 +27,13 @@ function loginTestUser() {
 
 describe("addAuction", () => {
     beforeEach(() =>{
+        deleteTestUser()
         createTestUser()
         loginTestUser()
         cy.visit("/new-auction")
     })
 
-    after(() => {
+    afterEach(() => {
         deleteTestUser()
     })
 
@@ -49,45 +50,45 @@ describe("addAuction", () => {
         .contains("Auction end time")
     })
 
-    it("Test if all fields are filled", () => {
+    it("Test if all fields are filled if not all fields required should appear", () => {
         cy.visit("/new-auction")
-        cy.get("#add-auction-button").click
+        cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
         cy.visit("/new-auction")
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
-        cy.get("#add-auction-button").click
-        cy.get("#missingInput").should("exist")
-
-        cy.visit("/new-auction")
-        cy.get(".form-mid-side > :nth-child(1) > input")
-        .type("500")
-        cy.get(".form-mid-side > :nth-child(2) > input")
-        .type("1000")
-        cy.get("#add-auction-button").click
+        cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
         cy.visit("/new-auction")
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
-        .type("1000")
+        .type("2022-09-20")        
+        cy.get("#add-auction-button").click()
+        cy.get("#missingInput").should("exist")
+
+        cy.visit("/new-auction")
+        cy.get(".form-mid-side > :nth-child(1) > input")
+        .type("500")
+        cy.get(".form-mid-side > :nth-child(2) > input")
+        .type("2022-09-20")    
         cy.get(".form-right-side > :nth-child(1) > input")
-        .type(2022-09-20)
-        cy.get("#add-auction-button").click
+        .type("1000")
+        cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
         cy.visit("/new-auction")
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
-        .type("1000")
+        .type("2022-09-20")    
         cy.get(".form-right-side > :nth-child(1) > input")
-        .type(2022-09-20)
+        .type("1000")
         cy.get(".form-right-side > :nth-child(2) > input")
-        .type(2022-09-28)
-        cy.get("#add-auction-button").click
+        .type("2022-09-28")
+        cy.get("#add-auction-button").click()
         cy.get("#missingInput").should("exist")
 
 
@@ -98,23 +99,16 @@ describe("addAuction", () => {
         cy.get(".form-mid-side > :nth-child(1) > input")
         .type("500")
         cy.get(".form-mid-side > :nth-child(2) > input")
-        .type("1000")
+        .type("2022-09-20")    
         cy.get(".form-right-side > :nth-child(1) > input")
-        .type(2022-09-20)
+        .type("1000")
         cy.get(".form-right-side > :nth-child(2) > input")
-        .type(2022-09-28)
+        .type("2022-09-28")
         cy.get(":nth-child(3) > input")
-        .type(2022-07-28)
-        cy.get("#add-auction-button").click
-        const stub = cy.stub()
-        cy.on('window:alert', stub)
-        cy.get('button')
-        .click()
-        .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('Auction created!')
+        .type("2022-07-28")
+        cy.get("#add-auction-button").click()
         cy.url().should('equal', 'http://localhost:3000/')
     })
-
 
 
 })
