@@ -34,6 +34,7 @@ const Auction = ({ auction, user }) => {
                     <p><GoLocation/>{town}</p>
                     <p><AiFillCalendar/>From {availablePeriodStart} to {availablePeriodEnd}</p>
                     <p><AiOutlineHeart/></p>
+                    
                 </div>
                   <div className="briefInfo">
                       <p className="boldText">About me</p>
@@ -92,7 +93,7 @@ briefInformation={auction.briefInformation}*/
           console.log ("click")
           
       }
-  
+      <p><AiOutlineHeart/></p>
       const navigate = useNavigate ();*/
 
 export default Auction 
